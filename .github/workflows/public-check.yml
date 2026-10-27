@@ -18,3 +18,5 @@ jobs:
           persist-credentials: false
       - name: Check public material
         run: python3 scripts/check_public.py
+      - name: Check imported module dependencies
+        run: python3 scripts/check_module_dependencies.py

@@ -14,6 +14,8 @@
 | --- | --- |
 | [Profiles/Surge-iPhone.conf](Profiles/Surge-iPhone.conf) | 单文件公开模板，包含策略组与规则顺序 |
 | [Modules](Modules/README.md) | 从本配置中单独整理的可选模块 |
+| [Modules/RoaycL](Modules/RoaycL/README.md) | 2026-10-27 同步的去广告模块及静态番茄规则 |
+| [JS](JS/README.md) | 关联 JS 与固定的外部依赖说明 |
 | [Rules](Rules/README.md) | 可独立引用的国内业务和 Apple AI 规则 |
 | [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) | 第三方来源、许可证与引用方式 |
 | [upstreams/references.json](upstreams/references.json) | 实际引用的上游链接清单 |
@@ -29,11 +31,11 @@
 
 维护自己的完整配置：保留一份只在本地存放的私密覆盖文件。仓库提供本地导出和恢复工具，具体操作见 [本地使用说明](docs/LOCAL_USE.md)。工具不会把配置发送到任何服务器。
 
-本仓库里的独立模块和独立规则已在主模板中内置对应逻辑，供其他配置单独引用；使用主模板时无需重复安装。
+Google 中国域名重定向模块和两份独立小规则已经在主模板中内置，无需重复安装。`Modules/RoaycL/` 是另外同步的可选模块，没有自动并入主配置；[安装地址与依赖说明](Modules/RoaycL/README.md)单独列出。
 
 ## 引用与许可
 
-本仓库参考 [RoaycL/Surge](https://github.com/RoaycL/Surge) 的分类思路，没有复制其模块、脚本或服务代码。
+本仓库最初参考 [RoaycL/Surge](https://github.com/RoaycL/Surge) 的分类思路，现另行按个人自用要求同步了其 2026-10-27 更新的指定模块和关联文件，三个运行 JS 均已保存到本仓库。来源、固定版本和原作者说明见 [同步记录](docs/ROAYCL_SYNC.md)；其他目录不因此改用同一种许可证。
 
 第三方大型规则集通过作者原始链接引用。原配置内嵌的 AI 规则快照未随仓库转载，公开模板改用 Sukka 的上游 AI 规则链接。上游规则的范围和更新会影响匹配结果，不能把公开模板视为原配置的等价副本。
 

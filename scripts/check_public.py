@@ -79,7 +79,11 @@ def check(source=None, staged=False):
             continue
         if any(value in text for value in known):
             problems.append((str(rel), 0, 'matches-private-source'))
+        section = ''
         for number, line in enumerate(text.splitlines(), 1):
+            heading = re.fullmatch(r'\[([^]]+)\]\s*', line)
+            if heading:
+                section = heading[1]
             if re.search(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----', line):
                 problems.append((str(rel), number, 'private-key-block'))
             if re.search(r'(?<![A-Za-z0-9+/])[A-Za-z0-9+/]{256,}={0,2}', line):
@@ -90,7 +94,16 @@ def check(source=None, staged=False):
                 continue
             if KEY.search(line):
                 problems.append((str(rel), number, 'credential-field'))
-            for raw in URL.findall(line):
+            # URL patterns are matching expressions, not downloaded resources.
+            # Keep credential checks above; inspect actual resource URLs here.
+            resource_line = line
+            if section == 'Script':
+                resource_line = ' '.join(re.findall(r'script-path\s*=\s*([^,\s]+)', line))
+            elif section == 'Map Local' or line.startswith(('http-request-jq ', 'http-response-jq ')):
+                resource_line = ' '.join(line.split()[1:])
+                if line.startswith(('http-request-jq ', 'http-response-jq ')):
+                    resource_line = ' '.join(line.split()[2:])
+            for raw in URL.findall(resource_line):
                 parsed = urlsplit(re.sub(r'\$\d+', '', raw))
                 if parsed.hostname not in ALLOWED_HOSTS or parsed.query or parsed.username or parsed.password:
                     problems.append((str(rel), number, 'unreviewed-url'))

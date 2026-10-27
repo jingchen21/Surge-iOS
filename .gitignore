@@ -9,6 +9,14 @@
 !/Modules/
 !/Modules/README.md
 !/Modules/Google-CN-Redirect.sgmodule
+!/Modules/RoaycL/
+!/Modules/RoaycL/*.sgmodule
+!/Modules/RoaycL/README.md
+!/JS/
+!/JS/Txvideoad.surge.js
+!/JS/hlwxx_remove_ads.surge.js
+!/JS/Weibo.surge.js
+!/JS/README.md
 !/Rules/
 !/Rules/README.md
 !/Rules/Business-DIRECT.list
@@ -19,8 +27,11 @@
 !/docs/*.md
 !/upstreams/
 !/upstreams/references.json
+!/upstreams/roaycl-2026-10-27.json
 !/LICENSES/
 !/LICENSES/MIT-tools.txt
+!/LICENSES/GPL-3.0-fmz200.txt
+!/LICENSES/CC-BY-NC-SA-4.0-luestr.txt
 !/.githooks/
 !/.githooks/pre-commit
 !/.github/

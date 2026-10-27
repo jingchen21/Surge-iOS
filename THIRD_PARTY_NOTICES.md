@@ -8,7 +8,7 @@
 
 | 来源 | 核验结果 | 本仓库的处理 |
 | --- | --- | --- |
-| [RoaycL/Surge](https://github.com/RoaycL/Surge) | 根目录未发现 LICENSE 文件，GitHub API 未识别许可证 | 仅参考分类思路，没有复制模块、脚本、服务或工作流 |
+| [RoaycL/Surge](https://github.com/RoaycL/Surge) | 根目录未发现 LICENSE 文件，GitHub API 未识别许可证；其模块还有多级来源 | 后续按用户个人自用要求同步 2026-10-27 指定模块及完整关联 JS；保留作者及来源，详见 [同步记录](docs/ROAYCL_SYNC.md)；没有复制其定时工作流或服务 |
 | [SukkaW/Surge](https://github.com/SukkaW/Surge) / [Sukka Ruleset](https://ruleset.skk.moe) | 仓库 [AGPL-3.0](https://github.com/SukkaW/Surge/blob/master/LICENSE)；AI 文件头也是 AGPL 3.0；`china_ip.conf` 与 `china_ip_ipv6.conf` 文件头另标注 CC BY-SA 2.0 | 通过上游 RULE-SET / DOMAIN-SET URL 引用；不镜像大型规则正文，以具体文件条款为准 |
 | [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | [GPL-2.0](https://github.com/blackmatrix7/ios_rule_script/blob/master/LICENSE) | 通过原始规则 URL 引用，不复制上游脚本或规则库 |
 | [Hackl0us/GeoIP2-CN](https://github.com/Hackl0us/GeoIP2-CN) | [GPL-3.0](https://github.com/Hackl0us/GeoIP2-CN/blob/master/LICENSE) | 保留原配置的 GeoIP 下载链接，不托管 mmdb 文件 |
@@ -37,6 +37,8 @@
 `Rules/Business-DIRECT.list` 与 `Rules/Apple-AI.list` 从用户配置的相应小段提取，用于表达本配置的分流选择，不声称是原创域名数据库。原配置未提供完整的逐行来源，仓库没有为这些配置材料重新授予整体开源许可。
 
 本次提供的文件中没有 `[Script]` 段，无法从中恢复手机已安装模块的完整内容、版本或授权。仓库没有把配置注释中提到的模块当作已取得源码或授权。
+
+上述“没有 `[Script]` 段”指用户最初提供的配置文件。后来单独同步的 RoaycL 模块含脚本，按 [2026-10-27 同步记录](docs/ROAYCL_SYNC.md) 的来源与许可范围处理，不能套用原配置审查结论。
 
 ## 许可范围
 

@@ -1,0 +1,166 @@
+{
+  "source_repository": "https://github.com/RoaycL/Surge",
+  "source_commit": "1e0c7bd2c3d381c31b8ee9ac766576669fe2353c",
+  "date_in_asia_shanghai": "2026-10-27",
+  "source_last_commit_time": "2026-10-27T20:39:56+08:00",
+  "sync_mode": "one-time snapshot; no scheduled workflow imported",
+  "destination_repository": "https://github.com/jingchen21/Surge-iOS",
+  "files": [
+    {
+      "source_path": "Module/Pinduoduo.sgmodule",
+      "destination_path": "Modules/RoaycL/Pinduoduo.sgmodule",
+      "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/Pinduoduo.sgmodule",
+      "source_sha256": "747cfa2b54a435e5dcd0e6c454fc5de4c019ed6da200991cb4f77f325c71b37f",
+      "destination_sha256": "747cfa2b54a435e5dcd0e6c454fc5de4c019ed6da200991cb4f77f325c71b37f",
+      "change": "Unmodified snapshot.",
+      "scope": "today-updated-module"
+    },
+    {
+      "source_path": "Module/TxvideoAD.sgmodule",
+      "destination_path": "Modules/RoaycL/TxvideoAD.sgmodule",
+      "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/TxvideoAD.sgmodule",
+      "source_sha256": "1ade8e471e6e78de3530f387c495ed06a9e174fa590a0cb854e9941186b286b8",
+      "destination_sha256": "2cb1a7d9449f51c9926a4d83e3345c450b62bb003dfbff3ccd70f66978617f5b",
+      "change": "Only runtime script-path URLs relocated to the destination repository; no rule logic changed.",
+      "scope": "today-updated-module"
+    },
+    {
+      "source_path": "Module/Weibo.sgmodule",
+      "destination_path": "Modules/RoaycL/Weibo.sgmodule",
+      "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/Weibo.sgmodule",
+      "source_sha256": "c0cdcbf9957cce6fca5230557829d4d168518e45195a997417d81b1ad2f1af0d",
+      "destination_sha256": "16fdb10fa55bba6c76f5ff264a95fc942f812a66e8cd69b467776dcde26d2b34",
+      "change": "Only runtime script-path URLs relocated to the destination repository; no rule logic changed.",
+      "scope": "today-updated-module"
+    },
+    {
+      "source_path": "Module/hlwxx_remove_ads.sgmodule",
+      "destination_path": "Modules/RoaycL/hlwxx_remove_ads.sgmodule",
+      "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/hlwxx_remove_ads.sgmodule",
+      "source_sha256": "5eb8ffb8fe41e400c89158d91df9e94f9ecde0a6c9b9a5c06a888cf77e964cb9",
+      "destination_sha256": "a1a67989420eea8c61ef3bf5e637a473ee05cec13fbba8ff1362b304ad475cb9",
+      "change": "Only runtime script-path URLs relocated to the destination repository; no rule logic changed.",
+      "scope": "today-updated-module"
+    },
+    {
+      "source_path": "Module/FanQieNovel.sgmodule",
+      "destination_path": "Modules/RoaycL/FanQieNovel.sgmodule",
+      "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/FanQieNovel.sgmodule",
+      "source_sha256": "2577c47e2acd3ecf15ff000572e46757ce8724ebab2882d2fa5c1abfb0a1c0ab",
+      "destination_sha256": "2577c47e2acd3ecf15ff000572e46757ce8724ebab2882d2fa5c1abfb0a1c0ab",
+      "change": "Unmodified snapshot.",
+      "scope": "static-module-associated-with-today-added-upstream-snapshot"
+    },
+    {
+      "source_path": "JS/Txvideoad.surge.js",
+      "destination_path": "JS/Txvideoad.surge.js",
+      "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/JS/Txvideoad.surge.js",
+      "source_sha256": "23baa32e4e09a9ffa444bcbd2fc618f24a510edc6ece88df54ba7192fd3f7f20",
+      "destination_sha256": "23baa32e4e09a9ffa444bcbd2fc618f24a510edc6ece88df54ba7192fd3f7f20",
+      "change": "Unmodified; original author/source comments preserved."
+    },
+    {
+      "source_path": "JS/hlwxx_remove_ads.surge.js",
+      "destination_path": "JS/hlwxx_remove_ads.surge.js",
+      "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/JS/hlwxx_remove_ads.surge.js",
+      "source_sha256": "340e3ca23629648539ffde86b04df8a912d122141d11101a1aa1109df322b011",
+      "destination_sha256": "340e3ca23629648539ffde86b04df8a912d122141d11101a1aa1109df322b011",
+      "change": "Unmodified; original author/source comments preserved."
+    },
+    {
+      "source_path": "JS/Weibo.surge.js",
+      "destination_path": "JS/Weibo.surge.js",
+      "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/JS/Weibo.surge.js",
+      "source_sha256": "33b6f890694154bf6f69a9c2dbb26b47e4811f59f6fe4efb9527085c927224fa",
+      "destination_sha256": "33b6f890694154bf6f69a9c2dbb26b47e4811f59f6fe4efb9527085c927224fa",
+      "change": "Unmodified personal-use snapshot; original author/source comments preserved."
+    }
+  ],
+  "external_runtime_dependencies": [],
+  "upstream_input_sha256": {
+    "https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/Pinduoduo.snippet": "6b5572ce97308d32c90252567a804fdb0780439a562945e8c58da8c7b6f92064",
+    "https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/hlwxx_remove_ads.snippet": "e03088ba146047c9d6fa69290177d47ddbbcc6779ff30eb037524112ec37eb52",
+    "https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/hlwxx_remove_ads.js": "1ec71d2e02541253369b8562533c0edfdecbeb65787081bb6fa97a68af26c0ea",
+    "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/weibo.snippet": "c8b47d5f2e990f065d98cac2d70d5866c97443d23d96a8393607b13a464e9b29",
+    "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/template/reject-dict.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "https://raw.githubusercontent.com/Keywos/rule/master/script/weibo_us/js/index.js": "99ec4f40821f4eaf88caf98c1608a76b3c9d99d2a5e268c5e28767f11fd52901",
+    "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/template/req_replace_body.js": "90adc7374f0c9a62b25bbea2027570e2c08002130bca22d909607fcfca642c70",
+    "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/weibo/weibo_ads.js": "0f1f3eba5b2c96f4f089525ad033b578b6a18a2fd99eb95409e5b0816f4a4b34",
+    "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/weibo/weibo_main.js": "b5e6312938588ccdc6fe50a77fd9db75c002a027dbfcebb4337d7353000a3b52",
+    "https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_launch.js": "1ebea73aa974503abf72371cd32bdda86975dbad9beaf4c6f648db6debb75fa6",
+    "https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js": "8c9fd6cf844ce25fedcd71591c090c614a5e8aed7429f8f38e31b24e46b5a887",
+    "https://github.com/fmz200/wool_scripts/raw/main/Scripts/weibo/weibo_vip.js": "046afd2d7b053295a6b36d2492b2dedb3d57f2a9476232a070f81b7536e7d799",
+    "https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/TxvideoAD.snippet": "39ba1d951e0545689d28c015c33bb4a92a8ca18e155ebae93fcfd4002708fa0f",
+    "https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/Txvideoad.js": "2c56bc7622a28cfc97ea4790536417e405fde95e757a4f4caf65ff894550e2e9"
+  },
+  "license_review": [
+    {
+      "repository": "RoaycL/Surge",
+      "license": null,
+      "license_files": [],
+      "readme_notices": []
+    },
+    {
+      "repository": "ZenmoFeiShi/Qx",
+      "license": null,
+      "license_files": [],
+      "readme_notices": [
+        "[![Forks](https://img.shields.io/github/forks/ZenmoFeiShi/Qx?style=flat-square)](https://github.com/ZenmoFeiShi/Qx/network/members)\n[![License](https://img.shields.io/badge/license-Personal%20Use-lightgrey?style=flat-square)](#disclaimer)\n\n## 使用方式"
+      ]
+    },
+    {
+      "repository": "fmz200/wool_scripts",
+      "license": "GPL-3.0",
+      "license_files": [
+        "LICENSE"
+      ],
+      "readme_notices": [
+        "![GitHub issues](https://img.shields.io/github/issues/fmz200/wool_scripts?color=1E90FF&style=for-the-badge)\n![GitHub](https://img.shields.io/github/license/fmz200/wool_scripts?style=for-the-badge)\n[![](https://img.shields.io/badge/-t.me/inaisi-3db6f1?style=for-the-badge&logo=Telegram&logoColor=2ca5e0)](https://t.me/inaisi)\n",
+        "> 答：对于一些软件，如果整个域名都是广告，则可以直接reject整个域名去广告，但是大部分广告都和非广告内容一起返回，这就需要对响应体（response-body）进行解析来去掉其中的广告内容。\n> 解析响应体的前提条件是访问的域名可以MITM（MAN-IN-THE-MIDDLE：中间人攻击），但是有些域名禁止了MITM，所以无法对响应体进行解析去广告。\n\n### 3️⃣ 支持的规则都哪些？"
+      ]
+    },
+    {
+      "repository": "Keywos/rule",
+      "license": null,
+      "license_files": [],
+      "readme_notices": [
+        "\n* 未经允许禁止转载与传播 禁止 Fork ,此库仅为个人备份\n\n"
+      ]
+    },
+    {
+      "repository": "zmqcherish/proxy-script",
+      "license": null,
+      "license_files": [],
+      "readme_notices": []
+    },
+    {
+      "repository": "luestr/ProxyResource",
+      "license": "NOASSERTION",
+      "license_files": [
+        "LICENSE"
+      ],
+      "readme_notices": [
+        "[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-orange)](https://creativecommons.org/licenses/by-nc-sa/4.0/)\n![GitHub Repo stars](https://img.shields.io/github/stars/luestr/ProxyResource?style=flat&link=https://github.com/luestr/ProxyResource)\n[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/ibilibili)",
+        "> \n> 转载本仓库的开源内容时你需要保留原作者署名信息，且遵守本仓库的 [CC BY-NC-SA 4.0](LICENSE.md) 许可协议。\n\n------"
+      ]
+    }
+  ],
+  "purpose": "Personal-use snapshot requested by repository owner; original attributions and upstream notices preserved.",
+  "external_assets": [
+    {
+      "url": "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/gif/naisi-01.gif",
+      "kind": "module-icon",
+      "module": "Weibo.sgmodule"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DragonRead.png",
+      "kind": "module-icon",
+      "module": "FanQieNovel.sgmodule"
+    },
+    {
+      "url": "https://h5.sinaimg.cn/upload/1007/25/2018/05/03/timeline_icon_ad_delete.png",
+      "kind": "response-image",
+      "script": "Weibo.surge.js"
+    }
+  ]
+}
