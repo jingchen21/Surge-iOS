@@ -1,0 +1,12 @@
+#!name=美团小程序净化
+# Extracted Meituan section from WxPureDominion.snippet at 3e442e78e95be2c71153e55560a977ea42495f27.
+^https:\/\/mapi\.dianping\.com\/baymax\/adrec\/getrecads url reject-dict
+^https:\/\/mapi\.dianping\.com\/baymax\/getSlotAds url reject-dict
+^https:\/\/web\.meituan\.com\/api\/miniprogram\/tabbar\/all\/query url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MeiTuanNoAd.js
+^https:\/\/web\.meituan\.com\/api\/miniprogram\/index\/aggregate url script-response-body https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MeiTuanNoAd.js
+^https:\/\/web\.meituan\.com\/api\/miniprogram\/my\/novelZone url reject-dict
+^https:\/\/web\.meituan\.com\/api\/miniprogram\/my\/resources url reject-dict
+^https:\/\/npay\.meituan\.com\/conch\/flow\/mypage-wallet-info url reject-dict
+^https:\/\/web\.meituan\.com\/newUser\/returnMoney\/popWindow url reject-dict
+
+hostname = web.meituan.com, mapi.dianping.com, npay.meituan.com

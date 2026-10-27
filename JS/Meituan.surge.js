@@ -1,4 +1,5 @@
 // Original logic: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/MT.js
+// Legacy mine-service handling: MTAppAdCleanMine.js, snapshot 354e6d5217bb2d0fecdfbf506cd3d480d30d53b7.
 // Surge HTTP JSON response script; local snapshot, no runtime download.
 // Rebuild from maintenance/apps/source using scripts/build_apps.py.
 const mtqxUrl = (typeof $request !== "undefined" && $request && $request.url) || "";
@@ -34,12 +35,41 @@ function mtqxFeed(obj) {
   return true;
 }
 
+const mtqxDropTools = [
+  "xiaomeipingshen",
+  "meituangongyi",
+  "qiyefuwu",
+  "ruzhumeituan",
+  "mt_mine_myshop",
+  "zhaodianhuzhu"
+];
+
+function mtqxTools(obj) {
+  if (!mtqxIsObj(obj) || !Array.isArray(obj.children)) return false;
+  let changed = false;
+  obj.children.forEach(sec => {
+    if (!mtqxIsObj(sec) || sec.name !== "mine_serviceV3") return;
+    const d = sec.data;
+    if (!mtqxIsObj(d) || !Array.isArray(d.newTools)) return;
+    const kept = d.newTools.filter(
+      t => !(mtqxIsObj(t) && mtqxDropTools.indexOf(t.identification) >= 0)
+    );
+    if (!kept.length || kept.length === d.newTools.length) return;
+    d.newTools = kept;
+    changed = true;
+  });
+  return changed;
+}
+
 function mtqxMine(obj) {
   if (!mtqxIsObj(obj) || !Array.isArray(obj.children)) return false;
+  let changed = mtqxTools(obj);
   const kept = obj.children.filter(c => !(mtqxIsObj(c) && mtqxMineHide.indexOf(c.name) >= 0));
-  if (kept.length === obj.children.length) return false;
-  obj.children = kept;
-  return true;
+  if (kept.length !== obj.children.length) {
+    obj.children = kept;
+    changed = true;
+  }
+  return changed;
 }
 
 function mtqxDefaultWord(obj) {

@@ -1,0 +1,59 @@
+{
+  "checked_on": "2026-10-27",
+  "current_commit": "3e442e78e95be2c71153e55560a977ea42495f27",
+  "historical_snapshots": [
+    {
+      "file": "MTAppAdClean.js",
+      "snapshot_commit": "124a87137466e468d825a105350bfb9438eb5d9a",
+      "last_change": "ac66cd357532f1596598205ecdafca731b707488",
+      "status": "removed",
+      "bytes": 2268,
+      "snapshot_sha256": "38775d4bdbbc9efb7e62e259d13f5b6298526e6dc6ef1bf3391082f858b17fe8"
+    },
+    {
+      "file": "MTAppAdCleanMine.js",
+      "snapshot_commit": "354e6d5217bb2d0fecdfbf506cd3d480d30d53b7",
+      "last_change": "124a87137466e468d825a105350bfb9438eb5d9a",
+      "status": "removed",
+      "bytes": 3062,
+      "snapshot_sha256": "fd3dc379a831a577e26d66a655a26cb3a0f5da7495186f536d2a264cc7246349"
+    },
+    {
+      "file": "MTAppAdClean.snippet",
+      "snapshot_commit": "9e796b245e51419354c80e41c1aa9903d76d585e",
+      "last_change": "354e6d5217bb2d0fecdfbf506cd3d480d30d53b7",
+      "status": "removed",
+      "bytes": 2508,
+      "snapshot_sha256": "79950d4336a29f2a93c20f9c2b3dbe393ac1dc75861a62a2a2c385e387e068fb"
+    }
+  ],
+  "findings": [
+    {
+      "feature": "bottom-tabs-video-xiaotuan",
+      "status": "already-covered-current-MT.js"
+    },
+    {
+      "feature": "cart-feed-top-banner-splash",
+      "status": "already-covered-current-MT.js"
+    },
+    {
+      "feature": "personalcenter-feed",
+      "status": "already-covered-current-MT.js"
+    },
+    {
+      "feature": "my-page-service-entries",
+      "status": "missing-from-current-MT.js; merged-from-historical-MTAppAdCleanMine.js"
+    },
+    {
+      "feature": "MeiTuanNoAd.js-generic-processing",
+      "status": "routes found in WxPureDominion.snippet Meituan section; included in the same Meituan module with scoped JS handlers"
+    }
+  ],
+  "verification_boundary": "Repository conversion checked with synthetic data and offline parsing; upstream real-device claims are not our own device verification.",
+  "mini_program_source": {
+    "path": "WxPureDominion.snippet",
+    "commit": "3e442e78e95be2c71153e55560a977ea42495f27",
+    "extraction": "Meituan section only; hostnames narrowed to its three actual hosts",
+    "sha256_of_full_source": "c2593be9b4b6a13095b751b34b901db0fafc779233ae577f80ba93dd1116580f"
+  }
+}

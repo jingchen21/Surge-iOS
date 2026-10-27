@@ -5,12 +5,36 @@
   "baseline_already_present_in_initial_tencent_snapshot": true,
   "inputs": [
     {
+      "path": "maintenance/apps/source/Didichuxing.snippet",
+      "sha256": "6fb275fdac5599c88c1bda47ee7f43dab25429fc1a9678b4013835436b1d2a40"
+    },
+    {
       "path": "maintenance/apps/source/MT.js",
       "sha256": "9a48981f5d1cdac2d7c72c8f1164752ce712113eaf687aeeba2829e78c66308a"
     },
     {
       "path": "maintenance/apps/source/MT.snippet",
       "sha256": "e2c72b6676ad026b4f3c67f70614d7c2c7dafe0343c2dae4bb80b2762bf4e07a"
+    },
+    {
+      "path": "maintenance/apps/source/MTAppAdClean.js",
+      "sha256": "38775d4bdbbc9efb7e62e259d13f5b6298526e6dc6ef1bf3391082f858b17fe8"
+    },
+    {
+      "path": "maintenance/apps/source/MTAppAdClean.snippet",
+      "sha256": "79950d4336a29f2a93c20f9c2b3dbe393ac1dc75861a62a2a2c385e387e068fb"
+    },
+    {
+      "path": "maintenance/apps/source/MTAppAdCleanMine.js",
+      "sha256": "fd3dc379a831a577e26d66a655a26cb3a0f5da7495186f536d2a264cc7246349"
+    },
+    {
+      "path": "maintenance/apps/source/MeiTuanNoAd.js",
+      "sha256": "16a2800107ebbadde4209bb961894a4d068a9b19cd0267a66d412de896f50e05"
+    },
+    {
+      "path": "maintenance/apps/source/MeituanMiniProgram.snippet",
+      "sha256": "4d4f3701feeaac520a5f662147b13057da3a34ecaf26ab51c65b1e54252ea33e"
     },
     {
       "path": "maintenance/apps/source/TxvideoAD.snippet",
@@ -24,11 +48,19 @@
   "outputs": [
     {
       "destination_path": "JS/Meituan.surge.js",
-      "destination_sha256": "6c002a67d55b2a60f127cb85a195e37931b9fd213dd177bac4dc5a412bf169b2"
+      "destination_sha256": "7216c95d25bd819145c2becdc66eb69b248072da48b1aa500f138f9fdf713ade"
+    },
+    {
+      "destination_path": "JS/MeituanMiniProgram.surge.js",
+      "destination_sha256": "12eda05d817182eee84f86484e4cdbdbf591fdafae934bda008d04581d15c766"
     },
     {
       "destination_path": "JS/Txvideoad.surge.js",
       "destination_sha256": "c31a00967834d20bd281ff539ca5a81430ace025a3b97c10379049838eb6d11f"
+    },
+    {
+      "destination_path": "Modules/Apps/Didi.sgmodule",
+      "destination_sha256": "96590a817c9ee559be359826c47e60a8ab4a64936f04be93a069eda3a77959a7"
     },
     {
       "destination_path": "Modules/Apps/TxvideoAD.sgmodule",
@@ -40,7 +72,7 @@
     },
     {
       "destination_path": "Modules/Meituan.sgmodule",
-      "destination_sha256": "b323efd53cc12e1189a98b2581cfd89c1fabd821a751b3cf63276303c615de1e"
+      "destination_sha256": "29bfbb2049ac9bac2cd24f063e18d7f27658075ac67233e5de7f0a5281a2b841"
     },
     {
       "destination_path": "Modules/TencentVideo.sgmodule",

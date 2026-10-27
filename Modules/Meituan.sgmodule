@@ -1,5 +1,5 @@
-#!name=美团页面净化
-#!desc=按 12.67.403 结构净化底栏、推荐流、搜索词、开屏和页面组件；不改变网络通道。
+#!name=美团净化（App/小程序）
+#!desc=美团 App 与微信小程序净化，含我的服务入口、导航和广告卡片；不改变网络通道。
 #!author=TG@ZenMoFiShi
 # Original rules: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/MT.snippet
 # Conversion reference: https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule
@@ -13,6 +13,18 @@ Meituan-4 = type=http-response, pattern=^https?://apimobile\.meituan\.com/group/
 Meituan-5 = type=http-response, pattern=^https?://assistify\.meituan\.com/assistant/getAppClientHornConfig, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
 Meituan-6 = type=http-response, pattern=^https?://mop\.meituan\.com/mop/entry/shoppingCartEntry, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
 Meituan-7 = type=http-response, pattern=^https?://mop\.meituan\.com/api/entryModule/startupPicture, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+MeituanMini-0 = type=http-response, pattern=^https://web\.meituan\.com/api/miniprogram/tabbar/all/query, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/MeituanMiniProgram.surge.js, timeout=10
+MeituanMini-1 = type=http-response, pattern=^https://web\.meituan\.com/api/miniprogram/index/aggregate, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/MeituanMiniProgram.surge.js, timeout=10
 
 [MITM]
-hostname = %APPEND% apimobile.meituan.com, feedguess.meituan.com, mop.meituan.com, mt-personalcenter.meituan.com, assistify.meituan.com
+hostname = %APPEND% apimobile.meituan.com, feedguess.meituan.com, mop.meituan.com, mt-personalcenter.meituan.com, assistify.meituan.com, web.meituan.com, mapi.dianping.com, npay.meituan.com
+
+# Meituan mini-program section: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/WxPureDominion.snippet
+
+[Map Local]
+^https://mapi\.dianping\.com/baymax/adrec/getrecads data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https://mapi\.dianping\.com/baymax/getSlotAds data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https://web\.meituan\.com/api/miniprogram/my/novelZone data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https://web\.meituan\.com/api/miniprogram/my/resources data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https://npay\.meituan\.com/conch/flow/mypage-wallet-info data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https://web\.meituan\.com/newUser/returnMoney/popWindow data-type=text data="{}" status-code=200 header="Content-Type:application/json"

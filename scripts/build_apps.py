@@ -35,7 +35,7 @@ def parse(text):
             kind = kinds[match[1].lower()]
             rules.append(f'{kind},{match[2].strip()},REJECT' + (',no-resolve' if kind.startswith('IP-CIDR') else ''))
             continue
-        match = re.fullmatch(r'(\S+)\s+url\s+(script-request-body|script-response-body|reject)(?:\s+(\S+))?', line)
+        match = re.fullmatch(r'(\S+)\s+url\s+(script-request-body|script-response-body|reject|reject-dict|jsonjq-response-body)(?:\s+(.+))?', line)
         if not match:
             raise ValueError(f'Unsupported rule on line {number}; existing outputs were not changed')
         pattern, action, argument = match.groups()
@@ -49,7 +49,7 @@ def parse(text):
 
 
 def header(name, description, author):
-    return f'#!name={name}\n#!desc={description}\n#!author={author}\n'
+    return f'#!name={name}\n#!desc={description}\n' + (f'#!author={author}\n' if author else '')
 
 
 def script_line(name, route, path, binary=False, max_size=2097152):
@@ -61,7 +61,9 @@ def script_line(name, route, path, binary=False, max_size=2097152):
 
 def planned_outputs():
     texts = {name: (INPUT / name).read_text() for name in
-             ['Txvideoad.js', 'TxvideoAD.snippet', 'MT.js', 'MT.snippet']}
+             ['Txvideoad.js', 'TxvideoAD.snippet', 'MT.js', 'MT.snippet',
+              'Didichuxing.snippet', 'MTAppAdClean.js', 'MTAppAdCleanMine.js',
+              'MTAppAdClean.snippet', 'MeiTuanNoAd.js', 'MeituanMiniProgram.snippet']}
     metadata, rules, routes, hosts = parse(texts['TxvideoAD.snippet'])
     if len(routes) != 5 or any(not (r['argument'] or '').endswith('/Txvideoad.js') for r in routes):
         raise ValueError('Tencent routes changed; review binary/text mode before rebuilding')
@@ -100,10 +102,36 @@ def planned_outputs():
     mt_source = texts['MT.js']
     if re.search(r'\$(?:task|prefs)\b|\.bodyBytes\b', mt_source):
         raise ValueError('New QX-only APIs in Meituan source require an adapter')
+    # The current script dropped the older service-entry cleanup. Merge it into
+    # the SAME handler because Surge executes only the first matching response script.
+    legacy = texts['MTAppAdCleanMine.js']
+    tools = re.search(r'const mtqxDropTools = \[[\s\S]*?\];', legacy)
+    function = re.search(r'^function mtqxTools\(obj\) \{[\s\S]*?^\}', legacy, re.M)
+    original_mine = '''function mtqxMine(obj) {
+  if (!mtqxIsObj(obj) || !Array.isArray(obj.children)) return false;
+  const kept = obj.children.filter(c => !(mtqxIsObj(c) && mtqxMineHide.indexOf(c.name) >= 0));
+  if (kept.length === obj.children.length) return false;
+  obj.children = kept;
+  return true;
+}'''
+    if not tools or not function or mt_source.count(original_mine) != 1:
+        raise ValueError('Meituan personal-center shape changed; review the legacy merge')
+    merged_mine = '''function mtqxMine(obj) {
+  if (!mtqxIsObj(obj) || !Array.isArray(obj.children)) return false;
+  let changed = mtqxTools(obj);
+  const kept = obj.children.filter(c => !(mtqxIsObj(c) && mtqxMineHide.indexOf(c.name) >= 0));
+  if (kept.length !== obj.children.length) {
+    obj.children = kept;
+    changed = true;
+  }
+  return changed;
+}'''
+    mt_source = mt_source.replace(original_mine, tools[0] + '\n\n' + function[0] + '\n\n' + merged_mine)
     outputs['JS/Meituan.surge.js'] = ('// Original logic: ' + QX_SOURCE + 'MT.js\n'
+                                    '// Legacy mine-service handling: MTAppAdCleanMine.js, snapshot 354e6d5217bb2d0fecdfbf506cd3d480d30d53b7.\n'
                                     '// Surge HTTP JSON response script; local snapshot, no runtime download.\n'
                                     '// Rebuild from maintenance/apps/source using scripts/build_apps.py.\n' + mt_source)
-    core = header('美团页面净化', '按 12.67.403 结构净化底栏、推荐流、搜索词、开屏和页面组件；不改变网络通道。',
+    core = header('美团净化（App/小程序）', '按 12.67.403 结构净化底栏、推荐流、搜索词、开屏与我的服务入口；不改变网络通道。',
                   metadata.get('author', ''))
     core += '# Original rules: ' + QX_SOURCE + 'MT.snippet\n'
     core += '# Conversion reference: https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule\n'
@@ -119,6 +147,52 @@ def planned_outputs():
     transport += '\n[Rule]\n' + '\n'.join(rules)
     transport += '\n\n[URL Rewrite]\n' + '\n'.join(route['pattern'] + ' - reject' for route in rejects) + '\n'
     outputs['Modules/Meituan-Network-Compatibility.sgmodule'] = transport
+    metadata, rules, routes, hosts = parse(texts['Didichuxing.snippet'])
+    jq_routes = [r for r in routes if r['action'] == 'jsonjq-response-body']
+    dict_routes = [r for r in routes if r['action'] == 'reject-dict']
+    if len(jq_routes) != 12 or len(dict_routes) != 12 or len(routes) != 24:
+        raise ValueError('DiDi actions changed; review native jq and Map Local conversion')
+    didi = header('滴滴出行净化', '个人中心、导航、推荐及钱包页面精简；原生 jq/Map Local，无 JS 依赖。', metadata.get('author', ''))
+    didi += '# Original rules: ' + QX_SOURCE + 'Didichuxing.snippet\n'
+    didi += '# Requires Surge iOS 5.14.0+ / Mac 5.9.0+ for native jq.\n'
+    didi += '\n[Rule]\n' + '\n'.join(rules) + '\n\n[Body Rewrite]\n'
+    for route in jq_routes:
+        argument = route['argument'] or ''
+        if len(argument) < 2 or not (argument.startswith("'") and argument.endswith("'")):
+            raise ValueError('Unexpected DiDi jq quoting')
+        expression = argument[1:-1]
+        if "'" in expression or '\n' in expression:
+            raise ValueError('DiDi jq quoting needs manual review')
+        guarded = ('. as $original | try (if (type == "object" and '
+                   '((.data | type) == "object" or (.data | type) == "array")) then ('
+                   + expression + ') else . end) catch $original')
+        didi += f'http-response-jq {route["pattern"]} \'{guarded}\'\n'
+    didi += '\n[Map Local]\n'
+    didi += '\n'.join(r['pattern'] + ' data-type=text data="{}" status-code=200 header="Content-Type:application/json"' for r in dict_routes)
+    didi += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
+    outputs['Modules/Apps/Didi.sgmodule'] = didi
+    metadata, rules, routes, hosts = parse(texts['MeituanMiniProgram.snippet'])
+    mini_scripts = [r for r in routes if r['action'] == 'script-response-body']
+    mini_mock = [r for r in routes if r['action'] == 'reject-dict']
+    if rules or len(mini_scripts) != 2 or len(mini_mock) != 6 or len(routes) != 8:
+        raise ValueError('Meituan mini-program rules changed; review the scoped extraction')
+    if any(not (r['argument'] or '').endswith('/MeiTuanNoAd.js') for r in mini_scripts):
+        raise ValueError('Unexpected Meituan mini-program script dependency')
+    # Keep one installable Meituan module for both App and mini-program routes.
+    # Each JS keeps a narrow URL pattern; no two handlers compete for one URL.
+    main = outputs['Modules/Meituan.sgmodule']
+    main = main.replace('按 12.67.403 结构净化底栏、推荐流、搜索词、开屏与我的服务入口；不改变网络通道。',
+                        '美团 App 与微信小程序净化，含我的服务入口、导航和广告卡片；不改变网络通道。')
+    section = main.index('\n\n[MITM]')
+    main = main[:section] + '\n' + '\n'.join(script_line(f'MeituanMini-{i}',r,'JS/MeituanMiniProgram.surge.js') for i,r in enumerate(mini_scripts)) + main[section:]
+    main += '\n# Meituan mini-program section: ' + QX_SOURCE + 'WxPureDominion.snippet\n'
+    main += '\n[Map Local]\n' + '\n'.join(r['pattern']+' data-type=text data="{}" status-code=200 header="Content-Type:application/json"' for r in mini_mock) + '\n'
+    app_hosts = [h.strip() for h in re.search(r'hostname = %APPEND% (.*)', main)[1].split(',')]
+    combined_hosts = list(dict.fromkeys(app_hosts + hosts))
+    main = re.sub(r'hostname = %APPEND% .*', 'hostname = %APPEND% ' + ', '.join(combined_hosts), main, count=1)
+    outputs['Modules/Meituan.sgmodule'] = main
+    outputs['JS/MeituanMiniProgram.surge.js'] = ('// Original logic: '+QX_SOURCE+'MeiTuanNoAd.js\n'
+                                               '// Only used by the two scoped Meituan mini-program response routes.\n'+texts['MeiTuanNoAd.js'])
     manifest = {
         'format': 1,
         'baseline_commit': '3e442e78e95be2c71153e55560a977ea42495f27',

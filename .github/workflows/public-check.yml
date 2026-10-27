@@ -24,3 +24,5 @@ jobs:
         run: python3 scripts/build_apps.py --check
       - name: Check app response handling
         run: node tests/apps_runtime.cjs
+      - name: Check DiDi native jq conversion
+        run: node tests/didi_runtime.cjs

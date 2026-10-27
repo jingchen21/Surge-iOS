@@ -14,7 +14,7 @@
 | --- | --- |
 | [Profiles/Surge-iPhone.conf](Profiles/Surge-iPhone.conf) | 单文件公开模板，包含策略组与规则顺序 |
 | [Modules](Modules/README.md) | 从本配置中单独整理的可选模块 |
-| [腾讯视频与美团](docs/APPS.md) | 安装地址、页面净化与可选网络兼容模块 |
+| [应用模块](docs/APPS.md) | 腾讯、美团、滴滴安装地址及使用说明 |
 | [应用模块维护](maintenance/apps/README.md) | 本地源快照、离线生成方式与测试 |
 | [应用净化模块](Modules/Apps/README.md) | 2026-10-27 同步的去广告模块及静态番茄规则 |
 | [JS](JS/README.md) | 关联 JS 与固定的外部依赖说明 |
@@ -36,6 +36,8 @@
 Google 中国域名重定向模块和两份独立小规则已经在主模板中内置，无需重复安装。`Modules/Apps/` 是另外同步的可选模块，没有自动并入主配置；[安装地址与依赖说明](Modules/Apps/README.md)单独列出。
 
 腾讯视频与美团使用 [应用模块入口](docs/APPS.md)。美团页面净化与网络通道拦截分开维护，先使用页面模块；所有运行 JS、源快照及生成工具均在本仓库。
+
+滴滴使用原生 jq / Map Local，没有额外 JS。美团已补回旧版“我的”服务入口精简，逐项核对结果见 [美团审查记录](docs/MEITUAN_AUDIT.md)。
 
 ## 引用与许可
 

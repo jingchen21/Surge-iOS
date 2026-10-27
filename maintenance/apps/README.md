@@ -8,6 +8,9 @@
 | --- | --- |
 | `source/TxvideoAD.snippet` + `source/Txvideoad.js` | `Modules/TencentVideo.sgmodule`、`Modules/Apps/TxvideoAD.sgmodule`、`JS/Txvideoad.surge.js` |
 | `source/MT.snippet` + `source/MT.js` | `Modules/Meituan.sgmodule`、`Modules/Meituan-Network-Compatibility.sgmodule`、`JS/Meituan.surge.js` |
+| `source/MTAppAdCleanMine.js` | 将旧版“我的”服务入口精简合入同一美团 JS，保留当前去推荐逻辑 |
+| `source/Didichuxing.snippet` | `Modules/Apps/Didi.sgmodule`；原生 jq/Map Local，无 JS |
+| `source/MeituanMiniProgram.snippet` + `source/MeiTuanNoAd.js` | 合入 `Modules/Meituan.sgmodule`，关联 `JS/MeituanMiniProgram.surge.js`；同一模块中的小程序处理 |
 
 `lock.json` 保存输入和生成文件的哈希。它覆盖历史快照清单中腾讯文件的旧哈希，其他已保存模块不受影响。
 
@@ -29,11 +32,12 @@
 python3 scripts/build_apps.py
 python3 scripts/build_apps.py --check
 node tests/apps_runtime.cjs
+node tests/didi_runtime.cjs
 python3 scripts/check_module_dependencies.py
 python3 scripts/check_public.py
 ```
 
-需要 Python 3.9+ 与 Node.js 18+。生成器不联网，不自动下载更新，也不自动推送；遇到未支持的新规则或二进制 API 变化会停止，让维护者检查。
+需要 Python 3.9+、Node.js 18+ 与 jq。生成器不联网，不自动下载更新，也不自动推送；遇到未支持的新规则或二进制 API 变化会停止，让维护者检查。
 
 不要只改生成后的 JS 再运行构建，否则该改动会被输入快照重新生成的内容覆盖。若需要新的上游版本，先取得对应输入文件、检查差异，再替换快照并修改适配逻辑。
 
@@ -46,5 +50,11 @@ python3 scripts/check_public.py
 ## 美团拆分
 
 页面模块只处理指定的八类 JSON 响应。网络兼容模块单独保存 SHARK、mquic、HTTPDNS、IPv4/IPv6 拦截和两条 URL 拒绝，不默认并入页面模块。两者合起来保留输入规则的覆盖范围。
+
+现行脚本缺少旧版“我的”页服务入口精简，构建时从存档的 Mine 脚本提取该处理，并与当前推荐区移除合并。`MeiTuanNoAd.js` 的引用已从微信规则中找到，其小程序处理一并合入同一份美团模块，旧版其他文件也已存档，详见 [审查记录](../../docs/MEITUAN_AUDIT.md)。
+
+## 滴滴原生处理
+
+12 条 jq 和 12 条空 JSON 返回转换成 Surge 原生能力，保留 16 条域名/IP 规则。jq 外层加入错误回退，正常样例与原表达式逐项对比。没有虚构 JS 依赖。支付和钱包部分属于界面精简，仍需实际检查 App 当前版本。
 
 真机是否走到这些 HTTP 接口，仍需在 Surge 的请求记录中检查。模拟数据和离线语法检查不能证明当前 App 的每一项功能都兼容。

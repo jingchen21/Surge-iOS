@@ -20,6 +20,7 @@
 !/JS/hlwxx_remove_ads.surge.js
 !/JS/Weibo.surge.js
 !/JS/Meituan.surge.js
+!/JS/MeituanMiniProgram.surge.js
 !/JS/README.md
 !/Rules/
 !/Rules/README.md
@@ -45,13 +46,21 @@
 !/maintenance/apps/
 !/maintenance/apps/README.md
 !/maintenance/apps/lock.json
+!/maintenance/apps/meituan-audit.json
 !/maintenance/apps/source/
 !/maintenance/apps/source/Txvideoad.js
 !/maintenance/apps/source/TxvideoAD.snippet
 !/maintenance/apps/source/MT.js
 !/maintenance/apps/source/MT.snippet
+!/maintenance/apps/source/Didichuxing.snippet
+!/maintenance/apps/source/MeiTuanNoAd.js
+!/maintenance/apps/source/MeituanMiniProgram.snippet
+!/maintenance/apps/source/MTAppAdClean.js
+!/maintenance/apps/source/MTAppAdCleanMine.js
+!/maintenance/apps/source/MTAppAdClean.snippet
 !/tests/
 !/tests/apps_runtime.cjs
+!/tests/didi_runtime.cjs
 
 # Explicitly reject private material even inside allowed folders.
 **/private/

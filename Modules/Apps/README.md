@@ -13,6 +13,8 @@
 | 微博与国际版净化 | [Weibo.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Apps/Weibo.sgmodule) | 已同步到本仓库 `JS/Weibo.surge.js` |
 | 黑料页面净化 | [hlwxx_remove_ads.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Apps/hlwxx_remove_ads.sgmodule) | 已同步到本仓库 `JS/hlwxx_remove_ads.surge.js` |
 | 番茄小说静态规则 | [FanQieNovel.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Apps/FanQieNovel.sgmodule) | 无；这是今天同步体系附带的静态来源，模块本体不是今天修改的 |
+| 滴滴出行净化 | [Didi.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Apps/Didi.sgmodule) | 无；使用原生 jq / Map Local，输入快照已保存 |
+| 美团 App / 微信小程序 | [Meituan.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) | App 和小程序同一模块，关联的两个 JS 都在本仓库 |
 
 前四个模块是今天实际新增或修改的模块。拼多多已经移除旧 JS，不能再把旧 `Pinduoduo.surge.js` 当成依赖。
 
