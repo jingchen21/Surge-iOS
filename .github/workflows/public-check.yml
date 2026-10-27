@@ -26,3 +26,5 @@ jobs:
         run: node tests/apps_runtime.cjs
       - name: Check DiDi native jq conversion
         run: node tests/didi_runtime.cjs
+      - name: Check SPDB image filtering
+        run: node tests/spdb_runtime.cjs

@@ -59,11 +59,87 @@ def script_line(name, route, path, binary=False, max_size=2097152):
             f'script-path={RAW}{path}, timeout=10')
 
 
+def spdb_outputs(source):
+    # User-supplied pdxb.js has no author or source URL; do not invent attribution.
+    helpers = source[:source.index('try {')]
+    helpers = helpers.replace('仅拦截实际分辨率为 1125 x 1931 的图片,非苹果17手机自行修改分辨率,否则不生效.', '按参数匹配图片素材实际尺寸；默认原样本 1125 x 1931，不根据手机型号猜测。')
+    helpers = helpers.replace('// max-size=0', '// max-size=-1 (Surge)')
+    for old in ['const TARGET_WIDTH = 1125;', 'const TARGET_HEIGHT = 1931;']:
+        if helpers.count(old) != 1:
+            raise ValueError('SPDB source changed; review dimension defaults')
+        helpers = helpers.replace(old, '')
+    helpers = helpers.replace('if (bytes.length < 24)', 'if (bytes.length < 33)')
+    helpers = helpers.replace('if (!isPNG)', 'if (!isPNG || readBE32(bytes, 8) !== 13 || String.fromCharCode(...bytes.subarray(12, 16)) !== "IHDR")')
+    helpers = helpers.replace('if (bytes.length < 10)', 'if (bytes.length < 13)')
+    helpers = helpers.replace('while (pos + 8 < bytes.length)', 'while (pos < bytes.length)')
+    helpers = helpers.replace('const marker = bytes[pos++];', 'const marker = bytes[pos++];\n        if (marker === 0xD9 || marker === 0xDA) return null;')
+    helpers = helpers.replace('if (isSOF && segmentLength >= 7)', 'if (isSOF && segmentLength >= 8 && bytes[pos + 7] > 0 && segmentLength === 8 + 3 * bytes[pos + 7])')
+    runtime = r'''
+(function () {
+    let verbose = true;
+    function log(message) { if (verbose) console.log("[SPDB] " + message); }
+    try {
+        const options = {};
+        const argument = typeof $argument === "string" ? $argument : "";
+        for (const pair of argument.split("&")) {
+            const i = pair.indexOf("=");
+            if (i > 0) options[pair.slice(0, i)] = pair.slice(i + 1);
+        }
+        verbose = options.log !== "0";
+        function dimension(key, fallback) {
+            if (!Object.prototype.hasOwnProperty.call(options, key)) return fallback;
+            const value = options[key];
+            return /^[1-9][0-9]{0,4}$/.test(value) && Number(value) <= 65535 ? Number(value) : null;
+        }
+        const width = dimension("width", 1125), height = dimension("height", 1931);
+        if (!width || !height) { log("INVALID_TARGET PASS"); $done({}); return; }
+        const request = typeof $request !== "undefined" && $request ? $request : {};
+        const response = typeof $response !== "undefined" && $response ? $response : {};
+        if (!/^https?:\/\/images?\.spdbccc\.com\.cn\/.+/i.test(request.url || "") ||
+            (request.method && request.method.toUpperCase() !== "GET") || Number(response.status) !== 200) {
+            $done({}); return;
+        }
+        const raw = response.body;
+        let body;
+        if (Object.prototype.toString.call(raw) === "[object ArrayBuffer]") body = new Uint8Array(raw);
+        else if (ArrayBuffer.isView(raw)) body = new Uint8Array(raw.buffer, raw.byteOffset, raw.byteLength);
+        if (!body || !body.length) { log("NO_BINARY_BODY PASS"); $done({}); return; }
+        const info = getPNGSize(body) || getGIFSize(body) || getJPEGSize(body);
+        if (!info || !info.width || !info.height) { log("UNKNOWN_IMAGE PASS"); $done({}); return; }
+        const matched = info.width === width && info.height === height;
+        log(info.type + " " + info.width + "x" + info.height + " target=" + width + "x" + height + (matched ? " BLOCK" : " PASS"));
+        // In Surge $done() means passthrough. abort:true explicitly stops delivery.
+        $done(matched ? {abort: true} : {});
+    } catch (_) {
+        log("PARSE_ERROR PASS");
+        $done({});
+    }
+})();
+'''
+    js = ('// Source: user-supplied pdxb.js; original author and public URL not supplied.\n'
+          '// Surge adaptation: explicit abort, configurable exact dimensions, URL-free logs, parser bounds.\n'
+          '// The original 1125x1931 sample is not a verified iPhone 18 Pro asset size.\n'
+          '// Rebuild with scripts/build_apps.py; original file archived in maintenance/apps/source/pdxb.js.\n'
+          + helpers + runtime)
+    module = header('浦大喜奔开屏尺寸拦截', '精确匹配图片素材尺寸；默认保留原样本 1125×1931，18 Pro 实际素材尺寸需看日志确认。', '')
+    module += '#!arguments=width:1125,height:1931,log:1\n'
+    module += '#!arguments-desc=width/height 是广告图片的实际像素尺寸，不是手机屏幕尺寸；log=1 记录尺寸，0 关闭日志。\n'
+    module += '# Source: user-supplied pdxb.js; author and public URL not supplied.\n'
+    module += '# Surge uses abort:true to stop a response and max-size=-1 for unlimited buffering.\n'
+    module += '\n[Script]\n'
+    module += ('SPDB-Splash = type=http-response, pattern=^https?://images?\\.spdbccc\\.com\\.cn/.+, '
+               'requires-body=true, binary-body-mode=true, max-size=-1, '
+               f'script-path={RAW}JS/pdxb.surge.js, timeout=20, '
+               'argument="width={{{width}}}&height={{{height}}}&log={{{log}}}"\n')
+    module += '\n[MITM]\nhostname = %APPEND% image.spdbccc.com.cn, images.spdbccc.com.cn\n'
+    return {'Modules/SPDB.sgmodule': module, 'JS/pdxb.surge.js': js}
+
+
 def planned_outputs():
     texts = {name: (INPUT / name).read_text() for name in
              ['Txvideoad.js', 'TxvideoAD.snippet', 'MT.js', 'MT.snippet',
               'Didichuxing.snippet', 'MTAppAdClean.js', 'MTAppAdCleanMine.js',
-              'MTAppAdClean.snippet', 'MeiTuanNoAd.js', 'MeituanMiniProgram.snippet']}
+              'MTAppAdClean.snippet', 'MeiTuanNoAd.js', 'MeituanMiniProgram.snippet', 'pdxb.js']}
     metadata, rules, routes, hosts = parse(texts['TxvideoAD.snippet'])
     if len(routes) != 5 or any(not (r['argument'] or '').endswith('/Txvideoad.js') for r in routes):
         raise ValueError('Tencent routes changed; review binary/text mode before rebuilding')
@@ -193,6 +269,7 @@ def planned_outputs():
     outputs['Modules/Meituan.sgmodule'] = main
     outputs['JS/MeituanMiniProgram.surge.js'] = ('// Original logic: '+QX_SOURCE+'MeiTuanNoAd.js\n'
                                                '// Only used by the two scoped Meituan mini-program response routes.\n'+texts['MeiTuanNoAd.js'])
+    outputs.update(spdb_outputs(texts['pdxb.js']))
     manifest = {
         'format': 1,
         'baseline_commit': '3e442e78e95be2c71153e55560a977ea42495f27',

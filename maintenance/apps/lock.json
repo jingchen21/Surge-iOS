@@ -43,6 +43,10 @@
     {
       "path": "maintenance/apps/source/Txvideoad.js",
       "sha256": "2c56bc7622a28cfc97ea4790536417e405fde95e757a4f4caf65ff894550e2e9"
+    },
+    {
+      "path": "maintenance/apps/source/pdxb.js",
+      "sha256": "06648bdeaa67f7c14b1ff7aa418e540fabc662216f02cde830445d1be4ca99bb"
     }
   ],
   "outputs": [
@@ -59,6 +63,10 @@
       "destination_sha256": "c31a00967834d20bd281ff539ca5a81430ace025a3b97c10379049838eb6d11f"
     },
     {
+      "destination_path": "JS/pdxb.surge.js",
+      "destination_sha256": "f06b1427f26d8db545ae3d45abfdfe551b0fb31ef19c2877f7706fa853cc7e36"
+    },
+    {
       "destination_path": "Modules/Didi.sgmodule",
       "destination_sha256": "96590a817c9ee559be359826c47e60a8ab4a64936f04be93a069eda3a77959a7"
     },
@@ -69,6 +77,10 @@
     {
       "destination_path": "Modules/Meituan.sgmodule",
       "destination_sha256": "29bfbb2049ac9bac2cd24f063e18d7f27658075ac67233e5de7f0a5281a2b841"
+    },
+    {
+      "destination_path": "Modules/SPDB.sgmodule",
+      "destination_sha256": "74a49eb309e724eb57618e3424ff155983394c24884e1637e6879aea1c6203d2"
     },
     {
       "destination_path": "Modules/TencentVideo.sgmodule",

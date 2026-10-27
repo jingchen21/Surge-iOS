@@ -9,6 +9,7 @@
 | 腾讯视频 | [TencentVideo.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/TencentVideo.sgmodule) | 单独启用，需要 MITM 和 Scripting |
 | 美团 App / 小程序净化 | [Meituan.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) | App 与小程序在同一模块，需要 MITM、Scripting 和 Rewrite |
 | 美团网络兼容 | [Meituan-Network-Compatibility.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan-Network-Compatibility.sgmodule) | 可选；页面脚本不命中时再考虑与页面模块配合 |
+| 浦大喜奔 | [SPDB.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule) | 精确图片尺寸匹配；[参数与 18 Pro 核对方法](SPDB.md) |
 | 滴滴出行 | [Didi.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) | 原生 jq/Map Local，无 JS 依赖；需要 MITM 和 Rewrite |
 
 MITM CA 仍在自己的设备本地生成、安装和信任，不随模块分发。腾讯视频的 `TencentVideo.sgmodule` 与 `TxvideoAD.sgmodule` 内容相同，不要同时启用。所有模块直接放在 `Modules/`；使用旧子目录地址安装的模块需替换为新地址。

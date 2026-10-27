@@ -12,6 +12,7 @@
 !/Modules/TencentVideo.sgmodule
 !/Modules/Meituan.sgmodule
 !/Modules/Meituan-Network-Compatibility.sgmodule
+!/Modules/SPDB.sgmodule
 !/Modules/Didi.sgmodule
 !/Modules/FanQieNovel.sgmodule
 !/Modules/Pinduoduo.sgmodule
@@ -24,6 +25,7 @@
 !/JS/Weibo.surge.js
 !/JS/Meituan.surge.js
 !/JS/MeituanMiniProgram.surge.js
+!/JS/pdxb.surge.js
 !/JS/README.md
 !/Rules/
 !/Rules/README.md
@@ -53,6 +55,7 @@
 !/maintenance/apps/source/
 !/maintenance/apps/source/Txvideoad.js
 !/maintenance/apps/source/TxvideoAD.snippet
+!/maintenance/apps/source/pdxb.js
 !/maintenance/apps/source/MT.js
 !/maintenance/apps/source/MT.snippet
 !/maintenance/apps/source/Didichuxing.snippet
@@ -64,6 +67,7 @@
 !/tests/
 !/tests/apps_runtime.cjs
 !/tests/didi_runtime.cjs
+!/tests/spdb_runtime.cjs
 
 # Explicitly reject private material even inside allowed folders.
 **/private/
