@@ -1,6 +1,7 @@
 # Default deny: only the explicitly public tree is eligible for new commits.
 *
 !/.gitignore
+!/.gitattributes
 !/README.md
 !/LICENSE.md
 !/THIRD_PARTY_NOTICES.md

@@ -1,0 +1,2 @@
+# Preserve the uploaded source bytes for deterministic SHA-256 records.
+maintenance/apps/source/pdxb.js -text
