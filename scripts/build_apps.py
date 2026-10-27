@@ -91,7 +91,7 @@ def planned_outputs():
                                 '// Surge adaptation: bodyBytes -> body (Uint8Array).\n'
                                 '// Rebuild from maintenance/apps/source using scripts/build_apps.py.\n' + source),
         'Modules/TencentVideo.sgmodule': tencent,
-        'Modules/Apps/TxvideoAD.sgmodule': tencent,
+        'Modules/TxvideoAD.sgmodule': tencent,
     }
     metadata, rules, routes, hosts = parse(texts['MT.snippet'])
     scripts = [route for route in routes if route['action'] != 'reject']
@@ -170,7 +170,7 @@ def planned_outputs():
     didi += '\n[Map Local]\n'
     didi += '\n'.join(r['pattern'] + ' data-type=text data="{}" status-code=200 header="Content-Type:application/json"' for r in dict_routes)
     didi += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
-    outputs['Modules/Apps/Didi.sgmodule'] = didi
+    outputs['Modules/Didi.sgmodule'] = didi
     metadata, rules, routes, hosts = parse(texts['MeituanMiniProgram.snippet'])
     mini_scripts = [r for r in routes if r['action'] == 'script-response-body']
     mini_mock = [r for r in routes if r['action'] == 'reject-dict']

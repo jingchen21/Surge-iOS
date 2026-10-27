@@ -6,10 +6,10 @@
 
 | 输入 | 输出 |
 | --- | --- |
-| `source/TxvideoAD.snippet` + `source/Txvideoad.js` | `Modules/TencentVideo.sgmodule`、`Modules/Apps/TxvideoAD.sgmodule`、`JS/Txvideoad.surge.js` |
+| `source/TxvideoAD.snippet` + `source/Txvideoad.js` | `Modules/TencentVideo.sgmodule`、`Modules/TxvideoAD.sgmodule`、`JS/Txvideoad.surge.js` |
 | `source/MT.snippet` + `source/MT.js` | `Modules/Meituan.sgmodule`、`Modules/Meituan-Network-Compatibility.sgmodule`、`JS/Meituan.surge.js` |
 | `source/MTAppAdCleanMine.js` | 将旧版“我的”服务入口精简合入同一美团 JS，保留当前去推荐逻辑 |
-| `source/Didichuxing.snippet` | `Modules/Apps/Didi.sgmodule`；原生 jq/Map Local，无 JS |
+| `source/Didichuxing.snippet` | `Modules/Didi.sgmodule`；原生 jq/Map Local，无 JS |
 | `source/MeituanMiniProgram.snippet` + `source/MeiTuanNoAd.js` | 合入 `Modules/Meituan.sgmodule`，关联 `JS/MeituanMiniProgram.surge.js`；同一模块中的小程序处理 |
 
 `lock.json` 保存输入和生成文件的哈希。它覆盖历史快照清单中腾讯文件的旧哈希，其他已保存模块不受影响。

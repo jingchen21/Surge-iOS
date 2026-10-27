@@ -59,12 +59,8 @@
       "destination_sha256": "c31a00967834d20bd281ff539ca5a81430ace025a3b97c10379049838eb6d11f"
     },
     {
-      "destination_path": "Modules/Apps/Didi.sgmodule",
+      "destination_path": "Modules/Didi.sgmodule",
       "destination_sha256": "96590a817c9ee559be359826c47e60a8ab4a64936f04be93a069eda3a77959a7"
-    },
-    {
-      "destination_path": "Modules/Apps/TxvideoAD.sgmodule",
-      "destination_sha256": "3e823f7c1e099100bd67343e776608dad9667fdd93151bc90e3e0b737967155d"
     },
     {
       "destination_path": "Modules/Meituan-Network-Compatibility.sgmodule",
@@ -76,6 +72,10 @@
     },
     {
       "destination_path": "Modules/TencentVideo.sgmodule",
+      "destination_sha256": "3e823f7c1e099100bd67343e776608dad9667fdd93151bc90e3e0b737967155d"
+    },
+    {
+      "destination_path": "Modules/TxvideoAD.sgmodule",
       "destination_sha256": "3e823f7c1e099100bd67343e776608dad9667fdd93151bc90e3e0b737967155d"
     }
   ]

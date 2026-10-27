@@ -12,9 +12,12 @@
 !/Modules/TencentVideo.sgmodule
 !/Modules/Meituan.sgmodule
 !/Modules/Meituan-Network-Compatibility.sgmodule
-!/Modules/Apps/
-!/Modules/Apps/*.sgmodule
-!/Modules/Apps/README.md
+!/Modules/Didi.sgmodule
+!/Modules/FanQieNovel.sgmodule
+!/Modules/Pinduoduo.sgmodule
+!/Modules/TxvideoAD.sgmodule
+!/Modules/Weibo.sgmodule
+!/Modules/hlwxx_remove_ads.sgmodule
 !/JS/
 !/JS/Txvideoad.surge.js
 !/JS/hlwxx_remove_ads.surge.js
