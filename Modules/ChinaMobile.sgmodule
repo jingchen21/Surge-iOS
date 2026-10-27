@@ -27,6 +27,7 @@ CM-splash-init = type=http-request,pattern=^https://(client\.app\.coc\.10086\.cn
 [Rule]
 # 开屏/埋点相关直拒（用户日志出现 jiguang.coc.10086.cn；参考 TomCatXue ChinaMobile）
 DOMAIN-SUFFIX,jiguang.coc.10086.cn,REJECT
+DOMAIN,apm.clientaccess.10086.cn,REJECT
 DOMAIN-SUFFIX,cmicapm.com,REJECT
 DOMAIN,ad.mcloud.139.com,REJECT
 DOMAIN-SUFFIX,yxfk.market.chinamobile.com,REJECT
