@@ -1,6 +1,8 @@
 #!name=腾讯视频净化
 #!desc=开屏、贴片、暂停广告与页面净化；二进制接口使用 Surge 原生正文 API。
 #!author=TG@ZenMoFiShi
+# Original rules: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/TxvideoAD.snippet
+# Earlier Surge adapter reference: https://github.com/RoaycL/Surge
 
 [Rule]
 DOMAIN,iacc.stgw.qq.com,REJECT

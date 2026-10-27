@@ -6,6 +6,6 @@
 
 第三方上游内容始终适用各自的版权和许可证，不适用本仓库工具的 MIT 许可。第三方链接及处理方式见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
-`Modules/RoaycL/` 与 `JS/` 为单独同步的第三方材料，不适用工具的 MIT 许可，也不以本页改变其已有许可或限制。fmz200 的 GPL-3.0、luestr 的 CC BY-NC-SA 4.0 原文附于 `LICENSES/`；其他来源的学习自用声明与限制见 [同步记录](docs/ROAYCL_SYNC.md)。
+`Modules/Apps/` 与 `JS/` 为单独同步的第三方材料，不适用工具的 MIT 许可，也不以本页改变其已有许可或限制。fmz200 的 GPL-3.0、luestr 的 CC BY-NC-SA 4.0 原文附于 `LICENSES/`；其他来源的学习自用声明与限制见 [同步记录](docs/ROAYCL_SYNC.md)。
 
 新增材料若需要面向他人开放复制和修改，应先明确其来源和许可，并在相应文件中说明。

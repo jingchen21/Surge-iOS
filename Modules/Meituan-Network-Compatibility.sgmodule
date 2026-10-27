@@ -1,6 +1,8 @@
 #!name=美团网络兼容（可选）
 #!desc=拦截 SHARK、mquic 与 HTTPDNS；仅在正文净化不命中时按需使用，需检查登录、支付和扫码。
 #!author=TG@ZenMoFiShi
+# Original rules: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/MT.snippet
+# Kept separate from page cleanup to allow independent network troubleshooting.
 
 [Rule]
 DOMAIN,shark-mt.meituan.com,REJECT

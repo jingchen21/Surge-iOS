@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INPUT = ROOT / 'maintenance/apps/source'
 RAW = 'https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/'
+QX_SOURCE = 'https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/'
 
 
 def parse(text):
@@ -76,15 +77,19 @@ def planned_outputs():
         raise ValueError('Unsupported QX body API remains')
     tencent = header('腾讯视频净化', '开屏、贴片、暂停广告与页面净化；二进制接口使用 Surge 原生正文 API。',
                      metadata.get('author', ''))
+    tencent += '# Original rules: ' + QX_SOURCE + 'TxvideoAD.snippet\n'
+    tencent += '# Earlier Surge adapter reference: https://github.com/RoaycL/Surge\n'
     tencent += '\n[Rule]\n' + '\n'.join(rules) + '\n\n[Script]\n'
     tencent += '\n'.join(script_line(f'TencentVideo-{i}', route, 'JS/Txvideoad.surge.js',
                                      binary='rdelivery' not in route['pattern'], max_size=1048576)
                          for i, route in enumerate(routes))
     tencent += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
     outputs = {
-        'JS/Txvideoad.surge.js': '// Surge HTTP binary/text body adapter.\n' + source,
+        'JS/Txvideoad.surge.js': ('// Original logic: ' + QX_SOURCE + 'Txvideoad.js\n'
+                                '// Surge adaptation: bodyBytes -> body (Uint8Array).\n'
+                                '// Rebuild from maintenance/apps/source using scripts/build_apps.py.\n' + source),
         'Modules/TencentVideo.sgmodule': tencent,
-        'Modules/RoaycL/TxvideoAD.sgmodule': tencent,
+        'Modules/Apps/TxvideoAD.sgmodule': tencent,
     }
     metadata, rules, routes, hosts = parse(texts['MT.snippet'])
     scripts = [route for route in routes if route['action'] != 'reject']
@@ -95,9 +100,13 @@ def planned_outputs():
     mt_source = texts['MT.js']
     if re.search(r'\$(?:task|prefs)\b|\.bodyBytes\b', mt_source):
         raise ValueError('New QX-only APIs in Meituan source require an adapter')
-    outputs['JS/Meituan.surge.js'] = '// Surge HTTP JSON response script.\n' + mt_source
+    outputs['JS/Meituan.surge.js'] = ('// Original logic: ' + QX_SOURCE + 'MT.js\n'
+                                    '// Surge HTTP JSON response script; local snapshot, no runtime download.\n'
+                                    '// Rebuild from maintenance/apps/source using scripts/build_apps.py.\n' + mt_source)
     core = header('美团页面净化', '按 12.67.403 结构净化底栏、推荐流、搜索词、开屏和页面组件；不改变网络通道。',
                   metadata.get('author', ''))
+    core += '# Original rules: ' + QX_SOURCE + 'MT.snippet\n'
+    core += '# Conversion reference: https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule\n'
     core += '\n[Script]\n' + '\n'.join(script_line(f'Meituan-{i}', route, 'JS/Meituan.surge.js')
                                            for i, route in enumerate(scripts))
     core_hosts = [host for host in hosts if not host.startswith('httpdns')]
@@ -105,6 +114,8 @@ def planned_outputs():
     outputs['Modules/Meituan.sgmodule'] = core
     transport = header('美团网络兼容（可选）', '拦截 SHARK、mquic 与 HTTPDNS；仅在正文净化不命中时按需使用，需检查登录、支付和扫码。',
                        metadata.get('author', ''))
+    transport += '# Original rules: ' + QX_SOURCE + 'MT.snippet\n'
+    transport += '# Kept separate from page cleanup to allow independent network troubleshooting.\n'
     transport += '\n[Rule]\n' + '\n'.join(rules)
     transport += '\n\n[URL Rewrite]\n' + '\n'.join(route['pattern'] + ' - reject' for route in rejects) + '\n'
     outputs['Modules/Meituan-Network-Compatibility.sgmodule'] = transport

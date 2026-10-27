@@ -12,9 +12,9 @@
 !/Modules/TencentVideo.sgmodule
 !/Modules/Meituan.sgmodule
 !/Modules/Meituan-Network-Compatibility.sgmodule
-!/Modules/RoaycL/
-!/Modules/RoaycL/*.sgmodule
-!/Modules/RoaycL/README.md
+!/Modules/Apps/
+!/Modules/Apps/*.sgmodule
+!/Modules/Apps/README.md
 !/JS/
 !/JS/Txvideoad.surge.js
 !/JS/hlwxx_remove_ads.surge.js

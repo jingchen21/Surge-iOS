@@ -6,10 +6,18 @@
 
 | 输入 | 输出 |
 | --- | --- |
-| `source/TxvideoAD.snippet` + `source/Txvideoad.js` | `Modules/TencentVideo.sgmodule`、兼容的旧腾讯模块地址、`JS/Txvideoad.surge.js` |
+| `source/TxvideoAD.snippet` + `source/Txvideoad.js` | `Modules/TencentVideo.sgmodule`、`Modules/Apps/TxvideoAD.sgmodule`、`JS/Txvideoad.surge.js` |
 | `source/MT.snippet` + `source/MT.js` | `Modules/Meituan.sgmodule`、`Modules/Meituan-Network-Compatibility.sgmodule`、`JS/Meituan.surge.js` |
 
 `lock.json` 保存输入和生成文件的哈希。它覆盖历史快照清单中腾讯文件的旧哈希，其他已保存模块不受影响。
+
+## 引用来源
+
+- 腾讯视频、美团的原始规则和处理逻辑：[ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx/tree/3e442e78e95be2c71153e55560a977ea42495f27)。
+- 早期腾讯 Surge 适配参考：[RoaycL/Surge](https://github.com/RoaycL/Surge)。
+- 美团模块转换对照：[muktsoen/SurgeRules/MT.sgmodule](https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule)。
+
+来源仅在说明、代码注释和版本记录中标明；目录按用途命名。完整输入快照也已保存，不依赖引用仓库继续在线才能维护现有版本。
 
 ## 日后让 AI 修改
 

@@ -1,4 +1,6 @@
-// Surge HTTP binary/text body adapter.
+// Original logic: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/Txvideoad.js
+// Surge adaptation: bodyBytes -> body (Uint8Array).
+// Rebuild from maintenance/apps/source using scripts/build_apps.py.
 (() => {
   const TAB_DROP_KEYS = ["smallvideo_entrance", "goods_entrance"];
   const TAB_DROP_TITLES = ["短剧", "好物"];

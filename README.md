@@ -16,7 +16,7 @@
 | [Modules](Modules/README.md) | 从本配置中单独整理的可选模块 |
 | [腾讯视频与美团](docs/APPS.md) | 安装地址、页面净化与可选网络兼容模块 |
 | [应用模块维护](maintenance/apps/README.md) | 本地源快照、离线生成方式与测试 |
-| [Modules/RoaycL](Modules/RoaycL/README.md) | 2026-10-27 同步的去广告模块及静态番茄规则 |
+| [应用净化模块](Modules/Apps/README.md) | 2026-10-27 同步的去广告模块及静态番茄规则 |
 | [JS](JS/README.md) | 关联 JS 与固定的外部依赖说明 |
 | [Rules](Rules/README.md) | 可独立引用的国内业务和 Apple AI 规则 |
 | [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) | 第三方来源、许可证与引用方式 |
@@ -33,7 +33,7 @@
 
 维护自己的完整配置：保留一份只在本地存放的私密覆盖文件。仓库提供本地导出和恢复工具，具体操作见 [本地使用说明](docs/LOCAL_USE.md)。工具不会把配置发送到任何服务器。
 
-Google 中国域名重定向模块和两份独立小规则已经在主模板中内置，无需重复安装。`Modules/RoaycL/` 是另外同步的可选模块，没有自动并入主配置；[安装地址与依赖说明](Modules/RoaycL/README.md)单独列出。
+Google 中国域名重定向模块和两份独立小规则已经在主模板中内置，无需重复安装。`Modules/Apps/` 是另外同步的可选模块，没有自动并入主配置；[安装地址与依赖说明](Modules/Apps/README.md)单独列出。
 
 腾讯视频与美团使用 [应用模块入口](docs/APPS.md)。美团页面净化与网络通道拦截分开维护，先使用页面模块；所有运行 JS、源快照及生成工具均在本仓库。
 

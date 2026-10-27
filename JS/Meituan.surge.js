@@ -1,4 +1,6 @@
-// Surge HTTP JSON response script.
+// Original logic: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/MT.js
+// Surge HTTP JSON response script; local snapshot, no runtime download.
+// Rebuild from maintenance/apps/source using scripts/build_apps.py.
 const mtqxUrl = (typeof $request !== "undefined" && $request && $request.url) || "";
 const mtqxHideTabs = ["video", "xiaotuan"];
 const mtqxKeepTabs = ["homepage", "mine"];

@@ -10,7 +10,7 @@
 | 美团页面净化 | [Meituan.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) | 默认先只安装这一份，需要 MITM 和 Scripting |
 | 美团网络兼容 | [Meituan-Network-Compatibility.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan-Network-Compatibility.sgmodule) | 可选；页面脚本不命中时再考虑与页面模块配合 |
 
-MITM CA 仍在自己的设备本地生成、安装和信任，不随模块分发。腾讯旧模块地址继续提供相同内容，已安装旧地址的可以直接刷新；不要同时启用两个腾讯模块。
+MITM CA 仍在自己的设备本地生成、安装和信任，不随模块分发。腾讯视频有根目录入口和 `Modules/Apps/` 入口，两者内容相同，不要同时启用。原 `Modules/RoaycL/` 目录已改名，使用该旧目录地址安装的模块需替换为新地址。
 
 ## 腾讯视频
 

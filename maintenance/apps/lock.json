@@ -24,27 +24,27 @@
   "outputs": [
     {
       "destination_path": "JS/Meituan.surge.js",
-      "destination_sha256": "3be08d0c5f9a3f75f587267d1a7ee2aac3d9bd21539ffafb13ea796da75f3e7b"
+      "destination_sha256": "6c002a67d55b2a60f127cb85a195e37931b9fd213dd177bac4dc5a412bf169b2"
     },
     {
       "destination_path": "JS/Txvideoad.surge.js",
-      "destination_sha256": "7b8156b6f216a8b46f9d7019e81dba3ec744a51f251b4abb550fcce05743a7af"
+      "destination_sha256": "c31a00967834d20bd281ff539ca5a81430ace025a3b97c10379049838eb6d11f"
+    },
+    {
+      "destination_path": "Modules/Apps/TxvideoAD.sgmodule",
+      "destination_sha256": "3e823f7c1e099100bd67343e776608dad9667fdd93151bc90e3e0b737967155d"
     },
     {
       "destination_path": "Modules/Meituan-Network-Compatibility.sgmodule",
-      "destination_sha256": "9cff5ac7851281628e0d73567dd722cc7305c5cc7aeceebd19c397e55c985c81"
+      "destination_sha256": "c6c6868b03a207dc7a96be1daafd7a6280351084007e158a33aca095edd86293"
     },
     {
       "destination_path": "Modules/Meituan.sgmodule",
-      "destination_sha256": "67a6c03650052759b58796fd60af9d30e0bdc06160b0a5866f9095e1da507896"
-    },
-    {
-      "destination_path": "Modules/RoaycL/TxvideoAD.sgmodule",
-      "destination_sha256": "2a63e10522e2895137a89af7dedae57d066957013d2f48371114184862538af1"
+      "destination_sha256": "b323efd53cc12e1189a98b2581cfd89c1fabd821a751b3cf63276303c615de1e"
     },
     {
       "destination_path": "Modules/TencentVideo.sgmodule",
-      "destination_sha256": "2a63e10522e2895137a89af7dedae57d066957013d2f48371114184862538af1"
+      "destination_sha256": "3e823f7c1e099100bd67343e776608dad9667fdd93151bc90e3e0b737967155d"
     }
   ]
 }
