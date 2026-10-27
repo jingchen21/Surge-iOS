@@ -10,6 +10,7 @@
 | `Weibo.surge.js` | 上游提交的原样副本，由微博模块引用；多个原始脚本已包含在该合并文件中 |
 | `ChinaMobile.surge.js` | 个人快照自 muktsoen/SurgeRules；原 Loon 作者 ccyykk666，含 AES 垫片与 8 个开关，由中国移动模块引用 |
 | `ChinaMobile-request.surge.js` | 个人快照自 muktsoen/SurgeRules；http-request 直接返回空字典，由中国移动模块引用 |
+| `easybike.surge.js` | 哈啰出行 QX→Surge 移植个人快照；原作者 ZenmoFeiShi，含 AES/动态密钥与首页净化，由 HelloBike 模块引用 |
 
 原作者及原始来源注释保留在文件中。这里的第三方 JS 不适用本仓库工具的 MIT 许可。
 

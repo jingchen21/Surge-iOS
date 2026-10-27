@@ -21,6 +21,7 @@
 !/Modules/Weibo.sgmodule
 !/Modules/hlwxx_remove_ads.sgmodule
 !/Modules/ChinaMobile.sgmodule
+!/Modules/HelloBike.sgmodule
 !/JS/
 !/JS/Txvideoad.surge.js
 !/JS/hlwxx_remove_ads.surge.js
@@ -30,6 +31,7 @@
 !/JS/pdxb.surge.js
 !/JS/ChinaMobile.surge.js
 !/JS/ChinaMobile-request.surge.js
+!/JS/easybike.surge.js
 !/JS/README.md
 !/Rules/
 !/Rules/README.md

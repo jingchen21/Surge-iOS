@@ -33,6 +33,7 @@ HTTPS 重定向需要用户在本地配置并信任自己的 MITM CA，且开启
 | 浦大喜奔开屏尺寸拦截 | [SPDB.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule) | `JS/pdxb.surge.js`；精确素材尺寸匹配，[18 Pro 配置说明](../docs/SPDB.md) |
 | 美团 App / 微信小程序 | [Meituan.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) | App 和小程序同一模块，关联的两个 JS 都在本仓库 |
 | 中国移动去广告 | [ChinaMobile.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/ChinaMobile.sgmodule) | `JS/ChinaMobile.surge.js`、`JS/ChinaMobile-request.surge.js`；个人快照自 muktsoen/SurgeRules，原 Loon 作者 ccyykk666 |
+| 哈啰出行净化 | [HelloBike.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/HelloBike.sgmodule) | `JS/easybike.surge.js`；个人快照自用户提供的 QX→Surge 移植，原作者 ZenmoFeiShi |
 
 前四个模块是今天实际新增或修改的模块。拼多多已经移除旧 JS，不能再把旧 `Pinduoduo.surge.js` 当成依赖。
 
