@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "baseline_commit": "3e442e78e95be2c71153e55560a977ea42495f27",
+  "baseline_time_asia_shanghai": "2026-10-27T17:14:24+08:00",
+  "baseline_already_present_in_initial_tencent_snapshot": true,
+  "inputs": [
+    {
+      "path": "maintenance/apps/source/MT.js",
+      "sha256": "9a48981f5d1cdac2d7c72c8f1164752ce712113eaf687aeeba2829e78c66308a"
+    },
+    {
+      "path": "maintenance/apps/source/MT.snippet",
+      "sha256": "e2c72b6676ad026b4f3c67f70614d7c2c7dafe0343c2dae4bb80b2762bf4e07a"
+    },
+    {
+      "path": "maintenance/apps/source/TxvideoAD.snippet",
+      "sha256": "39ba1d951e0545689d28c015c33bb4a92a8ca18e155ebae93fcfd4002708fa0f"
+    },
+    {
+      "path": "maintenance/apps/source/Txvideoad.js",
+      "sha256": "2c56bc7622a28cfc97ea4790536417e405fde95e757a4f4caf65ff894550e2e9"
+    }
+  ],
+  "outputs": [
+    {
+      "destination_path": "JS/Meituan.surge.js",
+      "destination_sha256": "3be08d0c5f9a3f75f587267d1a7ee2aac3d9bd21539ffafb13ea796da75f3e7b"
+    },
+    {
+      "destination_path": "JS/Txvideoad.surge.js",
+      "destination_sha256": "7b8156b6f216a8b46f9d7019e81dba3ec744a51f251b4abb550fcce05743a7af"
+    },
+    {
+      "destination_path": "Modules/Meituan-Network-Compatibility.sgmodule",
+      "destination_sha256": "9cff5ac7851281628e0d73567dd722cc7305c5cc7aeceebd19c397e55c985c81"
+    },
+    {
+      "destination_path": "Modules/Meituan.sgmodule",
+      "destination_sha256": "67a6c03650052759b58796fd60af9d30e0bdc06160b0a5866f9095e1da507896"
+    },
+    {
+      "destination_path": "Modules/RoaycL/TxvideoAD.sgmodule",
+      "destination_sha256": "2a63e10522e2895137a89af7dedae57d066957013d2f48371114184862538af1"
+    },
+    {
+      "destination_path": "Modules/TencentVideo.sgmodule",
+      "destination_sha256": "2a63e10522e2895137a89af7dedae57d066957013d2f48371114184862538af1"
+    }
+  ]
+}

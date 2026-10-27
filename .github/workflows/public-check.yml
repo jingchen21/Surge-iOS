@@ -20,3 +20,7 @@ jobs:
         run: python3 scripts/check_public.py
       - name: Check imported module dependencies
         run: python3 scripts/check_module_dependencies.py
+      - name: Verify app modules can be rebuilt offline
+        run: python3 scripts/build_apps.py --check
+      - name: Check app response handling
+        run: node tests/apps_runtime.cjs

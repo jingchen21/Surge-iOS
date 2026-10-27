@@ -1,0 +1,16 @@
+#!name=美团页面净化
+#!desc=按 12.67.403 结构净化底栏、推荐流、搜索词、开屏和页面组件；不改变网络通道。
+#!author=TG@ZenMoFiShi
+
+[Script]
+Meituan-0 = type=http-response, pattern=^https?://apimobile\.meituan\.com/aggroup/indexTab, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+Meituan-1 = type=http-response, pattern=^https?://feedguess\.meituan\.com/lycoris/scene/(gwc_feed1_2265|personalcenter_2154)(\?|$), requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+Meituan-2 = type=http-response, pattern=^https?://mt-personalcenter\.meituan\.com/usercenter/display, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+Meituan-3 = type=http-response, pattern=^https?://apimobile\.meituan\.com/group/v1/deal/searchpage/defaultword, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+Meituan-4 = type=http-response, pattern=^https?://apimobile\.meituan\.com/group/v1/deal/searchpage/hotword/city/divide/hotrecommend/, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+Meituan-5 = type=http-response, pattern=^https?://assistify\.meituan\.com/assistant/getAppClientHornConfig, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+Meituan-6 = type=http-response, pattern=^https?://mop\.meituan\.com/mop/entry/shoppingCartEntry, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+Meituan-7 = type=http-response, pattern=^https?://mop\.meituan\.com/api/entryModule/startupPicture, requires-body=true, binary-body-mode=false, max-size=2097152, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/Meituan.surge.js, timeout=10
+
+[MITM]
+hostname = %APPEND% apimobile.meituan.com, feedguess.meituan.com, mop.meituan.com, mt-personalcenter.meituan.com, assistify.meituan.com

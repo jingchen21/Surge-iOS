@@ -1,0 +1,42 @@
+# 应用模块维护
+
+运行模块、JS、输入快照和转换工具都保存在本仓库。现有文件可离线重新生成，不需要其他仓库继续在线。
+
+## 文件关系
+
+| 输入 | 输出 |
+| --- | --- |
+| `source/TxvideoAD.snippet` + `source/Txvideoad.js` | `Modules/TencentVideo.sgmodule`、兼容的旧腾讯模块地址、`JS/Txvideoad.surge.js` |
+| `source/MT.snippet` + `source/MT.js` | `Modules/Meituan.sgmodule`、`Modules/Meituan-Network-Compatibility.sgmodule`、`JS/Meituan.surge.js` |
+
+`lock.json` 保存输入和生成文件的哈希。它覆盖历史快照清单中腾讯文件的旧哈希，其他已保存模块不受影响。
+
+## 日后让 AI 修改
+
+1. 页面处理逻辑在 `source/*.js`；接口、域名和路由在 `source/*.snippet`。
+2. Surge API 的适配、模块拆分及地址生成在 `scripts/build_apps.py`。
+3. 修改后在仓库根目录运行：
+
+```sh
+python3 scripts/build_apps.py
+python3 scripts/build_apps.py --check
+node tests/apps_runtime.cjs
+python3 scripts/check_module_dependencies.py
+python3 scripts/check_public.py
+```
+
+需要 Python 3.9+ 与 Node.js 18+。生成器不联网，不自动下载更新，也不自动推送；遇到未支持的新规则或二进制 API 变化会停止，让维护者检查。
+
+不要只改生成后的 JS 再运行构建，否则该改动会被输入快照重新生成的内容覆盖。若需要新的上游版本，先取得对应输入文件、检查差异，再替换快照并修改适配逻辑。
+
+## 腾讯二进制适配
+
+业务逻辑保留，专门将 QX 的 `bodyBytes` 读取改为 Surge 的 `body`，返回 `Uint8Array`。二进制接口开启 `binary-body-mode`，`rdelivery` 的 JSON 接口保留文本模式。
+
+模拟测试覆盖普通和 gzip 请求、带偏移的二进制数组、新的暂停广告 JCE 命令、纯广告与混合内容信息流、AB 开关、异常数据原样放行。测试数据是合成数据，不含真实抓包或用户信息。
+
+## 美团拆分
+
+页面模块只处理指定的八类 JSON 响应。网络兼容模块单独保存 SHARK、mquic、HTTPDNS、IPv4/IPv6 拦截和两条 URL 拒绝，不默认并入页面模块。两者合起来保留输入规则的覆盖范围。
+
+真机是否走到这些 HTTP 接口，仍需在 Surge 的请求记录中检查。模拟数据和离线语法检查不能证明当前 App 的每一项功能都兼容。

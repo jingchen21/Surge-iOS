@@ -99,7 +99,7 @@ def check(source=None, staged=False):
             resource_line = line
             if section == 'Script':
                 resource_line = ' '.join(re.findall(r'script-path\s*=\s*([^,\s]+)', line))
-            elif section == 'Map Local' or line.startswith(('http-request-jq ', 'http-response-jq ')):
+            elif section in {'Map Local', 'URL Rewrite'} or line.startswith(('http-request-jq ', 'http-response-jq ')):
                 resource_line = ' '.join(line.split()[1:])
                 if line.startswith(('http-request-jq ', 'http-response-jq ')):
                     resource_line = ' '.join(line.split()[2:])

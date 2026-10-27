@@ -1,5 +1,7 @@
 # RoaycL 模块快照
 
+腾讯视频后来转为本地维护，原有安装地址继续兼容；新入口及美团模块见 [应用模块说明](../../docs/APPS.md)，以当前应用锁定文件和构建工具为准。
+
 从 [RoaycL/Surge](https://github.com/RoaycL/Surge) 同步北京时间 **2026-10-27** 的更新，以提交 [`1e0c7bd`](https://github.com/RoaycL/Surge/commit/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c) 为准。没有开启定时同步。
 
 ## 模块与依赖

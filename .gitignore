@@ -9,6 +9,9 @@
 !/Modules/
 !/Modules/README.md
 !/Modules/Google-CN-Redirect.sgmodule
+!/Modules/TencentVideo.sgmodule
+!/Modules/Meituan.sgmodule
+!/Modules/Meituan-Network-Compatibility.sgmodule
 !/Modules/RoaycL/
 !/Modules/RoaycL/*.sgmodule
 !/Modules/RoaycL/README.md
@@ -16,6 +19,7 @@
 !/JS/Txvideoad.surge.js
 !/JS/hlwxx_remove_ads.surge.js
 !/JS/Weibo.surge.js
+!/JS/Meituan.surge.js
 !/JS/README.md
 !/Rules/
 !/Rules/README.md
@@ -37,6 +41,17 @@
 !/.github/
 !/.github/workflows/
 !/.github/workflows/public-check.yml
+!/maintenance/
+!/maintenance/apps/
+!/maintenance/apps/README.md
+!/maintenance/apps/lock.json
+!/maintenance/apps/source/
+!/maintenance/apps/source/Txvideoad.js
+!/maintenance/apps/source/TxvideoAD.snippet
+!/maintenance/apps/source/MT.js
+!/maintenance/apps/source/MT.snippet
+!/tests/
+!/tests/apps_runtime.cjs
 
 # Explicitly reject private material even inside allowed folders.
 **/private/

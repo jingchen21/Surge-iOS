@@ -1,5 +1,7 @@
 # 2026-10-27 RoaycL 模块同步
 
+这是初始快照记录。腾讯视频后续通过本地源文件重新生成，当前文件与历史哈希的关系由 `maintenance/apps/lock.json` 记录；腾讯及新增美团的使用与维护见 [应用模块说明](APPS.md)。
+
 来源仓库：[RoaycL/Surge](https://github.com/RoaycL/Surge)。固定提交：`1e0c7bd2c3d381c31b8ee9ac766576669fe2353c`，提交时间为北京时间 2026-10-27 20:39:56。
 
 ## 同步范围

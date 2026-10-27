@@ -1,5 +1,7 @@
 # 独立模块
 
+腾讯视频与美团的 [安装地址和使用说明](../docs/APPS.md) 单独维护，所需 JS 都在本仓库。美团的网络兼容模块是可选项。
+
 今天同步的去广告模块见 [RoaycL 模块目录](RoaycL/README.md)，包含安装地址和 JS 依赖说明。下面的 Google 重定向模块仍单独维护。
 
 [Google-CN-Redirect.sgmodule](Google-CN-Redirect.sgmodule) 将 Google 中国域名重定向到对应的国际域名，保留原路径与查询参数。

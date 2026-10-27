@@ -1,5 +1,4 @@
-// Original: TG@ZenMoFiShi; source: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/Txvideoad.js
-// Surge body API adaptation.
+// Surge HTTP binary/text body adapter.
 (() => {
   const TAB_DROP_KEYS = ["smallvideo_entrance", "goods_entrance"];
   const TAB_DROP_TITLES = ["短剧", "好物"];
