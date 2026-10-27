@@ -1,0 +1,9 @@
+#!name=Google CN Redirect
+#!desc=将 Google 中国域名重定向至对应国际域名；需本地 MITM CA。主模板已内置，二选一使用。
+
+[URL Rewrite]
+^https?:\/\/(?:ditu|maps)\.google\.cn(.*)$ https://maps.google.com$1 302
+^https?:\/\/(?:www\.)?(?:g|google)\.cn(.*)$ https://www.google.com$1 302
+
+[MITM]
+hostname = %APPEND% google.cn, *.google.cn, g.cn, *.g.cn

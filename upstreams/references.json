@@ -1,0 +1,756 @@
+{
+  "checked_on": "2026-10-27",
+  "note": "Repository-level license detection is evidence only; per-file terms may differ. No upstream scripts, full rule libraries, icons, or binary databases are mirrored.",
+  "repositories": [
+    {
+      "repository": "RoaycL/Surge",
+      "url": "https://github.com/RoaycL/Surge",
+      "default_branch": "main",
+      "detected_license": null,
+      "license_files": [],
+      "checked_on": "2026-10-27"
+    },
+    {
+      "repository": "SukkaW/Surge",
+      "url": "https://github.com/SukkaW/Surge",
+      "default_branch": "master",
+      "detected_license": "AGPL-3.0",
+      "license_files": [
+        "LICENSE"
+      ],
+      "checked_on": "2026-10-27"
+    },
+    {
+      "repository": "blackmatrix7/ios_rule_script",
+      "url": "https://github.com/blackmatrix7/ios_rule_script",
+      "default_branch": "master",
+      "detected_license": "GPL-2.0",
+      "license_files": [
+        "LICENSE"
+      ],
+      "checked_on": "2026-10-27"
+    },
+    {
+      "repository": "Hackl0us/GeoIP2-CN",
+      "url": "https://github.com/Hackl0us/GeoIP2-CN",
+      "default_branch": "master",
+      "detected_license": "GPL-3.0",
+      "license_files": [
+        "LICENSE"
+      ],
+      "checked_on": "2026-10-27"
+    },
+    {
+      "repository": "lige47/QuanX-icon-rule",
+      "url": "https://github.com/lige47/QuanX-icon-rule",
+      "default_branch": "main",
+      "detected_license": null,
+      "license_files": [],
+      "checked_on": "2026-10-27"
+    },
+    {
+      "repository": "KIDA-MNESIA/gadgets",
+      "url": "https://github.com/KIDA-MNESIA/gadgets",
+      "default_branch": "main",
+      "detected_license": null,
+      "license_files": [],
+      "checked_on": "2026-10-27"
+    },
+    {
+      "repository": "zxfccmm4/Profiles",
+      "url": "https://github.com/zxfccmm4/Profiles",
+      "default_branch": "main",
+      "detected_license": null,
+      "license_files": [],
+      "checked_on": "2026-10-27"
+    },
+    {
+      "repository": "Semporia/TikTok-Unlock",
+      "url": "https://github.com/Semporia/TikTok-Unlock",
+      "default_branch": "master",
+      "detected_license": null,
+      "license_files": [],
+      "checked_on": "2026-10-27"
+    },
+    {
+      "repository": "getsomecat/GetSomeCats",
+      "url": "https://github.com/getsomecat/GetSomeCats",
+      "default_branch": "Surge",
+      "detected_license": null,
+      "license_files": [],
+      "checked_on": "2026-10-27"
+    }
+  ],
+  "references": [
+    {
+      "url": "https://github.com/Hackl0us/GeoIP2-CN/raw/release/Country.mmdb",
+      "repository": "Hackl0us/GeoIP2-CN",
+      "usage": "geoip-database",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": []
+    },
+    {
+      "url": "https://raw.githubusercontent.com/KIDA-MNESIA/gadgets/refs/heads/main/geosite/hsbc.list",
+      "repository": "KIDA-MNESIA/gadgets",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": []
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Surge/TikTok.list",
+      "repository": "Semporia/TikTok-Unlock",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": []
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppStore/AppStore.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Apple/Apple.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleNews/AppleNews.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleTV/AppleTV.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBili/BiliBili.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Bing/Bing.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax_Domain.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Discord/Discord.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Disney/Disney.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/DouYin/DouYin.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Emby/Emby.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: justdoiting"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Facebook/Facebook.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GoogleSearch/GoogleSearch.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Instagram/Instagram.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Netflix/Netflix.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OneDrive/OneDrive.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/PayPal/PayPal.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Riot/Riot.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Speedtest/Speedtest.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Tesla/Tesla.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Threads/Threads.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Twitter/Twitter.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/WeChat/WeChat.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Weibo/Weibo.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/XiaoHongShu/XiaoHongShu.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTube/YouTube.list",
+      "repository": "blackmatrix7/ios_rule_script",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: blackmatrix7"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/rule/substore.list",
+      "repository": "getsomecat/GetSomeCats",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# AUTHOR: zeaphyou"
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/zxfccmm4/Profiles/refs/heads/main/Surge/Ruleset/Unbreak.list",
+      "repository": "zxfccmm4/Profiles",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": []
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/domainset/apple_cdn.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/domainset/cdn.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/domainset/download.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/domainset/icloud_private_relay.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/domainset/reject.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/china_ip.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: CC BY-SA 2.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/china_ip_ipv6.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: CC BY-SA 2.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/domestic.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/neteasemusic.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/stream_eu.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/stream_hk.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/stream_jp.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/stream_kr.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/stream_tw.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/stream_us.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/ip/telegram.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/ai.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/cdn.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/direct.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/domestic.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/download.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/global.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/global_plus.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": []
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/lan.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/microsoft.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/neteasemusic.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/reject-drop.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/reject-no-drop.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/reject.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/stream_eu.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/stream_hk.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/stream_jp.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/stream_kr.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/stream_tw.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/stream_us.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 206,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    },
+    {
+      "url": "https://ruleset.skk.moe/List/non_ip/telegram.conf",
+      "repository": "SukkaW/Surge",
+      "usage": "rule-set",
+      "distribution": "external-link-only",
+      "http_status_at_check": 200,
+      "file_notice_at_check": [
+        "# License: AGPL 3.0"
+      ]
+    }
+  ]
+}
