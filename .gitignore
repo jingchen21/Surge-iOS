@@ -20,6 +20,7 @@
 !/Modules/TxvideoAD.sgmodule
 !/Modules/Weibo.sgmodule
 !/Modules/hlwxx_remove_ads.sgmodule
+!/Modules/ChinaMobile.sgmodule
 !/JS/
 !/JS/Txvideoad.surge.js
 !/JS/hlwxx_remove_ads.surge.js
@@ -27,6 +28,8 @@
 !/JS/Meituan.surge.js
 !/JS/MeituanMiniProgram.surge.js
 !/JS/pdxb.surge.js
+!/JS/ChinaMobile.surge.js
+!/JS/ChinaMobile-request.surge.js
 !/JS/README.md
 !/Rules/
 !/Rules/README.md
