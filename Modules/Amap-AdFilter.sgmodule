@@ -1,0 +1,46 @@
+#!name=高德地图净化
+#!desc=过滤开屏广告、首页推荐、路线推广、搜索营销及打车页面推广内容。
+#!category=广告过滤
+#!openUrl=https://apps.apple.com/app/id461703208
+#!date=2026-10-28
+
+[Rule]
+DOMAIN-SUFFIX,optimus-ads.amap.com,REJECT
+
+[URL Rewrite]
+^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch - reject
+
+[Map Local]
+# 开屏广告
+^https:\/\/m5\.amap\.com\/ws\/valueadded\/alimama\/splash_screen\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+# 首页 AI 推荐
+^https:\/\/ai\.amap\.com\/v1\/ai_rec\/home_qs\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+# 导航页 AI 推荐
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/main-page-aiqs\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+# 导航路线推广卡片
+^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/card-service-(?:car-end|route-plan)\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+# 打车页推广资源
+^https:\/\/m5-zb\.amap\.com\/ws\/promotion-web\/resource(?:\/home)?\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+# 地点详情页推荐卡片
+^https:\/\/m5\.amap\.com\/ws\/info_bff\/rankingCard\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+# 搜索页营销内容
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_business\/process\/marketingOperationStructured\? data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[Body Rewrite]
+# 首页动态配置中的广告字段
+http-response-jq (?i)^https:\/\/m5\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable\/1\? 'del(.data.adStatementConfig, .data.adImEntryConfig, .data.adVenueConfig, .data.splashscreen, .data.splashview_config)'
+
+# 打车页去除营销皮肤和弹窗
+http-response-jq (?i)^https:\/\/m5-zb\.amap\.com\/ws\/boss\/car\/order\/content_info\? 'del(.data.lubanData.skin, .data.lubanData.popup)'
+
+# 附近推荐去除活动推广
+http-response-jq (?i)^https:\/\/m5\.amap\.com\/ws\/smartui\/near_recommend\? 'del(.data.operation_activity)'
+
+[MITM]
+hostname = %APPEND% m5.amap.com, ai.amap.com, m5-zb.amap.com
