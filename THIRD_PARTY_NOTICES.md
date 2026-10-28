@@ -57,9 +57,9 @@
 
 ## 携程温和去广告模块（2026-10-28）
 
-- **文件：** \`Modules/Ctrip-AdFilter.sgmodule\`。
+- **文件：** `Modules/Ctrip-AdFilter.sgmodule`。
 - **参考来源：** [奶思 / fmz200/wool_scripts 的携程 Surge 模块](https://github.com/fmz200/wool_scripts/blob/main/Surge/module/split/partX/Ctrip.sgmodule)，感谢原作者及维护者。
 - **许可证：** 上游仓库发布 [GPL-3.0](https://github.com/fmz200/wool_scripts/blob/main/LICENSE)；此文件按其适用许可标记并保留来源与修改说明，不适用本仓库工具的 MIT 许可。
-- **修改范围：** AI 辅助整理为面向携程 iOS 8.87.4 的保守版本，仅保留两个明确广告路径；不启用可能导致图片缺失的 \`tripAds\` 与旧版更新提示相关拦截。
+- **修改范围：** AI 辅助整理为面向携程 iOS 8.87.4 的保守版本，仅保留两个明确广告路径；不启用可能导致图片缺失的 `tripAds` 与旧版更新提示相关拦截。
 - **状态：** 仅做正则离线匹配检查，尚未在携程 8.87.4 真机验证；不声明支持全部去广告场景。
 
