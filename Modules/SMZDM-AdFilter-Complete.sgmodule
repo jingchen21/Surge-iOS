@@ -101,7 +101,7 @@ http-response-jq (?i)^https?:\/\/(?:[^/]+\.)?zdmimg\.com\/cpm\/api\/v\d+\/advert
 [Map Local]
 # 首页顶部快捷入口（签到、榜单排行等）关联的频道配置。参考 dqzboy 历史 Surge 模块的响应映射。
 # 注意：可能同时影响频道入口；仅在需要精简首页时启用。
-^https?:\/\/app-api\.smzdm\.com\/mychannel\/list(?:\?.*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https:\/\/app-api\.smzdm\.com\/mychannel\/list.*$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
 # 开屏 loading 配置。公开规则普遍使用空 JSON 响应；若启动/登录异常，可移除此条并改为仅修改 is_show_ad。
 (?i)^https?:\/\/app-api\.smzdm\.com\/util\/loading(?:\?.*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
