@@ -1,34 +1,39 @@
-#!name=携程旅行｜开屏去广告增强测试版
-#!desc=针对携程 iOS 8.87.4 的开屏广告补充拦截：精准处理 tripAds，并保留原有广告请求过滤；可能导致图片或业务页面异常，请单独测试。
+#!name=携程旅行｜去广告及导航精简（实验版）
+#!desc=保留已验证生效的开屏过滤，新增广告列表处理，并尝试从 getAppConfig 响应中隐藏“社区”“问AI”导航项；导航隐藏效果取决于接口结构。
 #!author=个人自用整理（AI 辅助编辑）
 #!category=去广告
 #!openUrl=https://apps.apple.com/app/id379395415
 #!date=2026-10-28
 
 # SPDX-License-Identifier: GPL-3.0-only
-# 个人自用；不是携程官方模块，尚未在携程 8.87.4 上完成真机验证。
-# 本次基于自用版本补充携程 tripAds 规则，以提升开屏广告拦截覆盖面。
-# 参考来源及原始版权：fmz200/wool_scripts（奶思）公开的携程 Surge 模块。
+# 个人自用整理，非携程官方模块；本次更新由 AI 辅助编辑。
+# 基础规则参考 fmz200/wool_scripts 的携程 Surge 模块，保留原始来源与适用许可：
 # https://github.com/fmz200/wool_scripts/blob/main/Surge/module/split/partX/Ctrip.sgmodule
-# 经 AI 辅助编辑；本文件是修改后的实验性版本，不是上游原版。
-# 保留此来源与许可记录；后续公开分发时遵循 GPL-3.0 适用条款。
-# 风险：公开规则提示携程 8.47.0 以上版本阻断 tripAds 后可能出现部分图片加载异常。
-# 若出现酒店图片缺失、搜索异常、下单异常或 MITM 报错，立即停用本模块。
-# 启用前请关闭其他携程广告过滤模块；不要同时启用温和版与增强版。
+# 本文件是修改后的实验版本，不是上游原版；请遵守 GPL-3.0 及上游文件适用条款。
+# 关闭其他携程去广告模块后再启用，避免重复处理。
+# 风险：拦截 getAdsList 或改写 getAppConfig 可能影响部分推广位、页面配置或图片加载。
+# 若酒店图片、搜索、登录、订单或支付异常，请停用本模块并恢复此前正常版本。
 
 [Rule]
-# 该域名与携程广告请求有关；直接拒绝，避免仅拦截统计 GIF 而漏掉其他请求。
+# 携程广告相关专用域名。
 DOMAIN,ma-adx.ctrip.com,REJECT
 
 [URL Rewrite]
-# 保留原有的百度分享落地页广告过滤。
+# 百度分享落地页广告。
 ^https?:\/\/mbd\.baidu\.com\/newspage\/api\/getmobads\?page=landingshare(?:&|$) - reject
 
 [Map Local]
-# 开屏广告核心测试项：覆盖 json/scjson 与不带前缀的 tripAds 端点。
-# 不拦截携程所有 restapi，不处理订单、酒店、机票及登录相关接口。
+# 已验证生效的开屏广告处理规则，保留原匹配与响应格式。
 ^https?:\/\/m\.ctrip\.com\/restapi\/soa2\/[0-9]{4,6}\/(?:(?:json|scjson)\/)?tripAds(?:\.json)?(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
+# 新增：只处理名称明确的广告列表接口，不屏蔽通用配置、酒店或机票查询接口。
+^https?:\/\/m\.ctrip\.com\/restapi\/soa2\/[0-9]{4,6}\/(?:(?:json|scjson)\/)?getAdsList(?:\.json)?(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[Body Rewrite]
+# 实验性：仅检查 getAppConfig 的 JSON 响应，并从常见导航数组中移除标签为“社区”或“问AI”的项目。
+# 若入口是客户端内置，或服务器返回结构与下方字段不符，此规则不会隐藏入口。
+http-response-jq ^https?:\/\/m\.ctrip\.com\/restapi\/[^?]*/getAppConfig(?:\.json)?(?:\?|$) 'def is_hidden_tab: (type == "object") and ([.title?, .name?, .text?, .label?, .tabName?, .displayName?] | any(type == "string" and (gsub("[[:space:]]+"; "") | test("^(社区|问AI)$")))); def nav_field: (.key | ascii_downcase | IN("tabs", "tabbar", "tabbarlist", "tabitems", "bottomtabs", "bottomtablist", "bottomnavigation", "navigation", "navigationitems", "navlist")); walk(if type == "object" then with_entries(if nav_field then (if (.value | type) == "array" then .value |= map(select(is_hidden_tab | not)) elif (.value | type) == "object" then .value |= (if (.items? | type) == "array" then .items |= map(select(is_hidden_tab | not)) else . end) else . end) else . end) else . end)'
+
 [MITM]
-# MITM 覆盖整个 m.ctrip.com 主机，仅对上方匹配到的 tripAds 路径替换响应；证书绑定可能导致失败。
+# 需要解密携程 API 响应以处理 tripAds / getAdsList / getAppConfig。
 hostname = %APPEND% m.ctrip.com, mbd.baidu.com
