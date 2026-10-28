@@ -194,14 +194,26 @@ assert.equal([...miniModule.matchAll(/MeituanMini-\d+ =/g)].length,2);
 assert.equal([...miniModule.matchAll(/data-type=text/g)].length,6);
 assert.doesNotMatch(miniModule,/energy\.xiaojukeji|wx\.17u|wxgateway/);
 
-// All app rewrite patterns must compile; the main Meituan module must not block transport.
+// Preserve upstream synchronized Meituan network rules in one module,
+// while keeping local My Page and mini-program scripts.
 for (const module of ['Modules/TencentVideo.sgmodule','Modules/Meituan.sgmodule']) {
   for (const pattern of fs.readFileSync(path.join(root,module),'utf8').matchAll(/pattern=(.*?), requires-body=/g)) new RegExp(pattern[1]);
 }
 const core = fs.readFileSync(path.join(root,'Modules/Meituan.sgmodule'),'utf8');
-assert.doesNotMatch(core,/\[Rule\]|shark-|httpdns|IP-CIDR|mquic/);
+const source = fs.readFileSync(path.join(root,'maintenance/apps/source/MT.snippet'),'utf8');
+const kinds = {'host':'DOMAIN','host-suffix':'DOMAIN-SUFFIX','host-wildcard':'DOMAIN-WILDCARD','ip-cidr':'IP-CIDR','ip6-cidr':'IP-CIDR6'};
+const expectedRules = source.split(/\r?\n/).map(line => {
+  const match = line.match(/^(host|host-suffix|host-wildcard|ip-cidr|ip6-cidr),\s*([^,]+),\s*reject$/i);
+  if (!match) return null;
+  const kind = kinds[match[1].toLowerCase()];
+  return `${kind},${match[2].trim()},REJECT${kind.startsWith('IP-CIDR') ? ',no-resolve' : ',extended-matching'}`;
+}).filter(Boolean);
+assert.equal(expectedRules.length,46);
+const actualRules = core.match(/\[Rule\]\n([\s\S]*?)\n\n\[Script\]/)[1].split('\n');
+assert.deepEqual(actualRules,expectedRules);
 assert.equal([...core.matchAll(/script-path=/g)].length,10);
-const transport = fs.readFileSync(path.join(root,'Modules/Meituan-Network-Compatibility.sgmodule'),'utf8');
-assert.match(transport,/DOMAIN-WILDCARD,mquic-\*\.meituan\.com,REJECT/);
-assert.equal([...transport.matchAll(/ - reject$/gm)].length,2);
+assert.match(core,/hostname = %APPEND% .*httpdns\.meituan\.com, httpdnsmultiapi\.meituan\.com/);
+assert.doesNotMatch(core,/\[URL Rewrite\]/);
+const lock = JSON.parse(fs.readFileSync(path.join(root,'maintenance/apps/lock.json'),'utf8'));
+assert.equal(lock.outputs.some(o => o.destination_path === 'Modules/Meituan-Network-Compatibility.sgmodule'),false);
 console.log(`PASS: ${checks} app cases; Tencent binary parity, Meituan 8 routes, merged My Page tools and fail-open behavior.`);

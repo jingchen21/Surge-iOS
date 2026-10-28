@@ -9,12 +9,14 @@
 | 输入 | 生成内容 |
 | --- | --- |
 | source/TxvideoAD.snippet、source/Txvideoad.js | 腾讯视频模块与 JS/Txvideoad.surge.js |
-| source/MT.snippet、source/MT.js、旧版“我的”页脚本 | 美团页面模块、网络兼容模块及相关 JS |
+| source/MT.snippet、source/MT.js、旧版“我的”页脚本 | 美团单模块（含网络拦截、页面脚本与微信小程序）、相关 JS |
 | source/MeituanMiniProgram.snippet、source/MeiTuanNoAd.js | 美团小程序处理脚本 |
 | source/Didichuxing.snippet | 滴滴模块；使用原生 jq / Map Local，无 JS |
 | source/pdxb.js | 浦大喜奔模块与 JS/pdxb.surge.js |
 
 lock.json 记录输入和生成文件的哈希。模块入口及使用方式见[模块目录](../../Modules/README.md)。
+
+美团 App 的上游 SHARK、mQUIC、HTTPDNS 拦截与响应脚本已合并进 `Modules/Meituan.sgmodule`；单独的 `Meituan-Network-Compatibility.sgmodule` 不再生成。Surge 中已安装的旧订阅需要手动移除。上游同步版为基线，微信小程序和“我的”页扩展继续由本仓库维护。
 
 ## ▶️ 构建与检查
 

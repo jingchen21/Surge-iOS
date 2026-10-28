@@ -71,12 +71,8 @@
       "destination_sha256": "96590a817c9ee559be359826c47e60a8ab4a64936f04be93a069eda3a77959a7"
     },
     {
-      "destination_path": "Modules/Meituan-Network-Compatibility.sgmodule",
-      "destination_sha256": "c6c6868b03a207dc7a96be1daafd7a6280351084007e158a33aca095edd86293"
-    },
-    {
       "destination_path": "Modules/Meituan.sgmodule",
-      "destination_sha256": "29bfbb2049ac9bac2cd24f063e18d7f27658075ac67233e5de7f0a5281a2b841"
+      "destination_sha256": "8b4127251967686caaa30bdf24c3b96086de7ab3668bedd4aee2138c8b919d54"
     },
     {
       "destination_path": "Modules/SPDB.sgmodule",

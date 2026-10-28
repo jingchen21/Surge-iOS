@@ -14,15 +14,13 @@
 
 ## 📱 应用模块
 
-**美团 App 优先使用 [ZenmoFeiShi QX 规则的 Surge 同步版](https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule) 做独立测试。** 该同步版在一个模块中同时提供网络拦截与 8 条页面响应脚本；启用时先在 Surge 关闭本仓库的 `Meituan.sgmodule` 和 `Meituan-Network-Compatibility.sgmodule`，避免重复拦截。它不是 VIP 解锁模块。
+**美团统一使用本仓库的整合模块**：基于 [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx) 与 [muktsoen/SurgeRules 同步版](https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule)，合并原版网络规则、App 响应脚本、“我的”页补充净化及微信小程序规则。首次切换时，请先在 Surge 删除旧的「美团网络兼容」模块订阅，并停用单独安装的上游同步版，避免重复拦截。上游同步版据用户实测运行正常，整合后的本地版本仍需复测。
 
 | 模块 | 用途 | 依赖 / 注意事项 | 安装 |
 | --- | --- | --- | --- |
-| 美团 App（上游同步版·优先测试） | 去除底栏小团 AI、购物车顶部推广及其他已知页面广告 | Surge；包含原作者网络规则与页面脚本，先停用下方两份本地美团模块 | [安装](https://raw.githubusercontent.com/muktsoen/SurgeRules/main/MT.sgmodule) |
 | 腾讯视频 | 处理开屏、贴片、暂停广告及部分页面 | MITM、Scripting；关联 Txvideoad.surge.js | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/TencentVideo.sgmodule) |
 | 微博 | 处理微博及国际版部分广告 | MITM、Scripting | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Weibo.sgmodule) |
-| 美团 App / 小程序（本地扩展版） | 处理页面广告、推荐、个人中心和小程序入口 | 与上游同步版二选一；本地生成文件，由构建脚本维护 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) |
-| 美团网络兼容（旧拆分版） | 拦截部分 SHARK、mQUIC、HTTPDNS 通道 | 已在用户实机测试中伴随加载缓慢与请求激增；不建议单独启用，不要叠加上游同步版 | [查看](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Meituan-Network-Compatibility.sgmodule) |
+| 美团（App / 小程序） | 去除小团 AI、购物车推广、首页广告及个人中心部分入口 | 以 2026-10-28 上游同步版网络规则为基线；保留自有“我的”页及微信小程序扩展 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) |
 | 滴滴出行 | 精简部分个人中心、导航、推荐和钱包页面 | MITM、Rewrite；原生 jq 需 iOS 5.14.0+ / Mac 5.9.0+ | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) |
 | 高德地图 | 过滤开屏、首页、路线、搜索和打车页面的部分推广内容 | MITM、Map Local、Body Rewrite；尚未完成真机验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Amap-AdFilter.sgmodule) |
 | 携程旅行 | 开屏广告过滤、广告列表处理，并实验性隐藏“社区”“问AI”导航项 | 需 MITM `m.ctrip.com`；`getAdsList` / `getAppConfig` 规则未完成最新版真机验证，可能影响图片或页面配置 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Ctrip-AdFilter.sgmodule) |
@@ -37,7 +35,7 @@
 
 - **腾讯视频：** TencentVideo.sgmodule 与 TxvideoAD.sgmodule 内容相同，二选一。
 - **Google 重定向：** 主配置已内置，使用主配置时无需重复安装。
-- **美团独立测试：** 上游同步版与本仓库两份拆分模块不要同时启用。实机反馈是旧网络兼容模块启用时美团加载慢、Surge 请求激增；停用后 AI / 购物车顶部推广重新出现。上游版的网络规则也较强，请同时验证速度、页面净化、登录、下单、支付与扫码。
+- **美团模块切换：** 现已合并为单个模块；在 Surge 中手动删除旧 `Meituan-Network-Compatibility.sgmodule` 订阅，并停用单独安装的上游 `MT.sgmodule`，避免重复拦截。用户曾反馈旧拆分版引发加载缓慢与 Surge 请求激增。请复测整合版的速度、AI、购物车、登录、下单、支付及扫码。
 - **模块验证：** 离线测试不代表当前 App 已通过真机验证。出现问题时，先停用最近添加的模块。
 - **脚本依赖：** 查看 [JS 脚本索引](../JS/README.md)；构建与检查方法见[维护说明](../maintenance/apps/README.md)。
 

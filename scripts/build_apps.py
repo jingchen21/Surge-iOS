@@ -207,22 +207,21 @@ def planned_outputs():
                                     '// Legacy mine-service handling: MTAppAdCleanMine.js, snapshot 354e6d5217bb2d0fecdfbf506cd3d480d30d53b7.\n'
                                     '// Surge HTTP JSON response script; local snapshot, no runtime download.\n'
                                     '// Rebuild from maintenance/apps/source using scripts/build_apps.py.\n' + mt_source)
-    core = header('美团净化（App/小程序）', '按 12.67.403 结构净化底栏、推荐流、搜索词、开屏与我的服务入口；不改变网络通道。',
+    core = header('美团净化（App/小程序）', '按 12.67.403 结构净化页面，并合并上游同步版网络规则。',
                   metadata.get('author', ''))
     core += '# Original rules: ' + QX_SOURCE + 'MT.snippet\n'
     core += '# Conversion reference: https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule\n'
-    core += '\n[Script]\n' + '\n'.join(script_line(f'Meituan-{i}', route, 'JS/Meituan.surge.js')
-                                           for i, route in enumerate(scripts))
-    core_hosts = [host for host in hosts if not host.startswith('httpdns')]
-    core += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(core_hosts) + '\n'
+    # Match the upstream Surge sync baseline: 13 domain rules with extended-matching,
+    # 33 IP rules, 8 response scripts. The upstream converter leaves 2 QX-only
+    # reject rewrites unconverted; do not invent behavior here.
+    matched_rules = [rule + ',extended-matching' if rule.startswith('DOMAIN') else rule
+                     for rule in rules]
+    core += '# Network baseline: https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule\n'
+    core += '\n[Rule]\n' + '\n'.join(matched_rules) + '\n\n[Script]\n'
+    core += '\n'.join(script_line(f'Meituan-{i}', route, 'JS/Meituan.surge.js')
+                      for i, route in enumerate(scripts))
+    core += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
     outputs['Modules/Meituan.sgmodule'] = core
-    transport = header('美团网络兼容（可选）', '拦截 SHARK、mquic 与 HTTPDNS；仅在正文净化不命中时按需使用，需检查登录、支付和扫码。',
-                       metadata.get('author', ''))
-    transport += '# Original rules: ' + QX_SOURCE + 'MT.snippet\n'
-    transport += '# Kept separate from page cleanup to allow independent network troubleshooting.\n'
-    transport += '\n[Rule]\n' + '\n'.join(rules)
-    transport += '\n\n[URL Rewrite]\n' + '\n'.join(route['pattern'] + ' - reject' for route in rejects) + '\n'
-    outputs['Modules/Meituan-Network-Compatibility.sgmodule'] = transport
     metadata, rules, routes, hosts = parse(texts['Didichuxing.snippet'])
     jq_routes = [r for r in routes if r['action'] == 'jsonjq-response-body']
     dict_routes = [r for r in routes if r['action'] == 'reject-dict']
@@ -258,7 +257,7 @@ def planned_outputs():
     # Each JS keeps a narrow URL pattern; no two handlers compete for one URL.
     main = outputs['Modules/Meituan.sgmodule']
     main = main.replace('按 12.67.403 结构净化底栏、推荐流、搜索词、开屏与我的服务入口；不改变网络通道。',
-                        '美团 App 与微信小程序净化，含我的服务入口、导航和广告卡片；不改变网络通道。')
+                        '基于 ZenmoFeiShi QX 与 Surge 同步版，含网络规则、App 去广告、我的页面与微信小程序净化。')
     section = main.index('\n\n[MITM]')
     main = main[:section] + '\n' + '\n'.join(script_line(f'MeituanMini-{i}',r,'JS/MeituanMiniProgram.surge.js') for i,r in enumerate(mini_scripts)) + main[section:]
     main += '\n# Meituan mini-program section: ' + QX_SOURCE + 'WxPureDominion.snippet\n'
