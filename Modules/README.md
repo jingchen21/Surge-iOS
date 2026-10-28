@@ -26,7 +26,7 @@
 | 滴滴出行 | 精简部分个人中心、导航、推荐和钱包页面 | MITM、Rewrite；原生 jq 需 iOS 5.14.0+ / Mac 5.9.0+ | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) |
 | 高德地图 | 过滤开屏、首页、路线、搜索和打车页面的部分推广内容 | MITM、Map Local、Body Rewrite；尚未完成真机验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Amap-AdFilter.sgmodule) |
 | 携程旅行 | 开屏广告过滤、广告列表处理，并实验性隐藏“社区”“问AI”导航项 | 需 MITM `m.ctrip.com`；`getAdsList` / `getAppConfig` 规则未完成最新版真机验证，可能影响图片或页面配置 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Ctrip-AdFilter.sgmodule) |
-| 中国移动 | 处理部分页面入口、底部导航和开屏广告 | MITM、Scripting；依赖仓库内 JS | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/ChinaMobile.sgmodule) |
+| 中国移动（Surge 语法修复） | 处理部分页面入口、底部导航和已列出的开屏接口 | MITM、Scripting、Map Local；已修正 15 条无效重写，空白开屏倒计时尚待验证，[说明](../docs/CHINAMOBILE_SPLASH.md) | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/ChinaMobile.sgmodule) |
 | 浦大喜奔 | 按图片素材实际尺寸拦截指定开屏图 | MITM、Scripting；参数是素材尺寸，不是屏幕分辨率 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule) |
 | 哈啰出行 | 移植部分广告与页面处理 | MITM、Scripting；尚未完成真实 App 验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/HelloBike.sgmodule) |
 | 拼多多 | 使用原生规则和正文处理精简页面 | MITM；原生 jq 需 iOS 5.14.0+ / Mac 5.9.0+ | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Pinduoduo.sgmodule) |
