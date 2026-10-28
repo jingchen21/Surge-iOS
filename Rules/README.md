@@ -1,14 +1,27 @@
-# 独立规则
+# 🛣️ 分流规则
 
-这两个小规则集从用户配置的相应片段提取，供其他主配置按需引用。规则集不写入个人节点，使用时由主配置指定策略。
+本目录提供两份小型规则集，供其他 Surge 配置按需引用。规则集不包含节点；使用时由主配置决定策略。
 
-- `Business-DIRECT.list`：国内出行、电商、支付、银行与验证码域名。
-- `Apple-AI.list`：原配置中 Apple AI / Siri / PCC 的精确匹配段；使用时应给整个 RULE-SET 添加 `extended-matching`。
+## 📂 规则列表
 
-原文地址：[国内业务直连](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Rules/Business-DIRECT.list) · [Apple AI](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Rules/Apple-AI.list)。
+| 规则集 | 用途 | 下载 |
+| --- | --- | --- |
+| Business-DIRECT.list | 国内出行、电商、支付、银行及验证码相关域名，通常指定为 DIRECT | [下载](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Rules/Business-DIRECT.list) |
+| Apple-AI.list | Apple AI、Siri、PCC 相关域名；应指定 AI 策略并使用 extended-matching | [下载](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Rules/Apple-AI.list) |
 
-主模板已经内置这些规则。使用主模板时不必重复引用。
+> 主配置已包含这两份规则。使用主配置时无需重复添加。
 
-需要区分国内业务和香港银行、Wise、美国 PayPal 等独立策略。域名列表不能证明相关 App 的每个功能均已覆盖，也不能保证账号或地区功能可用。
+## ⚙️ 使用提示
 
-其他大型规则通过上游链接使用，完整列表见 [upstreams/references.json](../upstreams/references.json)。没有将上游规则库复制到本目录。
+- 在其他配置中引用前，请先检查规则顺序和目标策略。
+- Apple-AI.list 作为 RULE-SET 引用时，添加 extended-matching。
+- 域名列表不保证覆盖 App 的所有请求，也不保证特定地区或账号功能可用。
+- 本地规则从个人配置整理，不是完整的官方域名清单。
+
+其他上游规则入口见 [引用清单](../upstreams/references.json) 和[第三方来源说明](../THIRD_PARTY_NOTICES.md)。
+
+## 🙏 鸣谢与版权声明
+
+感谢 [Surge](https://www.nssurge.com/) 及 [SukkaW/Surge](https://github.com/SukkaW/Surge)、[blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)、[Hackl0us/GeoIP2-CN](https://github.com/Hackl0us/GeoIP2-CN)、[KIDA-MNESIA/gadgets](https://github.com/KIDA-MNESIA/gadgets)、[zxfccmm4/Profiles](https://github.com/zxfccmm4/Profiles)、[Semporia/TikTok-Unlock](https://github.com/Semporia/TikTok-Unlock)、[getsomecat/GetSomeCats](https://github.com/getsomecat/GetSomeCats) 等规则维护者。具体来源和许可见[第三方来源说明](../THIRD_PARTY_NOTICES.md)。
+
+本目录的两份本地规则由个人配置整理而来；仓库也会链接到第三方规则。**保留来源不等于获得转载或再分发授权。** 不主张拥有第三方内容的版权，也不以本仓库许可证覆盖上游许可。请遵守各项目许可证及作者声明；未经许可，请勿将第三方规则冒充原创或再次分发。如权利人认为存在侵权或授权问题，请通过 [Issues](https://github.com/jingchen21/Surge-iOS/issues) 联系，以便核查、修正或移除相关内容。
