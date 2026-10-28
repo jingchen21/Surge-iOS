@@ -256,7 +256,7 @@ def planned_outputs():
     # Keep one installable Meituan module for both App and mini-program routes.
     # Each JS keeps a narrow URL pattern; no two handlers compete for one URL.
     main = outputs['Modules/Meituan.sgmodule']
-    main = main.replace('按 12.67.403 结构净化底栏、推荐流、搜索词、开屏与我的服务入口；不改变网络通道。',
+    main = main.replace('按 12.67.403 结构净化页面，并合并上游同步版网络规则。',
                         '基于 ZenmoFeiShi QX 与 Surge 同步版，含网络规则、App 去广告、我的页面与微信小程序净化。')
     section = main.index('\n\n[MITM]')
     main = main[:section] + '\n' + '\n'.join(script_line(f'MeituanMini-{i}',r,'JS/MeituanMiniProgram.surge.js') for i,r in enumerate(mini_scripts)) + main[section:]
