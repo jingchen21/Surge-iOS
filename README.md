@@ -50,8 +50,17 @@ python3 scripts/check_public.py
 
 该检查只能辅助排查，不能保证识别所有敏感信息。完整说明见[隐私文档](docs/PRIVACY.md)。
 
-## 🙏 鸣谢与版权声明
+## 🙏 鸣谢
 
-感谢 [Surge](https://www.nssurge.com/)、规则维护者、模块作者和脚本贡献者。第三方来源与许可见[第三方来源说明](THIRD_PARTY_NOTICES.md)。
+本仓库参考并整理了多个优秀的 Surge 规则、模块和脚本项目，感谢相关维护者的持续分享：
 
-本仓库包含个人配置整理、第三方规则及模块快照。**保留原作者署名不等于已取得全部内容的再分发授权。** 本仓库不主张拥有第三方内容的版权，也不会以本仓库的许可证覆盖上游许可。请遵守各项目的许可证和作者声明；未经许可，请勿将第三方作品冒充原创或再次分发。如权利人认为存在侵权或授权问题，请通过 [Issues](https://github.com/jingchen21/Surge-iOS/issues) 联系，以便核查、修正或移除相关内容。
+- **分流规则与规则库：** [SukkaW/Surge](https://github.com/SukkaW/Surge)、[blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)、[Hackl0us/GeoIP2-CN](https://github.com/Hackl0us/GeoIP2-CN)、[KIDA-MNESIA/gadgets](https://github.com/KIDA-MNESIA/gadgets)、[zxfccmm4/Profiles](https://github.com/zxfccmm4/Profiles)、[Semporia/TikTok-Unlock](https://github.com/Semporia/TikTok-Unlock)、[getsomecat/GetSomeCats](https://github.com/getsomecat/GetSomeCats)。
+- **应用模块与规则移植：** [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx)、[RoaycL/Surge](https://github.com/RoaycL/Surge)、[fmz200/wool_scripts](https://github.com/fmz200/wool_scripts)、[muktsoen/SurgeRules](https://github.com/muktsoen/SurgeRules)、[luestr/ProxyResource](https://github.com/luestr/ProxyResource)。
+- **脚本贡献者：** [Keywos/rule](https://github.com/Keywos/rule)、[zmqcherish/proxy-script](https://github.com/zmqcherish/proxy-script)、[ccyykk666](https://github.com/ccyykk666) 及各文件中注明的其他作者。
+- **平台：** 感谢 [Surge](https://www.nssurge.com/) 提供强大的代理与规则处理能力。
+
+各项目在本仓库中的具体用途、来源和许可，请查看[分流规则说明](Rules/README.md)、[模块说明](Modules/README.md)、[脚本索引](JS/README.md)及[第三方来源记录](THIRD_PARTY_NOTICES.md)。
+
+## ⚖️ 版权与侵权处理
+
+本仓库包含个人配置整理、第三方规则及模块快照。**保留原作者署名不等于已取得转载或再分发授权。** 本仓库不主张拥有第三方内容的版权，也不会以本仓库的许可证覆盖上游许可。请遵守各项目的许可证和作者声明；未经许可，请勿将第三方作品冒充原创或再次分发。如权利人认为存在侵权或授权问题，请通过 [Issues](https://github.com/jingchen21/Surge-iOS/issues) 联系，以便核查、修正或移除相关内容。
