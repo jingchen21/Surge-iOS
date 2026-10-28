@@ -34,8 +34,18 @@
 - **模块验证：** 离线测试不代表当前 App 已通过真机验证。出现问题时，先停用最近添加的模块。
 - **脚本依赖：** 查看 [JS 脚本索引](../JS/README.md)；构建与检查方法见[维护说明](../maintenance/apps/README.md)。
 
-## 🙏 作者鸣谢与版权声明
+## 🙏 模块来源鸣谢
 
-感谢 [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx)、[RoaycL/Surge](https://github.com/RoaycL/Surge)、[fmz200/wool_scripts](https://github.com/fmz200/wool_scripts)、[Keywos/rule](https://github.com/Keywos/rule)、[zmqcherish/proxy-script](https://github.com/zmqcherish/proxy-script)、[muktsoen/SurgeRules](https://github.com/muktsoen/SurgeRules)、[luestr/ProxyResource](https://github.com/luestr/ProxyResource) 及文件中注明的其他作者。各模块的具体来源和许可以模块文件注释及[第三方来源记录](../THIRD_PARTY_NOTICES.md)为准。
+感谢为本目录中的模块及移植提供基础的项目与作者：
+
+- [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx)：腾讯视频、美团及部分应用规则与处理逻辑。
+- [RoaycL/Surge](https://github.com/RoaycL/Surge)：部分模块的 Surge 版本与组织方式。
+- [fmz200/wool_scripts](https://github.com/fmz200/wool_scripts)：微博模块相关实现。
+- [muktsoen/SurgeRules](https://github.com/muktsoen/SurgeRules) 与 [ccyykk666](https://github.com/ccyykk666)：中国移动相关脚本来源。
+- [luestr/ProxyResource](https://github.com/luestr/ProxyResource)：番茄小说相关规则来源。
+
+合并脚本中其他作者的具体归属请见[脚本索引](../JS/README.md)及各文件头注释；完整来源与许可记录见[第三方来源说明](../THIRD_PARTY_NOTICES.md)。
+
+## ⚖️ 版权与侵权处理
 
 本目录包含第三方模块、规则和脚本的快照或移植。**标注作者和来源不代表自动获得转载或再分发授权。** 不主张拥有第三方内容的版权，也不以本仓库许可证覆盖上游许可。请遵守原作者声明与许可证；未经许可，请勿冒充原创或再次分发。如权利人认为存在侵权或授权问题，请通过 [Issues](https://github.com/jingchen21/Surge-iOS/issues) 联系，以便核查、修正或移除相关内容。
