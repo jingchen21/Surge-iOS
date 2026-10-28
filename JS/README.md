@@ -1,19 +1,32 @@
-# 模块关联脚本
+# 📜 模块脚本
 
-| 脚本 | 保存方式 |
-| --- | --- |
-| `Txvideoad.surge.js` | 本地快照重新生成的 Surge 二进制/文本正文适配，由腾讯视频模块引用 |
-| `Meituan.surge.js` | 美团八类 JSON 页面处理，异常或未知结构原样放行 |
-| `MeituanMiniProgram.surge.js` | 微信美团小程序的导航与首页处理，与 App 版本分开 |
-| `hlwxx_remove_ads.surge.js` | 上游提交的原样副本，由黑料模块引用 |
-| `pdxb.surge.js` | 用户提供 pdxb.js 的 Surge 转换；明确中止命中图片，可配置尺寸，只记录尺寸与结果 |
-| `Weibo.surge.js` | 上游提交的原样副本，由微博模块引用；多个原始脚本已包含在该合并文件中 |
-| `ChinaMobile.surge.js` | 个人快照自 muktsoen/SurgeRules；原 Loon 作者 ccyykk666，含 AES 垫片与 8 个开关，由中国移动模块引用 |
-| `ChinaMobile-request.surge.js` | 个人快照自 muktsoen/SurgeRules；http-request 直接返回空字典，由中国移动模块引用 |
-| `easybike.surge.js` | 哈啰出行 QX→Surge 移植个人快照；原作者 ZenmoFeiShi，含 AES/动态密钥与首页净化，由 HelloBike 模块引用 |
+本目录保存模块运行所需的 JS。模块会引用本仓库中的脚本，不依赖其他仓库继续在线提供运行文件。
 
-原作者及原始来源注释保留在文件中。这里的第三方 JS 不适用本仓库工具的 MIT 许可。
+## 📂 脚本索引
 
-拼多多最新版使用 Surge 原生 jq/Map Local，没有遗漏 JS。番茄小说是静态规则，也没有 JS。
+| 脚本 | 对应模块 | 来源 / 说明 |
+| --- | --- | --- |
+| [Txvideoad.surge.js](Txvideoad.surge.js) | 腾讯视频 | 基于 ZenmoFeiShi/Qx 逻辑适配 Surge 二进制与文本正文 API |
+| [Meituan.surge.js](Meituan.surge.js) | 美团 App | 基于 ZenmoFeiShi/Qx，异常或未知 JSON 结构原样放行 |
+| [MeituanMiniProgram.surge.js](MeituanMiniProgram.surge.js) | 美团微信小程序 | 基于原有小程序处理逻辑，限定匹配对应接口 |
+| [Weibo.surge.js](Weibo.surge.js) | 微博 | 合并多个上游脚本，来源包括 fmz200、Keywos、zmqcherish |
+| [hlwxx_remove_ads.surge.js](hlwxx_remove_ads.surge.js) | 黑料不打烊 | 基于 ZenmoFeiShi/Qx 的脚本 |
+| [ChinaMobile.surge.js](ChinaMobile.surge.js) | 中国移动 | 个人快照来自 muktsoen/SurgeRules；原始作者 ccyykk666 |
+| [ChinaMobile-request.surge.js](ChinaMobile-request.surge.js) | 中国移动 | 请求阶段返回空字典的配套脚本 |
+| [easybike.surge.js](easybike.surge.js) | 哈啰出行 | 基于 ZenmoFeiShi 的 QX 脚本移植 |
+| [pdxb.surge.js](pdxb.surge.js) | 浦大喜奔 | 用户提供的脚本适配；原作者与公开来源未注明 |
 
-模块关联的实际运行 JS 都在本仓库，对应模块统一引用本仓库 Raw 地址。腾讯和美团的输入快照、生成工具及当前哈希在 [应用模块维护目录](../maintenance/apps/README.md)，其他快照及图片引用记录在 [历史清单](../upstreams/roaycl-2026-10-27.json)。滴滴使用原生 jq / Map Local，没有 JS 依赖。
+## 🛠️ 修改与构建
+
+- 应用模块的源文件和生成步骤：见[应用模块维护说明](../maintenance/apps/README.md)。
+- 构建脚本：执行 python3 scripts/build_apps.py。
+- 检查生成结果：执行 python3 scripts/build_apps.py --check。
+- 拼多多、番茄小说和滴滴模块使用原生 Surge 规则或正文处理，不需要 JS。
+
+请优先修改对应的源文件或转换工具，再重新生成脚本，避免改动被构建覆盖。
+
+## 🙏 作者鸣谢与版权声明
+
+感谢 [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx)、[fmz200/wool_scripts](https://github.com/fmz200/wool_scripts)、[Keywos/rule](https://github.com/Keywos/rule)、[zmqcherish/proxy-script](https://github.com/zmqcherish/proxy-script)、[muktsoen/SurgeRules](https://github.com/muktsoen/SurgeRules) 及各脚本中注明的作者。
+
+本目录包含第三方脚本快照或移植代码。**保留作者和来源不等于自动获得再分发授权。** 不主张拥有第三方脚本的版权，也不以本仓库许可证覆盖上游许可。请遵守原作者声明与许可证；未经许可，请勿冒充原创或再次分发。如权利人认为存在侵权或授权问题，请通过 [Issues](https://github.com/jingchen21/Surge-iOS/issues) 联系，以便核查、修正或移除相关内容。
