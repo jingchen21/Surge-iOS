@@ -125,59 +125,32 @@ for (const body of [new Uint8Array([0, 1, 2]), new Uint8Array(), 'unexpected-tex
   assert.deepEqual(parity('https://i.video.qq.com/', {body}), {});
 }
 
-function mt(url, value) {
-  const body = typeof value === 'string' ? value : JSON.stringify(value);
-  const original = run('maintenance/apps/source/MT.js', url, {body});
-  const converted = run('JS/Meituan.surge.js', url, {body});
-  assert.deepEqual(converted, original); checks++;
-  return converted.body ? JSON.parse(converted.body) : null;
-}
-let v = mt('https://apimobile.meituan.com/aggroup/indexTab', {data: {resource: {tabArea: ['homepage','video','xiaotuan','mine','order'].map(tabName => ({tabName}))}}, keep: 1});
-assert.deepEqual(v.data.resource.tabArea.map(x => x.tabName), ['homepage','mine','order']);
-assert.equal(v.keep, 1);
-assert.equal(mt('https://apimobile.meituan.com/aggroup/indexTab', {data: {resource: {tabArea: [{tabName: 'video'}]}}}), null);
-for (const scene of ['gwc_feed1_2265', 'personalcenter_2154']) {
-  v = mt('https://feedguess.meituan.com/lycoris/scene/' + scene, {data: [1,2], keep: 1});
-  assert.deepEqual(v.data, []); assert.equal(v.bottom, true); assert.equal(v.ext.forbidByExp, true); assert.equal(v.keep, 1);
-}
-assert.equal(mt('https://feedguess.meituan.com/lycoris/scene/unrelated', {data: [1]}), null);
-v = mt('https://mt-personalcenter.meituan.com/usercenter/display', {children: [{name:'mine_cross_recommend'},{name:'orders'},{name:'wallet'}]});
-assert.deepEqual(v.children.map(x=>x.name), ['orders','wallet']);
-v = mt('https://apimobile.meituan.com/group/v1/deal/searchpage/defaultword', {searchIntroduceResponse: {defaultWordRes: {defaultWordItems:[1]}, HotWordInfos:[2], keep:3}});
-assert.deepEqual(v.searchIntroduceResponse.defaultWordRes.defaultWordItems, []); assert.equal(v.searchIntroduceResponse.keep,3);
-v = mt('https://apimobile.meituan.com/group/v1/deal/searchpage/hotword/city/divide/hotrecommend/', {data: {segmentsV2: [{hotwordSegments:[{pageName:'EntranceHotwordsV2Hotwords'}]},{hotwordSegments:[{pageName:'ordinary'}]}], aiSearchBubble: {bubbleTexts:[1]}}});
-assert.equal(v.data.segmentsV2.length,1); assert.deepEqual(v.data.aiSearchBubble.bubbleTexts,[]);
-v = mt('https://assistify.meituan.com/assistant/getAppClientHornConfig', {data: JSON.stringify({skills:{ad:1},keep:2})});
-assert.deepEqual(JSON.parse(v.data),{skills:{},keep:2});
-for (const [url,key] of [['mop/entry/shoppingCartEntry','topBannerArea'],['api/entryModule/startupPicture','startupPicArea']]) {
-  v = mt('https://mop.meituan.com/'+url,{data:{resourcesMap:{[key]:[1],keep:2}},resource:{[key]:[3]}});
-  assert.deepEqual(v.data.resourcesMap[key],[]);assert.equal(v.data.resourcesMap.keep,2);assert.deepEqual(v.resource[key],[]);
-}
-for (const url of ['https://apimobile.meituan.com/pay/order','https://apimobile.meituan.com/login','https://apimobile.meituan.com/bike/scan']) {
-  assert.equal(mt(url,{data:{keep:1}}),null);
-}
-for (const body of ['not-json','', '{}']) assert.equal(mt('https://apimobile.meituan.com/aggroup/indexTab',body),null);
-
-// Restore the older My Page service cleanup without losing current recommendation removal.
-const toolsUrl = 'https://mt-personalcenter.meituan.com/usercenter/display';
-const dropTools = ['xiaomeipingshen','meituangongyi','qiyefuwu','ruzhumeituan','mt_mine_myshop','zhaodianhuzhu'];
-const toolsInput = {children: [
-  {name:'mine_cross_recommend',data:{ads:[1]}},
-  {name:'mine_serviceV3',data:{newTools:[...dropTools.map(identification=>({identification})),{identification:'orders'},{identification:'wallet'},{identification:'coupon'}],keep:7}},
-  {name:'orders',data:{keep:8}}, {name:'wallet',data:{keep:9}}
-],keep:10};
-let enhanced = run('JS/Meituan.surge.js',toolsUrl,{body:JSON.stringify(toolsInput)});
-v = JSON.parse(enhanced.body); checks++;
-assert.deepEqual(v.children.map(x=>x.name),['mine_serviceV3','orders','wallet']);
-assert.deepEqual(v.children[0].data.newTools.map(x=>x.identification),['orders','wallet','coupon']);
-assert.equal(v.children[0].data.keep,7);assert.equal(v.keep,10);
-const legacyOnly = run('maintenance/apps/source/MTAppAdCleanMine.js',toolsUrl,{body:JSON.stringify(toolsInput)});
-assert.deepEqual(JSON.parse(legacyOnly.body).children.find(x=>x.name==='mine_serviceV3').data.newTools,v.children[0].data.newTools);
-for (const tools of [dropTools.map(identification=>({identification})),[],null]) {
-  const input={children:[{name:'mine_serviceV3',data:{newTools:tools}}]};
-  assert.deepEqual(run('JS/Meituan.surge.js',toolsUrl,{body:JSON.stringify(input)}),{});checks++;
-}
-
+// Verify direct QX -> Surge mapping with no locally modified App JS.
+const core = fs.readFileSync(path.join(root,'Modules/Meituan.sgmodule'),'utf8');
+const qx = fs.readFileSync(path.join(root,'maintenance/apps/source/MT.snippet'),'utf8');
+const mapping = {host:'DOMAIN','host-wildcard':'DOMAIN-WILDCARD','host-suffix':'DOMAIN-SUFFIX','ip-cidr':'IP-CIDR','ip6-cidr':'IP-CIDR6'};
+const expected = qx.split(/\r?\n/).map(line => {
+  const match = line.match(/^(host|host-suffix|host-wildcard|ip-cidr|ip6-cidr),\s*([^,]+),\s*reject$/i);
+  if (!match) return null;
+  const kind = mapping[match[1]];
+  return kind + ',' + match[2] + ',REJECT' + (kind.startsWith('IP-CIDR') ? ',no-resolve' : ',extended-matching');
+}).filter(Boolean);
+const actual = core.match(/\[Rule\]\n([\s\S]*?)\n\n\[URL Rewrite\]/)[1].split('\n');
+assert.equal(expected.length,46);
+assert.deepEqual(actual,expected);
+const unescapeQx = value => value.split('\\/').join('/');
+const qxRewrites = qx.split(/\r?\n/).filter(x=>/ url reject$/.test(x)).map(x=>unescapeQx(x.split(' url reject')[0])+' - reject');
+assert.equal(qxRewrites.length,2);
+assert.deepEqual(core.match(/\[URL Rewrite\]\n([\s\S]*?)\n\n\[Script\]/)[1].split('\n'),qxRewrites);
+const qxPatterns = qx.split(/\r?\n/).filter(x=>x.includes(' url script-response-body ')).map(x=>unescapeQx(x.split(' url script-response-body ')[0]));
+const orig = 'https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js';
+const appScripts = core.match(/\[Script\]\n([\s\S]*?)\n\n\[MITM\]/)[1].split('\n');
+assert.equal(qxPatterns.length,8);
+assert.equal(appScripts.length,8);
+appScripts.forEach((line,i)=>assert.equal(line,'MT-'+(i+1)+' = type=http-response,pattern='+qxPatterns[i]+',script-path='+orig+',requires-body=true'));
+assert.equal(core.match(/hostname = %APPEND% ([^\n]+)/)[1],qx.match(/^hostname = (.*)$/m)[1]);
+assert.doesNotMatch(core,/JS\/Meituan\.surge\.js|MeituanMiniProgram|\[Map Local\]/);
+checks++;
 // The generic older script belongs to WeChat's Meituan mini-program, not the App.
 const miniCases = [
   ['https://web.meituan.com/api/miniprogram/tabbar/all/query',{data:[{name:'首页'},{name:'视频'},{name:'神券'},{name:'我的'},{name:'广告'}]},r=>assert.deepEqual(r.data.map(x=>x.name),['首页','神券','我的'])],
@@ -189,31 +162,15 @@ for(const [url,input,verify] of miniCases){
   assert.deepEqual(result,run('maintenance/apps/source/MeiTuanNoAd.js',url,{body}));
   verify(JSON.parse(result.body));checks++;
 }
-const miniModule=fs.readFileSync(path.join(root,'Modules/Meituan.sgmodule'),'utf8');
+const miniModule=fs.readFileSync(path.join(root,'Modules/MeituanMiniProgram.sgmodule'),'utf8');
 assert.equal([...miniModule.matchAll(/MeituanMini-\d+ =/g)].length,2);
 assert.equal([...miniModule.matchAll(/data-type=text/g)].length,6);
 assert.doesNotMatch(miniModule,/energy\.xiaojukeji|wx\.17u|wxgateway/);
 
-// Preserve upstream synchronized Meituan network rules in one module,
-// while keeping local My Page and mini-program scripts.
-for (const module of ['Modules/TencentVideo.sgmodule','Modules/Meituan.sgmodule']) {
-  for (const pattern of fs.readFileSync(path.join(root,module),'utf8').matchAll(/pattern=(.*?), requires-body=/g)) new RegExp(pattern[1]);
-}
-const core = fs.readFileSync(path.join(root,'Modules/Meituan.sgmodule'),'utf8');
-const source = fs.readFileSync(path.join(root,'maintenance/apps/source/MT.snippet'),'utf8');
-const kinds = {'host':'DOMAIN','host-suffix':'DOMAIN-SUFFIX','host-wildcard':'DOMAIN-WILDCARD','ip-cidr':'IP-CIDR','ip6-cidr':'IP-CIDR6'};
-const expectedRules = source.split(/\r?\n/).map(line => {
-  const match = line.match(/^(host|host-suffix|host-wildcard|ip-cidr|ip6-cidr),\s*([^,]+),\s*reject$/i);
-  if (!match) return null;
-  const kind = kinds[match[1].toLowerCase()];
-  return `${kind},${match[2].trim()},REJECT${kind.startsWith('IP-CIDR') ? ',no-resolve' : ',extended-matching'}`;
-}).filter(Boolean);
-assert.equal(expectedRules.length,46);
-const actualRules = core.match(/\[Rule\]\n([\s\S]*?)\n\n\[Script\]/)[1].split('\n');
-assert.deepEqual(actualRules,expectedRules);
-assert.equal([...core.matchAll(/script-path=/g)].length,10);
-assert.match(core,/hostname = %APPEND% .*httpdns\.meituan\.com, httpdnsmultiapi\.meituan\.com/);
-assert.doesNotMatch(core,/\[URL Rewrite\]/);
-const lock = JSON.parse(fs.readFileSync(path.join(root,'maintenance/apps/lock.json'),'utf8'));
-assert.equal(lock.outputs.some(o => o.destination_path === 'Modules/Meituan-Network-Compatibility.sgmodule'),false);
-console.log(`PASS: ${checks} app cases; Tencent binary parity, Meituan 8 routes, merged My Page tools and fail-open behavior.`);
+for (const match of miniModule.matchAll(/pattern=(.*?), requires-body=/g)) new RegExp(match[1]);
+assert.equal([...miniModule.matchAll(/script-path=/g)].length,2);
+assert.doesNotMatch(miniModule,/\[Rule\]|shark-|httpdns|mquic/);
+const appLock = JSON.parse(fs.readFileSync(path.join(root,'maintenance/apps/lock.json'),'utf8'));
+assert.equal(appLock.outputs.some(o => o.destination_path === 'Modules/MeituanMiniProgram.sgmodule'),true);
+assert.equal(appLock.outputs.some(o => o.destination_path === 'JS/Meituan.surge.js'),false);
+console.log(`PASS: ${checks} app cases; Tencent parity, ZenmoFeiShi QX->Surge conversion and separate mini-program.`);

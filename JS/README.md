@@ -1,6 +1,6 @@
 # 📜 模块脚本
 
-本目录保存模块运行所需的 JS。模块会引用本仓库中的脚本，不依赖其他仓库继续在线提供运行文件。
+本目录保存自维护模块需要的 JS。美团 App 模块使用 ZenmoFeiShi 原作者 `MT.js`，微信小程序模块使用本仓库 JS。
 
 > **个人自用 / AI 辅助：** 本目录脚本主要用于个人配置。部分脚本适配、说明整理或修改使用 AI 辅助；请自行检查代码和实际运行效果，并核对第三方来源与许可证。
 
@@ -9,7 +9,6 @@
 | 脚本 | 对应模块 | 来源 / 说明 |
 | --- | --- | --- |
 | [Txvideoad.surge.js](Txvideoad.surge.js) | 腾讯视频 | 基于 ZenmoFeiShi/Qx 逻辑适配 Surge 二进制与文本正文 API |
-| [Meituan.surge.js](Meituan.surge.js) | 美团 App | 基于 ZenmoFeiShi/Qx，异常或未知 JSON 结构原样放行 |
 | [MeituanMiniProgram.surge.js](MeituanMiniProgram.surge.js) | 美团微信小程序 | 基于原有小程序处理逻辑，限定匹配对应接口 |
 | [Weibo.surge.js](Weibo.surge.js) | 微博 | 合并多个上游脚本，来源包括 fmz200、Keywos、zmqcherish |
 | [hlwxx_remove_ads.surge.js](hlwxx_remove_ads.surge.js) | 黑料不打烊 | 基于 ZenmoFeiShi/Qx 的脚本 |

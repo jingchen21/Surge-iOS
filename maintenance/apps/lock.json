@@ -51,10 +51,6 @@
   ],
   "outputs": [
     {
-      "destination_path": "JS/Meituan.surge.js",
-      "destination_sha256": "7216c95d25bd819145c2becdc66eb69b248072da48b1aa500f138f9fdf713ade"
-    },
-    {
       "destination_path": "JS/MeituanMiniProgram.surge.js",
       "destination_sha256": "12eda05d817182eee84f86484e4cdbdbf591fdafae934bda008d04581d15c766"
     },
@@ -72,7 +68,11 @@
     },
     {
       "destination_path": "Modules/Meituan.sgmodule",
-      "destination_sha256": "8b4127251967686caaa30bdf24c3b96086de7ab3668bedd4aee2138c8b919d54"
+      "destination_sha256": "2910adec345f487401b5f7f4025ef13fe86cab9266de401290323d177357c8a1"
+    },
+    {
+      "destination_path": "Modules/MeituanMiniProgram.sgmodule",
+      "destination_sha256": "2397f391afeae143e5f42a1d4c2df5ea5841d54adef8b514f2b318e2b9b0e180"
     },
     {
       "destination_path": "Modules/SPDB.sgmodule",

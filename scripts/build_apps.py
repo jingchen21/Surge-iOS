@@ -169,59 +169,30 @@ def planned_outputs():
         'Modules/TencentVideo.sgmodule': tencent,
         'Modules/TxvideoAD.sgmodule': tencent,
     }
+    # Direct QX-to-Surge conversion from ZenmoFeiShi; preserve all QX actions.
     metadata, rules, routes, hosts = parse(texts['MT.snippet'])
-    scripts = [route for route in routes if route['action'] != 'reject']
-    rejects = [route for route in routes if route['action'] == 'reject']
-    if len(scripts) != 8 or any(route['action'] != 'script-response-body'
-                              or not (route['argument'] or '').endswith('/MT.js') for route in scripts):
-        raise ValueError('Meituan routes changed; review the new actions')
-    mt_source = texts['MT.js']
-    if re.search(r'\$(?:task|prefs)\b|\.bodyBytes\b', mt_source):
-        raise ValueError('New QX-only APIs in Meituan source require an adapter')
-    # The current script dropped the older service-entry cleanup. Merge it into
-    # the SAME handler because Surge executes only the first matching response script.
-    legacy = texts['MTAppAdCleanMine.js']
-    tools = re.search(r'const mtqxDropTools = \[[\s\S]*?\];', legacy)
-    function = re.search(r'^function mtqxTools\(obj\) \{[\s\S]*?^\}', legacy, re.M)
-    original_mine = '''function mtqxMine(obj) {
-  if (!mtqxIsObj(obj) || !Array.isArray(obj.children)) return false;
-  const kept = obj.children.filter(c => !(mtqxIsObj(c) && mtqxMineHide.indexOf(c.name) >= 0));
-  if (kept.length === obj.children.length) return false;
-  obj.children = kept;
-  return true;
-}'''
-    if not tools or not function or mt_source.count(original_mine) != 1:
-        raise ValueError('Meituan personal-center shape changed; review the legacy merge')
-    merged_mine = '''function mtqxMine(obj) {
-  if (!mtqxIsObj(obj) || !Array.isArray(obj.children)) return false;
-  let changed = mtqxTools(obj);
-  const kept = obj.children.filter(c => !(mtqxIsObj(c) && mtqxMineHide.indexOf(c.name) >= 0));
-  if (kept.length !== obj.children.length) {
-    obj.children = kept;
-    changed = true;
-  }
-  return changed;
-}'''
-    mt_source = mt_source.replace(original_mine, tools[0] + '\n\n' + function[0] + '\n\n' + merged_mine)
-    outputs['JS/Meituan.surge.js'] = ('// Original logic: ' + QX_SOURCE + 'MT.js\n'
-                                    '// Legacy mine-service handling: MTAppAdCleanMine.js, snapshot 354e6d5217bb2d0fecdfbf506cd3d480d30d53b7.\n'
-                                    '// Surge HTTP JSON response script; local snapshot, no runtime download.\n'
-                                    '// Rebuild from maintenance/apps/source using scripts/build_apps.py.\n' + mt_source)
-    core = header('美团净化（App/小程序）', '按 12.67.403 结构净化页面，并合并上游同步版网络规则。',
-                  metadata.get('author', ''))
-    core += '# Original rules: ' + QX_SOURCE + 'MT.snippet\n'
-    core += '# Conversion reference: https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule\n'
-    # Match the upstream Surge sync baseline: 13 domain rules with extended-matching,
-    # 33 IP rules, 8 response scripts. The upstream converter leaves 2 QX-only
-    # reject rewrites unconverted; do not invent behavior here.
-    matched_rules = [rule + ',extended-matching' if rule.startswith('DOMAIN') else rule
-                     for rule in rules]
-    core += '# Network baseline: https://github.com/muktsoen/SurgeRules/blob/main/MT.sgmodule\n'
-    core += '\n[Rule]\n' + '\n'.join(matched_rules) + '\n\n[Script]\n'
-    core += '\n'.join(script_line(f'Meituan-{i}', route, 'JS/Meituan.surge.js')
-                      for i, route in enumerate(scripts))
-    core += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
-    outputs['Modules/Meituan.sgmodule'] = core
+    scripts = [r for r in routes if r['action'] == 'script-response-body']
+    rejects = [r for r in routes if r['action'] == 'reject']
+    if len(rules) != 46 or len(scripts) != 8 or len(rejects) != 2 or len(hosts) != 7:
+        raise ValueError('Unexpected ZenmoFeiShi QX rules; review conversion')
+    if any(not (r['argument'] or '').endswith('/MT.js') for r in scripts):
+        raise ValueError('Unexpected Meituan response script source')
+    app = header(metadata.get('name', '美团 App'),
+                 '完整转换 ZenmoFeiShi 原版 QX 规则；含 46 条网络规则、2 条 Rewrite 和 8 条响应脚本。',
+                 metadata.get('author', ''))
+    app += '# Source: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet\n'
+    app += '# Script: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.js\n'
+    app += '# Source update: ' + metadata.get('update', '') + '\n'
+    app += '\n[Rule]\n' + '\n'.join(
+        r + ',extended-matching' if r.startswith('DOMAIN') else r for r in rules)
+    app += '\n\n[URL Rewrite]\n' + '\n'.join(
+        r['pattern'] + ' - reject' for r in rejects)
+    app += '\n\n[Script]\n' + '\n'.join(
+        'MT-' + str(i+1) + ' = type=http-response,pattern=' + r['pattern']
+        + ',script-path=' + (r['argument'] or '') + ',requires-body=true'
+        for i, r in enumerate(scripts))
+    app += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
+    outputs['Modules/Meituan.sgmodule'] = app
     metadata, rules, routes, hosts = parse(texts['Didichuxing.snippet'])
     jq_routes = [r for r in routes if r['action'] == 'jsonjq-response-body']
     dict_routes = [r for r in routes if r['action'] == 'reject-dict']
@@ -253,19 +224,17 @@ def planned_outputs():
         raise ValueError('Meituan mini-program rules changed; review the scoped extraction')
     if any(not (r['argument'] or '').endswith('/MeiTuanNoAd.js') for r in mini_scripts):
         raise ValueError('Unexpected Meituan mini-program script dependency')
-    # Keep one installable Meituan module for both App and mini-program routes.
-    # Each JS keeps a narrow URL pattern; no two handlers compete for one URL.
-    main = outputs['Modules/Meituan.sgmodule']
-    main = main.replace('按 12.67.403 结构净化页面，并合并上游同步版网络规则。',
-                        '基于 ZenmoFeiShi QX 与 Surge 同步版，含网络规则、App 去广告、我的页面与微信小程序净化。')
-    section = main.index('\n\n[MITM]')
-    main = main[:section] + '\n' + '\n'.join(script_line(f'MeituanMini-{i}',r,'JS/MeituanMiniProgram.surge.js') for i,r in enumerate(mini_scripts)) + main[section:]
-    main += '\n# Meituan mini-program section: ' + QX_SOURCE + 'WxPureDominion.snippet\n'
-    main += '\n[Map Local]\n' + '\n'.join(r['pattern']+' data-type=text data="{}" status-code=200 header="Content-Type:application/json"' for r in mini_mock) + '\n'
-    app_hosts = [h.strip() for h in re.search(r'hostname = %APPEND% (.*)', main)[1].split(',')]
-    combined_hosts = list(dict.fromkeys(app_hosts + hosts))
-    main = re.sub(r'hostname = %APPEND% .*', 'hostname = %APPEND% ' + ', '.join(combined_hosts), main, count=1)
-    outputs['Modules/Meituan.sgmodule'] = main
+    # WeChat mini-program stays independent from the original App rules.
+    mini = header('美团微信小程序净化', '微信内美团小程序的导航、推广及广告清理。', 'TG@ZenMoFiShi')
+    mini += '# Original rules: ' + QX_SOURCE + 'WxPureDominion.snippet\n'
+    mini += '\n[Script]\n' + '\n'.join(script_line(
+        f'MeituanMini-{i}', r, 'JS/MeituanMiniProgram.surge.js')
+        for i, r in enumerate(mini_scripts))
+    mini += '\n\n[Map Local]\n' + '\n'.join(
+        r['pattern'] + ' data-type=text data="{}" status-code=200 header="Content-Type:application/json"'
+        for r in mini_mock)
+    mini += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
+    outputs['Modules/MeituanMiniProgram.sgmodule'] = mini
     outputs['JS/MeituanMiniProgram.surge.js'] = ('// Original logic: '+QX_SOURCE+'MeiTuanNoAd.js\n'
                                                '// Only used by the two scoped Meituan mini-program response routes.\n'+texts['MeiTuanNoAd.js'])
     outputs.update(spdb_outputs(texts['pdxb.js']))

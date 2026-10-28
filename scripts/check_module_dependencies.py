@@ -21,6 +21,10 @@ def check(online=False):
         for item in json.loads(app_lock.read_text())['outputs']:
             entries[item['destination_path']] = item
     external = {item['url']: item for item in record['external_runtime_dependencies']}
+    # Original ZenmoFeiShi MT.js runtime dependency.
+    app_js = 'https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js'
+    external[app_js] = {'url': app_js, 'sha256': hashlib.sha256(
+        (ROOT / 'maintenance/apps/source/MT.js').read_bytes()).hexdigest()}
     dependencies = set()
     module_count = 0
     for entry in entries.values():

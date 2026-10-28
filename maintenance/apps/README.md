@@ -9,14 +9,14 @@
 | 输入 | 生成内容 |
 | --- | --- |
 | source/TxvideoAD.snippet、source/Txvideoad.js | 腾讯视频模块与 JS/Txvideoad.surge.js |
-| source/MT.snippet、source/MT.js、旧版“我的”页脚本 | 美团单模块（含网络拦截、页面脚本与微信小程序）、相关 JS |
-| source/MeituanMiniProgram.snippet、source/MeiTuanNoAd.js | 美团小程序处理脚本 |
+| source/MT.snippet、source/MT.js | 美团 App 原版 QX 直接转换 Surge，运行时使用原作者 JS |
+| source/MeituanMiniProgram.snippet、source/MeiTuanNoAd.js | 美团微信小程序独立模块及其 JS |
 | source/Didichuxing.snippet | 滴滴模块；使用原生 jq / Map Local，无 JS |
 | source/pdxb.js | 浦大喜奔模块与 JS/pdxb.surge.js |
 
 lock.json 记录输入和生成文件的哈希。模块入口及使用方式见[模块目录](../../Modules/README.md)。
 
-美团 App 的上游 SHARK、mQUIC、HTTPDNS 拦截与响应脚本已合并进 `Modules/Meituan.sgmodule`；单独的 `Meituan-Network-Compatibility.sgmodule` 不再生成。Surge 中已安装的旧订阅需要手动移除。上游同步版为基线，微信小程序和“我的”页扩展继续由本仓库维护。
+美团 App 直接转换 ZenmoFeiShi 的 `MT.snippet`：46 条网络规则、2 条 Rewrite、8 条原作者脚本、7 个 MITM 域名。引用原版 `MT.js`，不再合并历史“我的”页本地改写。微信小程序单独生成 `Modules/MeituanMiniProgram.sgmodule`，上游修改后须核对差异再更新。
 
 ## ▶️ 构建与检查
 
