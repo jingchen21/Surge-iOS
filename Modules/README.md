@@ -22,6 +22,7 @@
 | 微博 | 处理微博及国际版部分广告 | MITM、Scripting | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Weibo.sgmodule) |
 | 美团 App（怎么肥事 QX 直转） | 小团 AI、购物车顶部推广等 | 46 条网络规则、2 条 Rewrite、8 条原作者脚本 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) |
 | 美团微信小程序 | 微信里的美团小程序导航与广告清理 | 独立模块，按需启用 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/MeituanMiniProgram.sgmodule) |
+| 大众点评（精准去广告） | 过滤已知开屏和广告购物接口 | 仅匹配 `mapi.dianping.com` 两条路径；减少共享域名与正常资源误拦截，待 11.53.14 真机验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/DianPing-11.53.14-Full-AdBlock.sgmodule) |
 | 滴滴出行 | 精简部分个人中心、导航、推荐和钱包页面 | MITM、Rewrite；原生 jq 需 iOS 5.14.0+ / Mac 5.9.0+ | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) |
 | 高德地图 | 过滤开屏、首页、路线、搜索和打车页面的部分推广内容 | MITM、Map Local、Body Rewrite；尚未完成真机验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Amap-AdFilter.sgmodule) |
 | 携程旅行 | 开屏广告过滤、广告列表处理，并实验性隐藏“社区”“问AI”导航项 | 需 MITM `m.ctrip.com`；`getAdsList` / `getAppConfig` 规则未完成最新版真机验证，可能影响图片或页面配置 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Ctrip-AdFilter.sgmodule) |
@@ -36,6 +37,7 @@
 
 - **腾讯视频：** TencentVideo.sgmodule 与 TxvideoAD.sgmodule 内容相同，二选一。
 - **Google 重定向：** 主配置已内置，使用主配置时无需重复安装。
+- **大众点评：** 已从全量版调整为精准版；沿用原安装地址。规则只处理两个已知广告路径，不再拦截共用图片、IP、推送与大范围 MITM。若同时使用美团模块，请注意美团规则中的 `shark.dianping.com`、`shark-dp.meituan.com` 仍可能影响点评通信，模块名称不等于 App 隔离。
 - **美团模块切换：** Surge 只启用本仓库 `Meituan.sgmodule`，删除旧「美团网络兼容」订阅，并停用 muktsoen 或其他重复美团模块；小程序模块独立启用。请复测加载速度、AI、购物车、登录、下单、支付和扫码。
 - **模块验证：** 离线测试不代表当前 App 已通过真机验证。出现问题时，先停用最近添加的模块。
 - **脚本依赖：** 查看 [JS 脚本索引](../JS/README.md)；构建与检查方法见[维护说明](../maintenance/apps/README.md)。
