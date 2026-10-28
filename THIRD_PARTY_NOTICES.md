@@ -55,11 +55,12 @@
 用户上传 `pdxb.js`，文件未提供作者署名、公开来源或许可证。原文件保存在 `maintenance/apps/source/pdxb.js`，不虚构作者归属，也不以工具的 MIT 许可覆盖其来源。`JS/pdxb.surge.js` 为其 Surge 适配，改动和使用方法见 [浦大喜奔说明](docs/SPDB.md)；来源记录同时保留在代码注释中。
 
 
-## 携程温和去广告模块（2026-10-28）
+## 携程开屏去广告增强测试版（2026-10-28）
 
 - **文件：** `Modules/Ctrip-AdFilter.sgmodule`。
-- **参考来源：** [奶思 / fmz200/wool_scripts 的携程 Surge 模块](https://github.com/fmz200/wool_scripts/blob/main/Surge/module/split/partX/Ctrip.sgmodule)，感谢原作者及维护者。
-- **许可证：** 上游仓库发布 [GPL-3.0](https://github.com/fmz200/wool_scripts/blob/main/LICENSE)；此文件按其适用许可标记并保留来源与修改说明，不适用本仓库工具的 MIT 许可。
-- **修改范围：** AI 辅助整理为面向携程 iOS 8.87.4 的保守版本，仅保留两个明确广告路径；不启用可能导致图片缺失的 `tripAds` 与旧版更新提示相关拦截。
-- **状态：** 仅做正则离线匹配检查，尚未在携程 8.87.4 真机验证；不声明支持全部去广告场景。
+- **参考来源：** [奶思 / fmz200/wool_scripts 的携程 Surge 模块](https://github.com/fmz200/wool_scripts/blob/main/Surge/module/split/partX/Ctrip.sgmodule)。
+- **许可证：** 上游仓库发布 [GPL-3.0](https://github.com/fmz200/wool_scripts/blob/main/LICENSE)；模块保留原始来源、适用许可证与修改说明，不适用本仓库工具的 MIT 许可。
+- **修改范围：** 在此前的温和版基础上，针对携程 iOS 8.87.4 增加 `tripAds` 的 Map Local 响应处理及 `m.ctrip.com` MITM；将已知广告域名 `ma-adx.ctrip.com` 设为拒绝；继续过滤指定百度广告接口。
+- **风险：** 公开规则指出携程 8.47.0 以上版本拦截 `tripAds` 可能造成部分图片无法加载。MITM 针对 `m.ctrip.com` 整个主机开启，非仅解密匹配路径；若影响登录、酒店搜索、图片、订单或支付，需立即关闭模块。
+- **状态：** 此版本是未经过 iOS 8.87.4 真机验证的实验性配置，实际拦截效果需依靠 Surge 的请求日志验证。
 
