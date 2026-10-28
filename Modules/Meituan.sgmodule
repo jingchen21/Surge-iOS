@@ -1,9 +1,10 @@
-#!name=美团App 12.67.403
-#!desc=完整转换 ZenmoFeiShi 原版 QX 规则；含 46 条网络规则、2 条 Rewrite 和 8 条响应脚本。
+#!name=美团App 12.67.403 · 分类兼容修复
+#!desc=分类兼容修复：移除 5 条冲突 IP 拦截，保留其余 41 条规则、2 条 Rewrite 和 8 条原作者脚本。
 #!author=TG@ZenMoFiShi
 # Source: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet
 # Script: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.js
 # Source update: 2026.10.25
+# Local adaptation: remove five category-loading IP rejects; add no DIRECT overrides.
 
 [Rule]
 DOMAIN,shark-mt.meituan.com,REJECT,extended-matching
@@ -31,12 +32,8 @@ IP-CIDR,202.90.108.54/32,REJECT,no-resolve
 IP-CIDR,202.90.108.55/32,REJECT,no-resolve
 IP-CIDR,203.76.217.51/32,REJECT,no-resolve
 IP-CIDR,203.76.217.53/32,REJECT,no-resolve
-IP-CIDR,203.76.217.241/32,REJECT,no-resolve
-IP-CIDR,203.76.217.243/32,REJECT,no-resolve
 IP-CIDR,103.202.146.30/32,REJECT,no-resolve
 IP-CIDR,103.202.146.49/32,REJECT,no-resolve
-IP-CIDR,101.50.8.64/32,REJECT,no-resolve
-IP-CIDR,103.63.160.64/32,REJECT,no-resolve
 IP-CIDR,103.63.160.69/32,REJECT,no-resolve
 IP-CIDR,103.37.155.77/32,REJECT,no-resolve
 IP-CIDR,103.37.155.60/32,REJECT,no-resolve
@@ -46,7 +43,6 @@ IP-CIDR,121.37.4.167/32,REJECT,no-resolve
 IP-CIDR,119.29.126.219/32,REJECT,no-resolve
 IP-CIDR,106.55.217.56/32,REJECT,no-resolve
 IP-CIDR,103.37.152.224/32,REJECT,no-resolve
-IP-CIDR,119.29.48.215/32,REJECT,no-resolve
 IP-CIDR,42.193.128.160/32,REJECT,no-resolve
 IP-CIDR6,2405:1480:3000:303b::303b/128,REJECT,no-resolve
 IP-CIDR6,2405:1480:1000:3::1e/128,REJECT,no-resolve

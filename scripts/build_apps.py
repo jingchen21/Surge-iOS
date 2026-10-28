@@ -12,6 +12,16 @@ INPUT = ROOT / 'maintenance/apps/source'
 RAW = 'https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/'
 QX_SOURCE = 'https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/'
 
+# This connection group repeatedly hit REJECT during store category loading.
+# Keep the upstream snapshot intact; let the normal routing rules handle these IPs.
+MEITUAN_CLASSIFICATION_CONFLICTS = frozenset({
+    'IP-CIDR,203.76.217.241/32,REJECT,no-resolve',
+    'IP-CIDR,203.76.217.243/32,REJECT,no-resolve',
+    'IP-CIDR,101.50.8.64/32,REJECT,no-resolve',
+    'IP-CIDR,103.63.160.64/32,REJECT,no-resolve',
+    'IP-CIDR,119.29.48.215/32,REJECT,no-resolve',
+})
+
 
 def parse(text):
     metadata, rules, routes, hosts = {}, [], [], []
@@ -169,7 +179,7 @@ def planned_outputs():
         'Modules/TencentVideo.sgmodule': tencent,
         'Modules/TxvideoAD.sgmodule': tencent,
     }
-    # Direct QX-to-Surge conversion from ZenmoFeiShi; preserve all QX actions.
+    # Preserve upstream scripts and actions apart from the scoped category fix.
     metadata, rules, routes, hosts = parse(texts['MT.snippet'])
     scripts = [r for r in routes if r['action'] == 'script-response-body']
     rejects = [r for r in routes if r['action'] == 'reject']
@@ -177,12 +187,16 @@ def planned_outputs():
         raise ValueError('Unexpected ZenmoFeiShi QX rules; review conversion')
     if any(not (r['argument'] or '').endswith('/MT.js') for r in scripts):
         raise ValueError('Unexpected Meituan response script source')
-    app = header(metadata.get('name', '美团 App'),
-                 '完整转换 ZenmoFeiShi 原版 QX 规则；含 46 条网络规则、2 条 Rewrite 和 8 条响应脚本。',
+    if not MEITUAN_CLASSIFICATION_CONFLICTS.issubset(rules):
+        raise ValueError('Meituan category conflict rules changed; review the local adaptation')
+    rules = [r for r in rules if r not in MEITUAN_CLASSIFICATION_CONFLICTS]
+    app = header(metadata.get('name', '美团 App') + ' · 分类兼容修复',
+                 '分类兼容修复：移除 5 条冲突 IP 拦截，保留其余 41 条规则、2 条 Rewrite 和 8 条原作者脚本。',
                  metadata.get('author', ''))
     app += '# Source: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet\n'
     app += '# Script: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.js\n'
     app += '# Source update: ' + metadata.get('update', '') + '\n'
+    app += '# Local adaptation: remove five category-loading IP rejects; add no DIRECT overrides.\n'
     app += '\n[Rule]\n' + '\n'.join(
         r + ',extended-matching' if r.startswith('DOMAIN') else r for r in rules)
     app += '\n\n[URL Rewrite]\n' + '\n'.join(

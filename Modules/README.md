@@ -14,13 +14,13 @@
 
 ## 📱 应用模块
 
-**美团 App 直接从 [ZenmoFeiShi/Qx 的 MT.snippet](https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet) 转换 Surge**，完整保留 46 条网络拦截、2 条 Rewrite、8 条原作者 JS 与原始 MITM，不再采用 muktsoen 的二次转换版本。微信小程序单独安装。
+**美团 App 基于 [ZenmoFeiShi/Qx 的 MT.snippet](https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet) 转换并做分类加载兼容修复**：仅移除五条冲突 IP 拦截，保留其余 41 条网络规则、2 条 Rewrite、8 条原作者脚本及 MITM 范围；不添加独立 DIRECT 补丁。原始快照保留，微信小程序独立安装。[修复范围及验证状态](../docs/MEITUAN_CLASSIFICATION_FIX.md)。
 
 | 模块 | 用途 | 依赖 / 注意事项 | 安装 |
 | --- | --- | --- | --- |
 | 腾讯视频 | 处理开屏、贴片、暂停广告及部分页面 | MITM、Scripting；关联 Txvideoad.surge.js | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/TencentVideo.sgmodule) |
 | 微博 | 处理微博及国际版部分广告 | MITM、Scripting | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Weibo.sgmodule) |
-| 美团 App（怎么肥事 QX 直转） | 小团 AI、购物车顶部推广等 | 46 条网络规则、2 条 Rewrite、8 条原作者脚本 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) |
+| 美团 App（分类兼容修复） | 优先保留店铺分类加载；沿用原作者页面脚本 | 41 条网络规则、2 条 Rewrite、8 条原作者脚本；不保证小团与优惠券去除效果 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) |
 | 美团微信小程序 | 微信里的美团小程序导航与广告清理 | 独立模块，按需启用 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/MeituanMiniProgram.sgmodule) |
 | 大众点评（精准去广告） | 过滤已知开屏和广告购物接口 | 仅匹配 `mapi.dianping.com` 两条路径；减少共享域名与正常资源误拦截，待 11.53.14 真机验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/DianPing-11.53.14-Full-AdBlock.sgmodule) |
 | 滴滴出行 | 精简部分个人中心、导航、推荐和钱包页面 | MITM、Rewrite；原生 jq 需 iOS 5.14.0+ / Mac 5.9.0+ | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) |
@@ -38,7 +38,7 @@
 - **腾讯视频：** TencentVideo.sgmodule 与 TxvideoAD.sgmodule 内容相同，二选一。
 - **Google 重定向：** 主配置已内置，使用主配置时无需重复安装。
 - **大众点评：** 已从全量版调整为精准版；沿用原安装地址。规则只处理两个已知广告路径，不再拦截共用图片、IP、推送与大范围 MITM。若同时使用美团模块，请注意美团规则中的 `shark.dianping.com`、`shark-dp.meituan.com` 仍可能影响点评通信，模块名称不等于 App 隔离。
-- **美团模块切换：** Surge 只启用本仓库 `Meituan.sgmodule`，删除旧「美团网络兼容」订阅，并停用 muktsoen 或其他重复美团模块；小程序模块独立启用。请复测加载速度、AI、购物车、登录、下单、支付和扫码。
+- **美团模块切换：** Surge 只启用本仓库 `Meituan.sgmodule`，停用旧「美团网络兼容」、重复美团模块及独立分类 IP 直连补丁；小程序模块独立启用。分类兼容版已通过语法及手机实际配置检查，移除独立补丁后的店铺分类体验仍待复测；登录、下单、支付和扫码也需自行确认。
 - **模块验证：** 离线测试不代表当前 App 已通过真机验证。出现问题时，先停用最近添加的模块。
 - **脚本依赖：** 查看 [JS 脚本索引](../JS/README.md)；构建与检查方法见[维护说明](../maintenance/apps/README.md)。
 

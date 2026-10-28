@@ -9,14 +9,14 @@
 | 输入 | 生成内容 |
 | --- | --- |
 | source/TxvideoAD.snippet、source/Txvideoad.js | 腾讯视频模块与 JS/Txvideoad.surge.js |
-| source/MT.snippet、source/MT.js | 美团 App 原版 QX 直接转换 Surge，运行时使用原作者 JS |
+| source/MT.snippet、source/MT.js | 美团 App QX 转换及五条分类冲突规则适配，运行时使用原作者 JS |
 | source/MeituanMiniProgram.snippet、source/MeiTuanNoAd.js | 美团微信小程序独立模块及其 JS |
 | source/Didichuxing.snippet | 滴滴模块；使用原生 jq / Map Local，无 JS |
 | source/pdxb.js | 浦大喜奔模块与 JS/pdxb.surge.js |
 
 lock.json 记录输入和生成文件的哈希。模块入口及使用方式见[模块目录](../../Modules/README.md)。
 
-美团 App 直接转换 ZenmoFeiShi 的 `MT.snippet`：46 条网络规则、2 条 Rewrite、8 条原作者脚本、7 个 MITM 域名。引用原版 `MT.js`，不再合并历史“我的”页本地改写。微信小程序单独生成 `Modules/MeituanMiniProgram.sgmodule`，上游修改后须核对差异再更新。
+美团 App 转换 ZenmoFeiShi 的 `MT.snippet`，输入快照的 46 条规则原样保留。生成时仅排除已观察到与店铺分类加载冲突的五条 IP REJECT，输出 41 条规则；2 条 Rewrite、8 条原作者脚本和 7 个 MITM 域名保持一致，不添加 DIRECT 覆盖。差异在 `scripts/build_apps.py` 的 `MEITUAN_CLASSIFICATION_CONFLICTS` 显式维护，并有完整规则对比测试，防止重新构建恢复冲突。引用原版 `MT.js`，不合并历史“我的”页改写。详见[分类修复说明](../../docs/MEITUAN_CLASSIFICATION_FIX.md)。微信小程序独立生成；更新上游前须重新核对适配范围。
 
 ## ▶️ 构建与检查
 

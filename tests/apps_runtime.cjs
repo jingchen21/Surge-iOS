@@ -125,7 +125,7 @@ for (const body of [new Uint8Array([0, 1, 2]), new Uint8Array(), 'unexpected-tex
   assert.deepEqual(parity('https://i.video.qq.com/', {body}), {});
 }
 
-// Verify direct QX -> Surge mapping with no locally modified App JS.
+// Preserve QX conversion except the five category-loading rejects; App JS stays upstream.
 const core = fs.readFileSync(path.join(root,'Modules/Meituan.sgmodule'),'utf8');
 const qx = fs.readFileSync(path.join(root,'maintenance/apps/source/MT.snippet'),'utf8');
 const mapping = {host:'DOMAIN','host-wildcard':'DOMAIN-WILDCARD','host-suffix':'DOMAIN-SUFFIX','ip-cidr':'IP-CIDR','ip6-cidr':'IP-CIDR6'};
@@ -137,7 +137,17 @@ const expected = qx.split(/\r?\n/).map(line => {
 }).filter(Boolean);
 const actual = core.match(/\[Rule\]\n([\s\S]*?)\n\n\[URL Rewrite\]/)[1].split('\n');
 assert.equal(expected.length,46);
-assert.deepEqual(actual,expected);
+const categoryConflictRules = new Set([
+  'IP-CIDR,203.76.217.241/32,REJECT,no-resolve',
+  'IP-CIDR,203.76.217.243/32,REJECT,no-resolve',
+  'IP-CIDR,101.50.8.64/32,REJECT,no-resolve',
+  'IP-CIDR,103.63.160.64/32,REJECT,no-resolve',
+  'IP-CIDR,119.29.48.215/32,REJECT,no-resolve',
+]);
+assert.equal(expected.filter(rule=>categoryConflictRules.has(rule)).length,5);
+assert.equal(actual.length,41);
+assert.deepEqual(actual,expected.filter(rule=>!categoryConflictRules.has(rule)));
+assert.equal(actual.some(rule=>/,DIRECT(?:,|$)/.test(rule)),false);
 const unescapeQx = value => value.split('\\/').join('/');
 const qxRewrites = qx.split(/\r?\n/).filter(x=>/ url reject$/.test(x)).map(x=>unescapeQx(x.split(' url reject')[0])+' - reject');
 assert.equal(qxRewrites.length,2);
