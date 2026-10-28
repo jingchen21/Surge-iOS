@@ -73,7 +73,9 @@ http-response-jq (?i)^https?:\/\/haojia-api\.smzdm\.com\/ranking_list\/articles(
 http-response-jq (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/list_v\d+(?:\?.*)?$ 'if (.data.rows | type) == "array" then .data.rows |= map(select(.model_type? != "ads" and .article_tag? != "广告" and .tag? != "广告" and .left_tag? != "广告" and .expose_sct? != "广告" and .promotion_type? != 3)) else . end | if (.data.top_aladdin | type) == "array" then .data.top_aladdin |= map(select(has("ad") | not)) else . end'
 
 # 搜索发现/热榜/红包横幅与弹窗。
-http-response-jq (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags(?:\?.*)?$ 'del(.data.search_faxian, .data.tonglan, .data.hongbao) | if (.data.hot_tab | type) == "array" then .data.hot_tab |= map(select(.search_method != "热点主题榜")) else . end | if (.data.search_hot.home | type) == "array" then .data.search_hot.home |= map(select(.article_tag.article_title != "广告") | select(has("pos") and .pos != null)) else . end'
+http-response-jq (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags(?:\?.*)?$ 'del(.data.search_faxian, .data.tonglan, .data.hongbao) | if (.data.hot_tab | type) == "array" then .data.hot_tab |= map(select(.search_method != "热点主题榜")) else . end | if (.data.search_hot.home | type) == "array" then .data.search_hot.home |= map(select(.article_tag.article_title != "广告") | select(has("pos") and .pos != null and .pos != "" and .pos != 0)) else . end'
+# 搜索框默认热词：清空推荐词，保留搜索入口。
+http-response-jq (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/search_default_keyword(?:\?.*)?$ '.data = {"home":[{"keyword":"","show_search_word":"","source":"发现"}]}'
 
 # 百科列表：移除带有广告 banner 标识的条目。
 http-response-jq (?i)^https?:\/\/baike-api\.smzdm\.com\/home_v3\/list(?:\?.*)?$ 'if (.data.rows | type) == "array" then .data.rows |= map(select(((.ad_banner_id? // "") | tostring | length) == 0)) else . end'
@@ -110,8 +112,7 @@ http-response-jq (?i)^https?:\/\/(?:[^/]+\.)?zdmimg\.com\/cpm\/api\/v\d+\/advert
 # 详情页 Wiki/618 活动模块（该接口可能包含非广告内容；如需保留 Wiki，删除此条）。
 (?i)^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul(?:\?.*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
-# 搜索热词与搜索红包弹窗。
-(?i)^https?:\/\/s-api\.smzdm\.com\/sou\/search_default_keyword(?:\?.*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+# 搜索红包弹窗。
 (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/popup_coupon(?:\?.*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
 [MITM]
