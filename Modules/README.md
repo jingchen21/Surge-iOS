@@ -22,7 +22,6 @@
 | 美团网络兼容（可选） | 拦截部分 SHARK、mQUIC、HTTPDNS 通道 | 可能影响登录、下单、支付、扫码；仅在需要时启用 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan-Network-Compatibility.sgmodule) |
 | 滴滴出行 | 精简部分个人中心、导航、推荐和钱包页面 | MITM、Rewrite；原生 jq 需 iOS 5.14.0+ / Mac 5.9.0+ | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) |
 | 高德地图 | 过滤开屏、首页、路线、搜索和打车页面的部分推广内容 | MITM、Map Local、Body Rewrite；尚未完成真机验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Amap-AdFilter.sgmodule) |
-| 携程 | 拦截已知开屏广告及指定第三方广告接口 | 默认不对携程核心业务域名启用 MITM；尚未完成真机验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Ctrip-AdFilter.sgmodule) |
 | 中国移动 | 处理部分页面入口、底部导航和开屏广告 | MITM、Scripting；依赖仓库内 JS | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/ChinaMobile.sgmodule) |
 | 浦大喜奔 | 按图片素材实际尺寸拦截指定开屏图 | MITM、Scripting；参数是素材尺寸，不是屏幕分辨率 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule) |
 | 哈啰出行 | 移植部分广告与页面处理 | MITM、Scripting；尚未完成真实 App 验证 | [安装](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/HelloBike.sgmodule) |
