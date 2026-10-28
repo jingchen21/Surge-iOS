@@ -1,56 +1,83 @@
-# 独立模块
+# Surge 独立模块
 
-腾讯视频与美团的 [安装地址和使用说明](../docs/APPS.md) 单独维护，所需 JS 都在本仓库。美团的网络兼容模块是可选项。
+本目录收录可单独安装的 Surge 模块（`.sgmodule`），按用途分类，并提供安装入口、功能说明和使用注意事项。
 
-所有 `.sgmodule` 文件直接存放在本目录。应用模块的安装地址与依赖列在下方。
+**所有模块均为可选项，不会自动启用。** 安装前请先阅读对应说明；部分模块需要 MITM、Rewrite 或 Scripting。应用更新后，模块效果和兼容性可能发生变化。
 
-[Google-CN-Redirect.sgmodule](Google-CN-Redirect.sgmodule) 将 Google 中国域名重定向到对应的国际域名，保留原路径与查询参数。
+## 快速入口
 
-安装或查看原文：[Raw 链接](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Google-CN-Redirect.sgmodule)。
+- [应用模块详细说明](../docs/APPS.md)：功能范围、使用风险和已知限制
+- [模块关联脚本](../JS/README.md)：脚本文件、来源及依赖关系
+- [应用模块维护说明](../maintenance/apps/README.md)：输入快照、构建方式和检查命令
+- [第三方来源与许可](../THIRD_PARTY_NOTICES.md)：作者、来源和许可范围
 
-主模板已经内置相同重定向。使用主模板时无需安装此模块；它供其他配置单独使用。
+## 网络与通用
 
-HTTPS 重定向需要用户在本地配置并信任自己的 MITM CA，且开启对应能力。模块只追加必要 hostname，不包含证书，也不解密所有域名。
+### Google 中国域名重定向
 
-模块会覆盖或追加主配置内容，详情见 [Surge 模块文档](https://manual.nssurge.com/profile/module.html)。
+将 Google 中国域名重定向至对应的国际域名，并保留路径和查询参数。
 
-# 应用净化模块
+- **安装：** [Google-CN-Redirect.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Google-CN-Redirect.sgmodule)
+- **依赖：** URL Rewrite、MITM。
+- **注意：** 主配置 `Profiles/Surge-iPhone.conf` 已内置相同功能。使用主配置时无需重复安装；其他配置可单独使用此模块。
 
-腾讯视频现按本地快照维护，根目录入口及美团模块见 [应用模块说明](../docs/APPS.md)，以当前应用锁定文件和构建工具为准。
+## 应用净化
 
-从 [RoaycL/Surge](https://github.com/RoaycL/Surge) 同步北京时间 **2026-10-27** 的更新，以提交 [`1e0c7bd`](https://github.com/RoaycL/Surge/commit/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c) 为准。没有开启定时同步。
+### 视频与社交
 
-## 模块与依赖
+- **[腾讯视频净化](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/TencentVideo.sgmodule)**  
+  处理开屏、贴片、暂停广告及部分页面内容。需要 MITM 与 Scripting；关联脚本为 [Txvideoad.surge.js](../JS/Txvideoad.surge.js)。
 
-| 模块 | 模块原文 / 导入地址 | JS 依赖 |
-| --- | --- | --- |
-| 拼多多页面净化 | [Pinduoduo.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Pinduoduo.sgmodule) | 无；使用原生 Body Rewrite jq 与 Map Local |
-| 腾讯视频净化 | [TxvideoAD.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/TxvideoAD.sgmodule) | 已同步到本仓库 `JS/Txvideoad.surge.js` |
-| 微博与国际版净化 | [Weibo.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Weibo.sgmodule) | 已同步到本仓库 `JS/Weibo.surge.js` |
-| 黑料页面净化 | [hlwxx_remove_ads.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/hlwxx_remove_ads.sgmodule) | 已同步到本仓库 `JS/hlwxx_remove_ads.surge.js` |
-| 番茄小说静态规则 | [FanQieNovel.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/FanQieNovel.sgmodule) | 无；这是今天同步体系附带的静态来源，模块本体不是今天修改的 |
-| 滴滴出行净化 | [Didi.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) | 无；使用原生 jq / Map Local，输入快照已保存 |
-| 浦大喜奔开屏尺寸拦截 | [SPDB.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule) | `JS/pdxb.surge.js`；精确素材尺寸匹配，[18 Pro 配置说明](../docs/SPDB.md) |
-| 美团 App / 微信小程序 | [Meituan.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) | App 和小程序同一模块，关联的两个 JS 都在本仓库 |
-| 中国移动去广告 | [ChinaMobile.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/ChinaMobile.sgmodule) | `JS/ChinaMobile.surge.js`、`JS/ChinaMobile-request.surge.js`；个人快照自 muktsoen/SurgeRules，原 Loon 作者 ccyykk666 |
-| 哈啰出行净化 | [HelloBike.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/HelloBike.sgmodule) | `JS/easybike.surge.js`；个人快照自用户提供的 QX→Surge 移植，原作者 ZenmoFeiShi |
+- **[微博与国际版净化](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Weibo.sgmodule)**  
+  根据客户端 UA 处理微博相关广告内容。需要 MITM 与 Scripting；关联脚本为 [Weibo.surge.js](../JS/Weibo.surge.js)。
 
-前四个模块是今天实际新增或修改的模块。拼多多已经移除旧 JS，不能再把旧 `Pinduoduo.surge.js` 当成依赖。
+### 出行与生活服务
 
-腾讯、微博和黑料的脚本地址均为本仓库 Raw 地址。腾讯在本地快照上进行 Surge 正文 API 适配，其他快照保留原有处理逻辑。微博的多份子脚本已嵌入合并文件，不需要再额外安装各个原始 JS。
+- **[美团 App / 微信小程序净化](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule)**  
+  处理部分推荐内容、广告卡片、导航及“我的”页服务入口。需要 MITM、Rewrite 与 Scripting；关联脚本见 [JS 目录](../JS/README.md)。
 
-## 个人使用快照
+- **[美团网络兼容模块（可选）](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan-Network-Compatibility.sgmodule)**  
+  拦截部分 SHARK、mQUIC 与 HTTPDNS 通道。**这是独立的网络规则模块，不是常规去广告的必需项。** 仅在页面净化不生效且确有排查需要时考虑启用；可能影响登录、下单、支付、扫码或小程序功能。
 
-本目录按仓库所有者要求保存个人使用快照，原作者署名和来源注释保留。全部运行脚本均在本仓库，不依赖 RoaycL 的 `main` 分支继续提供 JS；原始来源、提交和哈希仍可追溯。
+- **[滴滴出行净化](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule)**  
+  精简部分个人中心、导航、推荐和钱包页面内容。使用 Surge 原生 Body Rewrite / Map Local，不依赖 JS；需要 MITM 与 Rewrite。原生 jq 处理要求 Surge iOS 5.14.0+ 或 Surge Mac 5.9.0+。
 
-## 使用边界
+- **[中国移动去广告](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/ChinaMobile.sgmodule)**  
+  处理部分页面入口、底部导航和开屏广告。需要 MITM 与 Scripting；关联脚本见 [JS/README.md](../JS/README.md)。
 
-这些是独立可选模块，没有自动加入主配置，也没有在 iPhone 上自动启用。请在 Surge 中按需安装，并避免同一 App 重复启用覆盖相同接口的模块。
+- **[浦大喜奔开屏拦截](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule)**  
+  按广告图片的实际像素尺寸拦截指定素材。需要 MITM 与 Scripting。模块参数中的宽、高是**图片素材尺寸，不是手机屏幕分辨率**；默认值为原样本尺寸，使用前请查看日志核实当前设备实际素材。
 
-需要正文改写的模块应开启对应 Rewrite / Scripting 能力，并在本地安装和信任自己的 MITM 证书。拼多多原生 jq 要求 Surge iOS 5.14.0+ / Mac 5.9.0+；仅域名拒绝的番茄小说不需要解密正文。
+- **[哈啰出行净化](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/HelloBike.sgmodule)**  
+  移植原有规则及部分页面处理，关联脚本为 [easybike.surge.js](../JS/easybike.surge.js)。需要 MITM 与 Scripting；当前转换尚未完成真实 App 环境验证，启用后请检查核心功能。
 
-微博及番茄的图标仍引用作者的外部素材，没有转载图标文件。原作者的适用范围与使用声明继续有效，详见 [同步与授权记录](../docs/ROAYCL_SYNC.md)。
+### 电商与阅读
 
-本地依赖与哈希检查、模拟响应测试通过，不代表已经完成当前 App 版本的真机去广告验证。腾讯视频上游也未承诺解决所有开屏广告漏拦截。
+- **[拼多多页面净化](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Pinduoduo.sgmodule)**  
+  使用原生 Body Rewrite / Map Local 处理页面布局，不依赖 JS；需要 MITM。原生 jq 处理要求 Surge iOS 5.14.0+ 或 Surge Mac 5.9.0+。
 
-所有模块现直接放在 `Modules/`，不再设应用或作者子文件夹。使用旧子目录地址安装的模块，请替换为本页地址；原有腾讯视频和美团入口不变。
+- **[番茄小说去广告](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/FanQieNovel.sgmodule)**  
+  通过静态域名规则拦截部分广告请求，不包含正文解密脚本，也不需要为此模块单独添加 MITM 主机。
+
+### 网站内容处理
+
+- **[黑料不打烊页面净化](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/hlwxx_remove_ads.sgmodule)**  
+  处理指定网站的部分广告请求与页面内容。需要 MITM 与 Scripting；关联脚本为 [hlwxx_remove_ads.surge.js](../JS/hlwxx_remove_ads.surge.js)。
+
+## 使用前请确认
+
+1. **先安装单个模块，再验证效果。** 不建议一次性启用多个会处理相同 App 或相同请求的模块。
+2. **按模块要求配置 MITM。** 需要 HTTPS 正文处理的模块，应在自己的设备上生成、安装并信任个人 MITM 证书；证书和私钥不随本仓库分发。仅为模块所需的主机启用解密。
+3. **注意重复模块。** `TencentVideo.sgmodule` 与 `TxvideoAD.sgmodule` 内容相同，二选一即可，勿同时启用。主配置已内置 Google 中国域名重定向，使用主配置时也不要重复安装 Google 模块。
+4. **网络兼容模块需谨慎。** 美团网络兼容模块会拦截部分网络通道；启用后应检查登录、下单、支付、扫码和小程序等核心功能。出现异常时先停用该模块排查。
+5. **离线测试不等于真机验收。** 语法检查、依赖检查和模拟响应测试只能验证相应范围，不能保证当前 App 版本中的所有广告都能拦截，也不能保证所有功能完全兼容。
+6. **尊重原作者声明。** 部分模块和脚本来自第三方或用户提供的快照。使用与再分发前，请查看 [第三方来源与许可说明](../THIRD_PARTY_NOTICES.md)。
+
+## 维护与排查
+
+- 查看各模块使用方式与风险：[docs/APPS.md](../docs/APPS.md)
+- 查看脚本与模块的对应关系：[JS/README.md](../JS/README.md)
+- 重新构建和检查应用模块：[maintenance/apps/README.md](../maintenance/apps/README.md)
+- 检查公开文件是否包含敏感信息：在仓库根目录运行 `python3 scripts/check_public.py`
+
+反馈问题时，请注明 Surge 版本、目标 App 版本和模块名称，并提供去除订阅地址、节点凭据、令牌、证书及个人请求数据后的最小复现信息。
