@@ -55,12 +55,12 @@
 用户上传 `pdxb.js`，文件未提供作者署名、公开来源或许可证。原文件保存在 `maintenance/apps/source/pdxb.js`，不虚构作者归属，也不以工具的 MIT 许可覆盖其来源。`JS/pdxb.surge.js` 为其 Surge 适配，改动和使用方法见 [浦大喜奔说明](docs/SPDB.md)；来源记录同时保留在代码注释中。
 
 
-## 携程开屏去广告增强测试版（2026-10-28）
+## 携程去广告及导航精简实验版（2026-10-28）
 
 - **文件：** `Modules/Ctrip-AdFilter.sgmodule`。
-- **参考来源：** [奶思 / fmz200/wool_scripts 的携程 Surge 模块](https://github.com/fmz200/wool_scripts/blob/main/Surge/module/split/partX/Ctrip.sgmodule)。
-- **许可证：** 上游仓库发布 [GPL-3.0](https://github.com/fmz200/wool_scripts/blob/main/LICENSE)；模块保留原始来源、适用许可证与修改说明，不适用本仓库工具的 MIT 许可。
-- **修改范围：** 在此前的温和版基础上，针对携程 iOS 8.87.4 增加 `tripAds` 的 Map Local 响应处理及 `m.ctrip.com` MITM；将已知广告域名 `ma-adx.ctrip.com` 设为拒绝；继续过滤指定百度广告接口。
-- **风险：** 公开规则指出携程 8.47.0 以上版本拦截 `tripAds` 可能造成部分图片无法加载。MITM 针对 `m.ctrip.com` 整个主机开启，非仅解密匹配路径；若影响登录、酒店搜索、图片、订单或支付，需立即关闭模块。
-- **状态：** 此版本是未经过 iOS 8.87.4 真机验证的实验性配置，实际拦截效果需依靠 Surge 的请求日志验证。
-
+- **个人用途与 AI 辅助：** 该模块用于个人自用，非携程官方模块；本次扩展由 AI 辅助编辑，尚未完成携程当前版本的端到端真机验证。
+- **主要来源：** [奶思 / fmz200/wool_scripts 的携程 Surge 模块](https://github.com/fmz200/wool_scripts/blob/main/Surge/module/split/partX/Ctrip.sgmodule)，上游仓库发布 [GPL-3.0](https://github.com/fmz200/wool_scripts/blob/main/LICENSE)。保留来源、修改说明及适用许可，不将本仓库许可证覆盖上游内容。
+- **广告接口参考：** [blackmatrix7/ios_rule_script 的 AdvertisingLite Surge 规则](https://github.com/blackmatrix7/ios_rule_script/blob/master/rewrite/Surge/AdvertisingLite/AdvertisingLite.sgmodule) 用于核对公开的 `getAdsList` 接口线索；本模块未整体复制其规则文件。上游仓库标注 GPL-2.0，若后续直接移植其具体规则正文，应另行核对文件级许可及兼容性。
+- **本次修改：** 保留已验证生效的 `tripAds` Map Local 规则和 `ma-adx.ctrip.com` 拦截；新增 `getAdsList` 空 JSON 响应；新增实验性 `getAppConfig` JSON 处理，尝试从常见导航数组中移除标签为“社区”或“问AI”的条目。
+- **导航规则限制：** 只有当服务器确实通过匹配到的 `getAppConfig` 响应提供对应导航数组时，规则才可能生效；如果入口写死在 App 内，Surge 无法仅靠此规则移除。当前没有真实响应样本证明该接口包含这些入口。
+- **风险与状态：** `getAdsList` 可能影响部分推广位或图片加载；`getAppConfig` 的响应改写可能影响页面配置。模块需要 MITM `m.ctrip.com`，若登录、酒店/机票搜索、图片、订单或支付异常，应立即停用。开屏规则已有用户实测反馈，其余新增规则尚待验证。
