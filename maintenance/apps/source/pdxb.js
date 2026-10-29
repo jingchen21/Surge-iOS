@@ -1,16 +1,16 @@
 // ======================================================
-// 浦大喜奔开屏广告尺寸拦截
+// SPDB splash ad image dimension filter
 //
 //
-// 目标：
-// 仅拦截实际分辨率为 1125 x 1931 的图片,非苹果17手机自行修改分辨率,否则不生效.
+// Goal:
+// Match images by actual dimensions. The original sample is 1125 x 1931; do not infer dimensions from the phone model.
 //
-// 支持：
+// Supported formats:
 // JPEG / JPG / PNG / GIF
 //
-// 其他尺寸、其他格式全部放行
+// Pass through all other dimensions and formats.
 //
-// 必须配合：
+// Required setup:
 // requires-body=true
 // binary-body-mode=true
 // max-size=0
@@ -21,7 +21,7 @@ const TARGET_HEIGHT = 1931;
 
 
 // ==========================
-// 读取大端 32 位整数
+// Read a big-endian 32-bit integer
 // ==========================
 
 function readBE32(bytes, offset) {
@@ -132,7 +132,7 @@ function getJPEGSize(bytes) {
 
         const marker = bytes[pos++];
 
-        // 无长度字段的 Marker
+        // Marker without a length field
         if (
             marker === 0xD8 ||
             marker === 0xD9 ||
@@ -197,26 +197,26 @@ function getJPEGSize(bytes) {
 
 
 // ==========================
-// 主逻辑
+// Main logic
 // ==========================
 
 try {
 
     console.log("[SPDB] =========================");
-    console.log("[SPDB] 脚本进入");
+    console.log("[SPDB] Script started");
     console.log("[SPDB] URL = " + $request.url);
 
     const body = $response.body;
 
     console.log(
-        "[SPDB] Body类型 = " +
+        "[SPDB] Body type = " +
         Object.prototype.toString.call(body)
     );
 
     if (!(body instanceof Uint8Array)) {
 
         console.log(
-            "[SPDB] ❌ Body不是Uint8Array → 放行"
+            "[SPDB] Body is not a Uint8Array -> PASS"
         );
 
         $done({});
@@ -224,7 +224,7 @@ try {
     } else {
 
         console.log(
-            "[SPDB] Body大小 = " +
+            "[SPDB] Body size = " +
             body.length +
             " bytes"
         );
@@ -237,7 +237,7 @@ try {
         if (!info) {
 
             console.log(
-                "[SPDB] 未识别图片格式 → 放行"
+                "[SPDB] Unrecognized image format -> PASS"
             );
 
             $done({});
@@ -245,7 +245,7 @@ try {
         } else {
 
             console.log(
-                "[SPDB] 图片 = " +
+                "[SPDB] Image = " +
                 info.type +
                 " " +
                 info.width +
@@ -259,25 +259,25 @@ try {
             ) {
 
                 console.log(
-                    "[SPDB] ★★★ 命中开屏广告 " +
+                    "[SPDB] *** Splash ad matched " +
                     TARGET_WIDTH +
                     "x" +
                     TARGET_HEIGHT +
                     " → HARD DROP ★★★"
                 );
 
-                // 直接终止响应
-                // 不向 App 返回原始广告图片
+                // Abort the response directly
+                // Do not return the original ad image to the app
                 $done();
 
             } else {
 
                 console.log(
-                    "[SPDB] 正常图片 " +
+                    "[SPDB] Normal image " +
                     info.width +
                     "x" +
                     info.height +
-                    " → 放行"
+                    " -> PASS"
                 );
 
                 $done({});
@@ -292,6 +292,6 @@ try {
         error
     );
 
-    // 出错默认放行
+    // Pass through by default on errors
     $done({});
 }

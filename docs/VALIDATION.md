@@ -1,33 +1,33 @@
-# 验证记录
+# Validation record
 
-核对日期：2026-10-27。
+Last reviewed: 2026-10-27.
 
-本页记录初始公开配置的验证；后来导入的 RoaycL 模块及关联 JS，另见 [同步记录](ROAYCL_SYNC.md)，不与原配置的验证范围混用。
+This page records validation of the initial public profile. The later RoaycL modules and associated JavaScript are covered separately in the [sync record](ROAYCL_SYNC.md) and are not included in the original profile's validation scope.
 
-## 已完成
+## Completed checks
 
-- 公开主配置已通过本机 Surge CLI 的离线语法检查，结果为 `OK`。
-- 私密内容仅写入仓库外的本地覆盖文件；原始配置未修改。
-- 初始公开模板与对应覆盖文件恢复后，与原配置的 764 条有效配置行一致。比较忽略注释、空行以及逗号后的空白，不是逐字节比较。
-- 已对整个公开目录执行通用隐私检查，以及与原始文件中的节点名、服务器、密码、密钥、证书材料和未审核 URL 的本地比对。检查没有输出命中值。
-- 68 个公开的规则或 GeoIP 资源链接在本次检查时返回 HTTP 200 或 206。检查读取资源头部以核对可访问性和部分署名，不代表完整下载、规则内容验证或长期可用性保证。
-- 已核对来源仓库的根目录许可文件及部分运行时文件头，并记录仓库级许可与文件级许可的差别。
+- The public profile passed the local Surge CLI offline syntax check with an OK result.
+- Private content was written only to a local overlay outside the repository; the original profile was not modified.
+- After restoring the initial public template with its matching overlay, the 764 effective configuration lines matched the original profile. The comparison ignored comments, blank lines, and whitespace after commas; it was not a byte-for-byte comparison.
+- The entire public directory was checked for common secrets and compared locally against node names, servers, passwords, keys, certificate material, and unreviewed URLs from the original file. No matching values were printed.
+- At the time of review, 68 public rule or GeoIP resource URLs returned HTTP 200 or 206. The check inspected response headers to verify availability and some attribution; it did not download every resource or validate rule contents, nor does it guarantee future availability.
+- Repository-level license files and selected runtime file headers were reviewed. Differences between repository-wide and file-specific license terms were recorded.
 
-## 公开模板的差异
+## Differences in the public template
 
-1. 节点与家庭隧道被移除，固定节点变为默认 REJECT 的占位策略。尚未填入节点时，相关代理流量无法连接。
-2. 地区组保留节点名称正则；不同订阅的名称可能不匹配，需要自行调整。`AllServer` 已去除原提供商特定的前缀过滤。
-3. 家庭专用规则与个人手工例外不在公开模板中。它们只通过本地覆盖文件恢复。
-4. 内嵌 AI/Meta 规则快照没有转载。公开模板改用 Sukka 的在线 AI 规则，匹配范围与原快照不同，并会随上游变化。
-5. 47 处第三方图标引用已移除。MITM 证书不随模板分发，独立 Google 重定向模块需自行配置本地 CA。
-6. 未审核的自定义测试 URL 改为公开的 Apple 连通性测试地址；本地恢复时仍使用原值。
+1. Nodes and the home tunnel were removed. Fixed-node policies became placeholders that default to REJECT; related traffic cannot connect until nodes are configured.
+2. Region groups retain node-name regular expressions. Names from other subscriptions may not match and may need adjustment. The provider-specific prefix filter was removed from AllServer.
+3. Home-only rules and personal manual exceptions are not in the public template. They are restored only through the local overlay.
+4. Embedded AI/Meta rule snapshots were not copied. The public template uses Sukka's online AI rules, whose match scope differs from the snapshot and changes with upstream updates.
+5. Forty-seven third-party icon references were removed. MITM certificates are not distributed; the standalone Google redirect module requires a local CA.
+6. An unreviewed custom test URL was replaced with a public Apple connectivity-test URL. The local restore still uses the original value.
 
-## 尚未证明
+## Not verified
 
-没有把公开模板导入或应用到正在使用的 iPhone，没有验证真实 App 的规则命中、脚本去广告效果、Apple AI 可用性、账户地区或家庭远程隧道。
+The public template has not been imported into or applied to the active iPhone. Real-app rule matches, script ad filtering, Apple AI availability, account region, and the home remote tunnel have not been verified.
 
-提供的原始配置不含 `[Script]` 段，因此无法据此完成已安装模块的源码或授权核验。
+The supplied original profile did not contain a Script section, so the source or licensing of modules installed separately on the phone could not be fully audited from that file.
 
-本次检查使用的本机 Surge 解析器与 iPhone 的版本和运行环境可能不同。离线语法通过不能代替手机端验证。
+The local Surge parser may differ from the version and runtime environment on the iPhone. Passing offline syntax checks does not replace device testing.
 
-公开文件发布至 [jingchen21/Surge-iOS](https://github.com/jingchen21/Surge-iOS)。原始配置、私密覆盖文件和完整运行配置不随公开仓库分发。发布仓库不代表已经在 iPhone 上应用或完成真实业务验证。
+Public files are published at [jingchen21/Surge-iOS](https://github.com/jingchen21/Surge-iOS). The original profile, private overlay, and complete runtime configuration are not distributed. Publication does not mean that the profile has been applied to an iPhone or verified in real app workflows.

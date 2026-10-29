@@ -1,5 +1,5 @@
 #!name=Google CN Redirect
-#!desc=将 Google 中国域名重定向至对应国际域名；需本地 MITM CA。主模板已内置，二选一使用。
+#!desc=Redirect Google China domains to their international equivalents. A local MITM CA is required. This is already included in the main profile; use only one.
 
 [URL Rewrite]
 ^https?:\/\/(?:ditu|maps)\.google\.cn(.*)$ https://maps.google.com$1 302

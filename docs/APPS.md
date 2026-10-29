@@ -1,45 +1,46 @@
-# 应用模块
+# App modules
 
-这些是自用的独立可选模块。安装地址及所需 JS 都指向本仓库，没有把手机原始配置、节点或证书放进来。
+These optional modules are maintained for personal use. Their installation URLs and required JavaScript point to this repository. The original phone profile, proxy nodes, and certificates are not included.
 
-## 安装地址
+## Installation links
 
-| 模块 | 原文 / Surge 模块地址 | 使用方式 |
+| Module | Surge module URL | How to use it |
 | --- | --- | --- |
-| 腾讯视频 | [TencentVideo.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/TencentVideo.sgmodule) | 单独启用，需要 MITM 和 Scripting |
-| 美团 App / 小程序净化 | [Meituan.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) | App 与小程序在同一模块，需要 MITM、Scripting 和 Rewrite |
-| 美团网络兼容 | [Meituan-Network-Compatibility.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan-Network-Compatibility.sgmodule) | 可选；页面脚本不命中时再考虑与页面模块配合 |
-| 浦大喜奔 | [SPDB.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule) | 精确图片尺寸匹配；[参数与 18 Pro 核对方法](SPDB.md) |
-| 滴滴出行 | [Didi.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) | 原生 jq/Map Local，无 JS 依赖；需要 MITM 和 Rewrite |
+| Tencent Video | [TencentVideo.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/TencentVideo.sgmodule) | Enable separately; requires MITM and Scripting |
+| Meituan app / mini-program cleanup | [Meituan.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Meituan.sgmodule) | App and mini-program rules are in the same module; requires MITM, Scripting, and Rewrite |
+| SPDB app | [SPDB.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule) | Matches exact image dimensions; see [parameter and iPhone 18 Pro notes](SPDB.md) |
+| Didi | [Didi.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Didi.sgmodule) | Native jq / Map Local; no JS dependency; requires MITM and Rewrite |
 
-MITM CA 仍在自己的设备本地生成、安装和信任，不随模块分发。腾讯视频的 `TencentVideo.sgmodule` 与 `TxvideoAD.sgmodule` 内容相同，不要同时启用。所有模块直接放在 `Modules/`；使用旧子目录地址安装的模块需替换为新地址。
+The former Meituan network-compatibility module is not included in the current public file set. Do not use an old installation URL unless you have a verified local copy.
 
-## 腾讯视频
+Generate, install, and trust your MITM CA on your own device. It is not distributed with the modules. TencentVideo.sgmodule and TxvideoAD.sgmodule are identical; enable only one. All modules live directly in Modules/. Replace old installation URLs that pointed to a former subdirectory.
 
-已核对 2026-10-27 17:14 的源码版本。之前保存的 JS 已经包含这次新增的暂停广告命令和信息流处理，本次没有虚构一个尚不存在的新版本；现在可从仓库内的快照离线重新生成 Surge 适配。
+## Tencent Video
 
-已保留暂停广告、前贴/中插、开屏、底栏和页面处理逻辑。模拟测试专门检查纯广告信息流可以删除，混合正常内容的模块不被整块删除；gzip、JCE 和 AB 配置仍通过二进制适配。实际当前 App 的开屏与视频广告效果未做真机证明。
+The source snapshot was checked against the version from 2026-10-27 at 17:14. The saved JavaScript already includes the pause-ad command and feed handling from that update. No nonexistent new version was invented; the Surge adaptation can be rebuilt offline from the local source snapshot.
 
-## 美团
+Pause ads, pre-roll/mid-roll ads, splash ads, bottom-bar cleanup, and page handling are retained. Simulated tests verify that ad-only feed modules can be removed without deleting mixed modules containing normal content. Gzip, JCE, and AB responses remain supported by the binary-response adaptation. The current app's real-world splash and video-ad behavior has not been verified on a device.
 
-按 `12.67.403` 的八类接口整理：底栏、两种推荐流、个人中心、默认搜索词、热词推荐、AI 技能、购物车顶部横幅和启动图。另外已从历史版恢复“我的”页六类服务入口精简，并与当前版本的推荐区移除合入同一个响应处理脚本。未知接口或异常 JSON 原样放行，不改登录、支付或扫码接口。
+## Meituan
 
-页面模块没有 SHARK / mquic / HTTPDNS 和整组 IP 的拒绝规则。网络兼容模块会主动拦截这些通道，可能影响业务或使请求回退到其他通道；启用后需实际检查登录、下单、支付、扫码和小程序。若不正常，可单独关掉网络兼容模块排查。
+The module covers eight endpoint categories based on version 12.67.403: bottom navigation, two recommendation feeds, profile page, default search terms, hot-word suggestions, AI skills, the cart banner, and the startup image. Six service-entry categories from the historical Me page have also been restored and merged with the current recommendation cleanup in one response handler. Unknown endpoints and unexpected JSON are passed through unchanged. Login, payment, and QR-code endpoints are not modified.
 
-参考转换中列为“未转换”的两条 URL 拦截已补入网络兼容模块。它们大多已有域名/IP 规则覆盖，但这里保留完整的规则语义。JS 已保存到本仓库，不从外部脚本地址实时加载。
+The page module does not reject SHARK, mquic, HTTPDNS, or entire IP groups. The optional network-compatibility module blocks these channels and may affect business functions or force requests to fall back to another channel. After enabling it, test login, ordering, payment, QR scanning, and mini-program flows. Disable that compatibility module first if problems occur.
 
-完整的新旧功能逐项对照、历史文件和小程序相关处理见 [美团审查记录](MEITUAN_AUDIT.md)。原作者 README 的“真机验证”标签不代表本仓库的 Surge 转换也已经经过真机验证。
+Two URL blocks marked “not converted” in the source comparison were added to the network-compatibility module. Most were already covered by domain or IP rules, but their original semantics are retained. JavaScript is stored in this repository rather than loaded from an external script URL at runtime.
 
-`MeiTuanNoAd.js` 的“美团相关处理”已追查到微信美团小程序的两个触发接口，并合入同一份 `Meituan.sgmodule`，无需再安装小程序模块。它处理“首页 / 神券 / 我的”、一分购及部分广告/钱包区域；相关影响与来源范围见审查记录。两个 JS 各自只匹配明确的 App 或小程序接口，未使用泛用的全域名匹配。
+See the [Meituan audit](MEITUAN_AUDIT.md) for the old/new feature comparison, historical files, and mini-program behavior. The original author's “real-device tested” label does not mean that this Surge port has been tested on a real device.
 
-## 滴滴出行
+The former MeiTuanNoAd.js handling for the Meituan WeChat mini program was traced to two trigger endpoints and merged into Modules/Meituan.sgmodule. No separate mini-program module is required. It handles the Home / Coupons / Me navigation, one-cent purchase, and selected ad/wallet areas. The two scripts match only their specific app or mini-program endpoints rather than every request on a broad domain.
 
-保存了 16 条原始域名/IP 拦截、12 条空 JSON 返回，以及 12 条原生 jq 正文处理，涵盖个人中心、导航、推荐、行程页与钱包页面精简。原始模块没有 JS，因此这里也没有额外的运行脚本或外部依赖。
+## Didi
 
-jq 语法需要 Surge iOS 5.14.0+ / Mac 5.9.0+。转换保留正常响应的原始处理语义，并在缺少 data 或表达式遇到未知结构时报错时保留原 JSON。它仍会按原规则精简部分钱包/金融入口，并包含网关和固定 IP 拦截；请实际检查叫车、行程、支付和钱包，不正常时先关闭模块。
+The module retains 16 original domain/IP blocks, 12 empty-JSON responses, and 12 native jq response transformations. These simplify selected profile, navigation, recommendation, trip, and wallet areas. The original module did not use JavaScript, so no additional runtime script or external dependency was introduced.
 
-## 检查与维护
+Native jq requires Surge iOS 5.14.0+ or Surge Mac 5.9.0+. The adaptation preserves the original response when data is missing or an expression encounters an unknown structure. It still simplifies selected wallet/finance entries and contains gateway and fixed-IP blocks. Test rides, trip details, payment, and wallet functions; disable the module if they fail.
 
-41 组腾讯/美团模拟用例及 48 组滴滴原生 jq 用例通过。模块另经本机 Surge 离线解析；这些检查不等于真机验收。
+## Checks and maintenance
 
-日后继续用 AI 修改时，参见 [应用模块维护](../maintenance/apps/README.md)。所有源快照、JS 和适配工具已在仓库内保存。
+41 Tencent/Meituan simulated cases and 48 native Didi jq cases pass. The modules also passed local offline Surge parsing. These checks are not equivalent to real-device acceptance.
+
+For future AI-assisted changes, see [App module maintenance](../maintenance/apps/README.md). Source snapshots, JavaScript, and adaptation tools are stored in this repository.

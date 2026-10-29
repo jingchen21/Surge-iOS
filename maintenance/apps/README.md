@@ -1,28 +1,28 @@
-# 🛠️ 应用模块维护
+# 🛠️ App module maintenance
 
-模块、JS、源快照和构建工具均保存在本仓库，可在本地重新生成。此目录主要供维护者修改和检查模块。
+Modules, JavaScript, source snapshots, and build tools are stored in this repository and can be regenerated locally. This directory is intended for maintainers who edit and validate modules.
 
-> **个人自用 / AI 辅助：** 本维护流程服务于个人配置。部分代码、构建辅助内容和文档使用 AI 辅助编辑或生成；构建成功不等于已完成真实 App 环境验证，修改后仍需检查代码、功能和来源许可。
+> **Personal use and AI assistance:** Some code, build helpers, and documentation were generated or edited with AI assistance. A successful build does not prove real-app behavior. Review code, functionality, attribution, and licensing after every change.
 
-## 📂 文件关系
+## 📂 File relationships
 
-| 输入 | 生成内容 |
+| Input | Generated output |
 | --- | --- |
-| source/TxvideoAD.snippet、source/Txvideoad.js | 腾讯视频模块与 JS/Txvideoad.surge.js |
-| source/MT.snippet、source/MT.js | 美团 App QX 转换及五条分类冲突规则适配，运行时使用原作者 JS |
-| source/MeituanMiniProgram.snippet、source/MeiTuanNoAd.js | 美团微信小程序独立模块及其 JS |
-| source/Didichuxing.snippet | 滴滴模块；使用原生 jq / Map Local，无 JS |
-| source/pdxb.js | 浦大喜奔模块与 JS/pdxb.surge.js |
+| source/TxvideoAD.snippet and source/Txvideoad.js | Tencent Video module and JS/Txvideoad.surge.js |
+| source/MT.snippet and source/MT.js | Meituan app conversion with five conflicting category-loading IP rules excluded; runtime uses the original author JS |
+| source/MeituanMiniProgram.snippet and source/MeiTuanNoAd.js | Separate Meituan WeChat mini-program module and its JS |
+| source/Didichuxing.snippet | Didi module using native jq / Map Local; no JS |
+| source/pdxb.js | SPDB module and JS/pdxb.surge.js |
 
-lock.json 记录输入和生成文件的哈希。模块入口及使用方式见[模块目录](../../Modules/README.md)。
+lock.json records input and generated-file hashes. See the [module index](../../Modules/README.md) for installation and usage.
 
-美团 App 转换 ZenmoFeiShi 的 `MT.snippet`，输入快照的 46 条规则原样保留。生成时仅排除已观察到与店铺分类加载冲突的五条 IP REJECT，输出 41 条规则；2 条 Rewrite、8 条原作者脚本和 7 个 MITM 域名保持一致，不添加 DIRECT 覆盖。差异在 `scripts/build_apps.py` 的 `MEITUAN_CLASSIFICATION_CONFLICTS` 显式维护，并有完整规则对比测试，防止重新构建恢复冲突。引用原版 `MT.js`，不合并历史“我的”页改写。详见[分类修复说明](../../docs/MEITUAN_CLASSIFICATION_FIX.md)。微信小程序独立生成；更新上游前须重新核对适配范围。
+The Meituan app module converts ZenmoFeiShi's MT.snippet. All 46 rules from the input snapshot are retained in the source. The build excludes only five IP REJECT rules observed to conflict with store-category loading, producing 41 network rules. Two Rewrite rules, eight original-author scripts, and seven MITM hostnames remain unchanged; no DIRECT override is added. The exclusions are explicitly maintained in MEITUAN_CLASSIFICATION_CONFLICTS in scripts/build_apps.py and covered by rule-comparison tests. The original MT.js is referenced; the historical Me-page rewrite is not merged. See the [category compatibility notes](../../docs/MEITUAN_CLASSIFICATION_FIX.md). The mini-program module is generated separately, and the adaptation scope must be reviewed before updating upstream sources.
 
-## ▶️ 构建与检查
+## ▶️ Build and validate
 
-环境要求：Python 3.9+、Node.js 18+、jq。
+Requirements: Python 3.9+, Node.js 18+, and jq.
 
-在仓库根目录执行：
+Run from the repository root:
 
 ~~~sh
 python3 scripts/build_apps.py
@@ -34,24 +34,24 @@ python3 scripts/check_module_dependencies.py
 python3 scripts/check_public.py
 ~~~
 
-构建不会自动联网、下载上游更新或推送到 GitHub。若检查失败，先查看报错并核对源文件，不要直接忽略。
+The build does not automatically access the network, download upstream updates, or push to GitHub. If a check fails, inspect the error and review the source files instead of ignoring it.
 
-## ✏️ 修改原则
+## ✏️ Editing rules
 
-1. 页面处理逻辑优先修改 maintenance/apps/source/ 中的源文件。
-2. 模块规则与参数在对应的 .snippet 中维护。
-3. 生成逻辑修改 scripts/build_apps.py。
-4. 修改后重新构建并运行上面的检查。
-5. 更新上游内容前先核对来源、版本、差异与许可。
+1. Prefer editing source files under maintenance/apps/source/ for page-handling logic.
+2. Maintain module rules and arguments in the corresponding .snippet files.
+3. Change generation logic in scripts/build_apps.py.
+4. Rebuild and run the checks above after editing.
+5. Verify source, version, diff, and license before updating upstream content.
 
-不要只修改生成后的 JS 再运行构建，否则改动可能被源快照覆盖。
+Do not edit only the generated JS and then rebuild; the build may overwrite those changes with the source snapshot.
 
-## ⚠️ 验证边界
+## ⚠️ Verification limits
 
-自动测试和离线解析只能证明已覆盖的测试场景，不代表当前版本的 iPhone App 已完成真机验证。上线前仍需检查登录、下单、支付、扫码等核心功能。
+Automated tests and offline parsing prove only the scenarios they cover. They do not prove that the current iPhone app version has been tested on a real device. Before regular use, verify login, ordering, payment, QR scanning, and other critical flows.
 
-## 🙏 作者鸣谢与版权声明
+## 🙏 Attribution and copyright
 
-感谢 [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx)、[RoaycL/Surge](https://github.com/RoaycL/Surge)、[muktsoen/SurgeRules](https://github.com/muktsoen/SurgeRules)、[fmz200/wool_scripts](https://github.com/fmz200/wool_scripts) 及各源文件中注明的作者。详细来源、版本和许可记录见[第三方来源说明](../../THIRD_PARTY_NOTICES.md)。
+Thanks to [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx), [RoaycL/Surge](https://github.com/RoaycL/Surge), [muktsoen/SurgeRules](https://github.com/muktsoen/SurgeRules), [fmz200/wool_scripts](https://github.com/fmz200/wool_scripts), and the authors credited in the source files. Detailed sources, versions, and license notes are in [third-party notices](../../THIRD_PARTY_NOTICES.md).
 
-本目录保留部分第三方源文件及个人提供的快照。**标注来源不等于取得再分发授权。** 不主张拥有第三方内容的版权，也不以本仓库许可证覆盖上游许可。请遵守原作者声明和适用许可证；未经许可，请勿冒充原创或再次分发。如权利人认为存在侵权或授权问题，请通过 [Issues](https://github.com/jingchen21/Surge-iOS/issues) 联系，以便核查、修正或移除相关内容。
+This directory retains third-party source files and user-provided snapshots. **Attribution does not grant redistribution rights.** The repository does not claim ownership of third-party content or override upstream licenses. Follow the original author's terms; do not present third-party work as original or redistribute it without permission. For licensing or copyright concerns, open an [Issue](https://github.com/jingchen21/Surge-iOS/issues) for review.

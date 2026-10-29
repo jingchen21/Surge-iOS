@@ -46,7 +46,7 @@
     },
     {
       "path": "maintenance/apps/source/pdxb.js",
-      "sha256": "06648bdeaa67f7c14b1ff7aa418e540fabc662216f02cde830445d1be4ca99bb"
+      "sha256": "60f12e41bef575cc6d2aaec361475f959ec52636221383bd0146bb22b6a93b98"
     }
   ],
   "outputs": [
@@ -60,31 +60,31 @@
     },
     {
       "destination_path": "JS/pdxb.surge.js",
-      "destination_sha256": "f06b1427f26d8db545ae3d45abfdfe551b0fb31ef19c2877f7706fa853cc7e36"
+      "destination_sha256": "592fe51ee7ce68ef6c73df366561edbcad7f3e77be23b8789a89f413980659a7"
     },
     {
       "destination_path": "Modules/Didi.sgmodule",
-      "destination_sha256": "96590a817c9ee559be359826c47e60a8ab4a64936f04be93a069eda3a77959a7"
+      "destination_sha256": "cbf75ba20f4e55aaeefb67a0d20f165aaff055fded7d1084d96092e0a88835e6"
     },
     {
       "destination_path": "Modules/Meituan.sgmodule",
-      "destination_sha256": "f24e17682a9aab1bb5fab0ab34049377b4b4ab26a2ac16b56d2b2dc69f45af79"
+      "destination_sha256": "89972105a62eb0ebca8450b922776c5bcc05f6efd1b78fcd3ed561afc9799f30"
     },
     {
       "destination_path": "Modules/MeituanMiniProgram.sgmodule",
-      "destination_sha256": "2397f391afeae143e5f42a1d4c2df5ea5841d54adef8b514f2b318e2b9b0e180"
+      "destination_sha256": "4559d0239c2d168514ffea91d2b0793f7346e5f9de9be97c6df0a1ac332ed04a"
     },
     {
       "destination_path": "Modules/SPDB.sgmodule",
-      "destination_sha256": "74a49eb309e724eb57618e3424ff155983394c24884e1637e6879aea1c6203d2"
+      "destination_sha256": "b4a024b66b58c4863a29bb7b93b077b8acac71f6a83ad649f8ac360d45ea6496"
     },
     {
       "destination_path": "Modules/TencentVideo.sgmodule",
-      "destination_sha256": "3e823f7c1e099100bd67343e776608dad9667fdd93151bc90e3e0b737967155d"
+      "destination_sha256": "01a3226d6ea629728b35da21ebae1a84afe24aeb2c78575fa4d2ff0ea2e729c3"
     },
     {
       "destination_path": "Modules/TxvideoAD.sgmodule",
-      "destination_sha256": "3e823f7c1e099100bd67343e776608dad9667fdd93151bc90e3e0b737967155d"
+      "destination_sha256": "01a3226d6ea629728b35da21ebae1a84afe24aeb2c78575fa4d2ff0ea2e729c3"
     }
   ]
 }

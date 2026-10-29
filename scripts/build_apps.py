@@ -72,7 +72,7 @@ def script_line(name, route, path, binary=False, max_size=2097152):
 def spdb_outputs(source):
     # User-supplied pdxb.js has no author or source URL; do not invent attribution.
     helpers = source[:source.index('try {')]
-    helpers = helpers.replace('仅拦截实际分辨率为 1125 x 1931 的图片,非苹果17手机自行修改分辨率,否则不生效.', '按参数匹配图片素材实际尺寸；默认原样本 1125 x 1931，不根据手机型号猜测。')
+    helpers = helpers.replace('Match images by actual dimensions. The original sample is 1125 x 1931; do not infer dimensions from the phone model.', 'Match image assets by configured dimensions; the default is 1125 x 1931 and is not inferred from the device model.')
     helpers = helpers.replace('// max-size=0', '// max-size=-1 (Surge)')
     for old in ['const TARGET_WIDTH = 1125;', 'const TARGET_HEIGHT = 1931;']:
         if helpers.count(old) != 1:
@@ -131,9 +131,9 @@ def spdb_outputs(source):
           '// The original 1125x1931 sample is not a verified iPhone 18 Pro asset size.\n'
           '// Rebuild with scripts/build_apps.py; original file archived in maintenance/apps/source/pdxb.js.\n'
           + helpers + runtime)
-    module = header('浦大喜奔开屏尺寸拦截', '精确匹配图片素材尺寸；默认保留原样本 1125×1931，18 Pro 实际素材尺寸需看日志确认。', '')
+    module = header('SPDB - Splash Image Dimension Filter', 'Match exact image-asset dimensions. The default keeps the 1125×1931 sample; confirm the actual iPhone 18 Pro asset in logs.', '')
     module += '#!arguments=width:1125,height:1931,log:1\n'
-    module += '#!arguments-desc=width/height 是广告图片的实际像素尺寸，不是手机屏幕尺寸；log=1 记录尺寸，0 关闭日志。\n'
+    module += '#!arguments-desc=width/height are the actual ad-image dimensions, not the phone display size. log=1 records dimensions; 0 disables logging.\n'
     module += '# Source: user-supplied pdxb.js; author and public URL not supplied.\n'
     module += '# Surge uses abort:true to stop a response and max-size=-1 for unlimited buffering.\n'
     module += '\n[Script]\n'
@@ -163,7 +163,7 @@ def planned_outputs():
         source = source.replace(old, new)
     if 'bodyBytes' in source:
         raise ValueError('Unsupported QX body API remains')
-    tencent = header('腾讯视频净化', '开屏、贴片、暂停广告与页面净化；二进制接口使用 Surge 原生正文 API。',
+    tencent = header('Tencent Video - Cleanup', 'Clean up splash, pre-roll, mid-roll, pause ads, and selected page elements. Binary endpoints use Surge native body API.',
                      metadata.get('author', ''))
     tencent += '# Original rules: ' + QX_SOURCE + 'TxvideoAD.snippet\n'
     tencent += '# Earlier Surge adapter reference: https://github.com/RoaycL/Surge\n'
@@ -190,8 +190,8 @@ def planned_outputs():
     if not MEITUAN_CLASSIFICATION_CONFLICTS.issubset(rules):
         raise ValueError('Meituan category conflict rules changed; review the local adaptation')
     rules = [r for r in rules if r not in MEITUAN_CLASSIFICATION_CONFLICTS]
-    app = header(metadata.get('name', '美团 App') + ' · 分类兼容修复',
-                 '分类兼容修复：移除 5 条冲突 IP 拦截，保留其余 41 条规则、2 条 Rewrite 和 8 条原作者脚本。',
+    app = header('Meituan App 12.67.403 - Category Compatibility Fix',
+                 'Fixes store-category loading by removing five conflicting IP blocks while retaining the other 41 rules, two Rewrite rules, and eight original response scripts.',
                  metadata.get('author', ''))
     app += '# Source: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet\n'
     app += '# Script: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.js\n'
@@ -212,7 +212,7 @@ def planned_outputs():
     dict_routes = [r for r in routes if r['action'] == 'reject-dict']
     if len(jq_routes) != 12 or len(dict_routes) != 12 or len(routes) != 24:
         raise ValueError('DiDi actions changed; review native jq and Map Local conversion')
-    didi = header('滴滴出行净化', '个人中心、导航、推荐及钱包页面精简；原生 jq/Map Local，无 JS 依赖。', metadata.get('author', ''))
+    didi = header('Didi - App Cleanup', 'Simplifies selected profile, navigation, recommendation, and wallet sections using native jq and Map Local; no JS dependency.', 'ZenmoFeiShi')
     didi += '# Original rules: ' + QX_SOURCE + 'Didichuxing.snippet\n'
     didi += '# Requires Surge iOS 5.14.0+ / Mac 5.9.0+ for native jq.\n'
     didi += '\n[Rule]\n' + '\n'.join(rules) + '\n\n[Body Rewrite]\n'
@@ -239,7 +239,7 @@ def planned_outputs():
     if any(not (r['argument'] or '').endswith('/MeiTuanNoAd.js') for r in mini_scripts):
         raise ValueError('Unexpected Meituan mini-program script dependency')
     # WeChat mini-program stays independent from the original App rules.
-    mini = header('美团微信小程序净化', '微信内美团小程序的导航、推广及广告清理。', 'TG@ZenMoFiShi')
+    mini = header('Meituan WeChat Mini Program - Cleanup', 'Clean up navigation, promotions, and ads in the Meituan WeChat mini program.', 'TG@ZenMoFiShi')
     mini += '# Original rules: ' + QX_SOURCE + 'WxPureDominion.snippet\n'
     mini += '\n[Script]\n' + '\n'.join(script_line(
         f'MeituanMini-{i}', r, 'JS/MeituanMiniProgram.surge.js')

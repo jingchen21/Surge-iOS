@@ -1,7 +1,7 @@
-#!name=浦大喜奔开屏尺寸拦截
-#!desc=精确匹配图片素材尺寸；默认保留原样本 1125×1931，18 Pro 实际素材尺寸需看日志确认。
+#!name=SPDB - Splash Image Dimension Filter
+#!desc=Match exact image-asset dimensions. The default keeps the 1125×1931 sample; confirm the actual iPhone 18 Pro asset in logs.
 #!arguments=width:1125,height:1931,log:1
-#!arguments-desc=width/height 是广告图片的实际像素尺寸，不是手机屏幕尺寸；log=1 记录尺寸，0 关闭日志。
+#!arguments-desc=width/height are the actual ad-image dimensions, not the phone display size. log=1 records dimensions; 0 disables logging.
 # Source: user-supplied pdxb.js; author and public URL not supplied.
 # Surge uses abort:true to stop a response and max-size=-1 for unlimited buffering.
 

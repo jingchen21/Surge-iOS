@@ -74,11 +74,11 @@ def export(source, public, private):
         return line
 
     out = [
-        '# Surge iOS public template / 公开模板',
-        '# 本文件没有节点、订阅地址、WireGuard 密钥或 MITM CA。',
-        '# LOCAL-* 是默认 REJECT 的占位策略，使用前需配置自己的节点。',
-        '# 这不是原配置的完整运行副本；差异及第三方来源见仓库文档。',
-        '# PRIVATE-SLOT 标记供本地工具恢复私密内容，请保留。', '',
+        '# Surge iOS public template',
+        '# No proxy nodes, subscription URLs, WireGuard keys, or MITM CA are included.',
+        '# LOCAL-* policies default to REJECT placeholders; configure your own nodes before use.',
+        '# This is not a complete copy of the original runtime profile; see repository docs for differences and third-party sources.',
+        '# PRIVATE-SLOT markers are used by local tools to restore private content. Keep them unchanged.', '',
     ]
     removed = {'proxy_entries': len(nodes), 'wireguard_sections': 0,
                'private_rule_lines': 0, 'embedded_rule_lines': 0,
@@ -90,7 +90,7 @@ def export(source, public, private):
             continue
         out.append(f'[{name}]')
         if name == 'Proxy':
-            out += slot('\n'.join(body), '# 在本地导入节点；公开仓库保持为空。')
+            out += slot('\n'.join(body), '# Import nodes locally; keep the public repository free of node credentials.')
         elif name == 'Proxy Group':
             clean = []
             for line in body:
@@ -132,7 +132,7 @@ def export(source, public, private):
                         original = body[index:end]
                         removed['embedded_rule_lines'] += sum(active(item) for item in original)
                         out += slot('\n'.join(original),
-                                    '# SukkaW/Surge，AGPL-3.0；仅引用，不镜像规则正文。\n'
+                                    '# SukkaW/Surge, AGPL-3.0; referenced by URL only, rule bodies are not mirrored.\n'
                                     f'RULE-SET,{AI_URL},"AI SG",extended-matching')
                         index = end
                         continue
@@ -161,7 +161,7 @@ def export(source, public, private):
             clean = [line for line in body if active(line)
                      and not re.match(r'\s*(ca-p12|ca-passphrase)\s*=', line, re.I)]
             removed['credential_fields'] += sum(bool(re.match(r'\s*(ca-p12|ca-passphrase)\s*=', line, re.I)) for line in body)
-            out += slot('\n'.join(body), '# CA 只在本地生成和安装；不随仓库分享。\n' + '\n'.join(clean))
+            out += slot('\n'.join(body), '# Generate, install, and trust the CA locally; do not share it in this repository.\n' + '\n'.join(clean))
         else:
             for line in body:
                 if not active(line):

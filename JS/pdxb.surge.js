@@ -3,18 +3,18 @@
 // The original 1125x1931 sample is not a verified iPhone 18 Pro asset size.
 // Rebuild with scripts/build_apps.py; original file archived in maintenance/apps/source/pdxb.js.
 // ======================================================
-// 浦大喜奔开屏广告尺寸拦截
+// SPDB splash ad image dimension filter
 //
 //
-// 目标：
-// 按参数匹配图片素材实际尺寸；默认原样本 1125 x 1931，不根据手机型号猜测。
+// Goal:
+// Match image assets by configured dimensions; the default is 1125 x 1931 and is not inferred from the device model.
 //
-// 支持：
+// Supported formats:
 // JPEG / JPG / PNG / GIF
 //
-// 其他尺寸、其他格式全部放行
+// Pass through all other dimensions and formats.
 //
-// 必须配合：
+// Required setup:
 // requires-body=true
 // binary-body-mode=true
 // max-size=-1 (Surge)
@@ -25,7 +25,7 @@
 
 
 // ==========================
-// 读取大端 32 位整数
+// Read a big-endian 32-bit integer
 // ==========================
 
 function readBE32(bytes, offset) {
@@ -137,7 +137,7 @@ function getJPEGSize(bytes) {
         const marker = bytes[pos++];
         if (marker === 0xD9 || marker === 0xDA) return null;
 
-        // 无长度字段的 Marker
+        // Marker without a length field
         if (
             marker === 0xD8 ||
             marker === 0xD9 ||
@@ -202,7 +202,7 @@ function getJPEGSize(bytes) {
 
 
 // ==========================
-// 主逻辑
+// Main logic
 // ==========================
 
 

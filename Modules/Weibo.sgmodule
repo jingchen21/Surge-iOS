@@ -1,6 +1,6 @@
-#!name=微博&国际版去广告
-#!desc=整合了@zmqcherish和@Keywos的去广告配置，根据UA判断微博版本去广告
-#!author=奶思
+#!name=Weibo & International Edition - Ad Filtering
+#!desc=Combines ad-filtering rules from @zmqcherish and @Keywos and selects handling based on the Weibo user agent.
+#!author=Naisi
 #!homepage=https://github.com/fmz200/wool_scripts
 #!icon=https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/gif/naisi-01.gif
 # Converted from: https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/weibo.snippet

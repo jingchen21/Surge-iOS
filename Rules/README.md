@@ -1,42 +1,42 @@
-# 🛣️ 分流规则
+# 🛣️ Routing rules
 
-本目录提供两份小型规则集，供其他 Surge 配置按需引用。规则集不包含节点；使用时由主配置决定策略。
+This directory contains two small rule sets for use in Surge profiles. They do not contain proxy nodes; the main profile determines the policy for each set.
 
-> **个人自用 / AI 辅助：** 本目录规则主要服务于个人配置。部分规则整理和文档编辑使用 AI 辅助；规则并非官方完整清单，使用前请核对实际效果、来源与许可证。
+> **Personal use and AI assistance:** These rules are maintained for a personal configuration. AI tools assisted with some rule organization and documentation. The lists are not official or exhaustive; verify behavior, sources, and licenses before use.
 
-## 📂 本地规则
+## 📂 Local rule sets
 
-| 规则集 | 用途 | 下载 |
+| Rule set | Purpose | Download |
 | --- | --- | --- |
-| Business-DIRECT.list | 国内出行、电商、支付、银行及验证码相关域名，通常指定为 DIRECT | [下载](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Rules/Business-DIRECT.list) |
-| Apple-AI.list | Apple AI、Siri、PCC 相关域名；应指定 AI 策略并使用 extended-matching | [下载](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Rules/Apple-AI.list) |
+| Business-DIRECT.list | Domains for domestic transport, shopping, payments, banking, and verification codes; usually routed DIRECT | [Download](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Rules/Business-DIRECT.list) |
+| Apple-AI.list | Apple AI, Siri, and PCC domains; use the AI policy and extended-matching | [Download](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Rules/Apple-AI.list) |
 
-> 主配置已包含这两份规则。使用主配置时无需重复添加。
+> Both rule sets are already included in the main profile. Do not add them again when using that profile.
 
-## 🌐 上游规则来源
+## 🌐 Upstream rule sources
 
-主配置还会引用其他项目维护的规则或数据。以下为主要来源，具体引用地址见[上游资源清单](../upstreams/references.json)。
+The main profile also references rules and data maintained by other projects. The [upstream manifest](../upstreams/references.json) lists the exact URLs.
 
-| 项目 | 用途 |
+| Project | Purpose |
 | --- | --- |
-| [SukkaW/Surge](https://github.com/SukkaW/Surge) | 通用分流、域名集、IP 规则及 Apple AI 等规则 |
-| [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | 应用与服务的分类规则 |
-| [Hackl0us/GeoIP2-CN](https://github.com/Hackl0us/GeoIP2-CN) | 中国 IP 地理位置数据库 |
-| [KIDA-MNESIA/gadgets](https://github.com/KIDA-MNESIA/gadgets) | HSBC 相关规则 |
-| [zxfccmm4/Profiles](https://github.com/zxfccmm4/Profiles) | Unbreak 规则 |
-| [Semporia/TikTok-Unlock](https://github.com/Semporia/TikTok-Unlock) | TikTok 相关规则 |
-| [getsomecat/GetSomeCats](https://github.com/getsomecat/GetSomeCats) | Sub-Store 相关分流规则 |
+| [SukkaW/Surge](https://github.com/SukkaW/Surge) | General routing, domain sets, IP rules, and Apple AI rules |
+| [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | App- and service-specific rule sets |
+| [Hackl0us/GeoIP2-CN](https://github.com/Hackl0us/GeoIP2-CN) | China IP geolocation database |
+| [KIDA-MNESIA/gadgets](https://github.com/KIDA-MNESIA/gadgets) | HSBC-related rules |
+| [zxfccmm4/Profiles](https://github.com/zxfccmm4/Profiles) | Unbreak rules |
+| [Semporia/TikTok-Unlock](https://github.com/Semporia/TikTok-Unlock) | TikTok-related rules |
+| [getsomecat/GetSomeCats](https://github.com/getsomecat/GetSomeCats) | Sub-Store routing rules |
 
-## ⚙️ 使用提示
+## ⚙️ Usage notes
 
-- 在其他配置中引用前，请先检查规则顺序和目标策略。
-- Apple-AI.list 作为 RULE-SET 引用时，添加 extended-matching。
-- 域名列表不保证覆盖 App 的所有请求，也不保证特定地区或账号功能可用。
-- 本地规则从个人配置整理，不是完整的官方域名清单。
-- 上游规则通过原始地址引用；请遵守各项目的许可证和文件头声明。
+- Check rule order and target policies before importing these sets into another profile.
+- Add extended-matching when referencing Apple-AI.list as a RULE-SET.
+- Domain lists may not cover every request made by an app and do not guarantee availability for a specific region or account.
+- The local rules are extracted from a personal profile; they are not official or exhaustive domain databases.
+- Upstream rules are referenced by their original URLs. Follow each project's license and file headers.
 
-## 🙏 鸣谢与版权声明
+## 🙏 Attribution and copyright
 
-感谢以上规则与数据维护者，以及 [Surge](https://www.nssurge.com/) 社区。Business-DIRECT.list 与 Apple-AI.list 是从个人配置中整理的本地规则，不声称是完整的官方域名数据库。
+Thanks to the rule and data maintainers listed above and to the [Surge](https://www.nssurge.com/) community. Business-DIRECT.list and Apple-AI.list are local selections from a personal profile, not original or exhaustive domain databases.
 
-**保留来源不等于获得转载或再分发授权。** 不主张拥有第三方内容的版权，也不以本仓库许可证覆盖上游许可。请遵守各项目许可证及作者声明；未经许可，请勿将第三方规则冒充原创或再次分发。如权利人认为存在侵权或授权问题，请通过 [Issues](https://github.com/jingchen21/Surge-iOS/issues) 联系，以便核查、修正或移除相关内容。完整来源与许可说明见[第三方来源说明](../THIRD_PARTY_NOTICES.md)。
+**Attribution does not grant redistribution rights.** The repository does not claim ownership of third-party content or override upstream licenses. Follow each project's terms; do not present third-party rules as original or redistribute them without permission. For copyright or licensing concerns, open an [Issue](https://github.com/jingchen21/Surge-iOS/issues). See [third-party notices](../THIRD_PARTY_NOTICES.md) for details.

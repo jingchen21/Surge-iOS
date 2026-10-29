@@ -1,6 +1,6 @@
-#!name=滴滴出行净化
-#!desc=个人中心、导航、推荐及钱包页面精简；原生 jq/Map Local，无 JS 依赖。
-#!author=怎么肥事
+#!name=Didi - App Cleanup
+#!desc=Simplifies selected profile, navigation, recommendation, and wallet sections using native jq and Map Local; no JS dependency.
+#!author=ZenmoFeiShi
 # Original rules: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/Didichuxing.snippet
 # Requires Surge iOS 5.14.0+ / Mac 5.9.0+ for native jq.
 

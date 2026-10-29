@@ -1,12 +1,12 @@
-#!name=哈啰净化 · Surge 完整移植版
-#!desc=原 QX 广告拦截 + 首页/我的净化 + AES/动态密钥（需配套 easybike.surge.js；本地转换，未经真实 App 验证）
-#!author=ZenmoFeiShi (原版) / Surge 兼容移植
+#!name=HelloBike - Surge Port
+#!desc=Quantumult X ad blocking, Home/Me page cleanup, and AES/dynamic-key handling. Requires easybike.surge.js; locally ported and not verified against the live app.
+#!author=ZenmoFeiShi (original); Surge compatibility port
 #!version=2026-10-24
 
-# 个人使用快照：用户提供的哈啰 QX→Surge 移植版（原作者 ZenmoFeiShi）
-# 脚本：https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/easybike.surge.js
-# 更新时间：2026-10-28
-# 说明：本地转换，未经真实 App 验证；原作者署名保留。
+# Personal-use snapshot: user-provided HelloBike Quantumult X-to-Surge port (original author: ZenmoFeiShi)
+# Script: https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/easybike.surge.js
+# Updated: 2026-10-28
+# Note: locally converted and not verified against the live app; original attribution is retained.
 
 [Map Local]
 # QX reject-200 -> Surge 200 with empty text body.

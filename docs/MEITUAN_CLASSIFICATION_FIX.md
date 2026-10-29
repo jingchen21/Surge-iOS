@@ -1,33 +1,33 @@
-# 美团店铺分类加载兼容修复
+# Meituan store-category loading fix
 
-2026-10-28。此为个人本地适配，原始规则及脚本来自 ZenmoFeiShi/Qx，不是原作者发布的更新。
+Updated 2026-10-28. This is a personal adaptation of rules and scripts from ZenmoFeiShi/Qx, not an upstream release.
 
-## 问题与证据
+## Issue and evidence
 
-外卖店铺切换左侧菜品分类时转圈。手机请求记录显示，一组五个 IP 被美团模块的精确 REJECT 规则反复拒绝，约 38 秒内至少 115 次；临时放行该组后，用户确认“明显改善，基本秒开”。该证据支持这组拦截与问题有关，但尚未逐 IP 验证各条规则的必要性。
+Switching categories in a food-delivery store caused the category list to keep spinning. Phone request logs showed five IP addresses repeatedly rejected by exact REJECT rules in the Meituan module, at least 115 times within about 38 seconds. After those addresses were temporarily allowed, the user reported that loading was noticeably better and nearly instant. This supports a connection between the blocks and the issue, but each IP rule has not been independently validated.
 
-相关规则位于正常国内分流之前。没有证据要求更换全局 DNS，或在主配置中追加更大范围的 DIRECT。
+The rules appeared before the normal domestic-routing rules. There was no evidence that the global DNS configuration needed to change or that a broader DIRECT override should be added to the main profile.
 
-## 模块内修复
+## Module-level change
 
-`Modules/Meituan.sgmodule` 仅从原模块删除以下五条 IP REJECT：
+Modules/Meituan.sgmodule removes only these five IP REJECT rules from the original module:
 
-- `203.76.217.241/32`
-- `203.76.217.243/32`
-- `101.50.8.64/32`
-- `103.63.160.64/32`
-- `119.29.48.215/32`
+- 203.76.217.241/32
+- 203.76.217.243/32
+- 101.50.8.64/32
+- 103.63.160.64/32
+- 119.29.48.215/32
 
-删除后，这些连接由用户现有分流规则决定出口，不再依靠独立直连补丁。其他 41 条规则、2 条 URL Rewrite、8 条原作者响应脚本和 MITM 主机范围保留；未修改原始输入快照或原作者 JS，未改动主配置、DNS 或全局网络开关。
+After removal, the existing routing rules determine the path for these connections; no standalone DIRECT patch is required. The other 41 rules, two URL Rewrite rules, eight original response scripts, and MITM host scope are retained. The source snapshot and original-author JavaScript were not changed. The main profile, DNS, and global network settings were not modified.
 
-生成器显式维护这五项排除，测试核对其余规则及所有脚本、重写、主机与原始快照一致。重新生成不会恢复这五条冲突拦截。
+The generator explicitly maintains these five exclusions. Tests compare the remaining rules, scripts, rewrites, hostnames, and source snapshot to prevent a rebuild from restoring the conflicting blocks.
 
-## 使用与验证边界
+## Usage and verification limits
 
-启用此版本时，停用重复的原版美团模块、旧网络兼容模块和独立分类 IP 直连补丁；微信小程序模块可独立保留。
+When enabling this version, disable duplicate original Meituan modules, old network-compatibility modules, and standalone category-IP DIRECT patches. The WeChat mini-program module can remain enabled independently.
 
-本地语法检查和手机有效配置核对已通过。移除独立补丁后，修正版的同店铺分类体验仍待用户复测，不能把此前临时放行的成功等同于修正版已完成实机验证。登录、下单、支付和扫码不在已完成的验证范围内。
+Local syntax checks and inspection of the phone's effective configuration passed. The same-store category experience still needs to be retested without the standalone patch. The earlier temporary allow-list success does not prove that the revised module has passed a real-device test. Login, ordering, payment, and QR scanning are outside the completed validation scope.
 
-当前 App 请求记录显示版本为 12.68.201。小团和购物车优惠券可能保留，本次修复不承诺去除这两处元素，也不继续扩大传输拦截。未发布真实请求、账号、凭据、证书或诊断配置。
+The current app request record reports version 12.68.201. Xiaotuan and cart coupon promotions may remain; this fix does not promise to remove them and does not broaden transport blocking. No real requests, account data, credentials, certificates, or diagnostic configuration were published.
 
-未来更新上游时，应保留原始快照并重新核对这五条规则及实际业务体验；不要将本地适配误称为原版完全等价转换。
+When updating from upstream, retain the source snapshot and recheck these five rules and actual app behavior. Do not describe the local adaptation as a byte-for-byte equivalent of the original.

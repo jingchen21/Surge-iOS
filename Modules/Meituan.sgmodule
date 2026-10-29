@@ -1,5 +1,5 @@
-#!name=美团App 12.67.403 · 分类兼容修复
-#!desc=分类兼容修复：移除 5 条冲突 IP 拦截，保留其余 41 条规则、2 条 Rewrite 和 8 条原作者脚本。
+#!name=Meituan App 12.67.403 - Category Compatibility Fix
+#!desc=Fixes store-category loading by removing five conflicting IP blocks while retaining the other 41 rules, two Rewrite rules, and eight original response scripts.
 #!author=TG@ZenMoFiShi
 # Source: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet
 # Script: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.js

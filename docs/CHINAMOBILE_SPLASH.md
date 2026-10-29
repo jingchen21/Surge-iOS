@@ -1,28 +1,28 @@
-# 中国移动开屏：Surge 语法修复
+# China Mobile splash screen: Surge syntax fix
 
-2026-10-28。模块继续沿用 ccyykk666 的页面处理逻辑及已有个人适配；来源注释和配套 JS 地址保留。本次只修复模块语法，不承诺移除客户端开屏倒计时。
+Updated 2026-10-28. The module retains ccyykk666's page-handling logic and existing personal adaptations. Original attribution and the companion JavaScript URL are preserved. This change fixes module syntax only; it does not claim that the client-side splash countdown has been removed.
 
-## 已观察到的问题
+## Observed behavior
 
-手机截图显示空白开屏页面，仍有“跳过”倒计时和点击区域。实际请求中，`startInit` 已命中 `CM-splash-init` 请求脚本并被修改；首页和导航脚本也有执行证据。因此不能把规则命中当作整个开屏 UI 已消失。
+A phone screenshot showed a blank splash page that still contained a “Skip” countdown and clickable area. Request logs showed that startInit matched the CM-splash-init request script and was modified. The home-page and navigation scripts also showed evidence of execution. Therefore, a matched rule does not prove that the entire splash UI has disappeared.
 
-仓库旧模块的 `[URL Rewrite]` 使用 `reject-dict` 和 `reject-200`，本机 Surge CLI 对该写法报无效配置。手机有效配置中也没有观察到这组中国移动 URL Rewrite 或 Map Local 条目。不能仅凭这两点断定手机为何没有加载这些条目，但这些语法需要修正。
+The old public module used reject-dict and reject-200 under URL Rewrite, which the local Surge CLI rejected as invalid syntax. Those China Mobile URL Rewrite or Map Local entries were also not visible in the phone's effective profile. These facts alone do not establish why the phone did not load those entries, but the syntax needed correction.
 
-## 修改范围
+## Changes
 
-将 15 条原有匹配表达式转为 `[Map Local]`：
+The 15 existing match expressions were converted to Map Local:
 
-- 12 条空字典规则：返回 HTTP 200，正文 `{}`，Content-Type 为 `application/json`。
-- 3 条空响应规则：返回 HTTP 200 和空正文。
+- 12 empty-dictionary rules return HTTP 200, body {}, and Content-Type application/json.
+- Three empty-response rules return HTTP 200 with an empty body.
 
-匹配表达式逐条保留；10 条脚本、4 条网络规则、MITM 主机列表及参数默认值保持不变。未添加全域 CDN 拦截，未修改主配置、DNS、全局网络开关或配套 JS。此模块仍需开启 Rewrite；HTTPS 匹配仍需相应域名成功 MITM。
+The match expressions are retained. Ten scripts, four network rules, the MITM hostname list, and default arguments remain unchanged. No broad CDN block was added, and the main profile, DNS, global network settings, and companion JavaScript were not modified. The module still requires Rewrite; HTTPS matching also requires successful MITM for the relevant hostname.
 
-参考：[Surge URL Rewrite](https://manual.nssurge.com/http/url-rewrite.html)、[Surge Map Local](https://manual.nssurge.com/http/map-local.html)。
+References: [Surge URL Rewrite](https://manual.nssurge.com/http/url-rewrite.html) and [Surge Map Local](https://manual.nssurge.com/http/map-local.html).
 
-## 验证边界
+## Verification limits
 
-修正版已通过本机 Surge CLI 解析，且已核对原脚本、网络规则、MITM 和 15 条 URL 匹配范围不变。发布前未应用该修正版，未完成手机开屏复测，也未确认缓存或客户端倒计时的处理方式。
+The revised module passed local Surge CLI parsing. The original scripts, network rules, MITM settings, and 15 URL match expressions were checked for consistency. The revised module was not applied to the phone before publication, and the splash screen was not retested on-device. Cache behavior and the client's countdown handling remain unconfirmed.
 
-`startInit` 在此前已返回空结果而开屏壳仍保留，因此本次语法修正未必能消除空白倒计时。没有采集真实上游响应结构，不编造关闭开屏的字段，也不据此扩大拦截范围。
+startInit previously returned an empty result while the splash shell remained visible. This syntax fix may therefore leave the blank countdown in place. No real upstream response structure was captured, so no unsupported field was invented and the block scope was not expanded.
 
-更新后仅启用一份中国移动模块，再检查开屏和正常业务功能。若仍有空白页面，应以新的实际请求及响应证据继续排查，不应归因为 DNS 或宣称已经修复成功。
+After updating, enable only one China Mobile module and test both the splash screen and normal app flows. If the blank page remains, investigate using fresh request and response evidence. Do not attribute the issue to DNS or claim it has been fixed without proof.

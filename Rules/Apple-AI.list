@@ -1,5 +1,5 @@
-# 从用户配置的 Apple AI 精确段整理。
-# 主配置引用时指定 Apple AI 策略，并为 RULE-SET 添加 extended-matching。
+# Extracted from the Apple AI section of the user's profile.
+# When referenced by the main profile, use the Apple AI policy and add extended-matching to the RULE-SET.
 DOMAIN,guzzoni.apple.com
 DOMAIN-SUFFIX,smoot.apple.com
 DOMAIN,apple-relay.apple.com

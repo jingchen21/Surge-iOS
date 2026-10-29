@@ -1,14 +1,14 @@
-#!name=中国移动去广告 · Surge语法修复
-#!desc=保留原页面脚本与规则，仅将无效 reject-dict/reject-200 重写转换为 Surge Map Local。空白开屏倒计时仍待实机验证。
+#!name=China Mobile - Ad Cleanup (Surge Syntax Fix)
+#!desc=Retains the original page scripts and rules while converting invalid reject-dict/reject-200 rewrites to Surge Map Local. The blank splash countdown still needs device testing.
 #!author=ccyykk666
 #!arguments=HideTopFamily:false,HideTopAge:false,HideTopPhone:false,HideTopNearby:false,HideTopAI:false,HideTopEnterprise:false,BottomClean:true,MineClean:true
 
-# 来源：https://raw.githubusercontent.com/ccyykk666/Loon-Plugin/main/plugins/china-mobile/china_mobile_ad.plugin
-# 脚本：https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js
-# 更新时间：2026-10-27
-# 本地语法适配：空字典与空响应改为 Map Local；不据此宣称开屏倒计时已移除。
-# 个人使用快照：同步自 https://github.com/muktsoen/SurgeRules （ChinaMobile.sgmodule）
-# 关联 JS 已改指向本仓库 Raw；原作者署名与 Loon 来源注释保留。
+# Source: https://raw.githubusercontent.com/ccyykk666/Loon-Plugin/main/plugins/china-mobile/china_mobile_ad.plugin
+# Script: https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js
+# Updated: 2026-10-27
+# Local syntax adaptation: empty objects and empty responses now use Map Local. This does not prove the splash countdown has been removed.
+# Personal-use snapshot synced from https://github.com/muktsoen/SurgeRules （ChinaMobile.sgmodule）
+# The companion JS now points to this repository's Raw URL. Original attribution and Loon source notes are retained.
 
 [Script]
 CM-homepage = type=http-response,pattern=^https://client\.app\.coc\.10086\.cn/biz-orange/(?:DN/(?:homePage/getTopAreaList|multipleInterfaces/aggregationData|searchWord/getSearchWordInfo)|DA/baseServiceFunction/getAdverList)(?:\?.*)?$,requires-body=true,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js,argument=HideTopFamily:{{{HideTopFamily}}};HideTopAge:{{{HideTopAge}}};HideTopPhone:{{{HideTopPhone}}};HideTopNearby:{{{HideTopNearby}}};HideTopAI:{{{HideTopAI}}};HideTopEnterprise:{{{HideTopEnterprise}}};BottomClean:{{{BottomClean}}};MineClean:{{{MineClean}}}
@@ -21,11 +21,11 @@ CM-popwindow = type=http-response,pattern=^https://touch\.10086\.cn/i/v1/pay/pop
 CM-adfilter = type=http-response,pattern=^https://ad\.mcloud\.139\.com/advertapi/adv-filter/adv-filter/AdInfoFilter/getAdInfos(?:\?.*)?$,requires-body=true,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js,argument=HideTopFamily:{{{HideTopFamily}}};HideTopAge:{{{HideTopAge}}};HideTopPhone:{{{HideTopPhone}}};HideTopNearby:{{{HideTopNearby}}};HideTopAI:{{{HideTopAI}}};HideTopEnterprise:{{{HideTopEnterprise}}};BottomClean:{{{BottomClean}}};MineClean:{{{MineClean}}}
 CM-reject = type=http-request,pattern=^https://client\.app\.coc\.10086\.cn/biz-orange/(?:DN/(?:dropsAdverService/getDropsAdverNew|homepagePopup/getSortInfo|toast/getToastRule)|DH/toast/august/getToast|DA/liveSuspension/getPageCode)(?:\?.*)?$,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile-request.surge.js
 CM-splash-init = type=http-request,pattern=^https://(client\.app\.coc\.10086\.cn|clientaccess\.10086\.cn)/biz-orange/DN/(init/startInit|explorePage/getAdverList),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile-request.surge.js
-# ===== 开屏补充（上游 Loon 未覆盖） =====
-# 接口返回空 JSON、已列素材返回空正文；是否仍有开屏壳需实际验证。
+# ===== Additional splash rules not covered by the upstream Loon module =====
+# Return empty JSON from the listed endpoints and empty bodies for the listed assets; verify whether the splash container remains.
 
 [Rule]
-# 开屏/埋点相关直拒（用户日志出现 jiguang.coc.10086.cn；参考 TomCatXue ChinaMobile）
+# Block selected splash/analytics hosts (jiguang.coc.10086.cn appeared in user logs; reference: TomCatXue ChinaMobile)
 DOMAIN-SUFFIX,jiguang.coc.10086.cn,REJECT
 DOMAIN-SUFFIX,cmicapm.com,REJECT
 DOMAIN,ad.mcloud.139.com,REJECT

@@ -1,5 +1,5 @@
-# 从用户配置的国内业务直连段整理；不含节点或账号信息。
-# 主配置引用时指定 DIRECT。
+# Extracted from the domestic-business DIRECT section of the user's profile; contains no nodes or account data.
+# Use DIRECT when referencing this rule set from the main profile.
 DOMAIN-SUFFIX,meituan.com
 DOMAIN-SUFFIX,meituan.net
 DOMAIN-SUFFIX,dianping.com

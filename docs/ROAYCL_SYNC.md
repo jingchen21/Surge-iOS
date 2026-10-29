@@ -1,48 +1,48 @@
-# 2026-10-27 RoaycL 模块同步
+# 2026-10-27 RoaycL module sync
 
-这是初始快照记录。腾讯视频后续通过本地源文件重新生成，当前文件与历史哈希的关系由 `maintenance/apps/lock.json` 记录；腾讯及新增美团的使用与维护见 [应用模块说明](APPS.md)。
+This document records the initial snapshot. Tencent Video was later regenerated from local source files; the relationship between current files and historical hashes is recorded in maintenance/apps/lock.json. See [App modules](APPS.md) for Tencent Video and Meituan usage and maintenance.
 
-来源仓库：[RoaycL/Surge](https://github.com/RoaycL/Surge)。固定提交：`1e0c7bd2c3d381c31b8ee9ac766576669fe2353c`，提交时间为北京时间 2026-10-27 20:39:56。
+Source repository: [RoaycL/Surge](https://github.com/RoaycL/Surge). Pinned commit: 1e0c7bd2c3d381c31b8ee9ac766576669fe2353c, committed at 2026-10-27 20:39:56 China Standard Time.
 
-## 同步范围
+## Scope
 
-已将当天更新的拼多多、腾讯视频、微博、黑料净化四个模块整理到 `Modules/`。另外附上当天新增上游快照所关联的番茄小说静态模块，明确区别于当天修改的模块。
+Four modules updated that day were organized under Modules/: Pinduoduo, Tencent Video, Weibo, and HLWXX cleanup. The Tomato Novel static module from the same upstream snapshot was also included, but is distinguished from modules changed that day.
 
-同步三个 JS 到 `JS/`，全部模块中的实际 `script-path` 地址统一改为本仓库地址，规则与 JS 业务逻辑不改。拼多多采用当天最终版本，不恢复已删除的旧 JS。
+Three JavaScript files were copied into JS/. Actual script-path references in the modules were changed to this repository's URLs; rule and JavaScript behavior was not intentionally changed. Pinduoduo uses the final version from that day and does not restore the deleted old JS.
 
-没有复制无关的机场面板、DNS 控制服务、用户配置，也没有把源仓库的每六小时自动同步工作流复制或启用到本仓库。本次是一次快照同步。
+Unrelated subscription panels, DNS control services, user profiles, and the upstream six-hour auto-sync workflow were not copied or enabled. This was a one-time snapshot sync.
 
-## 作者与许可
+## Authors and licenses
 
-| 内容 | 原始作者 / 来源 | 本次处理 |
+| Content | Original author / source | Handling |
 | --- | --- | --- |
-| Surge 模块转换和腾讯适配 | RoaycL/Surge | 记录提交、路径、修改范围与哈希；源仓库没有整体许可证，不另行宣称获得整体开源许可 |
-| 拼多多、腾讯、黑料的原始规则或脚本 | ZenmoFeiShi/Qx；保留模块中的 walala / 怎么肥事 / TG@ZenMoFiShi 署名 | [README](https://github.com/ZenmoFeiShi/Qx) 标注学习与自用，未发现标准 LICENSE；本次供个人配置同步，保留原声明，不改为 MIT 或宣称可任意再分发 |
-| 微博原始模块与部分实现 | fmz200/wool_scripts、奶思及文件中列出的作者 | 源仓库为 GPL-3.0；附上 [许可证原文](../LICENSES/GPL-3.0-fmz200.txt)，保留作者和来源；不能据此覆盖其他作者的独立限制 |
-| 微博合并文件内的一部分实现 | Keywos/rule | 随完整个人使用快照保存，原作者来源注释与已发现的上游声明记录在清单中 |
-| 微博合并文件中的其他实现 | zmqcherish/proxy-script 等 | 随完整合并文件保存并记录原始来源，不用其他来源的许可证重新标注其权利归属 |
-| 番茄小说静态规则 | 可莉 / luestr/ProxyResource | 保留原作者、主页、日期与图标引用；依 [CC BY-NC-SA 4.0](../LICENSES/CC-BY-NC-SA-4.0-luestr.txt) 保存，未改变正文逻辑 |
+| Surge module conversion and Tencent adaptation | RoaycL/Surge | Commit, paths, changes, and hashes are recorded. The source repository has no repository-wide license, so this project does not claim that an overall open-source license was granted. |
+| Original Pinduoduo, Tencent, and HLWXX rules or scripts | ZenmoFeiShi/Qx; original module attribution is retained | The [README](https://github.com/ZenmoFeiShi/Qx) describes learning and personal use. No standard LICENSE was found. The snapshot is retained for personal configuration use; original notices remain and no MIT license or unrestricted redistribution permission is claimed. |
+| Original Weibo module and implementation | fmz200/wool_scripts, Naisi, and authors listed in the files | The upstream repository uses GPL-3.0. The [license text](../LICENSES/GPL-3.0-fmz200.txt) is included and attribution is retained; it does not override separate restrictions from other authors. |
+| Part of the merged Weibo implementation | Keywos/rule | Saved in the personal snapshot with original-source comments and identified upstream notices recorded in the manifest. |
+| Other merged Weibo implementations | zmqcherish/proxy-script and others | Saved as part of the merged file with source records. License terms from one source are not applied to unrelated contributors' work. |
+| Tomato Novel static rules | Kelee / luestr/ProxyResource | Original author, homepage, date, and icon reference are retained. The file is preserved under [CC BY-NC-SA 4.0](../LICENSES/CC-BY-NC-SA-4.0-luestr.txt), without changing rule behavior. |
 
-本次按照仓库所有者的个人自用要求完整同步。原作者署名、文件注释及来源记录保留，没有将这些第三方文件改标为本仓库工具的 MIT 许可。
+The snapshot was synced for the repository owner's personal use. Original attribution, file comments, and source records were retained. Third-party files were not relabeled as MIT-licensed tools from this repository.
 
-## 依赖完整性
+## Dependency integrity
 
-三份运行时 JS 依赖均已同步到本仓库并列入检查，不遗漏脚本文件，也不继续从 RoaycL 仓库加载运行脚本。微博的多份原始脚本已经包含在合并 JS 内；其来源与输入哈希记录在清单中。模块图标及响应中的图片地址仍为外部素材引用，没有下载后再托管。
+All three runtime JavaScript dependencies were copied into this repository and added to checks. No runtime script continues to load from the RoaycL repository. Multiple original Weibo scripts are included in the merged JS; their sources and input hashes are recorded in the manifest. Module icons and image URLs in responses still reference external assets and were not downloaded for redistribution.
 
-文件级来源、源哈希、发布哈希、改动说明及外部脚本哈希见 [upstreams/roaycl-2026-10-27.json](../upstreams/roaycl-2026-10-27.json)。
+File-level sources, source hashes, published hashes, change notes, and external script hashes are recorded in [upstreams/roaycl-2026-10-27.json](../upstreams/roaycl-2026-10-27.json).
 
-```sh
+~~~sh
 python3 scripts/check_module_dependencies.py
 python3 scripts/check_module_dependencies.py --online
-```
+~~~
 
-默认检查核对本地文件和依赖声明；`--online` 额外获取三个已发布的 JS 地址并核对哈希。内容不可访问或不一致时会报错，不会静默跳过。
+The default check validates local files and dependency declarations. The --online option also downloads the three published JS URLs and verifies their hashes. Unavailable or mismatched content causes an error rather than being silently skipped.
 
-## 本次验证
+## Verification
 
-- 已核对当天五次提交的变更清单，以最后一次同步后的完整版本为准。
-- 本地文件哈希与全部运行时 JS 依赖已核对；发布后另行检查 Raw 地址与发布内容哈希。
-- 五个模块的配置段组合到最小配置后均通过本机 Surge 离线语法检查，三个 JS 通过 Node 语法检查。
-- 原始凭据比对及公开内容检查通过，未将自己的节点、订阅或证书加入本次同步。
-- 本地模拟响应测试通过：拼多多 jq、微博 UA 分流和正文处理、黑料 HTML/请求头处理、腾讯二进制开屏接口适配。
-- 没有安装或启用手机模块，未验证真实 App 当前版本的去广告效果。
+- The five commits from that day were reviewed; the complete version after the final sync is used.
+- Local file hashes and runtime JS dependencies were checked. Raw URLs and published content hashes were checked again after publication.
+- The configuration sections for all five modules passed local offline Surge syntax checks when combined into a minimal profile. Three JS files passed Node syntax checks.
+- Credential comparison and public-content checks passed. No personal nodes, subscriptions, or certificates were added.
+- Simulated response tests passed for Pinduoduo jq, Weibo user-agent routing and response handling, HLWXX HTML/header handling, and Tencent binary splash-endpoint adaptation.
+- The modules were not installed or enabled on the phone. Ad-filtering behavior in current app versions has not been verified on a real device.

@@ -1,37 +1,37 @@
-# 浦大喜奔开屏图片尺寸拦截
+# SPDB splash image dimension filter
 
-[安装模块](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule)。运行脚本为本仓库的 `JS/pdxb.surge.js`，无外部 JS 依赖。模块、源快照与工具都直接保存在本仓库，未开启定时同步。
+[Install the module](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule). The runtime script is JS/pdxb.surge.js in this repository and has no external JS dependency. The module, source snapshot, and tools are stored locally in the repository; no scheduled sync is enabled.
 
-在 Surge 安装并启用模块，同时开启 Scripting 和 HTTPS 解密，使用自己在本地安装并信任的 MITM 证书。只追加 `image.spdbccc.com.cn` 和 `images.spdbccc.com.cn` 两个图片域名，没有增加银行业务域名、全站拦截或跳过服务器证书验证。
+Install and enable the module in Surge, turn on Scripting and HTTPS decryption, and use your own locally installed and trusted MITM certificate. Only the two image hosts image.spdbccc.com.cn and images.spdbccc.com.cn are added. No bank-service domains, broad site blocks, or server-certificate bypasses are added.
 
-## iPhone 18 Pro 的尺寸
+## iPhone 18 Pro dimensions
 
-这里检测的是下载图片文件头中的宽高。Apple 列出的 18 Pro 屏幕分辨率是 1206×2622，但它不能证明银行下发的广告图片也使用这个尺寸。[Apple 技术规格](https://www.apple.com.cn/iphone-18-pro/specs/)
+The script reads the width and height from the downloaded image file header. Apple lists the iPhone 18 Pro display resolution as 1206×2622, but that does not prove that the bank's ad image uses those dimensions. See [Apple technical specifications](https://www.apple.com.cn/iphone-18-pro/specs/).
 
-用户提供的原文件只给出 `1125×1931` 样本，未提供 18 Pro 的广告响应。因此当前默认保留样本尺寸，没有按屏幕尺寸、比例或机型猜一个新值，也没有将其标成“18 Pro 已验证版”。同一广告尺寸可能被不同手机复用。
+The supplied original file contains only a 1125×1931 sample and no ad response captured from an iPhone 18 Pro. The default therefore keeps the sample dimensions instead of guessing from display resolution, aspect ratio, or device model. It is not labeled as verified for iPhone 18 Pro. The same ad image size may be reused across phones.
 
-模块参数：
+Module parameters:
 
-| 参数 | 默认值 | 含义 |
+| Parameter | Default | Meaning |
 | --- | --- | --- |
-| `width` | `1125` | 广告素材实际宽度，正整数 |
-| `height` | `1931` | 广告素材实际高度，正整数 |
-| `log` | `1` | 记录图片格式、宽高、目标尺寸与 BLOCK/PASS；设 0 关闭 |
+| width | 1125 | Actual image-asset width, as a positive integer |
+| height | 1931 | Actual image-asset height, as a positive integer |
+| log | 1 | Log image format, dimensions, target dimensions, and BLOCK/PASS; set to 0 to disable |
 
-先按默认参数启用，彻底关闭浦大喜奔并重新启动。如果开屏仍出现，在 Surge 的脚本日志中查看 `SPDB-Splash`，将启动阶段广告图片对应的 `[SPDB] PNG/JPEG/GIF 宽x高 ... PASS` 记录与广告出现时间核对。只需提供这行尺寸日志，不用上传银行请求头、Cookie、账户信息或完整配置。确认广告素材后，再将模块参数的宽高改成实际值；不能将日志里任意一张正常图片当作广告。
+Start with the defaults, force-quit SPDB, and reopen it. If the splash still appears, check the Surge script log for SPDB-Splash and compare the startup image's [SPDB] PNG/JPEG/GIF width × height ... PASS record with the time the ad appeared. Only that dimension log is needed; do not upload bank request headers, cookies, account information, or the full configuration. After confirming the actual ad asset, set the module's width and height to those values. Do not assume that any normal image in the log is an ad.
 
-没有参数界面的客户端可在本地模块 Script 行把 `argument` 改成 `"width=1125&height=1931&log=1"`，并按实际尺寸替换两个数值；不要按屏幕像素直接改。
+If the client has no argument editor, change the argument in the module's Script line locally to width=1125&height=1931&log=1 and replace the dimensions with the actual values. Do not set them from the phone's display pixels.
 
-## Surge 适配修正
+## Surge adaptation
 
-原文件命中图片后调用 `$done()`。Surge 明确规定该调用会原样放行，因此转换后使用 `$done({abort:true})` 中止该响应。原规则的无限制正文缓冲写成 Surge 文档规定的 `max-size=-1`，保留 `requires-body=true`、`binary-body-mode=true`、20 秒超时。[Surge HTTP Response Script](https://manual.nssurge.com/scripting/http-response.html)
+The original file called $done() when an image matched. Surge documents that this passes the response through unchanged, so the adaptation uses $done({abort:true}) to abort the response. Unlimited body buffering is expressed as max-size=-1 as documented by Surge; requires-body=true, binary-body-mode=true, and the 20-second timeout are retained. See [Surge HTTP Response Script](https://manual.nssurge.com/scripting/http-response.html).
 
-处理范围是两个图片主机上的 GET、200 响应。PNG、GIF、JPEG/JPG 按图片头读取宽高；宽和高必须同时精确相等才中止。其他尺寸、未知格式（包括 WebP）、非二进制正文、截断或无法识别的数据原样放行。非法尺寸参数也放行，不扩大匹配。日志不输出 URL、查询参数、请求头或响应正文。
+The handler applies only to GET responses with status 200 from the two image hosts. It reads PNG, GIF, and JPEG/JPG dimensions from the file header and blocks only when both dimensions match exactly. Other dimensions, unknown formats including WebP, non-binary bodies, truncated content, and unrecognized data pass through unchanged. Invalid dimension arguments also pass through. Logs do not include URLs, query parameters, request headers, or response bodies.
 
-这是尺寸过滤：如果正常图片恰好也具有目标尺寸，同样会被拦。它只阻止图片响应，不能保证 App 同时取消广告容器或等待时间；如页面异常可关闭该模块恢复。旧广告缓存可能仍然显示，不应据此认定新请求已被成功拦截。
+This is dimension-based filtering: a normal image with the same target dimensions will also be blocked. It only blocks the image response and cannot guarantee that the app removes the ad container or waiting time. Disable the module to restore normal behavior if the page breaks. A cached ad may remain visible even when a new request is blocked.
 
-## 来源与验证
+## Source and validation
 
-来源为用户上传的 `pdxb.js`；文件未提供原作者、公开链接或许可证，未擅自归属给其他作者。原始字节保存在 `maintenance/apps/source/pdxb.js`，哈希记录在 `maintenance/apps/lock.json`，可通过 `scripts/build_apps.py` 离线重新生成。
+The source was a user-provided pdxb.js file with no author attribution, public URL, or license supplied. Its original bytes are kept in maintenance/apps/source/pdxb.js, with a hash in maintenance/apps/lock.json. The module can be regenerated offline using scripts/build_apps.py.
 
-已使用模拟图片头验证三类格式的目标尺寸、相邻尺寸、正常尺寸、手动参数、截断、主机范围、非 200 响应和日志隐私；并执行 Surge 离线语法检查。上述检查不等于浦大喜奔当前版本、iPhone 18 Pro 的真实去广告验证。
+Simulated image headers were used to test target dimensions, adjacent dimensions, normal sizes, manual arguments, truncation, hostname scope, non-200 responses, and log privacy for all three supported formats. Local Surge syntax checks also passed. These checks do not prove real-world ad filtering on the current SPDB app or an iPhone 18 Pro.
