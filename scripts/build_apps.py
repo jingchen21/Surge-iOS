@@ -163,7 +163,7 @@ def planned_outputs():
         source = source.replace(old, new)
     if 'bodyBytes' in source:
         raise ValueError('Unsupported QX body API remains')
-    tencent = header('Tencent Video - Cleanup', 'Clean up splash, pre-roll, mid-roll, pause ads, and selected page elements. Binary endpoints use Surge native body API.',
+    tencent = header('Tencent Video - Cleanup', 'Clean up splash, pre-roll, mid-roll, pause ads, and selected page elements. Binary endpoints use Surge's native body API.',
                      metadata.get('author', ''))
     tencent += '# Original rules: ' + QX_SOURCE + 'TxvideoAD.snippet\n'
     tencent += '# Earlier Surge adapter reference: https://github.com/RoaycL/Surge\n'
