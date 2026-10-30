@@ -1,7 +1,5 @@
 #!name=Mango TV - Ad Filtering and API Unlock
 #!desc=Broad ad filtering and ticket replacement across selected endpoints, including playback sources, playlists, and getSource.
-#!author=Kelee, RuCu6, ZenmoFeiShi
-#!date=2026-05-14
 
 [Rule]
 DOMAIN,credits.bz.mgtv.com,REJECT
