@@ -1,6 +1,5 @@
 # Meituan store-category loading fix
 
-Updated 2026-10-28. This is a personal adaptation of rules and scripts from ZenmoFeiShi/Qx, not an upstream release.
 
 ## Issue and evidence
 
