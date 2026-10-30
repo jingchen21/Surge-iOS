@@ -13,20 +13,6 @@ This directory contains two small rule sets for use in Surge profiles. They do n
 
 > Both rule sets are already included in the main profile. Do not add them again when using that profile.
 
-## 🌐 Upstream rule sources
-
-The main profile also references rules and data maintained by other projects. The [upstream manifest](../upstreams/references.json) lists the exact URLs.
-
-| Project | Purpose |
-| --- | --- |
-| [SukkaW/Surge](https://github.com/SukkaW/Surge) | General routing, domain sets, IP rules, and Apple AI rules |
-| [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | App- and service-specific rule sets |
-| [Hackl0us/GeoIP2-CN](https://github.com/Hackl0us/GeoIP2-CN) | China IP geolocation database |
-| [KIDA-MNESIA/gadgets](https://github.com/KIDA-MNESIA/gadgets) | HSBC-related rules |
-| [zxfccmm4/Profiles](https://github.com/zxfccmm4/Profiles) | Unbreak rules |
-| [Semporia/TikTok-Unlock](https://github.com/Semporia/TikTok-Unlock) | TikTok-related rules |
-| [getsomecat/GetSomeCats](https://github.com/getsomecat/GetSomeCats) | Sub-Store routing rules |
-
 ## ⚙️ Usage notes
 
 - Check rule order and target policies before importing these sets into another profile.
