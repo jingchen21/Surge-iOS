@@ -4,7 +4,7 @@ Browse modules by purpose. Select a module link to open its Surge installation f
 
 > Modules must be installed manually. Modules requiring MITM need a certificate generated, installed, and trusted on your own device. This repository does not distribute certificates.
 >
-> **Personal use and AI assistance:** Some module documentation, organization, and adaptation were assisted by AI tools. This does not mean that every module has been verified on a real device or that all third-party permissions have been obtained.
+> **Personal use and AI assistance:** Some module documentation, organization, and adaptation were assisted by AI tools. This does not mean that every module has been verified on a real device.
 
 ## 🌐 Network and general utilities
 
@@ -13,8 +13,6 @@ Browse modules by purpose. Select a module link to open its Surge installation f
 | Google CN Redirect | Redirect Google China domains to their international equivalents | URL Rewrite and MITM; already included in the main profile | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Google-CN-Redirect.sgmodule) |
 
 ## 📱 App modules
-
-The Meituan app module is adapted from [ZenmoFeiShi/Qx MT.snippet](https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet) with a compatibility fix for store-category loading. It removes only five conflicting IP-block rules and retains the other 41 network rules, two Rewrite rules, eight original response scripts, and the original MITM scope. No standalone DIRECT override is added. See the [fix notes](../docs/MEITUAN_CLASSIFICATION_FIX.md).
 
 | Module | Purpose | Requirements / notes | Install |
 | --- | --- | --- | --- |
@@ -30,9 +28,9 @@ The Meituan app module is adapted from [ZenmoFeiShi/Qx MT.snippet](https://githu
 | SPDB splash image filter | Block a splash image by its actual image dimensions | MITM and Scripting; dimensions refer to the image asset, not the phone display; see [notes](../docs/SPDB.md) | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SPDB.sgmodule) |
 | HelloBike | Port selected ad and page handling | MITM and Scripting; real-app validation is pending | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/HelloBike.sgmodule) |
 | Pinduoduo | Simplify selected page layouts with native rules and body processing | MITM; native jq requires iOS 5.14.0+ / macOS 5.9.0+ | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Pinduoduo.sgmodule) |
-| Tomato Novel | Filter selected splash, article, audio, floating-widget, and bottom-bar promotions | Adapted third-party rules; review source and license notes | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/FanQieNovel.sgmodule) |
-| Mango TV | Filter ads and unlock selected API responses | Adapted third-party module; review attribution and license notes in the file | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/MangoTV.sgmodule) |
-| What Worth Buying (SMZDM) | Broad ad filtering across splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet | Some aggressive rules may hide non-ad content; review license notes before redistribution | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SMZDM-AdFilter-Complete.sgmodule) |
+| Tomato Novel | Filter selected splash, article, audio, floating-widget, and bottom-bar promotions | MITM | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/FanQieNovel.sgmodule) |
+| Mango TV | Filter ads and unlock selected API responses | MITM and Scripting | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/MangoTV.sgmodule) |
+| What Worth Buying (SMZDM) | Broad ad filtering across splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet | Some aggressive rules may hide non-ad content | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SMZDM-AdFilter-Complete.sgmodule) |
 | HLWXX | Filter selected ad requests and page content | MITM and Scripting | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/hlwxx_remove_ads.sgmodule) |
 | Flightradar24 | Rewrite user-session and subscribe responses | MITM and Scripting; use at own risk regarding ToS | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Flightradar24.sgmodule) |
 
