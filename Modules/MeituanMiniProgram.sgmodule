@@ -1,6 +1,5 @@
 #!name=Meituan WeChat Mini Program - Cleanup
 #!desc=Clean up navigation, promotions, and ads in the Meituan WeChat mini program.
-#!author=TG@ZenMoFiShi
 # Original rules: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/WxPureDominion.snippet
 
 [Script]
