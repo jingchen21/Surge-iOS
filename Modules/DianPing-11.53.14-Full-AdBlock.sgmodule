@@ -2,7 +2,6 @@
 #!desc=Filters known splash and ad endpoints while prioritizing merchant pages, reviews, images, search, and transactions. Intended for Surge; version 11.53.14 still needs device testing.
 #!openUrl=https://apps.apple.com/app/id351091731
 #!bundleId=com.dianping.dpscope
-#!author=Personal adaptation (based on zirawell/R-Store and Naisi)
 #!tag=Ad Blocking
 #!basedOn=iOS
 #!homepage=https://github.com/jingchen21/Surge-iOS
