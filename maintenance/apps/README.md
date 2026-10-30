@@ -9,14 +9,12 @@ Modules, JavaScript, source snapshots, and build tools are stored in this reposi
 | Input | Generated output |
 | --- | --- |
 | source/TxvideoAD.snippet and source/Txvideoad.js | Tencent Video module and JS/Txvideoad.surge.js |
-| source/MT.snippet and source/MT.js | Meituan app conversion with five conflicting category-loading IP rules excluded; runtime uses the original author JS |
 | source/MeituanMiniProgram.snippet and source/MeiTuanNoAd.js | Separate Meituan WeChat mini-program module and its JS |
 | source/Didichuxing.snippet | Didi module using native jq / Map Local; no JS |
 | source/pdxb.js | SPDB module and JS/pdxb.surge.js |
 
 lock.json records input and generated-file hashes. See the [module index](../../Modules/README.md) for installation and usage.
 
-The Meituan app module converts ZenmoFeiShi's MT.snippet. All 46 rules from the input snapshot are retained in the source. The build excludes only five IP REJECT rules observed to conflict with store-category loading, producing 41 network rules. Two Rewrite rules, eight original-author scripts, and seven MITM hostnames remain unchanged; no DIRECT override is added. The exclusions are explicitly maintained in MEITUAN_CLASSIFICATION_CONFLICTS in scripts/build_apps.py and covered by rule-comparison tests. The original MT.js is referenced; the historical Me-page rewrite is not merged. See the [category compatibility notes](../../docs/MEITUAN_CLASSIFICATION_FIX.md). The mini-program module is generated separately, and the adaptation scope must be reviewed before updating upstream sources.
 
 ## ▶️ Build and validate
 
@@ -50,8 +48,3 @@ Do not edit only the generated JS and then rebuild; the build may overwrite thos
 
 Automated tests and offline parsing prove only the scenarios they cover. They do not prove that the current iPhone app version has been tested on a real device. Before regular use, verify login, ordering, payment, QR scanning, and other critical flows.
 
-## 🙏 Attribution and copyright
-
-Thanks to [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx), [RoaycL/Surge](https://github.com/RoaycL/Surge), [muktsoen/SurgeRules](https://github.com/muktsoen/SurgeRules), [fmz200/wool_scripts](https://github.com/fmz200/wool_scripts), and the authors credited in the source files. Detailed sources, versions, and license notes are in [third-party notices](../../THIRD_PARTY_NOTICES.md).
-
-This directory retains third-party source files and user-provided snapshots. **Attribution does not grant redistribution rights.** The repository does not claim ownership of third-party content or override upstream licenses. Follow the original author's terms; do not present third-party work as original or redistribute it without permission. For licensing or copyright concerns, open an [Issue](https://github.com/jingchen21/Surge-iOS/issues) for review.
