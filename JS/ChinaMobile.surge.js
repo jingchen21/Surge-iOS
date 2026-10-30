@@ -1,7 +1,4 @@
-// 个人使用快照：来自 muktsoen/SurgeRules（ChinaMobile.js），原逻辑未改。
 // 中国移动去广告（Surge 移植版）
-// 原作者：ccyykk666（Loon 插件，2026-10-24）
-// 来源：https://raw.githubusercontent.com/ccyykk666/Loon-Plugin/main/plugins/china-mobile/remove_ads.js
 // 移植改动：
 //   1. 前置纯 JS AES-128-CBC 垫片，模拟 Loon 的 $crypto.aes（Surge 没有该 API）。
 //   2. $argument 由对象改为分号分隔字符串解析，模块 #!arguments 保留 8 个开关。
