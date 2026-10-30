@@ -8,6 +8,7 @@ This directory contains JavaScript used by selected modules.
 
 | Script | Used by | Notes |
 | --- | --- | --- |
+| [GoogleEndless.surge.js](GoogleEndless.surge.js) | Google CN Redirect | Injects Endless Google auto-pagination into search result pages |
 | [Txvideoad.surge.js](Txvideoad.surge.js) | Tencent Video | Surge adaptation for binary and text response APIs |
 | [MeituanMiniProgram.surge.js](MeituanMiniProgram.surge.js) | Meituan mini program | Matches specific endpoints |
 | [Weibo.surge.js](Weibo.surge.js) | Weibo | Ad filtering based on user agent |
