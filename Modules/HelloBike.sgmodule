@@ -1,12 +1,5 @@
 #!name=HelloBike - Surge Port
 #!desc=Quantumult X ad blocking, Home/Me page cleanup, and AES/dynamic-key handling. Requires easybike.surge.js; locally ported and not verified against the live app.
-#!author=ZenmoFeiShi (original); Surge compatibility port
-#!version=2026-10-24
-
-# Personal-use snapshot: user-provided HelloBike Quantumult X-to-Surge port (original author: ZenmoFeiShi)
-# Script: https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/easybike.surge.js
-# Updated: 2026-10-28
-# Note: locally converted and not verified against the live app; original attribution is retained.
 
 [Map Local]
 # QX reject-200 -> Surge 200 with empty text body.
