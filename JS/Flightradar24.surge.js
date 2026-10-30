@@ -1,1 +1,1 @@
-$(cat /tmp/Flightradar24.pure.js)
+PLACEHOLDER_TO_BE_REPLACED
