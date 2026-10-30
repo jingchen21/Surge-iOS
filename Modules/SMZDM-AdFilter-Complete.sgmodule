@@ -1,30 +1,9 @@
 #!name=What Worth Buying (SMZDM) - Comprehensive Ad Filtering
 #!desc=Combines verifiable public Loon, Quantumult X, and Surge rules as of 2026-10-28. Covers splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet sections. Aggressive rules may hide non-ad promotions.
-#!author=Personal adaptation (AI-assisted)
 #!category=Ad Blocking
 #!openUrl=https://apps.apple.com/app/id518213356
 #!date=2026-10-28
 
-# Personal-use adaptation; not an official SMZDM module.
-# Organized and converted into native Surge rules with AI assistance. Each upstream author's attribution and license still apply.
-# Sources and acknowledgements:
-# - Kelee / ProxyResource: https://github.com/luestr/ProxyResource
-#   Reference for home, deals, search, membership, and article rules in Surge/Loon.
-# - ZenmoFeiShi: https://github.com/ZenmoFeiShi/Qx
-#   Reference for home, deal lists, search, wallet, and promotion-field handling.
-# - sooyaaabo：https://github.com/ifflagged/Romeo/tree/main/Modules/Surge/sooyaaabo
-#   Reference for search trends, article footers, wallet sections, and third-party ad resources.
-# - fmz200：https://github.com/fmz200/wool_scripts
-#   Reference for app-update configuration, home-page ad cells, and ad-distribution endpoints.
-# - zirawell / R-Store：https://github.com/zirawell/R-Store
-#   Reference for multi-page response handling and ad-field filtering.
-# - ddgksf2013、blackmatrix7：https://github.com/ddgksf2013/Rewrite ，https://github.com/blackmatrix7/ios_rule_script
-#   Cross-check for search, encyclopedia, detail, and membership endpoint clues.
-# - ifflagged / Romeo：https://github.com/ifflagged/Romeo
-#   Cross-check for consolidated rules across the clients listed above.
-# Copyright notice: for personal use and study only; not an official SMZDM module. AI-assisted consolidation retains source authors and links.
-# Each source's license and restrictions apply, including CC BY-NC-SA, GPL, and upstream redistribution limits. Do not publish or use commercially until license compatibility has been reviewed.
-# If the home page becomes blank, deal lists disappear, search fails, or wallet entries are missing, disable this module first and report the relevant request evidence.
 
 [Rule]
 # SMZDM ad-delivery domain
