@@ -1,18 +1,7 @@
 #!name=Ctrip - Ad Filtering and Navigation Cleanup (Experimental)
 #!desc=Retains the verified splash filter, adds ad-list handling, and experimentally removes selected navigation entries from getAppConfig responses. Results depend on the response schema.
-#!author=Personal adaptation (AI-assisted)
 #!category=Ad Blocking
 #!openUrl=https://apps.apple.com/app/id379395415
-#!date=2026-10-28
-
-# SPDX-License-Identifier: GPL-3.0-only
-# Personal-use adaptation, not an official Ctrip module. This update was AI-assisted.
-# Base rules reference the Ctrip Surge module from fmz200/wool_scripts. Original source and applicable license terms are retained:
-# https://github.com/fmz200/wool_scripts/blob/main/Surge/module/split/partX/Ctrip.sgmodule
-# This is a modified experimental version, not the upstream original. Follow GPL-3.0 and any file-specific upstream terms.
-# Disable other Ctrip ad-blocking modules before enabling this one to avoid duplicate processing.
-# Risk: blocking getAdsList or rewriting getAppConfig may affect promotions, page configuration, or image loading.
-# If hotel images, search, login, orders, or payments fail, disable this module and restore the last working setup.
 
 [Rule]
 # Ctrip-specific advertising domains.
