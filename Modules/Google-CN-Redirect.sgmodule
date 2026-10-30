@@ -1,9 +1,12 @@
-#!name=Google CN Redirect
-#!desc=Redirect Google China domains to their international equivalents. A local MITM CA is required. This is already included in the main profile; use only one.
+#!name=Google CN Redirect + Endless
+#!desc=Redirect Google China domains to international equivalents and enable auto-pagination (endless scroll) on Google search results. Local MITM CA required. Already included in the main profile; use only one.
 
 [URL Rewrite]
 ^https?:\/\/(?:ditu|maps)\.google\.cn(.*)$ https://maps.google.com$1 302
 ^https?:\/\/(?:www\.)?(?:g|google)\.cn(.*)$ https://www.google.com$1 302
 
+[Script]
+GoogleEndless = type=http-response, pattern=^https?://www\.google\.com/(?:search|webhp), requires-body=1, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/GoogleEndless.surge.js, timeout=10
+
 [MITM]
-hostname = %APPEND% google.cn, *.google.cn, g.cn, *.g.cn
+hostname = %APPEND% google.cn, *.google.cn, g.cn, *.g.cn, www.google.com, *.google.com
