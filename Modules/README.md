@@ -32,7 +32,6 @@ Browse modules by purpose. Select a module link to open its Surge installation f
 | Mango TV | Filter ads and unlock selected API responses | MITM and Scripting | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/MangoTV.sgmodule) |
 | What Worth Buying (SMZDM) | Broad ad filtering across splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet | Some aggressive rules may hide non-ad content | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SMZDM-AdFilter-Complete.sgmodule) |
 | HLWXX | Filter selected ad requests and page content | MITM and Scripting | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/hlwxx_remove_ads.sgmodule) |
-| Flightradar24 | Rewrite user-session and subscribe responses | MITM and Scripting; use at own risk regarding ToS | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Flightradar24.sgmodule) |
 
 ## ⚙️ Before enabling modules
 
