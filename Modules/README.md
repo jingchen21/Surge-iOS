@@ -10,7 +10,7 @@ Browse modules by purpose. Select a module link to open its Surge installation f
 
 | Module | Purpose | Requirements / notes | Install |
 | --- | --- | --- | --- |
-| Google CN Redirect | Redirect Google China domains to their international equivalents | URL Rewrite and MITM; already included in the main profile | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Google-CN-Redirect.sgmodule) |
+| Google CN Redirect + Endless | Redirect Google China domains to international equivalents and enable auto-pagination on search results | URL Rewrite, Script, and MITM; already included in the main profile | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Google-CN-Redirect.sgmodule) |
 
 ## 📱 App modules
 
@@ -36,7 +36,7 @@ Browse modules by purpose. Select a module link to open its Surge installation f
 ## ⚙️ Before enabling modules
 
 - **Tencent Video:** TencentVideo.sgmodule and TxvideoAD.sgmodule are identical. Enable only one.
-- **Google redirect:** Already included in the main profile; do not install the standalone module alongside it.
+- **Google redirect:** Already included in the main profile; do not install the standalone module alongside it. Auto-pagination requires MITM on www.google.com.
 - **Dianping:** The module uses targeted paths only. It does not block shared image hosts, shared IPs, push traffic, or broad page-configuration endpoints. If the Meituan module is also enabled, shared domains such as shark.dianping.com and shark-dp.meituan.com may still affect Dianping traffic; module names do not isolate apps.
 - **Meituan:** Enable only this repository's Meituan.sgmodule. Disable duplicate Meituan modules, older network-compatibility modules, and standalone category-IP DIRECT patches. The mini-program module can be enabled separately. Category loading passed syntax and active-profile checks, but should be retested without the old patch. Verify login, ordering, payment, and QR scanning.
 - **Validation:** Offline tests do not prove that a module works with the current app version. If an issue appears, disable the most recently enabled module first.
