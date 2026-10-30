@@ -1,6 +1,5 @@
 /*
  * HelloBike Surge Port | 2026-10-24
- * Original author: ZenmoFeiShi (QX easybike-ad.js).
  * Changes: Surge persistent store / notifications / request-id / status / mock response.
  * Filtering, AES/CBC, dynamic key validation and UI payload remain authored logic.
  * Use only with the accompanying HelloBike_Surge_Full.sgmodule.
