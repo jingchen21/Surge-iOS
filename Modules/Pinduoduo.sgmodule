@@ -1,7 +1,4 @@
 #!name = Pinduoduo - Page Layout Cleanup
-#!author = ZenmoFeiShi / walala
-# Converted from: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/Pinduoduo.snippet
-# Native jq: Surge iOS 5.14.0+ / Mac 5.9.0+.
 
 [Rule]
 DOMAIN,sdk.1rtb.net,REJECT
