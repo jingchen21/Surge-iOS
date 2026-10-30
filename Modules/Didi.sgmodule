@@ -1,6 +1,5 @@
 #!name=Didi - App Cleanup
 #!desc=Simplifies selected profile, navigation, recommendation, and wallet sections using native jq and Map Local; no JS dependency.
-#!author=ZenmoFeiShi
 # Original rules: https://github.com/ZenmoFeiShi/Qx/blob/3e442e78e95be2c71153e55560a977ea42495f27/Didichuxing.snippet
 # Requires Surge iOS 5.14.0+ / Mac 5.9.0+ for native jq.
 
