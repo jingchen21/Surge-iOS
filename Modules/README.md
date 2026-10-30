@@ -34,7 +34,7 @@ The Meituan app module is adapted from [ZenmoFeiShi/Qx MT.snippet](https://githu
 | Mango TV | Filter ads and unlock selected API responses | Adapted third-party module; review attribution and license notes in the file | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/MangoTV.sgmodule) |
 | What Worth Buying (SMZDM) | Broad ad filtering across splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet | Some aggressive rules may hide non-ad content; review license notes before redistribution | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SMZDM-AdFilter-Complete.sgmodule) |
 | HLWXX | Filter selected ad requests and page content | MITM and Scripting | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/hlwxx_remove_ads.sgmodule) |
-| Flightradar24 | Rewrite user-session and subscribe responses (adapted from fmz200/wool_scripts, original for v9.9.0) | MITM and Scripting; remote script; use at own risk regarding ToS | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Flightradar24.sgmodule) |
+| Flightradar24 | Rewrite user-session and subscribe responses | MITM and Scripting; use at own risk regarding ToS | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Flightradar24.sgmodule) |
 
 ## ⚙️ Before enabling modules
 
