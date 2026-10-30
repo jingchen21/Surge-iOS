@@ -1,10 +1,5 @@
 #!name=Weibo & International Edition - Ad Filtering
-#!desc=Combines ad-filtering rules from @zmqcherish and @Keywos and selects handling based on the Weibo user agent.
-#!author=Naisi
-#!homepage=https://github.com/fmz200/wool_scripts
-#!icon=https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/gif/naisi-01.gif
-# Converted from: https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/weibo.snippet
-# Generated automatically; upstream authors retain attribution.
+#!desc=Combines ad-filtering rules and selects handling based on the Weibo user agent.
 
 [Rule]
 DOMAIN-SUFFIX,fastimage.uve.weibo.com,REJECT
