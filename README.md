@@ -58,15 +58,8 @@ This check is a helper, not a guarantee that every secret will be detected. See 
 
 ## 🙏 Acknowledgements
 
-This repository references and adapts work shared by the Surge community. Thanks to the maintainers of:
-
-- **Rules and rule sets:** [SukkaW/Surge](https://github.com/SukkaW/Surge), [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script), [Hackl0us/GeoIP2-CN](https://github.com/Hackl0us/GeoIP2-CN), [KIDA-MNESIA/gadgets](https://github.com/KIDA-MNESIA/gadgets), [zxfccmm4/Profiles](https://github.com/zxfccmm4/Profiles), [Semporia/TikTok-Unlock](https://github.com/Semporia/TikTok-Unlock), and [getsomecat/GetSomeCats](https://github.com/getsomecat/GetSomeCats).
-- **App modules and ports:** [ZenmoFeiShi/Qx](https://github.com/ZenmoFeiShi/Qx), [RoaycL/Surge](https://github.com/RoaycL/Surge), [fmz200/wool_scripts](https://github.com/fmz200/wool_scripts), [muktsoen/SurgeRules](https://github.com/muktsoen/SurgeRules), and [luestr/ProxyResource](https://github.com/luestr/ProxyResource).
-- **Script contributors:** [Keywos/rule](https://github.com/Keywos/rule), [zmqcherish/proxy-script](https://github.com/zmqcherish/proxy-script), [ccyykk666](https://github.com/ccyykk666), and other authors credited in individual files.
-- **Platform:** [Surge](https://www.nssurge.com/) for its proxy and rule-processing capabilities.
-
-See the [rules index](Rules/README.md), [module index](Modules/README.md), [script index](JS/README.md), and [third-party notices](THIRD_PARTY_NOTICES.md) for more specific attributions.
+This repository is maintained for personal use with AI assistance for documentation, organization, and adaptations.
 
 ## ⚖️ Copyright and takedown requests
 
-This repository contains personal configuration, third-party rules, and module snapshots. **Attribution does not automatically grant permission to copy or redistribute a work.** The repository does not claim ownership of third-party content or override upstream licenses. Follow each author's license and usage terms; do not present third-party work as original or redistribute it without permission. If you are a rights holder and believe a file has an attribution, licensing, or copyright issue, please open an [Issue](https://github.com/jingchen21/Surge-iOS/issues) so it can be reviewed, corrected, or removed.
+This repository contains personal configuration. If you are a rights holder and believe a file has an attribution, licensing, or copyright issue, please open an [Issue](https://github.com/jingchen21/Surge-iOS/issues) so it can be reviewed, corrected, or removed.
