@@ -1,10 +1,6 @@
 #!name=Tomato Novel - Ad Cleanup
 #!desc=Remove splash ads, ads at the bottom of articles and chapters, audio-page ads, floating widgets, and extra benefits labels in the bottom bar.
-#!author=Kelee [https://github.com/luestr/ProxyResource/blob/main/README.md]
-#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DragonRead.png
 #!category=Ad Blocking
-#!homepage=https://hub.kelee.one
-#!date=2026-10-02 13:57:49
 
 [Rule]
 DOMAIN,zlink.ugsdk.cn,REJECT
