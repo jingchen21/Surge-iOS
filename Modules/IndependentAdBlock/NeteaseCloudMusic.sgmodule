@@ -1,5 +1,5 @@
 #!name=NetEase Cloud Music - Ad Filter
-#!desc=Filters known ad hosts and endpoints; encrypted EAPI responses are untouched.
+#!desc=Filters ad hosts, dedicated delivery endpoints, inserted promotions and selected popups.
 #!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
@@ -10,8 +10,11 @@ DOMAIN,iadmat.nosdn.127.net,REJECT
 DOMAIN,iadmatapk.nosdn.127.net,REJECT
 DOMAIN,iadmusicmat.music.126.net,REJECT
 DOMAIN,iadmusicmatvideo.music.126.net,REJECT
+DOMAIN,admusicpic.music.126.net,REJECT
 
 [Map Local]
+^https?:\/\/interface\d?\.music\.163\.com\/(?:api|weapi|eapi)\/(?:ad|delivery\/(?:batch-deliver|deliver)|vipcenter\/tspopup\/get|comment\/feed\/inserted)(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/interface\d?\.music\.163\.com\/(?:api|weapi|eapi)\/(?:mlog|abtest)(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https://interface[0-9]?\.music\.163\.com/e?api/(?:ad/|delivery/(?:batch-)?deliver) data-type=json data="{}" status-code=200
 
 [MITM]

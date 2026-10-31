@@ -19,6 +19,10 @@ http-response-jq ^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app
 # Return an empty JSON response for dedicated ad endpoints to avoid retries.
 ^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/ad\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
+# Suppress promotional recommendation and video-list responses from the home app.
+^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/bms\/queryRecommend(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-video\/video\/app\/video\/labelClusterList(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
 # Intercept only the splash campaign endpoint, not the entire CRM service.
 ^https?:\/\/shopic\.sf-express\.com\/crm\/mobile\/common\/flashscreen(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
