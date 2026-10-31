@@ -12,7 +12,7 @@ Designed for iPhone Safari. Expand a letter group and tap the large **Install in
 <details>
 <summary><strong>0–D</strong> · 10 modules</summary>
 
-**12306** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/12306.png" alt="" width="28" height="28"> **12306** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Splash, homepage promotions and selected marketing requests.
 
@@ -20,7 +20,7 @@ Splash, homepage promotions and selected marketing requests.
 
 ---
 
-**Amap** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Amap.png" alt="" width="28" height="28"> **Amap** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Selected splash, route and search promotions
 
@@ -28,7 +28,7 @@ Selected splash, route and search promotions
 
 ---
 
-**Baidu Tieba** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Tieba.png" alt="" width="28" height="28"> **Baidu Tieba** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 JSON and selected Protobuf ad fields
 
@@ -36,7 +36,7 @@ JSON and selected Protobuf ad fields
 
 ---
 
-**Baidu Web** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Baidu.png" alt="" width="28" height="28"> **Baidu Web** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Homepage feed and identified search-result ads
 
@@ -44,7 +44,7 @@ Homepage feed and identified search-result ads
 
 ---
 
-**China Mobile** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ChinaMobile.png" alt="" width="28" height="28"> **China Mobile** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Splash and countdown handling
 
@@ -52,7 +52,7 @@ Splash and countdown handling
 
 ---
 
-**Coolapk** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/CoolApk.png" alt="" width="28" height="28"> **Coolapk** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Sponsored cards, feed promotions and reply-page ads.
 
@@ -60,7 +60,7 @@ Sponsored cards, feed promotions and reply-page ads.
 
 ---
 
-**Ctrip** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Ctrip.png" alt="" width="28" height="28"> **Ctrip** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Splash and advertising responses
 
@@ -68,7 +68,7 @@ Splash and advertising responses
 
 ---
 
-**Dewu** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Dewu.png" alt="" width="28" height="28"> **Dewu** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Ad response fields; shopping operations retained
 
@@ -76,7 +76,7 @@ Ad response fields; shopping operations retained
 
 ---
 
-**Dianping** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/DianPing.png" alt="" width="28" height="28"> **Dianping** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Targeted splash and advertising endpoints
 
@@ -84,7 +84,7 @@ Targeted splash and advertising endpoints
 
 ---
 
-**Didi** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DiDi.png" alt="" width="28" height="28"> **Didi** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Selected profile, recommendation and wallet sections
 
@@ -97,7 +97,7 @@ Selected profile, recommendation and wallet sections
 <details>
 <summary><strong>F–M</strong> · 9 modules</summary>
 
-**Fliggy** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/TaobaoTravel.png" alt="" width="28" height="28"> **Fliggy** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Home promotions, travel detail marketing and related ads.
 
@@ -105,7 +105,7 @@ Home promotions, travel detail marketing and related ads.
 
 ---
 
-**Goofish** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/Goofish.png" alt="" width="28" height="28"> **Goofish** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Home banners, marketing cards and search suggestions.
 
@@ -113,7 +113,7 @@ Home banners, marketing cards and search suggestions.
 
 ---
 
-**Google CN Redirect** · Utilities · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Google.png" alt="" width="28" height="28"> **Google CN Redirect** · Utilities · <sub>Updated 2026-10-31</sub>
 
 Google China-domain redirects and search auto-pagination
 
@@ -121,7 +121,7 @@ Google China-domain redirects and search auto-pagination
 
 ---
 
-**HelloBike** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/EasyBike-01.png" alt="" width="28" height="28"> **HelloBike** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Selected splash and promotional content
 
@@ -129,7 +129,7 @@ Selected splash and promotional content
 
 ---
 
-**HLWXX** · Ad Remove · <sub>Updated 2026-10-31</sub>
+📰 **HLWXX** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Selected ad requests and page elements
 
@@ -137,7 +137,7 @@ Selected ad requests and page elements
 
 ---
 
-**JD** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/JD.png" alt="" width="28" height="28"> **JD** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Splash, home, order banners and profile advertising.
 
@@ -145,7 +145,7 @@ Splash, home, order banners and profile advertising.
 
 ---
 
-**Mango TV** · Hack VIP · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Mango_TV.png" alt="" width="28" height="28"> **Mango TV** · Hack VIP · <sub>Updated 2026-10-31</sub>
 
 Video ads and promotions
 
@@ -153,7 +153,7 @@ Video ads and promotions
 
 ---
 
-**Meituan** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/MeiTuan.png" alt="" width="28" height="28"> **Meituan** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Category compatibility and selected promotions
 
@@ -161,7 +161,7 @@ Category compatibility and selected promotions
 
 ---
 
-**Meituan Mini Program** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/MeiTuan.png" alt="" width="28" height="28"> **Meituan Mini Program** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Ads in the WeChat mini program
 
@@ -174,7 +174,7 @@ Ads in the WeChat mini program
 <details>
 <summary><strong>N–S</strong> · 6 modules</summary>
 
-**NetEase Cloud Music** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/NeteaseCloudMusic.png" alt="" width="28" height="28"> **NetEase Cloud Music** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Ad endpoints; encrypted EAPI not supported
 
@@ -182,7 +182,7 @@ Ad endpoints; encrypted EAPI not supported
 
 ---
 
-**Pinduoduo** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PinDuoDuo.png" alt="" width="28" height="28"> **Pinduoduo** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Promotions and layout cleanup
 
@@ -190,7 +190,7 @@ Promotions and layout cleanup
 
 ---
 
-**PuPu Mall** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PuPuMall.png" alt="" width="28" height="28"> **PuPu Mall** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Marketing banners, sponsored search and order promotions.
 
@@ -198,7 +198,7 @@ Marketing banners, sponsored search and order promotions.
 
 ---
 
-**SF Express** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/SF-Express.png" alt="" width="28" height="28"> **SF Express** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Splash, home promotional placements, ad endpoints
 
@@ -206,7 +206,7 @@ Splash, home promotional placements, ad endpoints
 
 ---
 
-**SMZDM** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/smzdm.png" alt="" width="28" height="28"> **SMZDM** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Splash, feed, search and page promotions
 
@@ -214,7 +214,7 @@ Splash, feed, search and page promotions
 
 ---
 
-**SPDB** · Ad Remove · <sub>Updated 2026-10-31</sub>
+🏦 **SPDB** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Filter splash images by asset dimensions
 
@@ -227,7 +227,7 @@ Filter splash images by asset dimensions
 <details>
 <summary><strong>T–Z</strong> · 6 modules</summary>
 
-**Taobao** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Taobao.png" alt="" width="28" height="28"> **Taobao** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Splash, pop-ups, advertising hosts and promotional APIs.
 
@@ -235,7 +235,7 @@ Splash, pop-ups, advertising hosts and promotional APIs.
 
 ---
 
-**Tencent Video** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Tencent_Video.png" alt="" width="28" height="28"> **Tencent Video** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Selected splash and playback ads
 
@@ -243,7 +243,7 @@ Selected splash and playback ads
 
 ---
 
-**Tencent Video (duplicate)** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Tencent_Video.png" alt="" width="28" height="28"> **Tencent Video (duplicate)** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Duplicate alternative; install only one
 
@@ -251,7 +251,7 @@ Duplicate alternative; install only one
 
 ---
 
-**Tomato Novel** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/FanqieNovel.png" alt="" width="28" height="28"> **Tomato Novel** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Reading, splash, audio and floating ads
 
@@ -259,7 +259,7 @@ Reading, splash, audio and floating ads
 
 ---
 
-**Weibo** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Weibo.png" alt="" width="28" height="28"> **Weibo** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Selected feed and app promotions
 
@@ -267,7 +267,7 @@ Selected feed and app promotions
 
 ---
 
-**Xiaohongshu** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/RedNote.png" alt="" width="28" height="28"> **Xiaohongshu** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Ads, search promotions, and image/video/Live Photo watermark handling
 
