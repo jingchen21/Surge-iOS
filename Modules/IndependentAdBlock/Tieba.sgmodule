@@ -1,15 +1,15 @@
-#!name=百度贴吧 - JSON 广告过滤（基础版·非完整等效）
-#!desc=仅处理可读 JSON 列表广告；新版 protobuf 二进制去广告暂未移植。
-#!author=独立重建；技术参考 app2smile（MIT）、可莉
+#!name=Baidu Tieba - JSON Ad Filter
+#!desc=Filters readable JSON ads; binary protobuf responses are not modified.
 #!homepage=https://github.com/jingchen21/Surge-iOS
-#!tag=去广告
+#!date=2026-10-31
+#!tag=Ad Blocking
 
 [Rule]
 DOMAIN,afd.baidu.com,REJECT
 DOMAIN,mobads.baidu.com,REJECT
 
 [Script]
-贴吧-json广告清理 = type=http-response,pattern=^https?://(?:tiebac|tieba)\.baidu\.com/(?:livefeed/feed|c/(?:f/(?:frs/(?:page|threadlist|generalTabList)|pb/page|sidebar/home)|u/user/profile)|tiebaads/commonbatch)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Tieba.js,requires-body=true
+Tieba-JSON-Ads = type=http-response,pattern=^https?://(?:tiebac|tieba)\.baidu\.com/(?:livefeed/feed|c/(?:f/(?:frs/(?:page|threadlist|generalTabList)|pb/page|sidebar/home)|u/user/profile)|tiebaads/commonbatch)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Tieba.js,requires-body=true
 
 [MITM]
 hostname = %APPEND% tiebac.baidu.com, tieba.baidu.com

@@ -1,33 +1,30 @@
-#!name=顺丰速运 - 去广告（独立原生版）
-#!desc=顺丰 App 开屏、广告接口、首页运营区域，以及顺丰速运+推广广告。Surge 原生 JQ 与 Map Local，无第三方脚本依赖。2026-10-31 整理，待实机验证。
-#!author=个人自用整理；参考 QingRex/LoonKissSurge、Moli-X/Resources、BlueGrave/Surge、luestr/ProxyResource
-#!tag=去广告,顺丰
+#!name=SF Express - Ad Filter
+#!desc=Filters splash ads, home promotional placements, and advertising endpoints with native Surge rules.
+#!tag=Ad Blocking, SF Express
 #!basedOn=iOS
 #!openUrl=https://apps.apple.com/app/id899529698
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
 
-# 说明：基于截至 2026-10-31 可核查的公开 Surge / QX / Loon 规则独立整理。
-# 2026-02-23 的可莉 / QingRex Surge 版包含超过 20KB 的旧首页入口静态 JSON，本模块不复制旧业务数据。
-# 无 kelee.one、外部 JS 或远程规则集。需要 Surge iOS 5.14+、MITM 信任与模块重写功能开启。
-# 不拦截 appVersion/detectionUpgrade（升级检查）、积分商城商品、会员权益、寄件或物流查询。
+# No external JavaScript is required. Requires a trusted MITM certificate and native body rewriting.
+# Does not intercept app updates, shipping, tracking, points shopping, or membership functions.
 
 [Body Rewrite]
-# 清理 App 首页特定运营位置；按响应实时改写，保留其他位置和核心业务数据。
-# 若发现首页重要业务区缺失，可注释这一条进行排查。
+# Remove the selected homepage promotional position while retaining other response fields.
+# Disable the next rule if a required homepage section disappears.
 http-response-jq ^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/appHomeConfig\/query(?:\?.*)?$ 'if (.obj | type) == "array" then .obj |= map(select(.position != 2)) else . end'
 
 [Map Local]
-# 顺丰 App 广告配置 / 信息流广告接口：以本地空 JSON 返回，避免 REJECT 引发重试。
+# Return an empty JSON response for dedicated ad endpoints to avoid retries.
 ^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/ad\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
-# 顺丰开屏推广：精准命中 flashscreen，不拦截完整 CRM 服务。
+# Intercept only the splash campaign endpoint, not the entire CRM service.
 ^https?:\/\/shopic\.sf-express\.com\/crm\/mobile\/common\/flashscreen(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
-# 顺丰 App / 速运+ 中的信息流广告查询；只处理明确广告用途的接口。
+# Ad feed query endpoint.
 ^https?:\/\/ucmp\.sf-express\.com\/proxy\/operation-platform\/info-flow-adver\/query(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
-# 顺丰速运+ 中的活动广告列表（微信小程序／App 内 H5 场景）。
+# Campaign ad list for the mini program and embedded web views.
 ^https?:\/\/mcs-mimp-web\.sf-express\.com\/mcs-mimp\/integralPlanet\/getCxAdvertiseList(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
 [MITM]
