@@ -1,5 +1,5 @@
 #!name=NetEase Cloud Music - Ad Filter
-#!desc=Filters ad hosts, dedicated delivery endpoints, inserted promotions and selected popups.
+#!desc=Filters ad hosts, comment banners, live entrances, dedicated marketing and popups.
 #!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
@@ -17,5 +17,8 @@ DOMAIN,admusicpic.music.126.net,REJECT
 ^https?:\/\/interface\d?\.music\.163\.com\/(?:api|weapi|eapi)\/(?:mlog|abtest)(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https://interface[0-9]?\.music\.163\.com/e?api/(?:ad/|delivery/(?:batch-)?deliver) data-type=json data="{}" status-code=200
 
+^https?:\/\/interface\d?\.music\.163\.com\/(?:api|weapi|eapi)\/(?:link\/position\/show\/strategy|link\/scene\/show)(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/interface\d?\.music\.163\.com\/(?:api|weapi|eapi)\/(?:v\d+\/content\/exposure\/comment\/banner|resource\/comments?\/musiciansaid)(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/interface\d?\.music\.163\.com\/(?:api|weapi|eapi)\/(?:mlivestream\/entrance\/playpage|mine\/applet\/redpoint)(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 [MITM]
 hostname = %APPEND% interface.music.163.com, interface1.music.163.com, interface2.music.163.com, interface3.music.163.com

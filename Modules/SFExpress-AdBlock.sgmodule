@@ -1,5 +1,5 @@
 #!name=SF Express - Ad Filter
-#!desc=Filters splash ads, home promotional placements, and advertising endpoints with native Surge rules.
+#!desc=Filters splash campaigns, home promotions, video recommendations and dedicated ad feeds.
 #!category=Ad Remove
 #!tag=Ad Blocking, SF Express
 #!basedOn=iOS

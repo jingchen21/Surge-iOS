@@ -14,11 +14,17 @@ DOMAIN,stat.simba.taobao.com,REJECT
 DOMAIN,apoll.m.taobao.com,REJECT
 DOMAIN,m-adash.m.taobao.com,REJECT
 
+DOMAIN,click.mz.simba.taobao.com,REJECT
+DOMAIN,click.tz.simba.taobao.com,REJECT
+DOMAIN,textlink.simba.taobao.com,REJECT
+DOMAIN,simba.m.taobao.com,REJECT
 [Map Local]
 ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.volvo\.secondfloor\.getconfig data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.newface\.awesome\.get(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 [Script]
 Taobao-Splash-Popups = type=http-response,pattern=^https://(?:guide-acs\.m\.taobao\.com/gw/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get)|poplayer\.template\.alibaba\.com/[A-Za-z0-9_]+\.json),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Taobao.js,requires-body=true
 

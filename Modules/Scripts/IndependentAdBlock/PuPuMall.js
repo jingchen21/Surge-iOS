@@ -15,6 +15,7 @@ else if(/\/marketing\/advertisement\/v1/.test(u)&&Array.isArray(d)){
 }else if(/\/search\/hub\/search_box\/products\/v6/.test(u))clear(d,"feed_banner_cards");
 else if(/\/order_settlement\/detail/.test(u)){if(o(d)&&d.member_card_v2!=null){d.member_card_v2={};changed=true}}
 else if(/\/order\/orders\/list\/v4/.test(u)){if(Array.isArray(d))d.forEach(function(x){if(o(x)&&"just_in_time_comment" in x){delete x.just_in_time_comment;changed=true}})}
+else if(/\/resource_preload\/list_h5_resource/.test(u)){if(Array.isArray(d)){const n=d.length;r.data=d.filter(x=>x&&x.filename!=="RecommendProduct.29e31893.js");if(n!==r.data.length)changed=true}}
 else if(/\/marketing\/banner\/(?:v\d+|search_component_banner)/.test(u)){if(Array.isArray(d)&&d.length){r.data=[];changed=true}else{clear(d,"banners");clear(d,"bannerList")}}
 return $done(changed?{body:JSON.stringify(r)}:{});
 })();
