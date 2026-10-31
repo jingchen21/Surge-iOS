@@ -5,7 +5,7 @@ var raw=$response&&$response.body,url=$request&&$request.url||"";
 if(typeof raw!=="string"||!/^\s*[\[{]/.test(raw))return $done({});
 var fid=(url.match(/[?&]functionId=([^&]+)/)||[])[1]||"";
 try{fid=decodeURIComponent(fid)}catch(_){}
-var handled=["start","startup","welcomeHome","deliverLayer","orderTrackBusiness","getTabHomeInfo","myOrderInfo","personinfoBusiness","readCustomSurfaceList"];
+var handled=["start","startup","getSplash","welcomeHome","deliverLayer","orderTrackBusiness","getTabHomeInfo","myOrderInfo","personinfoBusiness","readCustomSurfaceList"];
 if(!handled.includes(fid))return $done({});
 var root;try{root=JSON.parse(raw)}catch(_){return $done({})}
 if(!root||typeof root!=="object")return $done({});
@@ -28,8 +28,16 @@ function cleanPersonFloors(x){
  var out=keep(x,function(f){return !(o(f)&&excluded.includes(f.mId))&&!adItem(f)});
  out.forEach(cleanFloor);return out;
 }
-if(fid==="start"||fid==="startup"){
- empty(root,"images");if(root.showTimesDaily){root.showTimesDaily=0;changed=true}
+if(fid==="start"||fid==="startup"||fid==="getSplash"){
+ empty(root,"images");empty(root,"adList");empty(root,"splashAdList");
+ if(root.showTimesDaily){root.showTimesDaily=0;changed=true}
+ var splash=root.data;
+ if(Array.isArray(splash)&&fid==="getSplash"&&splash.length){root.data=[];changed=true}
+ else if(o(splash)){
+  ["images","adList","splashAdList","splashAds","advertisementList","splashMaterials"].forEach(function(k){empty(splash,k)});
+  if(splash.showTimesDaily){splash.showTimesDaily=0;changed=true}
+  if(o(splash.splash))["images","adList","ads","materials"].forEach(function(k){empty(splash.splash,k)});
+ }
 }else if(fid==="welcomeHome"){
  if(Array.isArray(root.floorList))root.floorList=keep(root.floorList,function(f){return f&&["topTab","searchC","dynamicIcon","locPermission","login","hybrid","recommend"].includes(f.type)});
  empty(root,"webViewFloorList");remove(root,"promotionTabs");

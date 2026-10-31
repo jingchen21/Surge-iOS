@@ -1,5 +1,5 @@
 #!name=JD - Comprehensive Ad and Page Cleanup
-#!desc=Filters splash, homepage promotions, order/profile banners and selected advertising endpoints.
+#!desc=Filters startup and splash advertising, homepage promotions and order/profile banners.
 #!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
@@ -22,7 +22,7 @@ DOMAIN-SUFFIX,cm.jd.com,REJECT
 ^https?:\/\/(?:bdsp-x|dsp-x)\.jd\.com\/adx\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
 [Script]
-JD-Page-Cleanup = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|startup|welcomeHome|readCustomSurfaceList)(?:&|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/JD.js,requires-body=true,max-size=2097152,timeout=30
+JD-Page-Cleanup = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?(?:[^#]*&)?functionId=(?:deliverLayer|getSplash|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|startup|welcomeHome|readCustomSurfaceList)(?:&|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/JD.js,requires-body=true,max-size=2097152,timeout=30
 
 [MITM]
 hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com
