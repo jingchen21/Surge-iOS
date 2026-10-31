@@ -1,55 +1,286 @@
-# Surge Modules
+# Surge iOS Modules
 
-All modules in one catalog, with categories, update dates and direct installation buttons for Safari on iOS.
+**31 modules** · **29 Ad Remove** · **1 Hack VIP** · **1 Utilities**
 
-**Install from Safari:** Tap the **Install in Surge** button to open the iOS app and install the module. No copy-and-paste step is needed.
-> **Categories:** Ad Remove for ad filters, Hack VIP for Mango TV, and Utilities for Google CN Redirect.
-> **Important:** If a module is already installed, update or reinstall it in Surge to refresh its category metadata. Modules using HTTPS response rewriting require MITM and certificate trust.
+Designed for iPhone Safari. Expand a letter group and tap the large **Install in Surge** button.
+
+> **Installation:** GitHub may block app URL schemes. These buttons use an HTTPS launch bridge that receives only the public module URL. Safari will ask to open Surge when supported.
+> **After installation:** Enable the module in Surge and configure MITM for modules that inspect HTTPS traffic.
 
 ## All Modules
 
-| Module | Category | Coverage | Updated (UTC+8) | Install |
-| --- | --- | --- | --- | --- |
-| **12306** | Ad Remove | Splash ad list; booking and payments untouched | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2F12306.sgmodule) |
-| **Amap** | Ad Remove | Selected splash, route and search promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FAmap-AdFilter.sgmodule) |
-| **Baidu Tieba** | Ad Remove | JSON and selected Protobuf ad fields | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTieba.sgmodule) |
-| **Baidu Web** | Ad Remove | Homepage feed and identified search-result ads | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FBaiduWeb.sgmodule) |
-| **China Mobile** | Ad Remove | Splash and countdown handling | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FChinaMobile.sgmodule) |
-| **Coolapk** | Ad Remove | Sponsored cards and selected feed promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FCoolapk.sgmodule) |
-| **Ctrip** | Ad Remove | Splash and advertising responses | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FCtrip-AdFilter.sgmodule) |
-| **Dewu** | Ad Remove | Ad response fields; shopping operations retained | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FDewu.sgmodule) |
-| **Dianping** | Ad Remove | Targeted splash and advertising endpoints | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDianPing-11.53.14-Full-AdBlock.sgmodule) |
-| **Didi** | Ad Remove | Selected profile, recommendation and wallet sections | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDidi.sgmodule) |
-| **Fliggy** | Ad Remove | Marketing placements and identified home-screen ads | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FFliggy.sgmodule) |
-| **Goofish** | Ad Remove | Splash, home and local feeds, search promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FGoofish.sgmodule) |
-| **Google CN Redirect** | Utilities | Google China-domain redirects and search auto-pagination | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FGoogle-CN-Redirect.sgmodule) |
-| **HelloBike** | Ad Remove | Selected splash and promotional content | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FHelloBike.sgmodule) |
-| **HLWXX** | Ad Remove | Selected ad requests and page elements | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2Fhlwxx_remove_ads.sgmodule) |
-| **JD** | Ad Remove | Splash and promotions in readable JSON responses | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FJD.sgmodule) |
-| **Mango TV** | Hack VIP | Video ads and promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMangoTV.sgmodule) |
-| **Meituan** | Ad Remove | Category compatibility and selected promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMeituan.sgmodule) |
-| **Meituan Mini Program** | Ad Remove | Ads in the WeChat mini program | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMeituanMiniProgram.sgmodule) |
-| **NetEase Cloud Music** | Ad Remove | Ad endpoints; encrypted EAPI not supported | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FNeteaseCloudMusic.sgmodule) |
-| **Pinduoduo** | Ad Remove | Promotions and layout cleanup | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FPinduoduo.sgmodule) |
-| **PuPu Mall** | Ad Remove | Marketing banners and search suggestions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FPuPuMall.sgmodule) |
-| **SF Express** | Ad Remove | Splash, home promotional placements, ad endpoints | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSFExpress-AdBlock.sgmodule) |
-| **SMZDM** | Ad Remove | Splash, feed, search and page promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSMZDM-AdFilter-Complete.sgmodule) |
-| **SPDB** | Ad Remove | Filter splash images by asset dimensions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSPDB.sgmodule) |
-| **Taobao** | Ad Remove | Splash and pop-up promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTaobao.sgmodule) |
-| **Tencent Video** | Ad Remove | Selected splash and playback ads | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FTencentVideo.sgmodule) |
-| **Tencent Video (duplicate)** | Ad Remove | Duplicate alternative; install only one | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FTxvideoAD.sgmodule) |
-| **Tomato Novel** | Ad Remove | Reading, splash, audio and floating ads | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FFanQieNovel.sgmodule) |
-| **Weibo** | Ad Remove | Selected feed and app promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FWeibo.sgmodule) |
-| **Xiaohongshu** | Ad Remove | Ads, search promotions, and image/video/Live Photo watermark handling | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FXiaohongshu.sgmodule) |
+<details>
+<summary><strong>0–D</strong> · 10 modules</summary>
+
+**12306** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Splash, homepage promotions and selected marketing requests.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2F12306.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install 12306 in Surge" width="258" height="48"></a>
+
+---
+
+**Amap** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Selected splash, route and search promotions
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FAmap-AdFilter.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Amap in Surge" width="258" height="48"></a>
+
+---
+
+**Baidu Tieba** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+JSON and selected Protobuf ad fields
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTieba.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Baidu Tieba in Surge" width="258" height="48"></a>
+
+---
+
+**Baidu Web** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Homepage feed and identified search-result ads
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FBaiduWeb.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Baidu Web in Surge" width="258" height="48"></a>
+
+---
+
+**China Mobile** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Splash and countdown handling
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FChinaMobile.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install China Mobile in Surge" width="258" height="48"></a>
+
+---
+
+**Coolapk** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Sponsored cards, feed promotions and reply-page ads.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FCoolapk.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Coolapk in Surge" width="258" height="48"></a>
+
+---
+
+**Ctrip** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Splash and advertising responses
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FCtrip-AdFilter.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Ctrip in Surge" width="258" height="48"></a>
+
+---
+
+**Dewu** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Ad response fields; shopping operations retained
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FDewu.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Dewu in Surge" width="258" height="48"></a>
+
+---
+
+**Dianping** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Targeted splash and advertising endpoints
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDianPing-11.53.14-Full-AdBlock.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Dianping in Surge" width="258" height="48"></a>
+
+---
+
+**Didi** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Selected profile, recommendation and wallet sections
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDidi.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Didi in Surge" width="258" height="48"></a>
+
+---
+
+</details>
+
+<details>
+<summary><strong>F–M</strong> · 9 modules</summary>
+
+**Fliggy** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Home promotions, travel detail marketing and related ads.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FFliggy.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Fliggy in Surge" width="258" height="48"></a>
+
+---
+
+**Goofish** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Home banners, marketing cards and search suggestions.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FGoofish.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Goofish in Surge" width="258" height="48"></a>
+
+---
+
+**Google CN Redirect** · Utilities · <sub>Updated 2026-10-31</sub>
+
+Google China-domain redirects and search auto-pagination
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FGoogle-CN-Redirect.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Google CN Redirect in Surge" width="258" height="48"></a>
+
+---
+
+**HelloBike** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Selected splash and promotional content
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FHelloBike.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install HelloBike in Surge" width="258" height="48"></a>
+
+---
+
+**HLWXX** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Selected ad requests and page elements
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2Fhlwxx_remove_ads.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install HLWXX in Surge" width="258" height="48"></a>
+
+---
+
+**JD** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Splash, home, order banners and profile advertising.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FJD.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install JD in Surge" width="258" height="48"></a>
+
+---
+
+**Mango TV** · Hack VIP · <sub>Updated 2026-10-31</sub>
+
+Video ads and promotions
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMangoTV.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Mango TV in Surge" width="258" height="48"></a>
+
+---
+
+**Meituan** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Category compatibility and selected promotions
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMeituan.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Meituan in Surge" width="258" height="48"></a>
+
+---
+
+**Meituan Mini Program** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Ads in the WeChat mini program
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMeituanMiniProgram.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Meituan Mini Program in Surge" width="258" height="48"></a>
+
+---
+
+</details>
+
+<details>
+<summary><strong>N–S</strong> · 6 modules</summary>
+
+**NetEase Cloud Music** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Ad endpoints; encrypted EAPI not supported
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FNeteaseCloudMusic.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install NetEase Cloud Music in Surge" width="258" height="48"></a>
+
+---
+
+**Pinduoduo** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Promotions and layout cleanup
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FPinduoduo.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Pinduoduo in Surge" width="258" height="48"></a>
+
+---
+
+**PuPu Mall** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Marketing banners, sponsored search and order promotions.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FPuPuMall.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install PuPu Mall in Surge" width="258" height="48"></a>
+
+---
+
+**SF Express** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Splash, home promotional placements, ad endpoints
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSFExpress-AdBlock.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install SF Express in Surge" width="258" height="48"></a>
+
+---
+
+**SMZDM** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Splash, feed, search and page promotions
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSMZDM-AdFilter-Complete.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install SMZDM in Surge" width="258" height="48"></a>
+
+---
+
+**SPDB** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Filter splash images by asset dimensions
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSPDB.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install SPDB in Surge" width="258" height="48"></a>
+
+---
+
+</details>
+
+<details>
+<summary><strong>T–Z</strong> · 6 modules</summary>
+
+**Taobao** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Splash, pop-ups, advertising hosts and promotional APIs.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTaobao.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Taobao in Surge" width="258" height="48"></a>
+
+---
+
+**Tencent Video** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Selected splash and playback ads
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FTencentVideo.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Tencent Video in Surge" width="258" height="48"></a>
+
+---
+
+**Tencent Video (duplicate)** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Duplicate alternative; install only one
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FTxvideoAD.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Tencent Video (duplicate) in Surge" width="258" height="48"></a>
+
+---
+
+**Tomato Novel** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Reading, splash, audio and floating ads
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FFanQieNovel.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Tomato Novel in Surge" width="258" height="48"></a>
+
+---
+
+**Weibo** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Selected feed and app promotions
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FWeibo.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Weibo in Surge" width="258" height="48"></a>
+
+---
+
+**Xiaohongshu** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Ads, search promotions, and image/video/Live Photo watermark handling
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FXiaohongshu.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Xiaohongshu in Surge" width="258" height="48"></a>
+
+---
+
+</details>
 
 ## Notes
 
-- **Updated:** Latest module-file change recorded in this repository as of 2026-10-31.
-- **Xiaohongshu:** The main module includes image, video, and Live Photo watermark handling, subject to app response formats.
-- **JD / NetEase Cloud Music / Tieba:** Some encrypted and binary formats remain unsupported; Tieba applies narrow Protobuf filtering with unknown formats passed through.
-- **Tencent Video:** TencentVideo.sgmodule and TxvideoAD.sgmodule are alternatives; enable only one.
-- **Meituan / Dianping:** Shared endpoints may cause conflicting rewrites. Disable overlapping modules if necessary.
-- **Google CN Redirect:** These rules are already in the main profile; do not install a duplicate.
-- **Validation:** Test app launch, login, search, messages, checkout, and payment after installing a module. App updates may affect compatibility.
+- All 31 modules share a single alphabetic catalog. Categories are defined within Surge.
+- The two Tencent Video entries are alternatives. Enable only one.
+- Avoid overlapping Meituan and Dianping filters. Verify login, search, messages and payment after enabling any module.
 
-[Repository Home](../README.md) | [Surge URL Scheme](https://manual.nssurge.com/tools/url-scheme.html)
+[Repository home](../README.md) · [Surge URL scheme](https://manual.nssurge.com/tools/url-scheme.html)
