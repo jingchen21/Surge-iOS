@@ -1,25 +1,29 @@
-# 独立去广告｜Surge iOS
+# Independent Surge Modules
 
-> 个人自用、AI 辅助重写；未完成 iPhone 实机验证。所有执行脚本均存放在本仓库，不依赖 kelee.one 等第三方执行地址。
+Self-maintained app filters with scripts served from this repository.
 
-| App | 独立模块 | 作用范围 |
-| --- | --- | --- |
-| 小红书 | [Xiaohongshu.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Xiaohongshu.sgmodule) | 去广告 + 图片、视频和实况照片保存去水印（中等强度） |
-| 闲鱼 | [Goofish.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Goofish.sgmodule) | 开屏、首页、同城与搜索中明确广告条目，不动商品和订单 |
-| 得物 | [Dewu.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Dewu.sgmodule) | 广告接口中的已知广告结构，保留优惠券、商品和交易 |
-| 飞猪 | [Fliggy.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Fliggy.sgmodule) | 营销资源和首页显式广告，保留机票酒店及预订订单 |
-| 酷安 | [Coolapk.sgmodule](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Coolapk.sgmodule) | 赞助卡和明确广告标识，保留正常动态、评论和搜索 |
+| Module | Coverage | Updated (UTC+8) | Install |
+| --- | --- | --- | --- |
+| **Xiaohongshu** | Ads, search promotions, and image/video/Live Photo watermark handling | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FXiaohongshu.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Xiaohongshu.sgmodule) |
+| **Goofish** | Splash, home and local feeds, search promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FGoofish.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Goofish.sgmodule) |
+| **Dewu** | Ad response fields; shopping operations retained | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FDewu.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Dewu.sgmodule) |
+| **Fliggy** | Marketing placements and identified home-screen ads | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FFliggy.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Fliggy.sgmodule) |
+| **Coolapk** | Sponsored cards and selected feed promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FCoolapk.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Coolapk.sgmodule) |
+| **JD** | Splash and promotions in readable JSON responses | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FJD.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/JD.sgmodule) |
+| **Taobao** | Splash and pop-up promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTaobao.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Taobao.sgmodule) |
+| **12306** | Splash ad list; booking and payments untouched | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2F12306.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/12306.sgmodule) |
+| **NetEase Cloud Music** | Ad endpoints; encrypted EAPI not supported | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FNeteaseCloudMusic.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/NeteaseCloudMusic.sgmodule) |
+| **PuPu Mall** | Marketing banners and search suggestions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FPuPuMall.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/PuPuMall.sgmodule) |
+| **Baidu Web** | Hide the mobile homepage feed with CSS | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FBaiduWeb.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/BaiduWeb.sgmodule) |
+| **Baidu Tieba** | JSON ads only; protobuf not handled | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTieba.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Tieba.sgmodule) |
 
-## 使用说明
+## Usage
 
-1. 关闭其他同 App 模块，开启 Surge MITM 并信任证书；仅启用需使用的模块。
-2. 每次启用一个，检查开屏、首页、搜索、消息、播放、下单、付款、订单。
-3. 异常时停用并提供脱敏响应。非 JSON / 异常结构不作修改。接口规则可能随 App 版本变化。
+1. Use **Install in Surge** on iOS. If the link cannot open the app, paste the **Raw** URL into the Surge module installer.
+2. Enable HTTPS rewriting and the required MITM certificate.
+3. Enable one filter per app and check normal app functions.
+4. Xiaohongshu has integrated image, video and Live Photo watermark handling. Media save requests can use a short on-device cache.
 
-4. 小红书主模块已集成去水印；视频与实况照片通过设备本地 10 分钟缓存匹配，接口变化时可能失效。
+App changes may affect these rules; use the module on your own device to verify compatibility.
 
-## 来源、声明与感谢
-
-- 参考 [zirawell/R-Store](https://github.com/zirawell/R-Store)、[fmz200/wool_scripts](https://github.com/fmz200/wool_scripts)、[QingRex/LoonKissSurge](https://github.com/QingRex/LoonKissSurge) 公开规则，以及 RuCu6 酷安接口线索。
-- 文件均为 AI 辅助自主重写的独立实现，不复制上游脚本，不使用外部执行依赖，不采集用户数据。
-- 各来源版权与许可归原作者；本仓库仅个人维护学习，转载或公开传播应另行核查上游许可。
+[All Modules](../README.md)
