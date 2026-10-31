@@ -33,6 +33,20 @@ Browse modules by purpose. Select a module link to open its Surge installation f
 | What Worth Buying (SMZDM) | Broad ad filtering across splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet | Splash response preserves its schema and disables existing campaigns; disappearance confirmed on iPhone 2026-10-31. Some other rules may hide non-ad content | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/SMZDM-AdFilter-Complete.sgmodule) |
 | HLWXX | Filter selected ad requests and page content | MITM and Scripting | [Install](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/hlwxx_remove_ads.sgmodule) |
 
+
+## 📦 独立版小红书、闲鱼、得物、飞猪、酷安
+
+统一使用自有脚本、保守清理，**尚未实机验证**。
+
+- [小红书](IndependentAdBlock/Xiaohongshu.sgmodule) — 开屏配置、信息流和搜索广告，保留普通笔记、直播与商品
+- [闲鱼](IndependentAdBlock/Goofish.sgmodule) — 开屏、首页、同城与搜索中明确广告条目，不动商品和订单
+- [得物](IndependentAdBlock/Dewu.sgmodule) — 广告接口中的已知广告结构，保留优惠券、商品和交易
+- [飞猪](IndependentAdBlock/Fliggy.sgmodule) — 营销资源和首页显式广告，保留机票酒店及预订订单
+- [酷安](IndependentAdBlock/Coolapk.sgmodule) — 赞助卡和明确广告标识，保留正常动态、评论和搜索
+- [小红书图片去水印开关（可选）](IndependentAdBlock/Xiaohongshu-Watermark-Optional.sgmodule) — 实验性，不保证视频与实况照片效果。
+
+规则来源、安装说明：[独立去广告模块](IndependentAdBlock/README.md)。
+
 ## ⚙️ Before enabling modules
 
 - **Tencent Video:** TencentVideo.sgmodule and TxvideoAD.sgmodule are identical. Enable only one.
