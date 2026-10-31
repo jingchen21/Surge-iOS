@@ -1,6 +1,6 @@
 # Surge iOS Modules
 
-**32 modules** · **30 Ad Remove** · **1 Hack VIP** · **1 Utilities**
+**34 modules** · **32 Ad Remove** · **1 Hack VIP** · **1 Utilities**
 
 Designed for iPhone Safari. Expand a letter group and tap the large **Install in Surge** button.
 
@@ -95,7 +95,7 @@ Selected profile, recommendation and wallet sections
 </details>
 
 <details>
-<summary><strong>F–M</strong> · 10 modules</summary>
+<summary><strong>F–M</strong> · 12 modules</summary>
 
 <img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/TaobaoTravel.png" alt="" width="28" height="28"> **Fliggy** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
@@ -129,6 +129,14 @@ Selected splash and promotional content
 
 ---
 
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/MrHema.png" alt="" width="28" height="28"> **Hema** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Home feed, marketing scenes, profile and tab bar cleanup, product recommendations. Based on Kelee; not device-tested on 8.11.0.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FHema.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Hema in Surge" width="258" height="48"></a>
+
+---
+
 📰 **HLWXX** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Selected ad requests and page elements
@@ -145,11 +153,13 @@ Splash, home, order banners and profile advertising.
 
 ---
 
-<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/KFC.png" alt="" width="28" height="28"> **KFC** · Ad Remove · <sub>Updated 2026-10-31</sub>
+<img src="https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/docs/assets/kfc.svg" alt="" width="28" height="28"> **KFC** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
 Splash and home ads; custom_v2/dynamicad use Map Local to avoid retry storms.
 
 <a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FKFC.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install KFC in Surge" width="258" height="48"></a>
+
+---
 
 <img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/LuckinCoffee.png" alt="" width="28" height="28"> **Luckin Coffee** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
