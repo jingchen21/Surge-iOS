@@ -1,12 +1,26 @@
-#!name=Taobao - Splash Filter
-#!desc=Filters splash and pop-up promotional JSON without modifying shopping operations.
+#!name=Taobao - Ad and Splash Filter
+#!desc=Filters ad networks, splash screens, second-floor promotions and marketing pop-ups.
 #!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
 #!tag=Ad Blocking
 
+[Rule]
+DOMAIN,dsp.simba.taobao.com,REJECT
+DOMAIN,m.simba.taobao.com,REJECT
+DOMAIN,mclick.simba.taobao.com,REJECT
+DOMAIN,click.simba.taobao.com,REJECT
+DOMAIN,stat.simba.taobao.com,REJECT
+DOMAIN,apoll.m.taobao.com,REJECT
+DOMAIN,m-adash.m.taobao.com,REJECT
+
+[Map Local]
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.volvo\.secondfloor\.getconfig data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
 [Script]
 Taobao-Splash-Popups = type=http-response,pattern=^https://(?:guide-acs\.m\.taobao\.com/gw/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get)|poplayer\.template\.alibaba\.com/[A-Za-z0-9_]+\.json),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Taobao.js,requires-body=true
 
 [MITM]
-hostname = %APPEND% guide-acs.m.taobao.com, poplayer.template.alibaba.com
+hostname = %APPEND% guide-acs.m.taobao.com, poplayer.template.alibaba.com, acs.m.taobao.com
