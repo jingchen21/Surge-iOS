@@ -1,5 +1,6 @@
 #!name=NetEase Cloud Music - Ad Filter
 #!desc=Filters known ad hosts and endpoints; encrypted EAPI responses are untouched.
+#!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
 #!tag=Ad Blocking

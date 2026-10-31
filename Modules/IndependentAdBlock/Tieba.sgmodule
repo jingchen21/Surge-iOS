@@ -1,5 +1,6 @@
 #!name=Baidu Tieba - JSON Ad Filter
 #!desc=Filters readable JSON ads; binary protobuf responses are not modified.
+#!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
 #!tag=Ad Blocking
