@@ -1,5 +1,6 @@
 #!name=HelloBike - Surge Port
 #!desc=Quantumult X ad blocking, Home/Me page cleanup, and AES/dynamic-key handling. Requires easybike.surge.js; locally ported and not verified against the live app.
+#!category=Ad Remove
 
 [Map Local]
 # QX reject-200 -> Surge 200 with empty text body.

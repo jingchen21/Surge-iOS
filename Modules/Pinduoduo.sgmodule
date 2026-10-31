@@ -1,4 +1,5 @@
 #!name = Pinduoduo - Page Layout Cleanup
+#!category=Ad Remove
 
 [Rule]
 DOMAIN,sdk.1rtb.net,REJECT

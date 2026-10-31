@@ -1,5 +1,6 @@
 #!name=Dianping - Targeted Ad Filtering
 #!desc=Filters known splash and ad endpoints while prioritizing merchant pages, reviews, images, search, and transactions. Intended for Surge; version 11.53.14 still needs device testing.
+#!category=Ad Remove
 #!openUrl=https://apps.apple.com/app/id351091731
 #!bundleId=com.dianping.dpscope
 #!tag=Ad Blocking

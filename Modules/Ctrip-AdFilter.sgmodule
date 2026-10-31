@@ -1,6 +1,6 @@
 #!name=Ctrip - Ad Filtering and Navigation Cleanup (Experimental)
 #!desc=Retains the verified splash filter, adds ad-list handling, and experimentally removes selected navigation entries from getAppConfig responses. Results depend on the response schema.
-#!category=Ad Blocking
+#!category=Ad Remove
 #!openUrl=https://apps.apple.com/app/id379395415
 
 [Rule]

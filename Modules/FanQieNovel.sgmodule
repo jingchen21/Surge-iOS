@@ -1,6 +1,6 @@
 #!name=Tomato Novel - Ad Cleanup
 #!desc=Remove splash ads, ads at the bottom of articles and chapters, audio-page ads, floating widgets, and extra benefits labels in the bottom bar.
-#!category=Ad Blocking
+#!category=Ad Remove
 
 [Rule]
 DOMAIN,zlink.ugsdk.cn,REJECT
