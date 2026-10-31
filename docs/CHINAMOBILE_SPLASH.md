@@ -1,28 +1,19 @@
-# China Mobile splash screen: Surge syntax fix
+# China Mobile startup-ad removal
 
-Updated 2026-10-28. The module retains ccyykk666's page-handling logic and existing personal adaptations. Original attribution and the companion JavaScript URL are preserved. This change fixes module syntax only; it does not claim that the client-side splash countdown has been removed.
+Updated 2026-10-31. The previous empty-object response blocked the ad material but left a blank splash with a three-second countdown and a click area. Returning HTTP 503 and clearing the app cache had also failed to remove it.
 
-## Observed behavior
+## Targeted fix
 
-A phone screenshot showed a blank splash page that still contained a “Skip” countdown and clickable area. Request logs showed that startInit matched the CM-splash-init request script and was modified. The home-page and navigation scripts also showed evidence of execution. Therefore, a matched rule does not prove that the entire splash UI has disappeared.
+Real phone request notes confirmed that the original startInit response used the existing encrypted protocol and contained a successful initialization envelope. Its rspBody.startImgInfo held the splash campaign, including showSeconds set to "3". Normal initialization data lived in the same response, so replacing the entire response with {} discarded more than ad configuration.
 
-The old public module used reject-dict and reject-200 under URL Rewrite, which the local Surge CLI rejected as invalid syntax. Those China Mobile URL Rewrite or Map Local entries were also not visible in the phone's effective profile. These facts alone do not establish why the phone did not load those entries, but the syntax needed correction.
+The module now lets this exact startup request reach its server and uses [ChinaMobile-startup.surge.js](../JS/ChinaMobile-startup.surge.js) to decrypt it, clear the observed startup-ad object and associated media/redirect fields, set the SDK ad wait to zero, and re-encrypt and sign the response using the request nonce. Other initialization fields and the existing page filters remain in place. Errors, unknown protocols, and missing signing input preserve the original response.
 
-## Changes
+## Verification and limits
 
-The 15 existing match expressions were converted to Map Local:
+Surge syntax validation passed. Seven fixture cases ran in the iPhone script engine, checking encryption, the response signature, normal-field preservation, and safe pass-through cases. Real request notes then confirmed the cleanup and signing path ran. The user cold-launched the app and confirmed the blank splash/countdown disappeared on 2026-10-31. Temporary diagnostics and extra logging were removed.
 
-- 12 empty-dictionary rules return HTTP 200, body {}, and Content-Type application/json.
-- Three empty-response rules return HTTP 200 with an empty body.
+This validates the observed startup flow. Login, recharge, payment, every regional variant, and future app releases have not all been tested. No new broad CDN block, global DNS change, or network-policy change was made.
 
-The match expressions are retained. Ten scripts, four network rules, the MITM hostname list, and default arguments remain unchanged. No broad CDN block was added, and the main profile, DNS, global network settings, and companion JavaScript were not modified. The module still requires Rewrite; HTTPS matching also requires successful MITM for the relevant hostname.
+Update the existing module rather than enabling duplicates. The new script is a required companion resource and is hosted in this repository. To roll back, use the previous module/script revision. No real requests, account information, credentials, certificates, or diagnostic settings are published here.
 
-References: [Surge URL Rewrite](https://manual.nssurge.com/http/url-rewrite.html) and [Surge Map Local](https://manual.nssurge.com/http/map-local.html).
-
-## Verification limits
-
-The revised module passed local Surge CLI parsing. The original scripts, network rules, MITM settings, and 15 URL match expressions were checked for consistency. The revised module was not applied to the phone before publication, and the splash screen was not retested on-device. Cache behavior and the client's countdown handling remain unconfirmed.
-
-startInit previously returned an empty result while the splash shell remained visible. This syntax fix may therefore leave the blank countdown in place. No real upstream response structure was captured, so no unsupported field was invented and the block scope was not expanded.
-
-After updating, enable only one China Mobile module and test both the splash screen and normal app flows. If the blank page remains, investigate using fresh request and response evidence. Do not attribute the issue to DNS or claim it has been fixed without proof.
+See [Surge response scripts](https://manual.nssurge.com/scripting/http-response.html).

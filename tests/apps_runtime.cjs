@@ -183,4 +183,7 @@ assert.doesNotMatch(miniModule,/\[Rule\]|shark-|httpdns|mquic/);
 const appLock = JSON.parse(fs.readFileSync(path.join(root,'maintenance/apps/lock.json'),'utf8'));
 assert.equal(appLock.outputs.some(o => o.destination_path === 'Modules/MeituanMiniProgram.sgmodule'),true);
 assert.equal(appLock.outputs.some(o => o.destination_path === 'JS/Meituan.surge.js'),false);
+// A missing route-table declaration must fail this regression check at runtime.
+assert.deepEqual(run('JS/Weibo.surge.js', 'https://api.weibo.cn/unmatched-fixture', {body: '{}'}), {});
+checks++;
 console.log(`PASS: ${checks} app cases; Tencent parity, ZenmoFeiShi QX->Surge conversion and separate mini-program.`);

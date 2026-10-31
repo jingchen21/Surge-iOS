@@ -2,7 +2,7 @@
 #!desc=Combines verifiable public Loon, Quantumult X, and Surge rules as of 2026-10-28. Covers splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet sections. Aggressive rules may hide non-ad promotions.
 #!category=Ad Blocking
 #!openUrl=https://apps.apple.com/app/id518213356
-#!date=2026-10-28
+#!date=2026-10-31
 
 
 [Rule]
@@ -16,6 +16,9 @@ DOMAIN,analytics-api.smzdm.com,REJECT
 # ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul(?:\?.*)?$ - reject
 
 [Body Rewrite]
+# Keep the successful startup response; disable and expire existing splash campaigns.
+http-response-jq (?i)^https?:\/\/app-api\.smzdm\.com\/util\/loading(?:\?.*)?$ 'if (.data | type) == "array" then .data |= map(if type == "object" then .is_show_ad = "0" | if has("start_date") then .start_date = "2000-01-01 00:00:00" else . end | if has("end_date") then .end_date = "2000-01-01 00:00:00" else . end | if has("unix_start_date") then .unix_start_date = "946656000" else . end | if has("unix_end_date") then .unix_end_date = "946656000" else . end else . end) else . end'
+
 # App startup ad configuration: disable silent-push and Baichuan redirect switches, and remove ad overlays/widgets.
 http-response-jq (?i)^https?:\/\/app-api\.smzdm\.com\/util\/update(?:\?.*)?$ 'if (.data | type) == "object" then .data |= (if has("silence_local_push") then .silence_local_push = 0 else . end | if has("baichuan_redirect_switch") then .baichuan_redirect_switch = 0 else . end | del(.ad_black_list, .silence_local_push_msg, .video_cache_num_configs, .haojia_widget, .widget, .operation_float, .operation_float_screen)) else . end'
 
@@ -62,7 +65,6 @@ http-response-jq (?i)^https?:\/\/(?:[^/]+\.)?zdmimg\.com\/cpm\/api\/v\d+\/advert
 
 [Map Local]
 # Splash-loading configuration. Public rules often return empty JSON; if startup or login fails, remove this rule and disable only is_show_ad instead.
-(?i)^https?:\/\/app-api\.smzdm\.com\/util\/loading(?:\?.*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
 # Third-party ad-resource index.
 (?i)^https?:\/\/s3\.zdmimg\.com\/third\/index(?:\?.*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"

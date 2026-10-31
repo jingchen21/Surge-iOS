@@ -1,8 +1,9 @@
 #!name=China Mobile - Ad Cleanup (Surge Syntax Fix)
-#!desc=Retains the original page scripts and rules while converting invalid reject-dict/reject-200 rewrites to Surge Map Local. The blank splash countdown still needs device testing.
+#!desc=Preserves page cleanup and removes observed startup ads while retaining encrypted initialization and response signing. Splash removal verified on iPhone 2026-10-31.
 #!arguments=HideTopFamily:false,HideTopAge:false,HideTopPhone:false,HideTopNearby:false,HideTopAI:false,HideTopEnterprise:false,BottomClean:true,MineClean:true
 
 [Script]
+CM-startup = type=http-response,pattern=^https://(?:client\.app\.coc\.10086\.cn|clientaccess\.10086\.cn)/biz-orange/DN/init/startInit(?:\?|$),requires-body=true,max-size=2097152,timeout=5,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile-startup.surge.js
 CM-homepage = type=http-response,pattern=^https://client\.app\.coc\.10086\.cn/biz-orange/(?:DN/(?:homePage/getTopAreaList|multipleInterfaces/aggregationData|searchWord/getSearchWordInfo)|DA/baseServiceFunction/getAdverList)(?:\?.*)?$,requires-body=true,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js,argument=HideTopFamily:{{{HideTopFamily}}};HideTopAge:{{{HideTopAge}}};HideTopPhone:{{{HideTopPhone}}};HideTopNearby:{{{HideTopNearby}}};HideTopAI:{{{HideTopAI}}};HideTopEnterprise:{{{HideTopEnterprise}}};BottomClean:{{{BottomClean}}};MineClean:{{{MineClean}}}
 CM-navigation = type=http-response,pattern=^https://client\.app\.coc\.10086\.cn/biz-orange/DN/init/getNavigation(?:\?.*)?$,requires-body=true,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js,argument=HideTopFamily:{{{HideTopFamily}}};HideTopAge:{{{HideTopAge}}};HideTopPhone:{{{HideTopPhone}}};HideTopNearby:{{{HideTopNearby}}};HideTopAI:{{{HideTopAI}}};HideTopEnterprise:{{{HideTopEnterprise}}};BottomClean:{{{BottomClean}}};MineClean:{{{MineClean}}}
 CM-bottomnav = type=http-response,pattern=^https://client\.app\.coc\.10086\.cn/biz-orange/DN/bottomNavigationService/getNavigationInfo(?:\?.*)?$,requires-body=true,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js,argument=HideTopFamily:{{{HideTopFamily}}};HideTopAge:{{{HideTopAge}}};HideTopPhone:{{{HideTopPhone}}};HideTopNearby:{{{HideTopNearby}}};HideTopAI:{{{HideTopAI}}};HideTopEnterprise:{{{HideTopEnterprise}}};BottomClean:{{{BottomClean}}};MineClean:{{{MineClean}}}
@@ -12,7 +13,7 @@ CM-recharge = type=http-response,pattern=^https://touch\.10086\.cn/i/v1/cust/(?:
 CM-popwindow = type=http-response,pattern=^https://touch\.10086\.cn/i/v1/pay/popWindowQry/[^?]+(?:\?.*)?$,requires-body=true,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js,argument=HideTopFamily:{{{HideTopFamily}}};HideTopAge:{{{HideTopAge}}};HideTopPhone:{{{HideTopPhone}}};HideTopNearby:{{{HideTopNearby}}};HideTopAI:{{{HideTopAI}}};HideTopEnterprise:{{{HideTopEnterprise}}};BottomClean:{{{BottomClean}}};MineClean:{{{MineClean}}}
 CM-adfilter = type=http-response,pattern=^https://ad\.mcloud\.139\.com/advertapi/adv-filter/adv-filter/AdInfoFilter/getAdInfos(?:\?.*)?$,requires-body=true,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile.surge.js,argument=HideTopFamily:{{{HideTopFamily}}};HideTopAge:{{{HideTopAge}}};HideTopPhone:{{{HideTopPhone}}};HideTopNearby:{{{HideTopNearby}}};HideTopAI:{{{HideTopAI}}};HideTopEnterprise:{{{HideTopEnterprise}}};BottomClean:{{{BottomClean}}};MineClean:{{{MineClean}}}
 CM-reject = type=http-request,pattern=^https://client\.app\.coc\.10086\.cn/biz-orange/(?:DN/(?:dropsAdverService/getDropsAdverNew|homepagePopup/getSortInfo|toast/getToastRule)|DH/toast/august/getToast|DA/liveSuspension/getPageCode)(?:\?.*)?$,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile-request.surge.js
-CM-splash-init = type=http-request,pattern=^https://(client\.app\.coc\.10086\.cn|clientaccess\.10086\.cn)/biz-orange/DN/(init/startInit|explorePage/getAdverList),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile-request.surge.js
+CM-splash-init = type=http-request,pattern=^https://(client\.app\.coc\.10086\.cn|clientaccess\.10086\.cn)/biz-orange/DN/explorePage/getAdverList,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/ChinaMobile-request.surge.js
 
 [Rule]
 DOMAIN-SUFFIX,jiguang.coc.10086.cn,REJECT
@@ -21,9 +22,7 @@ DOMAIN,ad.mcloud.139.com,REJECT
 DOMAIN-SUFFIX,yxfk.market.chinamobile.com,REJECT
 
 [Map Local]
-^https://client\.app\.coc\.10086\.cn/biz-orange/DN/init/startInit data-type=text data="{}" status-code=200 header="Content-Type: application/json"
 ^https://client\.app\.coc\.10086\.cn/biz-orange/DN/explorePage/getAdverList data-type=text data="{}" status-code=200 header="Content-Type: application/json"
-^https://clientaccess\.10086\.cn/biz-orange/DN/init/startInit data-type=text data="{}" status-code=200 header="Content-Type: application/json"
 ^https://app\.10086\.cn/biz-orange/DN/(findSale|homeSale)/getsaleAdver data-type=text data="{}" status-code=200 header="Content-Type: application/json"
 ^https://client\.app\.coc\.10086\.cn/biz-orange/DN/explorePage/ data-type=text data="{}" status-code=200 header="Content-Type: application/json"
 ^https://(?:client\.app\.coc|app)\.10086\.cn/biz-orange/(?:DN|DA)/emotionMarket data-type=text data="{}" status-code=200 header="Content-Type: application/json"

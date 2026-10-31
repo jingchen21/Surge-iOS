@@ -252,6 +252,20 @@ def planned_outputs():
     outputs['JS/MeituanMiniProgram.surge.js'] = ('// Original logic: '+QX_SOURCE+'MeiTuanNoAd.js\n'
                                                '// Only used by the two scoped Meituan mini-program response routes.\n'+texts['MeiTuanNoAd.js'])
     outputs.update(spdb_outputs(texts['pdxb.js']))
+    # Keep the published metadata layout introduced after the English translation.
+    # Source snapshots stay intact; this changes generated comments only.
+    omitted_comments = {
+        'JS/Txvideoad.surge.js': ('// Original logic:', '// Rebuild from maintenance/'),
+        'Modules/TencentVideo.sgmodule': ('# Original rules:', '# Earlier Surge adapter reference:'),
+        'Modules/TxvideoAD.sgmodule': ('# Original rules:', '# Earlier Surge adapter reference:'),
+        'Modules/Meituan.sgmodule': ('# Source:', '# Script:', '# Source update:', '# Local adaptation:'),
+        'JS/MeituanMiniProgram.surge.js': ('// Original logic:',),
+    }
+    for name, text in list(outputs.items()):
+        prefixes = omitted_comments.get(name, ())
+        outputs[name] = ''.join(line for line in text.splitlines(keepends=True)
+                               if not line.startswith('#!author=')
+                               and not (prefixes and line.startswith(prefixes)))
     manifest = {
         'format': 1,
         'baseline_commit': '3e442e78e95be2c71153e55560a977ea42495f27',

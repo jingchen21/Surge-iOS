@@ -31,6 +31,7 @@
 !/JS/pdxb.surge.js
 !/JS/ChinaMobile.surge.js
 !/JS/ChinaMobile-request.surge.js
+!/JS/ChinaMobile-startup.surge.js
 !/JS/easybike.surge.js
 !/JS/README.md
 !/Rules/
@@ -74,6 +75,7 @@
 !/tests/apps_runtime.cjs
 !/tests/didi_runtime.cjs
 !/tests/spdb_runtime.cjs
+!/tests/startup_runtime.cjs
 
 # Explicitly reject private material even inside allowed folders.
 **/private/

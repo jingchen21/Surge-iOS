@@ -14,6 +14,7 @@ This directory contains JavaScript used by selected modules.
 | [Weibo.surge.js](Weibo.surge.js) | Weibo | Ad filtering based on user agent |
 | [hlwxx_remove_ads.surge.js](hlwxx_remove_ads.surge.js) | HLWXX | Ad and page cleanup |
 | [ChinaMobile.surge.js](ChinaMobile.surge.js) | China Mobile | Page and splash handling |
+| [ChinaMobile-startup.surge.js](ChinaMobile-startup.surge.js) | China Mobile | Targeted encrypted startInit splash cleanup; preserves normal fields and recalculates the response signature |
 | [ChinaMobile-request.surge.js](ChinaMobile-request.surge.js) | China Mobile | Companion request-stage script |
 | [easybike.surge.js](easybike.surge.js) | HelloBike | API and UI handling |
 | [pdxb.surge.js](pdxb.surge.js) | SPDB app | Splash image filter |
