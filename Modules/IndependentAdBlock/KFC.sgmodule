@@ -1,0 +1,19 @@
+#!name=KFC - Splash and Ad Filter
+#!desc=Blocks KFC splash/home ads. custom_v2 and dynamicad use Map Local to avoid retry storms.
+#!category=Ad Remove
+#!basedOn=iOS
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/KFC.png
+#!openUrl=https://apps.apple.com/app/id587238847
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!date=2026-10-31
+
+[URL Rewrite]
+^https?:\/\/res\.kfc\.com\.cn\/advertisement(?:\/|$) - reject
+
+[Map Local]
+^https?:\/\/res\.kfc\.com\.cn\/CRM\/kfcad\/apphome(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/res\.kfc\.com\.cn\/CRM\/kfcad\/custom_v2\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/dynamicad\.kfc\.com\.cn\/api(?:\/|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+[MITM]
+hostname = %APPEND% res.kfc.com.cn, dynamicad.kfc.com.cn
