@@ -1,0 +1,11 @@
+#!name=朴朴超市 - 推广位过滤（独立重建·待实测）
+#!desc=针对营销横幅、热词与广告位处理 JSON，尽量保留商品、下单及优惠券业务。
+#!author=独立重建；接口场景参考 kelv1n1n
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!tag=去广告
+
+[Script]
+朴朴-广告位置 = type=http-response,pattern=^https://j1\.pupuapi\.com/client/(?:marketing/(?:banner/v7|banner/search_component_banner|advertisement/v1)|search/hot_keywords/v3)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/PuPuMall.js,requires-body=true
+
+[MITM]
+hostname = %APPEND% j1.pupuapi.com

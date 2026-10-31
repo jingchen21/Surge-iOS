@@ -1,0 +1,14 @@
+#!name=12306 - 去开屏广告（独立重建·待实测）
+#!desc=只处理 12306 开屏广告列表，不影响订票、支付和订单接口。独立实现，未保证与旧脚本完全一致。
+#!author=独立重建；技术参考 RuCu6
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!tag=去广告
+
+[Rule]
+DOMAIN,ad.12306.cn,DIRECT
+
+[Script]
+12306-开屏广告 = type=http-request,pattern=^https://ad\.12306\.cn/ad/ser/getAdList(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/12306.js,requires-body=0
+
+[MITM]
+hostname = %APPEND% ad.12306.cn

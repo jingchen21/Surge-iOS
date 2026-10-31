@@ -1,0 +1,17 @@
+#!name=网易云音乐 - 广告接口限制（基础版·非完整等效）
+#!desc=仅拦截明确广告资源与接口；评论区热推、加密 EAPI 响应尚未移植，避免破坏播放。
+#!author=独立整理；场景参考可莉 / RuCu6
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!tag=去广告
+
+[Rule]
+DOMAIN,iadmat.nosdn.127.net,REJECT
+DOMAIN,iadmatapk.nosdn.127.net,REJECT
+DOMAIN,iadmusicmat.music.126.net,REJECT
+DOMAIN,iadmusicmatvideo.music.126.net,REJECT
+
+[Map Local]
+^https://interface[0-9]?\.music\.163\.com/e?api/(?:ad/|delivery/(?:batch-)?deliver) data-type=json data="{}" status-code=200
+
+[MITM]
+hostname = %APPEND% interface.music.163.com, interface1.music.163.com, interface2.music.163.com, interface3.music.163.com

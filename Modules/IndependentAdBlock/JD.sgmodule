@@ -1,0 +1,11 @@
+#!name=京东 - 开屏与推广过滤（独立重建·待实测）
+#!desc=以 JSON 可读响应处理开屏及部分推荐；新版 base64 client.action 不保证兼容。
+#!author=独立重建；接口场景参考 RuCu6、Maasea
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!tag=去广告
+
+[Script]
+京东-json推广过滤 = type=http-response,pattern=^https://api\.m\.jd\.com/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|startup|welcomeHome)(?:&|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/JD.js,requires-body=true
+
+[MITM]
+hostname = %APPEND% api.m.jd.com

@@ -1,0 +1,11 @@
+#!name=百度网页 - 首页信息流隐藏（独立重建·待实测）
+#!desc=仅为移动百度首页注入隐藏信息流的 CSS；不处理搜索结果、账号或支付。
+#!author=独立重建；场景参考 Keywos
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!tag=去广告
+
+[Script]
+百度首页信息流 = type=http-response,pattern=^https://(?:m|www)\.baidu\.com/(?:\?(?:from=[A-Za-z0-9]{8,9})?)?$,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/BaiduWeb.js,requires-body=true
+
+[MITM]
+hostname = %APPEND% m.baidu.com, www.baidu.com

@@ -1,0 +1,11 @@
+#!name=淘宝 - 开屏广告过滤（独立重建·待实测）
+#!desc=仅处理开屏配置和弹层 JSON；不拦截淘宝核心交易接口。
+#!author=独立重建；接口场景参考 RuCu6
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!tag=去广告
+
+[Script]
+淘宝-开屏与弹层 = type=http-response,pattern=^https://(?:guide-acs\.m\.taobao\.com/gw/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get)|poplayer\.template\.alibaba\.com/[A-Za-z0-9_]+\.json),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Taobao.js,requires-body=true
+
+[MITM]
+hostname = %APPEND% guide-acs.m.taobao.com, poplayer.template.alibaba.com
