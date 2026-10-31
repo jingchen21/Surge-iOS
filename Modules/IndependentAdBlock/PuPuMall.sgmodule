@@ -1,22 +1,28 @@
 #!name=PuPu Mall - Splash and Advertising Filter
-#!desc=Filters splash campaigns, banners, sponsored search and selected order advertising.
+#!desc=Filters splash campaigns, home banners, sponsored search and selected order advertising.
 #!category=Ad Remove
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PuPuMall.png
+#!openUrl=https://apps.apple.com/app/id1144025167
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
-#!tag=Ad Blocking
 
 [URL Rewrite]
+^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v\d+\?position - reject
 ^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v7\?position_types=100(?:&|$) - reject
+^https?:\/\/j1\.pupuapi\.com\/client\/account\/discount\/order(?:\?|$) - reject
+^https?:\/\/j1\.pupuapi\.com\/client\/member_card\/index\/my(?:\?|$) - reject
 
 [Map Local]
-^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/advertisement\/search_input_ranking data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/advertisement\/(?:v1|search_input_ranking)(?:\?|$) data-type=text data="{\"errcode\":0,\"errmsg\":\"ok\",\"data\":[]}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/j1\.pupuapi\.com\/client\/assets\/discount\/order(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/channel\/global_redeem\/top_tip\/v2(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
-^https?:\/\/j1\.pupuapi\.com\/client\/member_card\/index\/my(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/j1\.pupuapi\.com\/client\/recommendation\/(?:hub\/)?interests\/products(?:\/v\d+)?(?:\?|$) data-type=text data="{\"errcode\":0,\"data\":[]}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/j1\.pupuapi\.com\/client\/member_card\/premium\/user_center(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/j1\.pupuapi\.com\/client\/search\/hot_keywords\/v3(?:\?|$) data-type=text data="{\"errcode\":0,\"data\":[]}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/j1\.pupuapi\.com\/client\/notification\/message_center\/unread_number(?:\?|$) data-type=text data="{\"errcode\":0,\"data\":[]}" status-code=200 header="Content-Type:application/json"
 
 [Script]
-PuPu-Ad-Cleanup = type=http-response,pattern=^https?:\/\/j1\.pupuapi\.com\/client\/(?:marketing\/(?:banner\/(?:v\d+|search_component_banner)|advertisement\/v1)|search\/(?:hot_keywords\/v3|hub\/search_box\/products\/v6)|(?:app_)?resource\/resource_preload\/list_h5_resource|order_settlement\/detail|order\/orders\/list\/v4)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/PuPuMall.js,requires-body=true,max-size=2097152,timeout=30
+PuPu-Ad-Cleanup = type=http-response,pattern=^https?:\/\/j1\.pupuapi\.com\/client\/(?:marketing\/(?:banner\/(?:v\d+|search_component_banner)|advertisement\/v1)|search\/hub\/search_box\/products\/v6|(?:app_)?resource\/resource_preload\/list_h5_resource|order_settlement\/detail|order\/orders\/list\/v4)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/PuPuMall.js,requires-body=true,max-size=2097152,timeout=30
 
 [MITM]
 hostname = %APPEND% j1.pupuapi.com
