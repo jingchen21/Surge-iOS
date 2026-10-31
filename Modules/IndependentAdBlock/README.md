@@ -1,29 +1,5 @@
-# Independent Surge Modules
+# Module Catalog
 
-Self-maintained app filters with scripts served from this repository.
+All modules, including those stored in this directory, are listed in one place with installation links, update dates, and Surge categories.
 
-| Module | Coverage | Updated (UTC+8) | Install |
-| --- | --- | --- | --- |
-| **Xiaohongshu** | Ads, search promotions, and image/video/Live Photo watermark handling | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FXiaohongshu.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Xiaohongshu.sgmodule) |
-| **Goofish** | Splash, home and local feeds, search promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FGoofish.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Goofish.sgmodule) |
-| **Dewu** | Ad response fields; shopping operations retained | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FDewu.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Dewu.sgmodule) |
-| **Fliggy** | Marketing placements and identified home-screen ads | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FFliggy.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Fliggy.sgmodule) |
-| **Coolapk** | Sponsored cards and selected feed promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FCoolapk.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Coolapk.sgmodule) |
-| **JD** | Splash and promotions in readable JSON responses | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FJD.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/JD.sgmodule) |
-| **Taobao** | Splash and pop-up promotions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTaobao.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Taobao.sgmodule) |
-| **12306** | Splash ad list; booking and payments untouched | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2F12306.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/12306.sgmodule) |
-| **NetEase Cloud Music** | Ad endpoints; encrypted EAPI not supported | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FNeteaseCloudMusic.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/NeteaseCloudMusic.sgmodule) |
-| **PuPu Mall** | Marketing banners and search suggestions | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FPuPuMall.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/PuPuMall.sgmodule) |
-| **Baidu Web** | Hide the mobile homepage feed with CSS | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FBaiduWeb.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/BaiduWeb.sgmodule) |
-| **Baidu Tieba** | JSON ads only; protobuf not handled | 2026-10-31 | [![Install in Surge](https://img.shields.io/badge/Install_in-Surge-2457C5?style=flat-square&logo=apple&logoColor=white)](surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTieba.sgmodule) / [Raw](https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/IndependentAdBlock/Tieba.sgmodule) |
-
-## Usage
-
-1. Use **Install in Surge** on iOS. If the link cannot open the app, paste the **Raw** URL into the Surge module installer.
-2. Enable HTTPS rewriting and the required MITM certificate.
-3. Enable one filter per app and check normal app functions.
-4. Xiaohongshu has integrated image, video and Live Photo watermark handling. Media save requests can use a short on-device cache.
-
-App changes may affect these rules; use the module on your own device to verify compatibility.
-
-[All Modules](../README.md)
+[Browse All Modules](../README.md)
