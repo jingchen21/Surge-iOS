@@ -1,6 +1,6 @@
 # Surge iOS Modules
 
-**31 modules** · **29 Ad Remove** · **1 Hack VIP** · **1 Utilities**
+**32 modules** · **30 Ad Remove** · **1 Hack VIP** · **1 Utilities**
 
 Designed for iPhone Safari. Expand a letter group and tap the large **Install in Surge** button.
 
@@ -95,7 +95,7 @@ Selected profile, recommendation and wallet sections
 </details>
 
 <details>
-<summary><strong>F–M</strong> · 9 modules</summary>
+<summary><strong>F–M</strong> · 10 modules</summary>
 
 <img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/TaobaoTravel.png" alt="" width="28" height="28"> **Fliggy** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
@@ -142,6 +142,14 @@ Selected ad requests and page elements
 Splash, home, order banners and profile advertising.
 
 <a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FJD.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install JD in Surge" width="258" height="48"></a>
+
+---
+
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/LuckinCoffee.png" alt="" width="28" height="28"> **Luckin Coffee** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Startup ads, promotional popups and ad-tagged home modules.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FLuckinCoffee.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Luckin Coffee in Surge" width="258" height="48"></a>
 
 ---
 
@@ -279,7 +287,7 @@ Ads, search promotions, and image/video/Live Photo watermark handling
 
 ## Notes
 
-- All 31 modules share a single alphabetic catalog. Categories are defined within Surge.
+- All 32 modules share a single alphabetic catalog. Categories are defined within Surge.
 - The two Tencent Video entries are alternatives. Enable only one.
 - Avoid overlapping Meituan and Dianping filters. Verify login, search, messages and payment after enabling any module.
 
