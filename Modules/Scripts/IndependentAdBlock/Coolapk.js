@@ -1,5 +1,5 @@
-// 个人自用独立实现，AI 辅助；未经实机验证。赞助卡和明确广告标识，保留正常动态、评论和搜索
-// 无远程导入、数据上传、持久化读写或第三方执行依赖。
+// Independent Surge response handler for Coolapk.
+// Filters recognized ad fields only. No external script, telemetry, or remote dependency.
 "use strict";
 function o(x){return x!==null&&typeof x==="object"&&!Array.isArray(x)}
 function coolapk(r,u){if(!r||typeof r!=="object")return r;const d=r.data;const ad=x=>o(x)&&(x.entityTemplate==="sponsorCard"||x.isAd===true||x.is_ad===true||String(x.entityType||"").toLowerCase()==="advertisement");if(/\/feed\/detail(?:\?|$)/.test(u)&&o(d)){if("detailSponsorCard" in d)delete d.detailSponsorCard;for(const k of ["hotReplyRows","topReplyRows"])if(Array.isArray(d[k]))d[k]=d[k].filter(x=>!ad(x))}

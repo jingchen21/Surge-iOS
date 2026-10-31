@@ -1,5 +1,5 @@
-// 个人自用独立实现，AI 辅助；未经实机验证。中等强度去广告 + 图片、视频、实况照片去水印
-// 无远程导入或数据上传；媒体链接仅在设备本地缓存 10 分钟以匹配保存请求。
+// Independent Surge handler: ad filtering and media watermark handling.
+// Media matching uses a ten-minute on-device cache. No external script or telemetry.
 "use strict";
 function o(x){return x!==null&&typeof x==="object"&&!Array.isArray(x)}
 function baseXhs(r,u){if(!r||typeof r!=="object")return r;let d=r.data;const isAd=x=>!!x&&typeof x==="object"&&(x.is_ad===true||x.isAd===true||x.is_ad===1||x.is_advert===true||x.model_type==="ad"||x.model_type==="advertisement"||!!x.ads_info);const filter=(x,k)=>{if(x&&Array.isArray(x[k]))x[k]=x[k].filter(i=>!isAd(i))};

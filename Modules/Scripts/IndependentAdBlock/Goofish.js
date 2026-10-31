@@ -1,5 +1,5 @@
-// 个人自用独立实现，AI 辅助；未经实机验证。开屏、首页、同城与搜索中明确广告条目，不动商品和订单
-// 无远程导入、数据上传、持久化读写或第三方执行依赖。
+// Independent Surge response handler for Goofish.
+// Filters recognized ad fields only. No external script, telemetry, or remote dependency.
 "use strict";
 function o(x){return x!==null&&typeof x==="object"&&!Array.isArray(x)}
 function goofish(r,u){if(!r||!o(r.data))return r;const d=r.data;function ad(x){if(!o(x))return false;let b=String(x.data?.bizType||x.bizType||x.cardType||x.data?.clickParam?.args?.cardType||"").toLowerCase(),n=String(x.data?.item?.main?.exContent?.dislikeFeedback?.clickParam?.args?.bizType||"").toLowerCase(),t=String(x.template?.name||"").toLowerCase();return x.isAd===true||x.is_ad===true||x.data?.isAd===true||b==="ad"||b==="mamaad"||n==="ad"||t==="mamaad"}const f=(x,k)=>{if(o(x)&&Array.isArray(x[k]))x[k]=x[k].filter(i=>!ad(i))};if(/idlecommerce\.splash(?:\.async)?\.ads/.test(u)){for(const k of ["adMap","adsMap"])if(o(d[k]))d[k]={};for(const k of ["adList","ads","advertisements"])if(Array.isArray(d[k]))d[k]=[]}
