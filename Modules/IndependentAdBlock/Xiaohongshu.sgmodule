@@ -1,5 +1,5 @@
-#!name=小红书｜独立去广告（保守版）
-#!desc=开屏配置、信息流和搜索广告，保留普通笔记、直播与商品
+#!name=小红书｜去广告 + 去水印（中等强度）
+#!desc=开屏、信息流和搜索广告；图片／视频／实况照片保存去水印
 #!author=个人自用整理（AI 辅助），原作者见说明
 #!category=去广告
 #!basedOn=iOS
@@ -7,6 +7,7 @@
 #!date=2026-10-31
 # 仅技术参考：zirawell, fmz200, QingRex；全新独立代码，不复制第三方脚本。
 # 请遵守原项目许可；未经实机验证，不与其他同类模块同时启用。
+# 去水印使用设备本地限时缓存，接口改变时可能不生效。
 
 [Rule]
 DOMAIN,t-ads.xiaohongshu.com,REJECT
@@ -23,5 +24,9 @@ XHS-搜索推广 = type=http-response, pattern=^https:\/\/(?:edith|so)\.xiaohong
 XHS-详情推广 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/widgets(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Xiaohongshu.js, requires-body=true, timeout=30
 XHS-关注列表 = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/user\/followings\/followfeed(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Xiaohongshu.js, requires-body=true, timeout=30
 
+XHS-图片和视频保存 = type=http-response, pattern=^https:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/(?:imagefeed|feed|videofeed)(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-视频下载地址 = type=http-response, pattern=^https:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/video\/save(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-实况照片地址 = type=http-response, pattern=^https:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/live_photo\/save(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Xiaohongshu.js, requires-body=true, timeout=30
+
 [MITM]
-hostname = %APPEND% edith.xiaohongshu.com, rec.xiaohongshu.com, so.xiaohongshu.com
+hostname = %APPEND% edith.xiaohongshu.com, rec.xiaohongshu.com, so.xiaohongshu.com, www.xiaohongshu.com
