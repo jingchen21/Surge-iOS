@@ -1,6 +1,6 @@
 #!name=Fliggy - Ad Filter
 #!desc=Filters advertising placements while keeping travel bookings and orders.
-#!category=Ad Blocking
+#!category=Ad Remove
 #!basedOn=iOS
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31

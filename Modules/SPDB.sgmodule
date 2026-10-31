@@ -1,5 +1,6 @@
 #!name=SPDB - Splash Image Dimension Filter
 #!desc=Match exact image-asset dimensions. The default keeps the 1125×1931 sample; confirm the actual iPhone 18 Pro asset in logs.
+#!category=Ad Remove
 #!arguments=width:1125,height:1931,log:1
 #!arguments-desc=width/height are the actual ad-image dimensions, not the phone display size. log=1 records dimensions; 0 disables logging.
 # Source: user-supplied pdxb.js; author and public URL not supplied.

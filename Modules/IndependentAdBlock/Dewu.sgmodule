@@ -1,6 +1,6 @@
 #!name=Dewu - Ad Filter
 #!desc=Filters known advertisement fields while retaining coupons, products, and checkout.
-#!category=Ad Blocking
+#!category=Ad Remove
 #!basedOn=iOS
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31

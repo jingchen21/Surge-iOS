@@ -1,5 +1,6 @@
 #!name=Weibo & International Edition - Ad Filtering
 #!desc=Combines ad-filtering rules and selects handling based on the Weibo user agent.
+#!category=Ad Remove
 
 [Rule]
 DOMAIN-SUFFIX,fastimage.uve.weibo.com,REJECT

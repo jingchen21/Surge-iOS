@@ -1,5 +1,6 @@
 #!name=12306 - Splash Ad Filter
 #!desc=Filters the splash ad list without touching ticket bookings or payments.
+#!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
 #!tag=Ad Blocking

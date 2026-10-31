@@ -1,6 +1,6 @@
 #!name=Coolapk - Ad Filter
 #!desc=Filters sponsored cards and explicitly marked promotions without removing regular posts.
-#!category=Ad Blocking
+#!category=Ad Remove
 #!basedOn=iOS
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
