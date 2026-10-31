@@ -2,7 +2,7 @@
 #!desc=Blocks KFC splash/home ads. custom_v2 and dynamicad use Map Local to avoid retry storms.
 #!category=Ad Remove
 #!basedOn=iOS
-#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/KFC.png
+#!icon=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/docs/assets/kfc.svg
 #!openUrl=https://apps.apple.com/app/id587238847
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
