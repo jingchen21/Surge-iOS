@@ -8,8 +8,14 @@
 [Rule]
 DOMAIN,ad-track.fliggy.com,REJECT
 
+[URL Rewrite]
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.popresource - reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.guide\.guess\.what\.you\.like - reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.tripbaymax\.busi\.buyer\.promote\.track - reject
+
 [Script]
 Fliggy-Marketing = type=http-response, pattern=^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict)(?:\/|\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Fliggy.js, requires-body=true, timeout=30
+Fliggy-Detail = type=http-response, pattern=^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.traveldetail\.ultron\.detail\.firstscreen\.get(?:\/|\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Fliggy.js, requires-body=true, timeout=30
 Fliggy-Home = type=http-response, pattern=^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.ssif\.pattern\.home(?:\/|\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Fliggy.js, requires-body=true, timeout=30
 
 [MITM]

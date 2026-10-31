@@ -1,12 +1,28 @@
-#!name=JD - Splash and Promotion Filter
-#!desc=Filters readable JSON splash and promotions; encrypted client responses are unsupported.
+#!name=JD - Comprehensive Ad and Page Cleanup
+#!desc=Filters splash, homepage promotions, order/profile banners and selected advertising endpoints.
 #!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
 #!tag=Ad Blocking
 
+[Rule]
+DOMAIN,perf.m.jd.com,REJECT
+DOMAIN,mars.jd.com,REJECT
+DOMAIN,mllog.jd.com,REJECT
+DOMAIN,dsp-x.jd.com,REJECT
+DOMAIN,xlog.jd.com,REJECT
+DOMAIN,dgstatic.jd.com,REJECT
+DOMAIN,sdkfp.jd.com,REJECT
+DOMAIN,discover.300hu.com,REJECT
+DOMAIN-SUFFIX,jzt.jd.com,REJECT
+DOMAIN-SUFFIX,cm.jd.com,REJECT
+
+[Map Local]
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:queryMaterialAdverts|jdaPreDownload)(?:&|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/(?:bdsp-x|dsp-x)\.jd\.com\/adx\/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
 [Script]
-JD-JSON-Ads = type=http-response,pattern=^https://api\.m\.jd\.com/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|startup|welcomeHome)(?:&|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/JD.js,requires-body=true
+JD-Page-Cleanup = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|startup|welcomeHome|readCustomSurfaceList)(?:&|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/JD.js,requires-body=true,max-size=2097152,timeout=30
 
 [MITM]
-hostname = %APPEND% api.m.jd.com
+hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com
