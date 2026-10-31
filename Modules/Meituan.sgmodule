@@ -1,5 +1,6 @@
 #!name=美团去广告 - 购物车顶部券适配 12.68.201
 #!desc=保留现有小团与其他去广告规则，购物车顶部券使用单独响应脚本；12.68.201 实际效果待验证。
+#!category=Ad Remove
 
 [Rule]
 DOMAIN,shark-mt.meituan.com,REJECT,extended-matching

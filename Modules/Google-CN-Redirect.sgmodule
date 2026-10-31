@@ -1,5 +1,6 @@
 #!name=Google CN Redirect + Endless
 #!desc=Redirect Google China domains to international equivalents and enable auto-pagination (endless scroll) on Google search results. Local MITM CA required. Already included in the main profile; use only one.
+#!category=Utilities
 
 [URL Rewrite]
 ^https?:\/\/(?:ditu|maps)\.google\.cn(.*)$ https://maps.google.com$1 302

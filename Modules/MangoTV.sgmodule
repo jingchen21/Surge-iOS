@@ -1,5 +1,6 @@
 #!name=Mango TV - Ad Filtering and API Unlock
 #!desc=Broad ad filtering and ticket replacement across selected endpoints, including playback sources, playlists, and getSource.
+#!category=Hack VIP
 
 [Rule]
 DOMAIN,credits.bz.mgtv.com,REJECT

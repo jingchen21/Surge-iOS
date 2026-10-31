@@ -1,5 +1,6 @@
 #!name=Tencent Video - Cleanup
 #!desc=Clean up splash, pre-roll, mid-roll, pause ads, and selected page elements. Binary endpoints use Surge's native body API.
+#!category=Ad Remove
 
 [Rule]
 DOMAIN,iacc.stgw.qq.com,REJECT

@@ -1,5 +1,6 @@
 #!name=China Mobile - Ad Cleanup (Surge Syntax Fix)
 #!desc=Preserves page cleanup and removes observed startup ads while retaining encrypted initialization and response signing. Splash removal verified on iPhone 2026-10-31.
+#!category=Ad Remove
 #!arguments=HideTopFamily:false,HideTopAge:false,HideTopPhone:false,HideTopNearby:false,HideTopAI:false,HideTopEnterprise:false,BottomClean:true,MineClean:true
 
 [Script]
