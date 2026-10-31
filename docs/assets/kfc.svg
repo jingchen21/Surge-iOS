@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="KFC">
+<rect width="120" height="120" rx="22" fill="#d71920"/>
+<rect y="83" width="120" height="16" fill="#fff" opacity=".97"/>
+<rect y="104" width="120" height="16" fill="#fff" opacity=".97"/>
+<text x="60" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="47" font-weight="900" letter-spacing="-2.5" fill="#fff">KFC</text>
+</svg>
