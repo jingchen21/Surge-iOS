@@ -1,5 +1,5 @@
-#!name=Meituan App 12.67.403 - Category Compatibility Fix
-#!desc=Fixes store-category loading by removing five conflicting IP blocks while retaining the other 41 rules, two Rewrite rules, and eight original response scripts.
+#!name=美团 12.68.201 - 购物车顶部券测试
+#!desc=保持原有小团过滤与其他规则，仅测试购物车顶部免费领神券横幅的深层过滤；原模块停止使用后再测试。
 
 [Rule]
 DOMAIN,shark-mt.meituan.com,REJECT,extended-matching
@@ -55,7 +55,7 @@ MT-3 = type=http-response,pattern=^https?://mt-personalcenter\.meituan\.com/user
 MT-4 = type=http-response,pattern=^https?://apimobile\.meituan\.com/group/v1/deal/searchpage/defaultword,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
 MT-5 = type=http-response,pattern=^https?://apimobile\.meituan\.com/group/v1/deal/searchpage/hotword/city/divide/hotrecommend/,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
 MT-6 = type=http-response,pattern=^https?://assistify\.meituan\.com/assistant/getAppClientHornConfig,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
-MT-7 = type=http-response,pattern=^https?://mop\.meituan\.com/mop/entry/shoppingCartEntry,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
+MT-7-购物车券测试 = type=http-response,pattern=^https?://mop\.meituan\.com/mop/entry/shoppingCartEntry,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/test-meituan-cart-coupon-1268201/Modules/Scripts/MeituanCartTopBanner.js,requires-body=true
 MT-8 = type=http-response,pattern=^https?://mop\.meituan\.com/api/entryModule/startupPicture,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
 
 [MITM]
