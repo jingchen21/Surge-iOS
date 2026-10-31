@@ -45,6 +45,8 @@
 !/Modules/Xiaohongshu.sgmodule
 !/Modules/Scripts/
 !/Modules/Scripts/*.js
+!/Modules/Scripts/IndependentAdBlock/
+!/Modules/Scripts/IndependentAdBlock/**
 !/JS/
 !/JS/Txvideoad.surge.js
 !/JS/hlwxx_remove_ads.surge.js
