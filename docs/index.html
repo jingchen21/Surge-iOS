@@ -7,47 +7,66 @@
 <meta name="description" content="One-tap Surge iOS module installation for the personal Surge-iOS repository.">
 <title>Surge iOS | Module Installer</title>
 <style>
-:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;color-scheme:light dark;--bg:#f7f8fc;--text:#192435;--muted:#677488;--panel:#fff;--line:#e5e9f1;--accent:#2457c5;--shadow:0 2px 15px rgba(26,37,56,.04)}
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--text);margin:0;line-height:1.5}
-main{max-width:1000px;margin:0 auto;padding:40px 20px 64px}
-h1{font-size:clamp(1.65rem,5vw,2.4rem);letter-spacing:-.04em;margin:0}
-.subtitle{margin:8px 0 22px;color:var(--muted);font-size:15px}
-.top{display:flex;align-items:start;justify-content:space-between;gap:16px}
-.top a{color:var(--muted);text-decoration:none;font-size:13px;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
-.details{font-size:13px;color:var(--muted);margin-bottom:20px}
-.controls{display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
-input,select{font:inherit;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:11px;padding:12px 14px;min-height:46px}
-input{flex:1;min-width:210px}select{min-width:150px}
-.count{color:var(--muted);font-size:13px;margin:8px 0 16px}
-.list{display:grid;grid-template-columns:1fr;gap:10px}
-.module{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:20px}
-.module[hidden]{display:none}
-.module-main{min-width:0}
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:light dark;--bg:#f6f8fb;--paper:#fff;--text:#1b2738;--muted:#6a7688;--border:#e3e9f1;--blue:#2866e0;--shadow:0 8px 25px rgba(15,44,80,.05)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+main{max-width:1100px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 28px) 18px calc(env(safe-area-inset-bottom) + 55px)}
+.top{display:flex;align-items:start;justify-content:space-between;gap:12px}
+h1{font-size:clamp(1.75rem,5.6vw,2.5rem);letter-spacing:-.05em;line-height:1.12;margin:0}
+.subtitle{font-size:14px;color:var(--muted);margin:9px 0 0;line-height:1.55}
+.top a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text);background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:0 13px;min-height:42px;font-size:13px;white-space:nowrap}
+.hint{background:var(--paper);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:16px;padding:17px;margin:21px 0 14px}
+.hint strong{font-size:14px}.hint p{font-size:13px;color:var(--muted);line-height:1.65;margin:5px 0 0}
+.controls{position:sticky;top:0;z-index:4;background:var(--bg);padding:12px 0 13px}
+#search{background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:0 15px;min-height:52px;width:100%;font:inherit;font-size:16px;color:var(--text)}
+#search:focus-visible{outline:3px solid rgba(40,102,224,.23);border-color:var(--blue)}
+.filters{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 0 2px}
+.filters::-webkit-scrollbar{display:none}
+.filter{border:1px solid var(--border);background:var(--paper);color:var(--muted);border-radius:999px;padding:0 15px;min-height:42px;white-space:nowrap;font-size:13px;font-weight:700;cursor:pointer;touch-action:manipulation}
+.filter[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.list-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:7px 0 15px}
+.list-heading strong{font-size:15px}
+#count{font-size:13px;color:var(--muted)}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.module{display:flex;flex-direction:column;gap:0;min-width:0;background:var(--paper);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:18px}
+.module[hidden]{display:none!important}
+.module-main{flex:1;min-width:0}
 .name-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-h2{font-size:16px;letter-spacing:-.015em;margin:0}
-.module p{font-size:13px;color:var(--muted);margin:6px 0 4px}
+h2{font-size:16px;line-height:1.4;letter-spacing:-.015em;margin:0}
+.module p{font-size:13px;color:var(--muted);line-height:1.6;margin:7px 0 9px}
 .module small{font-size:12px;color:var(--muted)}
-.category{font-size:11px;border-radius:6px;padding:3px 7px;font-weight:600;white-space:nowrap}
-.ad{background:#e9f1ff;color:#2457c5}.vip{background:#f5eaff;color:#804cc6}.utility{background:#e6f5ed;color:#207951}
-.install{display:inline-flex;gap:10px;align-items:center;justify-content:center;background:var(--accent);color:white;border-radius:9px;font-size:13px;font-weight:650;text-decoration:none;padding:12px 15px;white-space:nowrap;min-height:44px}
-.install:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8eb7ff;outline-offset:2px}
-footer{margin-top:24px;color:var(--muted);font-size:12px}
+.category{display:inline-block;font-size:11px;font-weight:700;border-radius:6px;padding:3px 8px}
+.ad{background:#e8f1ff;color:#245eca}.vip{background:#f2eafd;color:#8151bd}.utility{background:#e8f4ec;color:#217347}
+.install{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--blue);color:#fff!important;border-radius:12px;min-height:54px;margin-top:16px;padding:12px;font-size:16px;font-weight:750;text-decoration:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.install:active{transform:scale(.99);filter:brightness(.95)}
+.install:focus-visible,.filter:focus-visible,#more:focus-visible{outline:3px solid #89b4ff;outline-offset:2px}
+#more{display:block;margin:21px auto 0;min-height:52px;max-width:400px;width:100%;padding:11px 15px;border:1px solid var(--border);border-radius:12px;background:var(--paper);color:var(--text);font-size:15px;font-weight:750;cursor:pointer}
+#more[hidden],#empty[hidden]{display:none}
+#empty{padding:28px;text-align:center;border-radius:14px;background:var(--paper);color:var(--muted)}
+footer{margin-top:30px;border-top:1px solid var(--border);padding-top:18px;color:var(--muted);font-size:12px;line-height:1.65}
 footer a{color:inherit}
-@media(max-width:600px){main{padding:24px 14px 50px}.top a{font-size:12px}.module{flex-direction:column;align-items:stretch;padding:16px}.install{width:100%}.controls{align-items:stretch}input,select{width:100%}}
-@media(prefers-color-scheme:dark){:root{--bg:#10141b;--text:#eef3fa;--muted:#9ba8b8;--panel:#191f29;--line:#2f3a49;--accent:#3c76e5;--shadow:none}.ad{background:#162d50;color:#9cc4ff}.vip{background:#392351;color:#d5b4ff}.utility{background:#143929;color:#9de1b8}}
-</style>
+@media(max-width:700px){main{padding-left:14px;padding-right:14px}.list{grid-template-columns:1fr;gap:10px}.module{padding:16px}.controls{margin:0 -14px;padding:11px 14px}.install{margin-top:14px}.hint{margin-top:18px}}
+@media(min-width:701px){.controls{position:static}.module{min-height:220px}}
+@media(prefers-color-scheme:dark){:root{--bg:#111721;--paper:#1d2633;--text:#ecf3fc;--muted:#9fadc1;--border:#334154;--blue:#3a76e8;--shadow:none}.ad{background:#19365e;color:#aecdff}.vip{background:#35244d;color:#dfc2ff}.utility{background:#193a2c;color:#b2e2c4}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.install:active{transform:none}}</style>
 </head>
 <body>
+
 <main>
-<header class="top"><div><h1>Surge iOS Modules</h1><p class="subtitle">One-tap installation in Safari. All modules are maintained in this repository.</p></div><a href="https://github.com/jingchen21/Surge-iOS">GitHub</a></header>
-<p class="details">Tap <strong>Install in Surge</strong> to open the Surge app. If your browser asks for permission, choose <strong>Open</strong>. Install only one module for each app and enable HTTPS inspection where required.</p>
-<div class="controls"><input id="search" type="search" placeholder="Search modules..." autocomplete="off" aria-label="Search modules"><select id="filter" aria-label="Filter by category"><option value="">All categories</option><option value="Ad Remove">Ad Remove</option><option value="Hack VIP">Hack VIP</option><option value="Utilities">Utilities</option></select></div>
-<div class="count" id="count" aria-live="polite">31 modules</div>
+<header class="top"><div><h1>Surge iOS<br>Modules</h1><p class="subtitle">31 modules. Optimized for iPhone Safari.</p></div><a href="https://github.com/jingchen21/Surge-iOS">GitHub</a></header>
+<section class="hint"><strong>Install in one tap</strong><p>Select a module and tap the blue button to open Surge. Approve Safari's app prompt, then enable the module and HTTPS inspection if required.</p></section>
+<section class="controls" aria-label="Module search and filters">
+<input id="search" type="search" placeholder="Search apps or features" aria-label="Search modules" autocomplete="off">
+<div class="filters" role="group" aria-label="Module categories">
+<button class="filter" type="button" data-category="" aria-pressed="true">All 31</button>
+<button class="filter" type="button" data-category="Ad Remove" aria-pressed="false">Ad Remove 29</button>
+<button class="filter" type="button" data-category="Hack VIP" aria-pressed="false">Hack VIP 1</button>
+<button class="filter" type="button" data-category="Utilities" aria-pressed="false">Utilities 1</button>
+</div></section>
+<div class="list-heading"><strong>Browse modules</strong><span id="count" role="status" aria-live="polite">Showing 8 of 31</span></div>
 <div class="list" id="modules">
 <article class="module" data-name="12306" data-category="Ad Remove">
   <div class="module-main"><div class="name-line"><h2>12306</h2><span class="category ad">Ad Remove</span></div>
-  <p>Splash ad list; booking and payments untouched</p><small>Updated 2026-10-31</small></div>
+  <p>Splash, homepage marketing and selected promotional requests.</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install 12306 in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2F12306.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
 <article class="module" data-name="amap" data-category="Ad Remove">
@@ -72,7 +91,7 @@ footer a{color:inherit}
 </article>
 <article class="module" data-name="coolapk" data-category="Ad Remove">
   <div class="module-main"><div class="name-line"><h2>Coolapk</h2><span class="category ad">Ad Remove</span></div>
-  <p>Sponsored cards and selected feed promotions</p><small>Updated 2026-10-31</small></div>
+  <p>Sponsored cards and selected promoted feed sections.</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Coolapk in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FCoolapk.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
 <article class="module" data-name="ctrip" data-category="Ad Remove">
@@ -85,136 +104,149 @@ footer a{color:inherit}
   <p>Ad response fields; shopping operations retained</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Dewu in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FDewu.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="dianping" data-category="Ad Remove">
+<article class="module" data-name="dianping" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Dianping</h2><span class="category ad">Ad Remove</span></div>
   <p>Targeted splash and advertising endpoints</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Dianping in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDianPing-11.53.14-Full-AdBlock.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="didi" data-category="Ad Remove">
+<article class="module" data-name="didi" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Didi</h2><span class="category ad">Ad Remove</span></div>
   <p>Selected profile, recommendation and wallet sections</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Didi in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDidi.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="fliggy" data-category="Ad Remove">
+<article class="module" data-name="fliggy" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Fliggy</h2><span class="category ad">Ad Remove</span></div>
-  <p>Marketing placements and identified home-screen ads</p><small>Updated 2026-10-31</small></div>
+  <p>Home and travel-detail advertising placements.</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Fliggy in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FFliggy.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="goofish" data-category="Ad Remove">
+<article class="module" data-name="goofish" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Goofish</h2><span class="category ad">Ad Remove</span></div>
-  <p>Splash, home and local feeds, search promotions</p><small>Updated 2026-10-31</small></div>
+  <p>Promotional banners and sponsored search or feed cards.</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Goofish in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FGoofish.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="google cn redirect" data-category="Utilities">
+<article class="module" data-name="google cn redirect" data-category="Utilities" hidden>
   <div class="module-main"><div class="name-line"><h2>Google CN Redirect</h2><span class="category utility">Utilities</span></div>
   <p>Google China-domain redirects and search auto-pagination</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Google CN Redirect in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FGoogle-CN-Redirect.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="hellobike" data-category="Ad Remove">
+<article class="module" data-name="hellobike" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>HelloBike</h2><span class="category ad">Ad Remove</span></div>
   <p>Selected splash and promotional content</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install HelloBike in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FHelloBike.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="hlwxx" data-category="Ad Remove">
+<article class="module" data-name="hlwxx" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>HLWXX</h2><span class="category ad">Ad Remove</span></div>
   <p>Selected ad requests and page elements</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install HLWXX in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2Fhlwxx_remove_ads.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="jd" data-category="Ad Remove">
+<article class="module" data-name="jd" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>JD</h2><span class="category ad">Ad Remove</span></div>
-  <p>Splash and promotions in readable JSON responses</p><small>Updated 2026-10-31</small></div>
+  <p>Splash, home, orders and profile advertising.</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install JD in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FJD.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="mango tv" data-category="Hack VIP">
+<article class="module" data-name="mango tv" data-category="Hack VIP" hidden>
   <div class="module-main"><div class="name-line"><h2>Mango TV</h2><span class="category vip">Hack VIP</span></div>
   <p>Video ads and promotions</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Mango TV in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMangoTV.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="meituan" data-category="Ad Remove">
+<article class="module" data-name="meituan" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Meituan</h2><span class="category ad">Ad Remove</span></div>
   <p>Category compatibility and selected promotions</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Meituan in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMeituan.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="meituan mini program" data-category="Ad Remove">
+<article class="module" data-name="meituan mini program" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Meituan Mini Program</h2><span class="category ad">Ad Remove</span></div>
   <p>Ads in the WeChat mini program</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Meituan Mini Program in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMeituanMiniProgram.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="netease cloud music" data-category="Ad Remove">
+<article class="module" data-name="netease cloud music" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>NetEase Cloud Music</h2><span class="category ad">Ad Remove</span></div>
   <p>Ad endpoints; encrypted EAPI not supported</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install NetEase Cloud Music in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FNeteaseCloudMusic.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="pinduoduo" data-category="Ad Remove">
+<article class="module" data-name="pinduoduo" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Pinduoduo</h2><span class="category ad">Ad Remove</span></div>
   <p>Promotions and layout cleanup</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Pinduoduo in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FPinduoduo.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="pupu mall" data-category="Ad Remove">
+<article class="module" data-name="pupu mall" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>PuPu Mall</h2><span class="category ad">Ad Remove</span></div>
-  <p>Marketing banners and search suggestions</p><small>Updated 2026-10-31</small></div>
+  <p>Marketing banners, sponsored search and order promotions.</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install PuPu Mall in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FPuPuMall.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="sf express" data-category="Ad Remove">
+<article class="module" data-name="sf express" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>SF Express</h2><span class="category ad">Ad Remove</span></div>
   <p>Splash, home promotional placements, ad endpoints</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install SF Express in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSFExpress-AdBlock.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="smzdm" data-category="Ad Remove">
+<article class="module" data-name="smzdm" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>SMZDM</h2><span class="category ad">Ad Remove</span></div>
   <p>Splash, feed, search and page promotions</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install SMZDM in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSMZDM-AdFilter-Complete.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="spdb" data-category="Ad Remove">
+<article class="module" data-name="spdb" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>SPDB</h2><span class="category ad">Ad Remove</span></div>
   <p>Filter splash images by asset dimensions</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install SPDB in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSPDB.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="taobao" data-category="Ad Remove">
+<article class="module" data-name="taobao" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Taobao</h2><span class="category ad">Ad Remove</span></div>
-  <p>Splash and pop-up promotions</p><small>Updated 2026-10-31</small></div>
+  <p>Splash, popups, ad networks and marketing endpoints.</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Taobao in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTaobao.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="tencent video" data-category="Ad Remove">
+<article class="module" data-name="tencent video" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Tencent Video</h2><span class="category ad">Ad Remove</span></div>
   <p>Selected splash and playback ads</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Tencent Video in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FTencentVideo.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="tencent video (duplicate)" data-category="Ad Remove">
+<article class="module" data-name="tencent video (duplicate)" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Tencent Video (duplicate)</h2><span class="category ad">Ad Remove</span></div>
   <p>Duplicate alternative; install only one</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Tencent Video (duplicate) in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FTxvideoAD.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="tomato novel" data-category="Ad Remove">
+<article class="module" data-name="tomato novel" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Tomato Novel</h2><span class="category ad">Ad Remove</span></div>
   <p>Reading, splash, audio and floating ads</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Tomato Novel in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FFanQieNovel.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="weibo" data-category="Ad Remove">
+<article class="module" data-name="weibo" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Weibo</h2><span class="category ad">Ad Remove</span></div>
   <p>Selected feed and app promotions</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Weibo in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FWeibo.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
-<article class="module" data-name="xiaohongshu" data-category="Ad Remove">
+<article class="module" data-name="xiaohongshu" data-category="Ad Remove" hidden>
   <div class="module-main"><div class="name-line"><h2>Xiaohongshu</h2><span class="category ad">Ad Remove</span></div>
   <p>Ads, search promotions, and image/video/Live Photo watermark handling</p><small>Updated 2026-10-31</small></div>
   <a class="install" aria-label="Install Xiaohongshu in Surge" href="surge:///install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FXiaohongshu.sgmodule">Install in Surge <span aria-hidden="true">&#8599;</span></a>
 </article>
 </div>
-<footer>Only publicly hosted module links are used. This page does not collect data or run external scripts. Compatibility depends on your Surge and app versions.</footer>
+<p id="empty" hidden>No modules found. Try another search.</p>
+<button type="button" id="more">Show more modules</button>
+<footer>Personal modules hosted in this repository. App updates can change results; test normal functions after installation. <a href="https://github.com/jingchen21/Surge-iOS/blob/main/Modules/README.md">Read documentation</a>Only publicly hosted module links are used. This page does not collect data or run external scripts. Compatibility depends on your Surge and app versions.</footer>
 </main>
-<script>
-(function(){
-"use strict";
-var search=document.getElementById("search"),filter=document.getElementById("filter"),count=document.getElementById("count");
-var cards=Array.prototype.slice.call(document.querySelectorAll(".module"));
-function update(){
-var q=search.value.trim().toLowerCase(),c=filter.value,visible=0;
-cards.forEach(function(card){var ok=(!q||card.textContent.toLowerCase().includes(q))&&(!c||card.getAttribute("data-category")===c);card.hidden=!ok;if(ok)visible++});
-count.textContent=visible+" module"+(visible===1?"":"s");
+<script>(function(){"use strict";
+var all=Array.prototype.slice.call(document.querySelectorAll(".module"));
+var search=document.getElementById("search"),filters=Array.prototype.slice.call(document.querySelectorAll(".filter"));
+var count=document.getElementById("count"),more=document.getElementById("more"),empty=document.getElementById("empty");
+var active="",limit=8;
+function render(){
+ var q=search.value.trim().toLowerCase();
+ var matched=all.filter(function(x){return (!active||x.getAttribute("data-category")===active)&&(!q||x.textContent.toLowerCase().indexOf(q)>=0)});
+ var visible=0;
+ all.forEach(function(x){var show=matched.indexOf(x)>=0&&visible<limit;x.hidden=!show;if(show)visible++});
+ count.textContent="Showing "+visible+" of "+matched.length;
+ more.hidden=visible>=matched.length;
+ more.textContent="Show more ("+(matched.length-visible)+" remaining)";
+ empty.hidden=matched.length!==0;
 }
-search.addEventListener("input",update);filter.addEventListener("change",update);
-})();
-</script>
+search.addEventListener("input",function(){limit=8;render()});
+filters.forEach(function(b){b.addEventListener("click",function(){
+ active=b.getAttribute("data-category");limit=8;
+ filters.forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});
+ render();
+})});
+more.addEventListener("click",function(){limit+=8;render()});
+render();
+})();</script>
 </body>
 </html>
