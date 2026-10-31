@@ -1,12 +1,16 @@
-#!name=Baidu Web - Homepage Feed Filter
-#!desc=Hides the mobile homepage feed with CSS without modifying search results.
+#!name=Baidu Web - Homepage and Search Ad Filter
+#!desc=Removes identifiable search ads and homepage recommendations while retaining normal results.
 #!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
 #!tag=Ad Blocking
 
+[Rule]
+DOMAIN,cpro.baidu.com,REJECT
+DOMAIN,eclick.baidu.com,REJECT
+
 [Script]
-Baidu-Homepage-Feed = type=http-response,pattern=^https://(?:m|www)\.baidu\.com/(?:\?(?:from=[A-Za-z0-9]{8,9})?)?$,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/BaiduWeb.js,requires-body=true
+Baidu-HTML-Ads = type=http-response,pattern=^https?:\/\/(?:m|www)\.baidu\.com\/(?:s\/?)?(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/BaiduWeb.js,requires-body=true,timeout=20
 
 [MITM]
 hostname = %APPEND% m.baidu.com, www.baidu.com

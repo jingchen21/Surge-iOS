@@ -1,5 +1,5 @@
-#!name=Baidu Tieba - JSON Ad Filter
-#!desc=Filters readable JSON ads; binary protobuf responses are not modified.
+#!name=Baidu Tieba - JSON and Protobuf Ad Filter
+#!desc=Filters splash, feed ads, promotional banners, floating elements and selected Protobuf data.
 #!category=Ad Remove
 #!homepage=https://github.com/jingchen21/Surge-iOS
 #!date=2026-10-31
@@ -10,7 +10,8 @@ DOMAIN,afd.baidu.com,REJECT
 DOMAIN,mobads.baidu.com,REJECT
 
 [Script]
-Tieba-JSON-Ads = type=http-response,pattern=^https?://(?:tiebac|tieba)\.baidu\.com/(?:livefeed/feed|c/(?:f/(?:frs/(?:page|threadlist|generalTabList)|pb/page|sidebar/home)|u/user/profile)|tiebaads/commonbatch)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Tieba.js,requires-body=true
+Tieba-JSON-Ads = type=http-response,pattern=^https?:\/\/(?:tiebac|c\.tieba|tieba)\.baidu\.com\/(?:c\/(?:s\/sync|f\/(?:ad\/(?:getSplashAd|getFeedAd)|frs\/(?:page|threadlist|generalTabList)|pb\/(?:picpage|page)|excellent\/personalized|sidebar\/home)|u\/user\/profile)|tiebaads\/commonbatch)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Tieba.js,requires-body=true,timeout=30
+Tieba-Protobuf-Ads = type=http-response,pattern=^https?:\/\/(?:tiebac|c\.tieba)\.baidu\.com\/c\/f\/(?:ad\/getFeedAd|frs\/(?:page|threadlist|generalTabList)|pb\/page|excellent\/personalized)\?cmd=,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/TiebaProto.js,requires-body=true,binary-body-mode=true,max-size=5000000,timeout=30
 
 [MITM]
-hostname = %APPEND% tiebac.baidu.com, tieba.baidu.com
+hostname = %APPEND% tiebac.baidu.com, c.tieba.baidu.com, tieba.baidu.com
