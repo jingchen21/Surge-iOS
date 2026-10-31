@@ -22,7 +22,7 @@
 ^https?:\/\/j1\.pupuapi\.com\/client\/notification\/message_center\/unread_number(?:\?|$) data-type=text data="{\"errcode\":0,\"data\":[]}" status-code=200 header="Content-Type:application/json"
 
 [Script]
-PuPu-Ad-Cleanup = type=http-response,pattern=^https?:\/\/j1\.pupuapi\.com\/client\/(?:marketing\/(?:banner\/(?:v\d+|search_component_banner)|advertisement\/v1)|search\/hub\/search_box\/products\/v6|(?:app_)?resource\/resource_preload\/list_h5_resource|order_settlement\/detail|order\/orders\/list\/v4)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/PuPuMall.js,requires-body=true,max-size=2097152,timeout=30
+PuPu-Ad-Cleanup = type=http-response,pattern=^https?:\/\/j1\.pupuapi\.com\/client\/(?:marketing\/(?:banner\/(?:v\d+|search_component_banner)|advertisement\/v1)|search\/hub\/search_box\/products\/v6|(?:app_)?resource\/resource_preload\/list_h5_resource|order_settlement\/detail|order\/orders\/list\/v4)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/PuPuMall.js,requires-body=true,max-size=2097152,timeout=30
 
 [MITM]
 hostname = %APPEND% j1.pupuapi.com

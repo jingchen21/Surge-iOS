@@ -6,7 +6,7 @@
 #!date=2026-10-31
 
 [Script]
-Dewu-Ad-Response = type=http-response, pattern=^https:\/\/app\.dewu\.com\/api\/v\d+\/app\/advertisement(?:\/|\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Dewu.js, requires-body=true, timeout=30
+Dewu-Ad-Response = type=http-response, pattern=^https:\/\/app\.dewu\.com\/api\/v\d+\/app\/advertisement(?:\/|\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Dewu.js, requires-body=true, timeout=30
 
 [MITM]
 hostname = %APPEND% app.dewu.com

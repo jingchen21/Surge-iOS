@@ -16,7 +16,7 @@ Designed for iPhone Safari. Expand a letter group and tap the large **Install in
 
 Splash, homepage promotions and selected marketing requests.
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2F12306.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install 12306 in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2F12306.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install 12306 in Surge" width="258" height="48"></a>
 
 ---
 
@@ -32,7 +32,7 @@ Selected splash, route and search promotions
 
 JSON and selected Protobuf ad fields
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTieba.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Baidu Tieba in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FTieba.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Baidu Tieba in Surge" width="258" height="48"></a>
 
 ---
 
@@ -40,7 +40,7 @@ JSON and selected Protobuf ad fields
 
 Homepage feed and identified search-result ads
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FBaiduWeb.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Baidu Web in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FBaiduWeb.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Baidu Web in Surge" width="258" height="48"></a>
 
 ---
 
@@ -56,7 +56,7 @@ Splash and countdown handling
 
 Sponsored cards, feed promotions and reply-page ads.
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FCoolapk.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Coolapk in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FCoolapk.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Coolapk in Surge" width="258" height="48"></a>
 
 ---
 
@@ -72,7 +72,7 @@ Splash and advertising responses
 
 Ad response fields; shopping operations retained
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FDewu.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Dewu in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDewu.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Dewu in Surge" width="258" height="48"></a>
 
 ---
 
@@ -101,7 +101,7 @@ Selected profile, recommendation and wallet sections
 
 Home promotions, travel detail marketing and related ads.
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FFliggy.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Fliggy in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FFliggy.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Fliggy in Surge" width="258" height="48"></a>
 
 ---
 
@@ -109,7 +109,7 @@ Home promotions, travel detail marketing and related ads.
 
 Home banners, marketing cards and search suggestions.
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FGoofish.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Goofish in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FGoofish.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Goofish in Surge" width="258" height="48"></a>
 
 ---
 
@@ -141,9 +141,15 @@ Selected ad requests and page elements
 
 Splash, home, order banners and profile advertising.
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FJD.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install JD in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FJD.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install JD in Surge" width="258" height="48"></a>
 
 ---
+
+<img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/KFC.png" alt="" width="28" height="28"> **KFC** · Ad Remove · <sub>Updated 2026-10-31</sub>
+
+Splash and home ads; custom_v2/dynamicad use Map Local to avoid retry storms.
+
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FKFC.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install KFC in Surge" width="258" height="48"></a>
 
 <img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/LuckinCoffee.png" alt="" width="28" height="28"> **Luckin Coffee** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
@@ -186,7 +192,7 @@ Ads in the WeChat mini program
 
 Ad endpoints; encrypted EAPI not supported
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FNeteaseCloudMusic.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install NetEase Cloud Music in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FNeteaseCloudMusic.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install NetEase Cloud Music in Surge" width="258" height="48"></a>
 
 ---
 
@@ -202,7 +208,7 @@ Promotions and layout cleanup
 
 Marketing banners, sponsored search and order promotions.
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FPuPuMall.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install PuPu Mall in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FPuPuMall.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install PuPu Mall in Surge" width="258" height="48"></a>
 
 ---
 
@@ -239,7 +245,7 @@ Filter splash images by asset dimensions
 
 Splash, pop-ups, advertising hosts and promotional APIs.
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FTaobao.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Taobao in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FTaobao.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Taobao in Surge" width="258" height="48"></a>
 
 ---
 
@@ -279,7 +285,7 @@ Selected feed and app promotions
 
 Ads, search promotions, and image/video/Live Photo watermark handling
 
-<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FIndependentAdBlock%2FXiaohongshu.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Xiaohongshu in Surge" width="258" height="48"></a>
+<a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FXiaohongshu.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Xiaohongshu in Surge" width="258" height="48"></a>
 
 ---
 

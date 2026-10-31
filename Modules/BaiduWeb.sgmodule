@@ -10,7 +10,7 @@ DOMAIN,cpro.baidu.com,REJECT
 DOMAIN,eclick.baidu.com,REJECT
 
 [Script]
-Baidu-HTML-Ads = type=http-response,pattern=^https?:\/\/(?:m|www)\.baidu\.com\/(?:s\/?)?(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/BaiduWeb.js,requires-body=true,timeout=20
+Baidu-HTML-Ads = type=http-response,pattern=^https?:\/\/(?:m|www)\.baidu\.com\/(?:s\/?)?(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/BaiduWeb.js,requires-body=true,timeout=20
 
 [MITM]
 hostname = %APPEND% m.baidu.com, www.baidu.com

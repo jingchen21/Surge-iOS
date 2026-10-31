@@ -14,7 +14,7 @@
 ^https?:\/\/(?:capi|ecapi)\.lkcoffee\.com\/resource\/m\/eorder\/product\/popAppTagProductList(?:\?|$) data-type=text data="{\"status\":\"SUCCESS\",\"data\":[]}" status-code=200 header="Content-Type:application/json"
 
 [Script]
-Luckin-Promotions = type=http-response,pattern=^https?:\/\/(?:capi|ecapi|m)\.lkcoffee\.com\/(?:capi\/|ecapi\/)?resource\/m\/(?:growUp\/main|member\/exchange\/page|sys\/common\/modules)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/LuckinCoffee.js,requires-body=true,max-size=2097152,timeout=20
+Luckin-Promotions = type=http-response,pattern=^https?:\/\/(?:capi|ecapi|m)\.lkcoffee\.com\/(?:capi\/|ecapi\/)?resource\/m\/(?:growUp\/main|member\/exchange\/page|sys\/common\/modules)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/LuckinCoffee.js,requires-body=true,max-size=2097152,timeout=20
 
 [MITM]
 hostname = %APPEND% capi.lkcoffee.com, ecapi.lkcoffee.com, m.lkcoffee.com

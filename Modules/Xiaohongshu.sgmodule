@@ -1,0 +1,28 @@
+#!name=Xiaohongshu - Ads and Watermarks
+#!desc=Filters promotions and supports image, video, and Live Photo watermark handling.
+#!category=Ad Remove
+#!basedOn=iOS
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!date=2026-10-31
+
+[Rule]
+DOMAIN,t-ads.xiaohongshu.com,REJECT
+DOMAIN,ads-img-qc.xhscdn.com,REJECT
+DOMAIN,ads-img-al.xhscdn.com,REJECT
+DOMAIN,ads-video-qc.xhscdn.com,REJECT
+DOMAIN,ads-video-al.xhscdn.com,REJECT
+
+[Script]
+XHS-Splash = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/(?:config|splash_config)(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-Popups = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/surprisebox\/(?:get_style|open|submit_action)(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-Home-Follow = type=http-response, pattern=^https:\/\/(?:edith|rec)\.xiaohongshu\.com\/api\/sns\/v\d+\/(?:homefeed|followfeed)(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-Search = type=http-response, pattern=^https:\/\/(?:edith|so)\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/(?:banner_list|notes|hot_list|hint|trending)(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-Widgets = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/widgets(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-Follow-List = type=http-response, pattern=^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d+\/user\/followings\/followfeed(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+
+XHS-Media-Feed = type=http-response, pattern=^https:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/(?:imagefeed|feed|videofeed)(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-Video-Save = type=http-response, pattern=^https:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/video\/save(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+XHS-Live-Photo-Save = type=http-response, pattern=^https:\/\/(?:edith|rec|www)\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/live_photo\/save(?:\?|$), script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Xiaohongshu.js, requires-body=true, timeout=30
+
+[MITM]
+hostname = %APPEND% edith.xiaohongshu.com, rec.xiaohongshu.com, so.xiaohongshu.com, www.xiaohongshu.com

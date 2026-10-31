@@ -26,7 +26,7 @@ DOMAIN,simba.m.taobao.com,REJECT
 ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.newface\.awesome\.get(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 [Script]
-Taobao-Splash-Popups = type=http-response,pattern=^https://(?:guide-acs\.m\.taobao\.com/gw/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get)|poplayer\.template\.alibaba\.com/[A-Za-z0-9_]+\.json),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/IndependentAdBlock/Taobao.js,requires-body=true
+Taobao-Splash-Popups = type=http-response,pattern=^https://(?:guide-acs\.m\.taobao\.com/gw/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get)|poplayer\.template\.alibaba\.com/[A-Za-z0-9_]+\.json),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/Taobao.js,requires-body=true
 
 [MITM]
 hostname = %APPEND% guide-acs.m.taobao.com, poplayer.template.alibaba.com, acs.m.taobao.com
