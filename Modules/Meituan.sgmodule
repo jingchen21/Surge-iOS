@@ -1,5 +1,5 @@
-#!name=美团去广告 - 购物车顶部券适配 12.68.201
-#!desc=保留现有小团与其他去广告规则，购物车顶部券使用单独响应脚本；12.68.201 实际效果待验证。
+#!name=美团去广告 - Horn通道适配 12.68.201
+#!desc=保留分类兼容修复与购物车顶部券脚本；新增 Horn 通道适配，使底栏小团与购物车接口走可脚本路径（上午实测小团可消失）。
 #!category=Ad Remove
 
 [Rule]
@@ -50,6 +50,9 @@ IP-CIDR6,2402:4e00:40:40::2:373/128,REJECT,no-resolve
 ^http://103\.37\.155\.60/fetch - reject
 
 [Script]
+# Horn 通道适配：让 indexTab / shoppingCartEntry 走可 MITM 的普通 HTTP（上午实测可去掉小团）
+MT-Horn-request = type=http-request,pattern=^https://h\.meituan\.com/horn_ios/mergeRequest(?:\?|$),requires-body=true,max-size=524288,timeout=3,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/MeituanHornRequest.js
+MT-Horn-response = type=http-response,pattern=^https://h\.meituan\.com/horn_ios/mergeRequest(?:\?|$),requires-body=true,max-size=524288,timeout=3,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/MeituanHornResponse.js
 MT-1 = type=http-response,pattern=^https?://apimobile\.meituan\.com/aggroup/indexTab,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
 MT-2 = type=http-response,pattern=^https?://feedguess\.meituan\.com/lycoris/scene/(gwc_feed1_2265|personalcenter_2154)(\?|$),script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
 MT-3 = type=http-response,pattern=^https?://mt-personalcenter\.meituan\.com/usercenter/display,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
@@ -61,4 +64,4 @@ MT-7 = type=http-response,pattern=^https?://mop\.meituan\.com/mop/entry/shopping
 MT-8 = type=http-response,pattern=^https?://mop\.meituan\.com/api/entryModule/startupPicture,script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js,requires-body=true
 
 [MITM]
-hostname = %APPEND% apimobile.meituan.com, feedguess.meituan.com, mop.meituan.com, mt-personalcenter.meituan.com, assistify.meituan.com, httpdns.meituan.com, httpdnsmultiapi.meituan.com
+hostname = %APPEND% apimobile.meituan.com, feedguess.meituan.com, mop.meituan.com, mt-personalcenter.meituan.com, assistify.meituan.com, httpdns.meituan.com, httpdnsmultiapi.meituan.com, h.meituan.com
