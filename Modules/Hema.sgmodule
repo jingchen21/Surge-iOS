@@ -1,0 +1,46 @@
+#!name=盒马 - 去广告与页面净化
+#!desc=基于 Kelee 2026-10-02 盒马规则适配 Surge 原生 jq：开屏/首页推广、信息流、弹窗场景、我的页面、底栏及搭配推荐。未经 8.11.0 实机验证。
+#!category=Ad Remove
+#!author=可莉🅥（原始规则）/ jingchen21（Surge 整理，AI 辅助）
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/MrHema.png
+#!openUrl=https://apps.apple.com/app/id1063183999
+#!homepage=https://github.com/jingchen21/Surge-iOS
+#!date=2026-10-31
+
+# 上游：Kelee《盒马去广告》2026-10-02
+# https://github.com/bunizao/Mirrored/blob/main/Chores/sgmodule/MrHema_remove_ads.sgmodule
+# 采用 Surge iOS 5.14+ 原生 http-response-jq；不依赖外部 JS。
+# 以下规则只针对盒马 acs-m.freshippo.com，不全局屏蔽阿里系域名。
+# 原始规则的部分整页空返回可能使门店选择、搜索或商品详情失效，因此不默认启用。
+# 需先在 Surge 启用并信任 MITM 证书。
+
+[Body Rewrite]
+# 首页：保留上游识别的核心场景，过滤其他营销场景
+http-response-jq (?i)^https://acs-m\.freshippo\.com/gw/mtop\.wdk\.render\.queryindexpage/ 'if ((.data.pageType | tostring) == "1" and (.data.scenes | type) == "array") then .data.scenes |= map(select(.bizCode == "three_row_circle")) else . end'
+
+# 首页信息流：过滤非核心卡片
+http-response-jq (?i)^https://acs-m\.freshippo\.com/gw/mtop\.wdk\.render\.querytabfeedstream/ 'if ((.data.pageType | tostring) == "5" and (.data.scenes | type) == "array") then .data.scenes |= map(select((.sceneType | tostring) == "100028")) else . end'
+
+# 频道/单页：过滤原上游标识的推广场景
+http-response-jq (?i)^https://acs-m\.freshippo\.com/gw/(mtop\.wdk\.render\.querychannelpage|mtop\.wdk\.render\.querysinglepage)/ 'if ((.data.pageType | tostring) == "216" and (.data.scenes | type) == "array") then .data.scenes |= map(select(.bizCode | IN("shop_walk_top_picture", "shop_walk_shop_util", "shop_walk_bistro"))) else . end'
+
+# 我的：过滤非必要营销卡片
+http-response-jq (?i)^https://acs-m\.freshippo\.com/gw/mtop\.wdk\.render\.querymypage/ 'if (.data.scenes | type) == "array" then .data.scenes |= map(select((.sceneType | tostring) | IN("400029", "400005", "400010", "400002", "400004", "400015"))) else . end'
+
+# 底栏：仅保留首页、分类、购物车、我的；不修改门店地理位置数据
+http-response-jq (?i)^https://acs-m\.freshippo\.com/gw/(mtop\.wdk\.lbs\.location\.shopdecideapi\.decideformain|mtop\.wdk\.lbs\.location\.shopdecideapi\.decidebygeocode)/ 'if (.data.groupList | type) == "array" then .data.groupList |= map(if (.ext.tabConfig | type) == "object" then .ext.tabConfig |= (.normalTabList |= (if type == "array" then map(select((.code // "") | IN("HOME", "CLASSIFY", "CART", "MY"))) else . end) | .normalTabListB |= (if type == "array" then map(select((.code // "") | IN("HOME", "CLASSIFY", "CART", "MY"))) else . end)) else . end) else . end'
+
+[Map Local]
+# 原上游明确列出的独立推荐接口：不触及搜索/下单/门店定位主接口
+(?i)^https://acs-m\.freshippo\.com/gw/mtop\.wdk\.melon\.collocation/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+(?i)^https://acs-m\.freshippo\.com/gw/mtop\.wdk\.fc\.recommend\.feedscommondservice/ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+
+# 其他 Kelee 上游空返回接口（默认停用，可能造成搜索/门店/页面异常）：
+# mtop.wdk.render.querysinglepage
+# mtop.wdk.sg.queryinnerpage
+# mtop.wdk.lbs.address.getshopinfolist
+# mtop.wdk.render.querysearchpage
+# mtop.wdk.sg.querysinglescene
+
+[MITM]
+hostname = %APPEND% acs-m.freshippo.com
