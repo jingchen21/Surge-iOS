@@ -64,27 +64,27 @@
     },
     {
       "destination_path": "Modules/Didi.sgmodule",
-      "destination_sha256": "ccbb6ff9ff73de9ed66c9a9219caa611ea2dda9ad8cbf93b69d7fa6d87279048"
+      "destination_sha256": "43204ac998017df34981431e0d2810ed27404f09b680f45b087a67d1204fa9fc"
     },
     {
       "destination_path": "Modules/Meituan.sgmodule",
-      "destination_sha256": "0b33877201253c2fa3164948fc956631bc8f19d5842cd8e1e66611202d72812c"
+      "destination_sha256": "c1f4cea788ba40c1ef3895d0341b75babe591e2051cd848958cd8d7e9bc0efc8"
     },
     {
       "destination_path": "Modules/MeituanMiniProgram.sgmodule",
-      "destination_sha256": "cfad080c50954dd996358d65c42a6619883a53afe6e0d16b0b346bbfc2d3b180"
+      "destination_sha256": "0a9f73f3b716ddb15ae26707ca24a2a5a44f7aa4efcca3af3dfbcee4f0509867"
     },
     {
       "destination_path": "Modules/SPDB.sgmodule",
-      "destination_sha256": "b4a024b66b58c4863a29bb7b93b077b8acac71f6a83ad649f8ac360d45ea6496"
+      "destination_sha256": "5039ab33e98c8efff4f70077cdd90b523cea6683d599db8a13ffb3afb48de077"
     },
     {
       "destination_path": "Modules/TencentVideo.sgmodule",
-      "destination_sha256": "6e799d98b5311c2fc0bd7c7825f07aba4afe0758196ee09453f8813d436583f4"
+      "destination_sha256": "9ddb40046950e349862ef12f4825460a8905c9e25b09dcc925c9f4ad6667a479"
     },
     {
       "destination_path": "Modules/TxvideoAD.sgmodule",
-      "destination_sha256": "6e799d98b5311c2fc0bd7c7825f07aba4afe0758196ee09453f8813d436583f4"
+      "destination_sha256": "9ddb40046950e349862ef12f4825460a8905c9e25b09dcc925c9f4ad6667a479"
     }
   ]
 }

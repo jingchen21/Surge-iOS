@@ -179,7 +179,7 @@ Video ads and promotions
 
 <img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/MeiTuan.png" alt="" width="28" height="28"> **Meituan** · Ad Remove · <sub>Updated 2026-10-31</sub>
 
-Category compatibility and selected promotions
+Xiaotuan Horn transport fix; preserves category loading and existing cart filtering
 
 <a href="https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMeituan.sgmodule"><img src="https://img.shields.io/badge/INSTALL_IN_SURGE-OPEN-2864DD?style=for-the-badge&amp;logo=apple&amp;logoColor=white" alt="Install Meituan in Surge" width="258" height="48"></a>
 

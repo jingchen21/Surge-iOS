@@ -24,6 +24,8 @@ jobs:
         run: python3 scripts/build_apps.py --check
       - name: Check verified startup response handling
         run: node tests/startup_runtime.cjs
+      - name: Check Meituan UI transport compatibility
+        run: node tests/meituan_horn_runtime.cjs
       - name: Check app response handling
         run: node tests/apps_runtime.cjs
       - name: Check DiDi native jq conversion

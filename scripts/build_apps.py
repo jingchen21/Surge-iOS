@@ -190,22 +190,24 @@ def planned_outputs():
     if not MEITUAN_CLASSIFICATION_CONFLICTS.issubset(rules):
         raise ValueError('Meituan category conflict rules changed; review the local adaptation')
     rules = [r for r in rules if r not in MEITUAN_CLASSIFICATION_CONFLICTS]
-    app = header('Meituan App 12.67.403 - Category Compatibility Fix',
-                 'Fixes store-category loading by removing five conflicting IP blocks while retaining the other 41 rules, two Rewrite rules, and eight original response scripts.',
+    app = header('美团去广告 - Horn通道适配 12.68.201',
+                 '保留分类兼容修复与购物车顶部券脚本；新增 Horn 通道适配，使底栏小团与购物车接口走可脚本路径（上午实测小团可消失）。',
                  metadata.get('author', ''))
-    app += '# Source: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.snippet\n'
-    app += '# Script: https://github.com/ZenmoFeiShi/Qx/blob/main/MT.js\n'
-    app += '# Source update: ' + metadata.get('update', '') + '\n'
-    app += '# Local adaptation: remove five category-loading IP rejects; add no DIRECT overrides.\n'
     app += '\n[Rule]\n' + '\n'.join(
         r + ',extended-matching' if r.startswith('DOMAIN') else r for r in rules)
-    app += '\n\n[URL Rewrite]\n' + '\n'.join(
-        r['pattern'] + ' - reject' for r in rejects)
-    app += '\n\n[Script]\n' + '\n'.join(
-        'MT-' + str(i+1) + ' = type=http-response,pattern=' + r['pattern']
-        + ',script-path=' + (r['argument'] or '') + ',requires-body=true'
-        for i, r in enumerate(scripts))
-    app += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
+    app += '\n\n[URL Rewrite]\n' + '\n'.join(r['pattern'] + ' - reject' for r in rejects)
+    app += '\n\n[Script]\n# Horn 通道适配：让 indexTab / shoppingCartEntry 走可 MITM 的普通 HTTP（上午实测可去掉小团）'
+    horn_pattern = r'^https://h\.meituan\.com/horn_ios/mergeRequest(?:\?|$)'
+    for phase in ('request', 'response'):
+        app += ('\nMT-Horn-' + phase + ' = type=http-' + phase + ',pattern=' + horn_pattern
+                + ',requires-body=true,max-size=524288,timeout=3,script-path=' + RAW
+                + 'Modules/Scripts/MeituanHorn' + phase.capitalize() + '.js')
+    app += '\n' + '\n'.join(
+        ('# 购物车顶部券：在原始 topBannerArea 清理基础上扩展深层横幅过滤（保留底栏 MT-1 原脚本）\n' if i == 6 else '')
+        + 'MT-' + str(i+1) + ' = type=http-response,pattern=' + r['pattern']
+        + ',script-path=' + (RAW + 'Modules/Scripts/MeituanCartTopBanner.js' if i == 6 else (r['argument'] or ''))
+        + ',requires-body=true' for i, r in enumerate(scripts))
+    app += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts + ['h.meituan.com']) + '\n'
     outputs['Modules/Meituan.sgmodule'] = app
     metadata, rules, routes, hosts = parse(texts['Didichuxing.snippet'])
     jq_routes = [r for r in routes if r['action'] == 'jsonjq-response-body']
@@ -266,6 +268,10 @@ def planned_outputs():
         outputs[name] = ''.join(line for line in text.splitlines(keepends=True)
                                if not line.startswith('#!author=')
                                and not (prefixes and line.startswith(prefixes)))
+        if name.endswith('.sgmodule'):
+            lines = outputs[name].splitlines(keepends=True)
+            lines.insert(2, '#!category=Ad Remove\n')
+            outputs[name] = ''.join(lines)
     manifest = {
         'format': 1,
         'baseline_commit': '3e442e78e95be2c71153e55560a977ea42495f27',

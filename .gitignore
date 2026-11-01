@@ -98,6 +98,7 @@
 !/maintenance/apps/source/MTAppAdClean.snippet
 !/tests/
 !/tests/apps_runtime.cjs
+!/tests/meituan_horn_runtime.cjs
 !/tests/didi_runtime.cjs
 !/tests/spdb_runtime.cjs
 !/tests/startup_runtime.cjs

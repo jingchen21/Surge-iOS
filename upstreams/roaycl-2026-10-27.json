@@ -11,7 +11,7 @@
       "destination_path": "Modules/Pinduoduo.sgmodule",
       "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/Pinduoduo.sgmodule",
       "source_sha256": "747cfa2b54a435e5dcd0e6c454fc5de4c019ed6da200991cb4f77f325c71b37f",
-      "destination_sha256": "6447a229c6997d218c7cfea16517525518c07869b008688cfed91f0fea57fda2",
+      "destination_sha256": "2736da00ed8171b197dc2d6a583672ec76fef3b5255f23c10ec00203761aef31",
       "change": "Translated module display name and author label; rule logic is unchanged. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained.",
       "scope": "today-updated-module"
     },
@@ -20,7 +20,7 @@
       "destination_path": "Modules/TxvideoAD.sgmodule",
       "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/TxvideoAD.sgmodule",
       "source_sha256": "1ade8e471e6e78de3530f387c495ed06a9e174fa590a0cb854e9941186b286b8",
-      "destination_sha256": "6e799d98b5311c2fc0bd7c7825f07aba4afe0758196ee09453f8813d436583f4",
+      "destination_sha256": "9ddb40046950e349862ef12f4825460a8905c9e25b09dcc925c9f4ad6667a479",
       "change": "Translated module name and description; runtime script paths point to this repository. Rule logic is unchanged. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained.",
       "scope": "today-updated-module"
     },
@@ -29,7 +29,7 @@
       "destination_path": "Modules/Weibo.sgmodule",
       "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/Weibo.sgmodule",
       "source_sha256": "c0cdcbf9957cce6fca5230557829d4d168518e45195a997417d81b1ad2f1af0d",
-      "destination_sha256": "ba630fcb716159e6b94859614400f62035139e7a558ef3f5701c402a050a711a",
+      "destination_sha256": "e4d3068334b2b0cdaa5ebc33481fefcbab026deb2809c7b8927defce0444ddf3",
       "change": "Translated module name, description, and author display label; rule logic is unchanged apart from existing local script-path relocation. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained.",
       "scope": "today-updated-module"
     },
@@ -38,7 +38,7 @@
       "destination_path": "Modules/hlwxx_remove_ads.sgmodule",
       "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/hlwxx_remove_ads.sgmodule",
       "source_sha256": "5eb8ffb8fe41e400c89158d91df9e94f9ecde0a6c9b9a5c06a888cf77e964cb9",
-      "destination_sha256": "903030a609b362dbda59d9ba098f63b287237d0392ca21f566a69bd6532e3c2d",
+      "destination_sha256": "a502904d03ae1036868a708ec59bec1fe511e55df371fc500cecde03b3e4ca87",
       "change": "Translated module name and author display label; rule logic is unchanged apart from existing local script-path relocation. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained.",
       "scope": "today-updated-module"
     },
@@ -47,7 +47,7 @@
       "destination_path": "Modules/FanQieNovel.sgmodule",
       "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/FanQieNovel.sgmodule",
       "source_sha256": "2577c47e2acd3ecf15ff000572e46757ce8724ebab2882d2fa5c1abfb0a1c0ab",
-      "destination_sha256": "8ba8dcffdc7862a4b83a6d08ac414a3a58465cd0e3e099de79bc4aa784eb85e8",
+      "destination_sha256": "d2ef6cafd5816cac84578702ba7fea328dc1b1a45f9a61f6ea9b2d1e1b047d0c",
       "change": "Translated module name, description, author display label, and category; rule logic is unchanged. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained.",
       "scope": "static-module-associated-with-today-added-upstream-snapshot"
     },

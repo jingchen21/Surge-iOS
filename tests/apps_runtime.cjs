@@ -125,7 +125,7 @@ for (const body of [new Uint8Array([0, 1, 2]), new Uint8Array(), 'unexpected-tex
   assert.deepEqual(parity('https://i.video.qq.com/', {body}), {});
 }
 
-// Preserve QX conversion except the five category-loading rejects; App JS stays upstream.
+// Preserve category-loading exclusions and existing page routes alongside the scoped Horn adapter.
 const core = fs.readFileSync(path.join(root,'Modules/Meituan.sgmodule'),'utf8');
 const qx = fs.readFileSync(path.join(root,'maintenance/apps/source/MT.snippet'),'utf8');
 const mapping = {host:'DOMAIN','host-wildcard':'DOMAIN-WILDCARD','host-suffix':'DOMAIN-SUFFIX','ip-cidr':'IP-CIDR','ip6-cidr':'IP-CIDR6'};
@@ -154,11 +154,14 @@ assert.equal(qxRewrites.length,2);
 assert.deepEqual(core.match(/\[URL Rewrite\]\n([\s\S]*?)\n\n\[Script\]/)[1].split('\n'),qxRewrites);
 const qxPatterns = qx.split(/\r?\n/).filter(x=>x.includes(' url script-response-body ')).map(x=>unescapeQx(x.split(' url script-response-body ')[0]));
 const orig = 'https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js';
-const appScripts = core.match(/\[Script\]\n([\s\S]*?)\n\n\[MITM\]/)[1].split('\n');
+const scriptLines = core.match(/\[Script\]\n([\s\S]*?)\n\n\[MITM\]/)[1].split('\n').filter(line=>line&&!line.startsWith('#'));
+const appScripts = scriptLines.filter(line=>/^MT-\d+ =/.test(line));
 assert.equal(qxPatterns.length,8);
 assert.equal(appScripts.length,8);
-appScripts.forEach((line,i)=>assert.equal(line,'MT-'+(i+1)+' = type=http-response,pattern='+qxPatterns[i]+',script-path='+orig+',requires-body=true'));
-assert.equal(core.match(/hostname = %APPEND% ([^\n]+)/)[1],qx.match(/^hostname = (.*)$/m)[1]);
+appScripts.forEach((line,i)=>assert.equal(line,'MT-'+(i+1)+' = type=http-response,pattern='+qxPatterns[i]+',script-path='+(i===6?'https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/MeituanCartTopBanner.js':orig)+',requires-body=true'));
+assert.equal(scriptLines.length,10);
+assert.equal(scriptLines.filter(line=>/^MT-Horn-(request|response) =/.test(line)).length,2);
+assert.equal(core.match(/hostname = %APPEND% ([^\n]+)/)[1],qx.match(/^hostname = (.*)$/m)[1]+', h.meituan.com');
 assert.doesNotMatch(core,/JS\/Meituan\.surge\.js|MeituanMiniProgram|\[Map Local\]/);
 checks++;
 // The generic older script belongs to WeChat's Meituan mini-program, not the App.
