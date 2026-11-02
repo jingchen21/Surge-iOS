@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - 'docs/**'
+      - 'Modules/**'
+      - 'maintenance/modules/catalog.json'
+      - 'scripts/generate_modules.cjs'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
@@ -27,6 +30,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate module installer
+        run: node scripts/generate_modules.cjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload installer
