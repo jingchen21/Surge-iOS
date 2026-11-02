@@ -153,7 +153,7 @@ const qxRewrites = qx.split(/\r?\n/).filter(x=>/ url reject$/.test(x)).map(x=>un
 assert.equal(qxRewrites.length,2);
 assert.deepEqual(core.match(/\[URL Rewrite\]\n([\s\S]*?)\n\n\[Script\]/)[1].split('\n'),qxRewrites);
 const qxPatterns = qx.split(/\r?\n/).filter(x=>x.includes(' url script-response-body ')).map(x=>unescapeQx(x.split(' url script-response-body ')[0]));
-const orig = 'https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js';
+const orig = 'https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/maintenance/apps/source/MT.js';
 const scriptLines = core.match(/\[Script\]\n([\s\S]*?)\n\n\[MITM\]/)[1].split('\n').filter(line=>line&&!line.startsWith('#'));
 const appScripts = scriptLines.filter(line=>/^MT-\d+ =/.test(line));
 assert.equal(qxPatterns.length,8);
