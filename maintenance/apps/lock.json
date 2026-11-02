@@ -68,7 +68,7 @@
     },
     {
       "destination_path": "Modules/Meituan.sgmodule",
-      "destination_sha256": "c1f4cea788ba40c1ef3895d0341b75babe591e2051cd848958cd8d7e9bc0efc8"
+      "destination_sha256": "78b821f5ae3de75e0484cc8888cc41f9c52530ad4c9f856a2077e97dbf6e47e9"
     },
     {
       "destination_path": "Modules/MeituanMiniProgram.sgmodule",

@@ -205,7 +205,7 @@ def planned_outputs():
     app += '\n' + '\n'.join(
         ('# 购物车顶部券：在原始 topBannerArea 清理基础上扩展深层横幅过滤（保留底栏 MT-1 原脚本）\n' if i == 6 else '')
         + 'MT-' + str(i+1) + ' = type=http-response,pattern=' + r['pattern']
-        + ',script-path=' + (RAW + 'Modules/Scripts/MeituanCartTopBanner.js' if i == 6 else (r['argument'] or ''))
+        + ',script-path=' + (RAW + 'Modules/Scripts/MeituanCartTopBanner.js' if i == 6 else (RAW + 'maintenance/apps/source/MT.js'))
         + ',requires-body=true' for i, r in enumerate(scripts))
     app += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts + ['h.meituan.com']) + '\n'
     outputs['Modules/Meituan.sgmodule'] = app
