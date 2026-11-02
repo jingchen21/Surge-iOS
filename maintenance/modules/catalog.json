@@ -1,0 +1,280 @@
+{
+  "schema": 1,
+  "source": "Single catalog for Surge module installer and Markdown index. Icons remain linked to original hosts; no third-party icon files are copied.",
+  "modules": [
+    {
+      "file": "12306.sgmodule",
+      "name": "12306",
+      "category": "Ad Remove",
+      "description": "Splash, homepage marketing and selected promotional requests.",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/12306.png",
+      "aliases": "铁路12306 火车 车票"
+    },
+    {
+      "file": "Amap-AdFilter.sgmodule",
+      "name": "Amap",
+      "category": "Ad Remove",
+      "description": "Selected splash, route and search promotions",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Amap.png",
+      "aliases": "高德地图 导航"
+    },
+    {
+      "file": "Tieba.sgmodule",
+      "name": "Baidu Tieba",
+      "category": "Ad Remove",
+      "description": "JSON and selected Protobuf ad fields",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Tieba.png",
+      "aliases": "百度贴吧 贴吧"
+    },
+    {
+      "file": "BaiduWeb.sgmodule",
+      "name": "Baidu Web",
+      "category": "Ad Remove",
+      "description": "Homepage feed and identified search-result ads",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Baidu.png",
+      "aliases": "百度 搜索 网页"
+    },
+    {
+      "file": "ChinaMobile.sgmodule",
+      "name": "China Mobile",
+      "category": "Ad Remove",
+      "description": "Splash and countdown handling",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ChinaMobile.png",
+      "aliases": "中国移动 中国移动APP",
+      "deviceVerifiedAt": "2026-10-31"
+    },
+    {
+      "file": "Coolapk.sgmodule",
+      "name": "Coolapk",
+      "category": "Ad Remove",
+      "description": "Sponsored cards and selected promoted feed sections.",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/CoolApk.png",
+      "aliases": "酷安"
+    },
+    {
+      "file": "Ctrip-AdFilter.sgmodule",
+      "name": "Ctrip",
+      "category": "Ad Remove",
+      "description": "Splash and advertising responses",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Ctrip.png",
+      "aliases": "携程",
+      "experimental": true
+    },
+    {
+      "file": "Dewu.sgmodule",
+      "name": "Dewu",
+      "category": "Ad Remove",
+      "description": "Ad response fields; shopping operations retained",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Dewu.png",
+      "aliases": "得物"
+    },
+    {
+      "file": "DianPing-11.53.14-Full-AdBlock.sgmodule",
+      "name": "Dianping",
+      "category": "Ad Remove",
+      "description": "Targeted splash and advertising endpoints",
+      "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/DianPing.png",
+      "aliases": "大众点评"
+    },
+    {
+      "file": "Didi.sgmodule",
+      "name": "Didi",
+      "category": "Ad Remove",
+      "description": "Selected profile, recommendation and wallet sections",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DiDi.png",
+      "aliases": "滴滴出行"
+    },
+    {
+      "file": "Fliggy.sgmodule",
+      "name": "Fliggy",
+      "category": "Ad Remove",
+      "description": "Home and travel-detail advertising placements.",
+      "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/TaobaoTravel.png",
+      "aliases": "飞猪 旅行"
+    },
+    {
+      "file": "Goofish.sgmodule",
+      "name": "Goofish",
+      "category": "Ad Remove",
+      "description": "Promotional banners and sponsored search or feed cards.",
+      "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/Goofish.png",
+      "aliases": "闲鱼"
+    },
+    {
+      "file": "Google-CN-Redirect.sgmodule",
+      "name": "Google CN Redirect",
+      "category": "Utilities",
+      "description": "Google China-domain redirects and search auto-pagination",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Google.png",
+      "aliases": "谷歌 Google 搜索"
+    },
+    {
+      "file": "HelloBike.sgmodule",
+      "name": "HelloBike",
+      "category": "Ad Remove",
+      "description": "Selected splash and promotional content",
+      "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/EasyBike-01.png",
+      "aliases": "哈啰单车 哈啰出行"
+    },
+    {
+      "file": "Hema.sgmodule",
+      "name": "Hema · 盒马",
+      "category": "Ad Remove",
+      "description": "Homepage ads, feeds, popups, tab bar, profile and product recommendations. Based on Kelee; device validation pending.",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/MrHema.png",
+      "aliases": ""
+    },
+    {
+      "file": "hlwxx_remove_ads.sgmodule",
+      "name": "HLWXX",
+      "category": "Ad Remove",
+      "description": "Selected ad requests and page elements",
+      "aliases": "互联网信息"
+    },
+    {
+      "file": "JD.sgmodule",
+      "name": "JD",
+      "category": "Ad Remove",
+      "description": "Splash, home, orders and profile advertising.",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/JD.png",
+      "aliases": "京东"
+    },
+    {
+      "file": "KFC.sgmodule",
+      "name": "KFC · 肯德基",
+      "category": "Ad Remove",
+      "description": "Splash and home ads; Map Local handles selected campaign responses.",
+      "icon": "assets/kfc.svg",
+      "aliases": ""
+    },
+    {
+      "file": "LuckinCoffee.sgmodule",
+      "name": "Luckin Coffee",
+      "category": "Ad Remove",
+      "description": "Startup ads, promotional popups and ad-tagged home modules.",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/LuckinCoffee.png",
+      "aliases": "瑞幸咖啡"
+    },
+    {
+      "file": "MangoTV.sgmodule",
+      "name": "Mango TV",
+      "category": "Hack VIP",
+      "description": "Video ads and promotions",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Mango_TV.png",
+      "aliases": "芒果TV"
+    },
+    {
+      "file": "Meituan.sgmodule",
+      "name": "Meituan",
+      "category": "Ad Remove",
+      "description": "Xiaotuan Horn transport fix; preserves category loading and existing cart filtering",
+      "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/MeiTuan.png",
+      "aliases": "美团"
+    },
+    {
+      "file": "MeituanMiniProgram.sgmodule",
+      "name": "Meituan Mini Program",
+      "category": "Ad Remove",
+      "description": "Ads in the WeChat mini program",
+      "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/MeiTuan.png",
+      "aliases": "美团小程序 微信小程序"
+    },
+    {
+      "file": "NeteaseCloudMusic.sgmodule",
+      "name": "NetEase Cloud Music",
+      "category": "Ad Remove",
+      "description": "Ad endpoints; encrypted EAPI not supported",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/NeteaseCloudMusic.png",
+      "aliases": "网易云音乐"
+    },
+    {
+      "file": "Pinduoduo.sgmodule",
+      "name": "Pinduoduo",
+      "category": "Ad Remove",
+      "description": "Promotions and layout cleanup",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PinDuoDuo.png",
+      "aliases": "拼多多"
+    },
+    {
+      "file": "PuPuMall.sgmodule",
+      "name": "PuPu Mall",
+      "category": "Ad Remove",
+      "description": "Marketing banners, sponsored search and order promotions.",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PuPuMall.png",
+      "aliases": "朴朴超市"
+    },
+    {
+      "file": "SFExpress-AdBlock.sgmodule",
+      "name": "SF Express",
+      "category": "Ad Remove",
+      "description": "Splash, home promotional placements, ad endpoints",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/SF-Express.png",
+      "aliases": "顺丰速运"
+    },
+    {
+      "file": "SMZDM-AdFilter-Complete.sgmodule",
+      "name": "SMZDM",
+      "category": "Ad Remove",
+      "description": "Splash, feed, search and page promotions",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/smzdm.png",
+      "aliases": "什么值得买"
+    },
+    {
+      "file": "SPDB.sgmodule",
+      "name": "SPDB",
+      "category": "Ad Remove",
+      "description": "Filter splash images by asset dimensions",
+      "aliases": "浦发银行"
+    },
+    {
+      "file": "Taobao.sgmodule",
+      "name": "Taobao",
+      "category": "Ad Remove",
+      "description": "Splash, popups, ad networks and marketing endpoints.",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Taobao.png",
+      "aliases": "淘宝"
+    },
+    {
+      "file": "TencentVideo.sgmodule",
+      "name": "Tencent Video",
+      "category": "Ad Remove",
+      "description": "Selected splash and playback ads",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Tencent_Video.png",
+      "aliases": "腾讯视频"
+    },
+    {
+      "file": "TxvideoAD.sgmodule",
+      "name": "Tencent Video (duplicate)",
+      "category": "Ad Remove",
+      "description": "Duplicate alternative; install only one",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Tencent_Video.png",
+      "aliases": "",
+      "display": false,
+      "aliasOf": "TencentVideo.sgmodule"
+    },
+    {
+      "file": "FanQieNovel.sgmodule",
+      "name": "Tomato Novel",
+      "category": "Ad Remove",
+      "description": "Reading, splash, audio and floating ads",
+      "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/FanqieNovel.png",
+      "aliases": "番茄小说"
+    },
+    {
+      "file": "Weibo.sgmodule",
+      "name": "Weibo",
+      "category": "Ad Remove",
+      "description": "Selected feed and app promotions",
+      "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Weibo.png",
+      "aliases": "微博"
+    },
+    {
+      "file": "Xiaohongshu.sgmodule",
+      "name": "Xiaohongshu",
+      "category": "Ad Remove",
+      "description": "Ads, search promotions, and image/video/Live Photo watermark handling",
+      "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/RedNote.png",
+      "aliases": "小红书 RED"
+    }
+  ]
+}
