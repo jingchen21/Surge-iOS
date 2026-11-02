@@ -16,6 +16,13 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
+          fetch-depth: 0
+      - name: Validate all published modules
+        run: python3 scripts/check_modules.py
+      - name: Generate module indexes
+        run: node scripts/generate_modules.cjs
+      - name: Verify module index generator
+        run: node scripts/generate_modules.cjs --check
       - name: Check public material
         run: python3 scripts/check_public.py
       - name: Check imported module dependencies
