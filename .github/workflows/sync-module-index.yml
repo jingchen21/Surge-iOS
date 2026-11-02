@@ -1,0 +1,40 @@
+name: Sync generated module indexes
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Modules/*.sgmodule'
+      - 'maintenance/modules/catalog.json'
+      - 'scripts/generate_modules.cjs'
+      - '.github/workflows/sync-module-index.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: surge-module-index-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Rebuild Pages and README from catalog
+        run: node scripts/generate_modules.cjs
+      - name: Commit changed generated indexes
+        run: |
+          if git diff --quiet -- docs/index.html Modules/README.md; then
+            echo 'Index files are up to date'
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html Modules/README.md
+          git commit -m "自动同步模块安装页及索引"
+          git push
