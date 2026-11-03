@@ -83,9 +83,9 @@ Targeted splash and advertising endpoints
 
 ### <img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DiDi.png" width="26" height="26" alt=""> Didi
 
-Selected profile, recommendation and wallet sections
+Keeps the membership card; cleans selected profile, recommendation and wallet sections.
 
-<sub>Code updated 2026-10-31 · Device verification pending</sub>
+<sub>Code updated 2026-11-04 · Device checked 2026-11-04</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDidi.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Didi.sgmodule)
 
@@ -104,9 +104,9 @@ Home and travel-detail advertising placements.
 
 ### <img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/Goofish.png" width="26" height="26" alt=""> Goofish
 
-Promotional banners and sponsored search or feed cards.
+Keeps home goods, profile level, favorites and trades; removes dynamic home categories and lower profile promotions.
 
-<sub>Code updated 2026-10-31 · Device verification pending</sub>
+<sub>Code updated 2026-11-04 · Device checked 2026-11-03</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FGoofish.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Goofish.sgmodule)
 
@@ -213,9 +213,9 @@ Promotions and layout cleanup
 
 ### <img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PuPuMall.png" width="26" height="26" alt=""> PuPu Mall
 
-Marketing banners, sponsored search and order promotions.
+Removes splash, live tab, My promotion row and carousels; keeps products, membership, orders and functional services.
 
-<sub>Code updated 2026-10-31 · Device verification pending</sub>
+<sub>Code updated 2026-11-04 · Device checked 2026-11-04</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FPuPuMall.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/PuPuMall.sgmodule)
 
@@ -229,9 +229,9 @@ Splash, home promotional placements, ad endpoints
 
 ### <img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/smzdm.png" width="26" height="26" alt=""> SMZDM
 
-Splash, feed, search and page promotions
+Hides AI search summaries, home interest icons and My campaigns; keeps one approved empty service placeholder.
 
-<sub>Code updated 2026-10-31 · Device verification pending</sub>
+<sub>Code updated 2026-11-04 · Device checked 2026-11-03</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FSMZDM-AdFilter-Complete.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/SMZDM-AdFilter-Complete.sgmodule)
 
