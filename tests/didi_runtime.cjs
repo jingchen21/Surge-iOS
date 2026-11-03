@@ -18,11 +18,19 @@ function apply(index,url,input){
   const converted=native[index],old=original[index];
   assert.ok(new RegExp(converted[1]).test(url));
   assert.ok(new RegExp(old[1].replace(/\\\//g,'/')).test(url));
-  const result=jq(converted[2],input);assert.deepEqual(result,jq(old[2],input));cases++;return result;
+  const result=jq(converted[2],input);
+  if(index===0){
+    // Intentional user preference: preserve the member card; every other upstream behavior stays the same.
+    const withoutMember=structuredClone(result);
+    withoutMember.data.layout.order=withoutMember.data.layout.order.filter(id=>id!=='center_member_card');
+    delete withoutMember.data.instances.center_member_card;
+    assert.deepEqual(withoutMember,jq(old[2],input));
+  }else assert.deepEqual(result,jq(old[2],input));
+  cases++;return result;
 }
-let v=apply(0,'https://common.diditaxi.com.cn/common/v5/usercenter/layout',{data:{layout:{order:['center_base_info_card','center_marketing_card','center_order_related_card','center_wallet_finance_card']},instances:{center_wallet_finance_card:{data:{view_info:[{title:'优惠卡券'},{title:'贷款'}]}},center_marketing_card:{},center_member_card:{},center_tool_card:{},center_widget_list:{},keep:7}}});
-assert.deepEqual(v.data.layout.order,['center_base_info_card','center_order_related_card','center_wallet_finance_card']);
-assert.deepEqual(v.data.instances.center_wallet_finance_card.data.view_info,[{title:'优惠卡券'}]);assert.equal(v.data.instances.keep,7);assert.equal(v.data.instances.center_member_card,undefined);
+let v=apply(0,'https://common.diditaxi.com.cn/common/v5/usercenter/layout',{data:{layout:{order:['center_base_info_card','center_member_card','center_marketing_card','center_order_related_card','center_wallet_finance_card']},instances:{center_wallet_finance_card:{data:{view_info:[{title:'优惠卡券'},{title:'贷款'}]}},center_marketing_card:{},center_member_card:{data:{level:"gold",benefits:["coupon"],target:"member-center"}},center_tool_card:{},center_widget_list:{},keep:7}}});
+assert.deepEqual(v.data.layout.order,['center_base_info_card','center_member_card','center_order_related_card','center_wallet_finance_card']);
+assert.deepEqual(v.data.instances.center_wallet_finance_card.data.view_info,[{title:'优惠卡券'}]);assert.equal(v.data.instances.keep,7);assert.deepEqual(v.data.instances.center_member_card,{data:{level:"gold",benefits:["coupon"],target:"member-center"}});assert.equal(v.data.instances.center_marketing_card,undefined);assert.equal(v.data.instances.center_tool_card,undefined);
 v=apply(1,'https://common.diditaxi.com.cn/common/v6/usercenter/me',{data:{cards:[{title:'天天领福利'},{title:'安全中心'},{title:'行程'},{tag:'wallet',items:[{title:'优惠券'},{title:'金融'}],card_type:4,bottom_items:[{title:'省钱套餐'},{title:'出行里程'},{title:'广告'}]}]}});
 assert.equal(v.data.cards.length,2);assert.equal(v.data.cards[0].title,'行程');assert.deepEqual(v.data.cards[1].items,[{title:'优惠券'}]);assert.equal(v.data.cards[1].bottom_items.length,2);
 v=apply(2,'https://conf.diditaxi.com.cn/homepage/v6/core',{data:{order_cards:{nav_list_card:{data:['dache_anycar','driverservice','bike','carmate','nav_more_v3','ad'].map(nav_id=>({nav_id}))}},disorder_cards:{bottom_nav_list:{data:['v6x_home','home_page','user_center','ad'].map(id=>({id}))},top_nav_list:{data:{top_nav_info:['旅行','车主','打车'].map(name=>({name}))}}}}});
@@ -43,4 +51,4 @@ for(const filter of native){
 for(const line of moduleText.split('\n')){
   if(line.includes(' data-type='))new RegExp(line.split(' ')[0]);
 }
-console.log(`PASS: ${cases} DiDi native-jq cases; all 12 transformations match source, 12 mock rules, 16 network rules, no JS dependency.`);
+console.log(`PASS: ${cases} DiDi native-jq cases; 11 transformations match source; layout differs only by preserving membership, 12 mock rules, 16 network rules, no JS dependency.`);

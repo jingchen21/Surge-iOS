@@ -214,7 +214,7 @@ def planned_outputs():
     dict_routes = [r for r in routes if r['action'] == 'reject-dict']
     if len(jq_routes) != 12 or len(dict_routes) != 12 or len(routes) != 24:
         raise ValueError('DiDi actions changed; review native jq and Map Local conversion')
-    didi = header('Didi - App Cleanup', 'Simplifies selected profile, navigation, recommendation, and wallet sections using native jq and Map Local; no JS dependency.', 'ZenmoFeiShi')
+    didi = header('Didi - App Cleanup', 'Keeps the membership card while simplifying selected profile, navigation, recommendation, and wallet sections using native jq and Map Local; no JS dependency.', 'ZenmoFeiShi')
     didi += '# Original rules: ' + QX_SOURCE + 'Didichuxing.snippet\n'
     didi += '# Requires Surge iOS 5.14.0+ / Mac 5.9.0+ for native jq.\n'
     didi += '\n[Rule]\n' + '\n'.join(rules) + '\n\n[Body Rewrite]\n'
@@ -223,6 +223,14 @@ def planned_outputs():
         if len(argument) < 2 or not (argument.startswith("'") and argument.endswith("'")):
             raise ValueError('Unexpected DiDi jq quoting')
         expression = argument[1:-1]
+        if route['pattern'].endswith('/usercenter/layout'):
+            # Keep the archived upstream intact; preserve the user's membership card in the adapter.
+            old_order = 'or . == "center_wallet_finance_card"))'
+            old_delete = '.data.instances.center_marketing_card, .data.instances.center_member_card, '
+            if expression.count(old_order) != 1 or expression.count(old_delete) != 1:
+                raise ValueError('DiDi member-card layout changed; review the local preservation rule')
+            expression = expression.replace(old_order, 'or . == "center_wallet_finance_card" or . == "center_member_card"))')
+            expression = expression.replace(old_delete, '.data.instances.center_marketing_card, ')
         if "'" in expression or '\n' in expression:
             raise ValueError('DiDi jq quoting needs manual review')
         guarded = ('. as $original | try (if (type == "object" and '

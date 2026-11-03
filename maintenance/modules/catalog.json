@@ -80,9 +80,10 @@
       "file": "Didi.sgmodule",
       "name": "Didi",
       "category": "Ad Remove",
-      "description": "Selected profile, recommendation and wallet sections",
+      "description": "Keeps the membership card; cleans selected profile, recommendation and wallet sections.",
       "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DiDi.png",
-      "aliases": "滴滴出行"
+      "aliases": "滴滴出行",
+      "deviceVerifiedAt": "2026-11-04"
     },
     {
       "file": "Fliggy.sgmodule",
@@ -96,9 +97,10 @@
       "file": "Goofish.sgmodule",
       "name": "Goofish",
       "category": "Ad Remove",
-      "description": "Promotional banners and sponsored search or feed cards.",
+      "description": "Keeps home goods, profile level, favorites and trades; removes dynamic home categories and lower profile promotions.",
       "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/Goofish.png",
-      "aliases": "闲鱼"
+      "aliases": "闲鱼",
+      "deviceVerifiedAt": "2026-11-03"
     },
     {
       "file": "Google-CN-Redirect.sgmodule",
@@ -199,9 +201,10 @@
       "file": "PuPuMall.sgmodule",
       "name": "PuPu Mall",
       "category": "Ad Remove",
-      "description": "Marketing banners, sponsored search and order promotions.",
+      "description": "Removes splash, live tab, My promotion row and carousels; keeps products, membership, orders and functional services.",
       "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PuPuMall.png",
-      "aliases": "朴朴超市"
+      "aliases": "朴朴超市",
+      "deviceVerifiedAt": "2026-11-04"
     },
     {
       "file": "SFExpress-AdBlock.sgmodule",
@@ -215,9 +218,10 @@
       "file": "SMZDM-AdFilter-Complete.sgmodule",
       "name": "SMZDM",
       "category": "Ad Remove",
-      "description": "Splash, feed, search and page promotions",
+      "description": "Hides AI search summaries, home interest icons and My campaigns; keeps one approved empty service placeholder.",
       "icon": "https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/smzdm.png",
-      "aliases": "什么值得买"
+      "aliases": "什么值得买",
+      "deviceVerifiedAt": "2026-11-03"
     },
     {
       "file": "SPDB.sgmodule",

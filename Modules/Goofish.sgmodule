@@ -1,16 +1,18 @@
 #!name=Goofish - Ad Filter
-#!desc=Goofish ads: ForestofTime/Surge GoofishAds (+ Map Local extras). Credit ddgksf2013 / ForestofTime.
+#!desc=闲鱼净化：保留首页商品与我的头像、等级、收藏、交易；移除首页分类和交易下方推广。Credit ddgksf2013 / ForestofTime.
 #!category=Ad Remove
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/FleaMarket.png
 #!basedOn=iOS
 #!openUrl=https://apps.apple.com/app/id510909506
 #!homepage=https://github.com/jingchen21/Surge-iOS
-#!date=2026-10-31
+#!date=2026-11-03
 
 [Rule]
 DOMAIN-SUFFIX,iyes.youku.com,REJECT
 
 [Map Local]
+# Only Goofish appkey: force HTTPS fallback instead of opaque native transport.
+^http:\/\/(?:amdc\.m\.taobao\.com|(?:\d+\.){3}\d+)(?::\d+)?\/amdc\/mobileDispatch\?(?:[^&#]*&)*appkey=12431167(?:&[^#]*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 # Forest: 开屏 / 曝光
 ^https?:\/\/(?:g-)?acs\.m\.goofish\.com\/gw\/mtop.*splash\.ads(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/(?:g-)?acs\.m\.goofish\.com\/gw\/mtop\.idle\.ad\.expose(?:\/|\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"

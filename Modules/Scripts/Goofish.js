@@ -85,16 +85,19 @@ function cleanApiResponse(url, body) {
       changed = true;
       break;
     case 'mtop.taobao.idlehome.home.circle.list':
-      changed = filterArray(data, 'circleList', (item) => item && item.bizCode !== 'saveMoney');
+      // Retain the canonical feed routes; removing every route can break goods loading.
+      changed = keepCanonicalTab(data, 'headList', 'main');
+      changed = keepCanonicalTab(data, 'circleList', 'home') || changed;
       break;
     case 'mtop.taobao.idlehome.home.nextfresh':
       if (Object.prototype.hasOwnProperty.call(data, 'widgetReturnDO')) { delete data.widgetReturnDO; changed = true; }
       if (Object.prototype.hasOwnProperty.call(data, 'bannerReturnDO')) { delete data.bannerReturnDO; changed = true; }
-      if (Array.isArray(data.homeTopList) && data.homeTopList.length > 1) {
-        data.homeTopList = [data.homeTopList[0]];
-        changed = true;
-      }
-      changed = filterArray(data, 'sections', isItemSection) || changed;
+      changed = filterArray(data, 'homeTopList', () => false) || changed;
+      changed = filterArray(data, 'sections', (item) => {
+        const type = String(getNested(item, ['data', 'bizType']) || '').toLowerCase();
+        const name = String(getNested(item, ['template', 'name']) || '').toLowerCase();
+        return type !== 'ad' && type !== 'mamaad' && !name.includes('advertise');
+      }) || changed;
       break;
     case 'mtop.taobao.idlemtopsearch.search.shade':
       data.singleShadeWords = [{}];
@@ -115,7 +118,10 @@ function cleanApiResponse(url, body) {
       changed = true;
       if (data.container && typeof data.container === 'object') {
         changed = filterArray(data.container, 'sections', (item) => {
-          return item && /head|user|trade/.test(String(item.sectionBizCode || ''));
+          const biz = String((item && item.sectionBizCode) || '');
+          const name = String(getNested(item, ['template', 'name']) || '');
+          return /^(?:head|header|user|trade)\d*$/.test(biz) ||
+            /^my_fy\d+_(?:header|user_info|trade)$/.test(name);
         }) || changed;
       }
       break;
@@ -172,6 +178,12 @@ function cleanApiResponse(url, body) {
   }
 
   return changed ? { body: JSON.stringify(payload) } : {};
+}
+
+function keepCanonicalTab(data, key, bizCode) {
+  const list = data[key];
+  if (!Array.isArray(list) || !list.some((item) => item && item.bizCode === bizCode)) return false;
+  return filterArray(data, key, (item) => item && item.bizCode === bizCode);
 }
 
 function filterArray(container, key, predicate) {

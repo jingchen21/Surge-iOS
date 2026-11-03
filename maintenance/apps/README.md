@@ -11,7 +11,7 @@ Modules, JavaScript, source snapshots, and build tools are stored in this reposi
 | source/TxvideoAD.snippet and source/Txvideoad.js | Tencent Video module and JS/Txvideoad.surge.js |
 | source/MT.snippet and source/MT.js | Meituan App module; five category-conflict blocks excluded, scoped Horn adapter added, existing cart adapter retained |
 | source/MeituanMiniProgram.snippet and source/MeiTuanNoAd.js | Separate Meituan WeChat mini-program module and its JS |
-| source/Didichuxing.snippet | Didi module using native jq / Map Local; no JS |
+| source/Didichuxing.snippet | Didi module using native jq / Map Local; adapter preserves the membership instance and its original layout order; no JS |
 | source/pdxb.js | SPDB module and JS/pdxb.surge.js |
 
 lock.json records input and generated-file hashes. See the [module index](../../Modules/README.md) for installation and usage.

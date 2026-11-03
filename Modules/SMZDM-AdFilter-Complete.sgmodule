@@ -1,8 +1,8 @@
 #!name=What Worth Buying (SMZDM) - Comprehensive Ad Filtering
-#!desc=Combines verifiable public Loon, Quantumult X, and Surge rules. Covers splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet. Search page keeps history only (clears hot_tab/hongbao/bangdan/search discovery). Aggressive rules may hide non-ad promotions.
+#!desc=Combines verifiable public Loon, Quantumult X, and Surge rules. Covers splash, home, deals, search, encyclopedia, detail, membership, articles, and wallet. Search keeps normal results while hiding discovery and AI summaries; home interest navigation and My-page campaigns are hidden. My-page services use one empty placeholder to suppress native fallback shortcuts. Aggressive rules may hide non-ad promotions.
 #!category=Ad Remove
 #!openUrl=https://apps.apple.com/app/id518213356
-#!date=2026-10-31
+#!date=2026-11-03
 
 
 [Rule]
@@ -22,6 +22,9 @@ http-response-jq (?i)^https?:\/\/app-api\.smzdm\.com\/util\/loading(?:\?.*)?$ 'i
 # App startup ad configuration: disable silent-push and Baichuan redirect switches, and remove ad overlays/widgets.
 http-response-jq (?i)^https?:\/\/app-api\.smzdm\.com\/util\/update(?:\?.*)?$ 'if (.data | type) == "object" then .data |= (if has("silence_local_push") then .silence_local_push = 0 else . end | if has("baichuan_redirect_switch") then .baichuan_redirect_switch = 0 else . end | del(.ad_black_list, .silence_local_push_msg, .video_cache_num_configs, .haojia_widget, .widget, .operation_float, .operation_float_screen)) else . end'
 
+# Hide optional interest-navigation entries; the app collapses the empty top icon row.
+http-response-jq (?i)^https?:\/\/interest-api\.smzdm\.com\/interest\/home_interest_icon_list(?:\?.*)?$ 'if (.data | type) == "object" then .data |= (if (.rows | type) == "array" then .rows = [] else . end | del(.all_interest_redirect_data)) else . end'
+
 # Home page: recursively remove known ad cells, ad cards, survey promotions, floating widgets, and theme skins.
 http-response-jq (?i)^https?:\/\/homepage-api\.smzdm\.com\/v\d+\/home(?:\?.*)?$ 'def clean: if type == "array" then map(clean) | map(select(. != null)) elif type == "object" then if (.cell_type? == "23008" or .cell_type? == "23005" or .cell_type? == "23024") then null else with_entries(.value |= clean) end else . end; .data |= clean | if (.data.functions | type) == "array" then .data.functions |= map(select(.type == "message")) else . end | if (.data.component | type) == "array" then .data.component |= map(if (.zz_content | type) == "array" then .zz_content |= map(select(((.ad_campaign_id? // "") | tostring | length) == 0 and (.model_type? != "ads") and (.tag? != "广告") and (.article_channel_type? != "questionnaire")) ) else . end) | .data.component |= map(select(.zz_type == "circular_banner" or .zz_type == "fixed_banner" or .zz_type == "filter" or .zz_type == "list")) | .data.component |= map(if (.zz_content | type) == "object" then .zz_content |= del(.circular_banner_option) else . end) else . end | if (.data.services | type) == "array" then .data.services |= map(select(.type == "articel_manage" or .type == "199794" or .type == "199796")) else . end | del(.data.theme, .data.widget, .data.operation_float_screen)'
 
@@ -40,6 +43,9 @@ http-response-jq (?i)^https?:\/\/haojia-cdn\.smzdm\.com\/preload\/\d+\/fiphone\/
 # Search results: remove ad cards, ad labels, and pinned promotions.
 http-response-jq (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/list_v\d+(?:\?.*)?$ 'if (.data.rows | type) == "array" then .data.rows |= map(select(.model_type? != "ads" and .article_tag? != "广告" and .tag? != "广告" and .left_tag? != "广告" and .expose_sct? != "广告" and .promotion_type? != 3)) else . end | if (.data.top_aladdin | type) == "array" then .data.top_aladdin |= map(select(has("ad") | not)) else . end'
 
+# Search-result AI summary / scene-ranking recommendation card, verified on list_v10.
+http-response-jq (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/list_v\d+(?:\?.*)?$ 'if (.data.top_aladdin | type) == "array" then .data.top_aladdin |= map(select(if type == "object" then (((.cell_type? // "") | tostring) != "25105" and (.ai_search_type? // "") != "scene_ranking") else true end)) else . end'
+
 # Search discovery, trending lists, red-packet banners, and pop-ups.
 http-response-jq (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags(?:\?.*)?$ 'del(.data.search_faxian, .data.tonglan, .data.hongbao, .data.bangdan) | if (.data.hot_tab | type) == "array" then .data.hot_tab = [] else . end | if (.data.search_hot | type) == "object" then .data.search_hot = {} elif (.data.search_hot | type) == "array" then .data.search_hot = [] else . end'
 
@@ -49,6 +55,12 @@ http-response-jq (?i)^https?:\/\/baike-api\.smzdm\.com\/home_v3\/list(?:\?.*)?$ 
 # Me / Value Membership: remove campaign entries, banners, and bottom promotion cards.
 http-response-jq (?i)^https?:\/\/user-api\.smzdm\.com\/vip(?:\?.*)?$ 'del(.data.activity_entrance_info, .data.big_banner, .data.top_banner, .data.banner_switch, .data.yaoqingshaiwu, .data.right_info)'
 http-response-jq (?i)^https?:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list(?:\?.*)?$ 'del(.data.rows)'
+
+# Remove My-page campaigns; retain one empty service item to suppress native fallback shortcuts. The remaining placeholder icon is the user-approved layout.
+http-response-jq (?i)^https?:\/\/user-api\.smzdm\.com\/vip(?:\?.*)?$ 'if (.data | type) == "object" then .data |= (del(.xinren_fuli, .featured_activitys) | .services = [{}]) else . end'
+
+# Creator-center newcomer-benefit banner (leave all other creator-center fields intact).
+http-response-jq (?i)^https?:\/\/user-api\.smzdm\.com\/vip\/creator_user_center(?:\?.*)?$ 'if (.data.card | type) == "array" then .data.card = [] else . end'
 
 # Value Membership benefits banner: remove only items explicitly marked as ads.
 http-response-jq (?i)^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner(?:\?.*)?$ 'if (.data.big_banner | type) == "array" then .data.big_banner |= map(select(.logo_title != "广告")) else . end'
@@ -77,4 +89,4 @@ http-response-jq (?i)^https?:\/\/(?:[^/]+\.)?zdmimg\.com\/cpm\/api\/v\d+\/advert
 (?i)^https?:\/\/s-api\.smzdm\.com\/sou\/popup_coupon(?:\?.*)?$ data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
 [MITM]
-hostname = %APPEND% app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, user-api.smzdm.com, article-api.smzdm.com, s-api.smzdm.com, haojia-cdn.smzdm.com, post.m.smzdm.com, qianbao.smzdm.com, s3.zdmimg.com, zdmimg.com, *.zdmimg.com, baike-api.smzdm.com, zhiyou.m.smzdm.com
+hostname = %APPEND% app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, user-api.smzdm.com, article-api.smzdm.com, s-api.smzdm.com, haojia-cdn.smzdm.com, post.m.smzdm.com, interest-api.smzdm.com, qianbao.smzdm.com, s3.zdmimg.com, zdmimg.com, *.zdmimg.com, baike-api.smzdm.com, zhiyou.m.smzdm.com

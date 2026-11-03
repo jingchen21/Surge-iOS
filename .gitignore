@@ -80,6 +80,8 @@
 !/.github/workflows/
 !/.github/workflows/public-check.yml
 !/maintenance/
+!/maintenance/modules/
+!/maintenance/modules/catalog.json
 !/maintenance/apps/
 !/maintenance/apps/README.md
 !/maintenance/apps/lock.json
@@ -100,6 +102,7 @@
 !/tests/apps_runtime.cjs
 !/tests/meituan_horn_runtime.cjs
 !/tests/didi_runtime.cjs
+!/tests/page_cleanup_runtime.cjs
 !/tests/spdb_runtime.cjs
 !/tests/startup_runtime.cjs
 

@@ -1,19 +1,19 @@
 #!name=PuPu Mall - Splash and Advertising Filter
-#!desc=Filters splash campaigns, home banners, sponsored search and selected order advertising.
+#!desc=Filters 3/5-second splash, live bottom tab, My promotion row and bottom carousels; preserves home products, membership, assets, orders and functional services. Supports current direct-IP transport.
 #!category=Ad Remove
 #!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PuPuMall.png
 #!openUrl=https://apps.apple.com/app/id1144025167
 #!homepage=https://github.com/jingchen21/Surge-iOS
-#!date=2026-10-31
+#!date=2026-11-04
 
 [URL Rewrite]
-^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v\d+\?position - reject
-^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v7\?position_types=100(?:&|$) - reject
+# Only the dedicated splash request; mixed home/banner responses must reach the cleaner.
+^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/banner\/v\d+\?(?:[^&#]*&)*position_types=100(?:&[^#]*)?$ - reject
 ^https?:\/\/j1\.pupuapi\.com\/client\/account\/discount\/order(?:\?|$) - reject
 ^https?:\/\/j1\.pupuapi\.com\/client\/member_card\/index\/my(?:\?|$) - reject
 
 [Map Local]
-^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/advertisement\/(?:v1|search_input_ranking)(?:\?|$) data-type=text data="{\"errcode\":0,\"errmsg\":\"ok\",\"data\":[]}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/advertisement\/search_input_ranking(?:\?|$) data-type=text data="{\"errcode\":0,\"errmsg\":\"ok\",\"data\":[]}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/j1\.pupuapi\.com\/client\/assets\/discount\/order(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/j1\.pupuapi\.com\/client\/marketing\/channel\/global_redeem\/top_tip\/v2(?:\?|$) data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/j1\.pupuapi\.com\/client\/recommendation\/(?:hub\/)?interests\/products(?:\/v\d+)?(?:\?|$) data-type=text data="{\"errcode\":0,\"data\":[]}" status-code=200 header="Content-Type:application/json"
@@ -25,4 +25,6 @@
 PuPu-Ad-Cleanup = type=http-response,pattern=^https?:\/\/j1\.pupuapi\.com\/client\/(?:marketing\/(?:banner\/(?:v\d+|search_component_banner)|advertisement\/v1)|search\/hub\/search_box\/products\/v6|(?:app_)?resource\/resource_preload\/list_h5_resource|order_settlement\/detail|order\/orders\/list\/v4)(?:\?|$),script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/Modules/Scripts/PuPuMall.js,requires-body=true,max-size=2097152,timeout=30
 
 [MITM]
-hostname = %APPEND% j1.pupuapi.com
+# Current j1.pupuapi.com address (verified 2026-11-03); forces opaque IP transport to the app's normal HTTPS fallback.
+# Recheck this exact IP if PuPu changes its API address; do not replace with an IP wildcard.
+hostname = %APPEND% j1.pupuapi.com, 81.70.116.57

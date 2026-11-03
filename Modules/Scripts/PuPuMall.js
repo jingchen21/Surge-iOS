@@ -1,4 +1,4 @@
-// PuPu Mall ad filter: splash (region 100) + home banners + search/order promos.
+// PuPu Mall ad filter: splash (regions 50/100, independent of countdown duration) + home banners + search/order promos.
 (function () {
   "use strict";
   var url = ($request && $request.url) || "";
@@ -73,8 +73,23 @@
       clear(d, "ads");
     }
   } else if (/\/client\/marketing\/advertisement\/v1(?:\?|$)/.test(url)) {
-    if (Array.isArray(d)) root.data = clean(d);
-    else if (o(d)) scan(d, 0);
+    // Preserve mixed home/account data; remove splash (any duration) and the live bottom tab.
+    if (Array.isArray(d)) {
+      root.data = d.filter(function (x) {
+        return !o(x) || ![50, 100, 140].includes(Number(x.region_code));
+      });
+      changed = root.data.length !== d.length;
+      root.data.forEach(function (region) {
+        // My page: promotional activation row and all bottom carousel banners.
+        // Keep the functional menu (560), membership, assets, orders and top customer support.
+        if (!o(region) || Number(region.region_code) !== 2 || !Array.isArray(region.positions)) return;
+        var count = region.positions.length;
+        region.positions = region.positions.filter(function (position) {
+          return !o(position) || ![890, 60].includes(Number(position.component_code));
+        });
+        if (count !== region.positions.length) changed = true;
+      });
+    }
   } else if (/\/client\/search\/hot_keywords\/v3(?:\?|$)/.test(url)) {
     if (Array.isArray(d) && d.length) {
       root.data = [];
