@@ -114,7 +114,7 @@ Keeps home goods, profile level, favorites and trades; removes dynamic home cate
 
 Google China-domain redirects and search auto-pagination
 
-<sub>Code updated 2026-10-31 · Device verification pending</sub>
+<sub>Code updated 2026-11-04 · Device verification pending</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FGoogle-CN-Redirect.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Google-CN-Redirect.sgmodule)
 
@@ -186,7 +186,7 @@ Xiaotuan Horn transport fix; preserves category loading and existing cart filter
 
 Ads in the WeChat mini program
 
-<sub>Code updated 2026-10-31 · Device verification pending</sub>
+<sub>Code updated 2026-11-04 · Device verification pending</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FMeituanMiniProgram.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/MeituanMiniProgram.sgmodule)
 
@@ -276,7 +276,7 @@ Reading, splash, audio and floating ads
 
 Selected feed and app promotions
 
-<sub>Code updated 2026-10-31 · Device verification pending</sub>
+<sub>Code updated 2026-11-04 · Device verification pending</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FWeibo.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Weibo.sgmodule)
 
