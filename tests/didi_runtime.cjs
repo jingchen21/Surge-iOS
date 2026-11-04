@@ -12,6 +12,9 @@ assert.equal(native.length,12);assert.equal(original.length,12);
 assert.equal((moduleText.match(/data-type=text data="\{\}" status-code=200/g)||[]).length,12);
 assert.equal((moduleText.match(/^(?:DOMAIN|IP-CIDR),/gm)||[]).length,16);
 assert.doesNotMatch(moduleText,/\[Script\]|script-path=/);
+const didiMitm=(moduleText.match(/^hostname = %APPEND% ([^\n]+)/m)||[])[1];
+assert.ok(didiMitm && didiMitm.includes('common.diditaxi.com.cn'));
+assert.doesNotMatch(didiMitm,/(?:^|,\s*)\d{1,3}\./); // IP blocking belongs in [Rule], not MITM.
 let cases=0;
 function jq(filter,input){return JSON.parse(execFileSync('jq',['-c',filter],{input:JSON.stringify(input),encoding:'utf8'}));}
 function apply(index,url,input){

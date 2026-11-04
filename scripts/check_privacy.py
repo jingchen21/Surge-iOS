@@ -14,11 +14,13 @@ SOURCES = sorted((ROOT / "Modules").glob("*.sgmodule"))
 SCRIPTS = sorted((ROOT / "JS").glob("*.js"))
 SCRIPTS += sorted((ROOT / "Modules" / "Scripts").glob("*.js"))
 SCRIPTS += sorted((ROOT / "Modules").glob("*.js"))
+SCRIPTS += sorted((ROOT / "maintenance" / "apps" / "source").glob("*.js"))
 
 SENSITIVE_LOG = re.compile(
     r"\bconsole\.(?:log|info|warn|error)\s*\(\s*"
     r"(?:body|data|resp_data|\$response\.body|\$request\.body|"
-    r"JSON\.stringify\s*\(\s*(?:body|data|resp_data))\b"
+    r"JSON\.stringify\s*\(\s*(?:body|data|resp_data)\b)"
+    r"(?=\s*[,);])"
 )
 DYNAMIC_EVAL = re.compile(r"\beval\s*\(|\bnew\s+Function\s*\(")
 MITM_LINE = re.compile(r"^\s*hostname\s*=\s*(?:%APPEND%\s*)?(.*)$", re.I)
@@ -28,6 +30,8 @@ BANNED_MITM = {"*.google.com", "*.weibo.com", "*.weibo.cn", "npay.meituan.com"}
 
 
 def main():
+    assert SENSITIVE_LOG.search('console.log(body);')
+    assert SENSITIVE_LOG.search('console.log(JSON.stringify(data));')
     failures = []
     warnings = []
     scripts_with_body_access = 0
@@ -66,7 +70,7 @@ def main():
                             failures.append((str(rel), n, "unnecessary-sensitive-mitm-host"))
                         if re.match(r"^\d+(?:\.\d+)+", host) or host.startswith("*"):
                             warnings.append((str(rel), n, "broad-mitm-host-review"))
-            if section == "Map Local" and "npay\.meituan\.com" in line:
+            if section == "Map Local" and r"npay\.meituan\.com" in line:
                 failures.append((str(rel), n, "wallet-response-interception"))
             if section == "Script" and BODY_SCRIPT.search(line) and re.search(r"requires-body\s*=\s*(?:true|1)", line, re.I):
                 scripts_with_body_access += 1
