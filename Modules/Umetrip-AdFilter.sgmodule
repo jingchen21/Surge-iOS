@@ -19,7 +19,7 @@ DOMAIN,analytics.umetrip.com,REJECT
 Umetrip-Response = type=http-response,pattern=(?i)^https?:\/\/(bkclient|umerp|home|umehome|sns|appmsg)\.umetrip\.com(\.cn)?\/gateway\/api\/umetrip\/native(?:\?.*)?$,requires-body=true,binary-body-mode=true,timeout=30,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/1ed691dbab70b589faee000a07e8600570de4af0/Modules/Scripts/Umetrip.js
 
 [URL Rewrite]
-^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
+^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native _ reject
 
 [Map Local]
 ^https?:\/\/oss\.umetrip\.com\/fs\/advert\/polite data-type=text data="{}" status-code=200 header="Content-Type:application/json"
