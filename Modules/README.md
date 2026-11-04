@@ -1,6 +1,6 @@
 # Surge iOS Modules
 
-**33 modules** · **31 Ad Remove** · **1 Hack VIP** · **1 Utilities**
+**34 modules** · **32 Ad Remove** · **1 Hack VIP** · **1 Utilities**
 
 [📱 Open mobile installer](https://jingchen21.github.io/Surge-iOS/) · [📁 Source files](https://github.com/jingchen21/Surge-iOS/tree/main/Modules)
 
@@ -246,7 +246,7 @@ Filter splash images by asset dimensions
 </details>
 
 <details>
-<summary><strong>T–Z</strong> · 5 modules</summary>
+<summary><strong>T–Z</strong> · 6 modules</summary>
 
 ### <img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Taobao.png" width="26" height="26" alt=""> Taobao
 
@@ -271,6 +271,14 @@ Reading, splash, audio and floating ads
 <sub>Code updated 2026-10-31 · Device verification pending</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FFanQieNovel.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/FanQieNovel.sgmodule)
+
+### <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/da/75/f6/da75f662-e6f4-20db-777b-a047ca7dd497/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg" width="26" height="26" alt=""> Umetrip
+
+Selected splash, homepage and My-tab promotions using a pinned self-hosted Protobuf filter.
+
+<sub>Code updated 2026-11-04 · Experimental · not device-verified</sub>
+
+[**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FUmetrip-AdFilter.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Umetrip-AdFilter.sgmodule)
 
 ### <img src="https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Weibo.png" width="26" height="26" alt=""> Weibo
 
