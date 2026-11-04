@@ -177,7 +177,9 @@ for(const [url,input,verify] of miniCases){
 }
 const miniModule=fs.readFileSync(path.join(root,'Modules/MeituanMiniProgram.sgmodule'),'utf8');
 assert.equal([...miniModule.matchAll(/MeituanMini-\d+ =/g)].length,2);
-assert.equal([...miniModule.matchAll(/data-type=text/g)].length,6);
+assert.equal([...miniModule.matchAll(/data-type=text/g)].length,5);
+assert.doesNotMatch(miniModule,/npay\\.meituan\\.com|npay\.meituan\.com/);
+// Wallet metadata must pass through unchanged; ad-only mini-program routes remain.
 assert.doesNotMatch(miniModule,/energy\.xiaojukeji|wx\.17u|wxgateway/);
 
 for (const match of miniModule.matchAll(/pattern=(.*?), requires-body=/g)) new RegExp(match[1]);

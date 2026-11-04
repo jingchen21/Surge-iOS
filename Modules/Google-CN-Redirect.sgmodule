@@ -10,4 +10,4 @@
 GoogleEndless = type=http-response, pattern=^https?://www\.google\.com/(?:search|webhp), requires-body=1, script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/main/JS/GoogleEndless.surge.js, timeout=10
 
 [MITM]
-hostname = %APPEND% google.cn, *.google.cn, g.cn, *.g.cn, www.google.com, *.google.com
+hostname = %APPEND% google.cn, *.google.cn, g.cn, *.g.cn, www.google.com

@@ -12,8 +12,7 @@ MeituanMini-1 = type=http-response, pattern=^https://web\.meituan\.com/api/minip
 ^https://mapi\.dianping\.com/baymax/getSlotAds data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https://web\.meituan\.com/api/miniprogram/my/novelZone data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https://web\.meituan\.com/api/miniprogram/my/resources data-type=text data="{}" status-code=200 header="Content-Type:application/json"
-^https://npay\.meituan\.com/conch/flow/mypage-wallet-info data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https://web\.meituan\.com/newUser/returnMoney/popWindow data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
 [MITM]
-hostname = %APPEND% web.meituan.com, mapi.dianping.com, npay.meituan.com
+hostname = %APPEND% web.meituan.com, mapi.dianping.com

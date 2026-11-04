@@ -51,4 +51,4 @@ http-response-jq ^https://ddpay\.xiaojukeji\.com/ddpay/api/manhattan-small-chang
 ^https://conf\.diditaxi\.com\.cn/ota/na/yuantu/infoList data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 
 [MITM]
-hostname = %APPEND% 117.51.168.*, 113.46.225.*, common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, 162.14.157.*, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn, api.udache.com, 123.207.209.*, 112.53.55.225, 120.241.142.*, 120.241.143.*, 116.85.*, 139.199.240.84, mapi.xiaojukeji.com, manhattan.webapp.xiaojukeji.com, ddpay.xiaojukeji.com
+hostname = %APPEND% common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn, api.udache.com, mapi.xiaojukeji.com, manhattan.webapp.xiaojukeji.com, ddpay.xiaojukeji.com
