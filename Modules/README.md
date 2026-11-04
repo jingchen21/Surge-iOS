@@ -274,7 +274,7 @@ Reading, splash, audio and floating ads
 
 ### <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/da/75/f6/da75f662-e6f4-20db-777b-a047ca7dd497/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg" width="26" height="26" alt=""> Umetrip
 
-Selected splash, homepage and My-tab promotions using a pinned self-hosted Protobuf filter.
+Full Loon-to-Surge conversion: homepage, My tab, startup, ad resources and native Protobuf promotions.
 
 <sub>Code updated 2026-11-04 · Experimental · not device-verified</sub>
 
