@@ -111,7 +111,7 @@ try {
   // 1、首次点击发现按钮
   if (url.includes("/search/finder?")) {
     console.log('进入发现页...');
-    console.log(body);
+    console.log("[Weibo] discovery response processed (payload suppressed)");
     resp_data.channelInfo.channels[0].titleInfo.style.selectTextColor = "#333333";
     processPayload(resp_data.channelInfo.channels[0].payload);
     removeChannelsTabs(resp_data.channelInfo.channels);
@@ -526,8 +526,8 @@ let method = getModifyMethod(url);
 console.log("匹配方法：" + method);
 let data = JSON.parse(body);
 if (method) {
-	let func = eval(method);
-	new func(data);
+	const func = {removeCards, removeTimeLine, removeHome, itemExtendHandler, removeVideoRemind, removeCheckin, removeMediaHomelist, removeComments, containerHandler, userHandler, nextVideoHandler, tabSkinHandler, skinPreviewHandler, removeSearchMain, removeSearch, removeMsgAd, removePage, topicHandler, removeMain, removeRepost}[method];
+	if (typeof func === 'function') new func(data);
 }
 
 $.done({body: JSON.stringify(data)});
@@ -1189,7 +1189,7 @@ function skinPreviewHandler(data) {
 
 function log(data) {
 	if (mainConfig.isDebug) {
-		console.log(data);
+		console.log("[Weibo] debug event (payload suppressed)");
 	}
 }
 
@@ -1941,7 +1941,7 @@ function skinPreviewHandler(data) {
 
 function log(data) {
 	if(mainConfig.isDebug) {
-		console.log(data);
+		console.log("[Weibo] debug event (payload suppressed)");
 	}
 }
 
@@ -1953,7 +1953,7 @@ var url = $request.url;
 let method = getModifyMethod(url);
 if(method) {
 	log(method);
-	var func = eval(method);
+	const func = {removeCards, removeTimeLine, removeHome, itemExtendHandler, removeVideoRemind, removeCheckin, removeMediaHomelist, removeComments, containerHandler, userHandler, nextVideoHandler, tabSkinHandler, skinPreviewHandler, removeSearchMain, removeSearch, removeMsgAd, removePage, topicHandler, removeMain, removeRepost}[method];
 	let data = JSON.parse(body);
 	new func(data);
 	body = JSON.stringify(data);

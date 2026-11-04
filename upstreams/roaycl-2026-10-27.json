@@ -29,8 +29,8 @@
       "destination_path": "Modules/Weibo.sgmodule",
       "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/Module/Weibo.sgmodule",
       "source_sha256": "c0cdcbf9957cce6fca5230557829d4d168518e45195a997417d81b1ad2f1af0d",
-      "destination_sha256": "e4d3068334b2b0cdaa5ebc33481fefcbab026deb2809c7b8927defce0444ddf3",
-      "change": "Translated module name, description, and author display label; rule logic is unchanged apart from existing local script-path relocation. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained.",
+      "destination_sha256": "9e6de0ba739d6601be1776ff1a6e5e55f3c3e406973c7767abd7cd21d14d938a",
+      "change": "Translated module name, description, and author display label; rule logic is unchanged apart from existing local script-path relocation. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained. Local security hardening 2026-11-04: redact payload logs, remove eval where applicable, and narrow MITM to observed API hosts.",
       "scope": "today-updated-module"
     },
     {
@@ -72,8 +72,8 @@
       "destination_path": "JS/Weibo.surge.js",
       "source_url": "https://raw.githubusercontent.com/RoaycL/Surge/1e0c7bd2c3d381c31b8ee9ac766576669fe2353c/JS/Weibo.surge.js",
       "source_sha256": "33b6f890694154bf6f69a9c2dbb26b47e4811f59f6fe4efb9527085c927224fa",
-      "destination_sha256": "95e6a370273271956ad5e76f8a943286643e1de2b66b0243ac3c1c6d36873236",
-      "change": "Unmodified personal-use snapshot; original author/source comments preserved. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained."
+      "destination_sha256": "9d892012b5aa5cea82b7f9908fed60555fa09437d56d522054f02feb6bd9c0cc",
+      "change": "Unmodified personal-use snapshot; original author/source comments preserved. Published comment/metadata layout refreshed on 2026-10-31; executable rules retained. Local security hardening 2026-11-04: redact payload logs, remove eval where applicable, and narrow MITM to observed API hosts."
     }
   ],
   "external_runtime_dependencies": [],
