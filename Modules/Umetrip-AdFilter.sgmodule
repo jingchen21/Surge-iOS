@@ -6,8 +6,8 @@
 #!date=2026-11-04
 #!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/da/75/f6/da75f662-e6f4-20db-777b-a047ca7dd497/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg
 
-# Original Loon source: https://github.com/xingjiu29/Umetrip/blob/029e758b63e5cdf31d8acf75f06a17c2b9b87a49/umetrip.plugin
-# Original JS, unmodified, self-hosted at d2f3664a6840520273a61ae0271b3d754bac469f; checked SHA 2920bc583b73c5ee0911d19d7f4deb7df64c4b53
+# Original Loon source: https://github.com/xingjiu29/Umetrip/blob/ba88cd439e86574445698f380aec175935eded93/umetrip.plugin
+# Original JS, unmodified, self-hosted at 1ed691dbab70b589faee000a07e8600570de4af0; checked SHA 1822f20d08a61a41694cb4a08f33c4860f6af070
 # Surge [Map Local] emulates Loon's reject-dict using HTTP 200 and empty JSON object.
 # MITM/HTTP response scripting is required. Confirm flight search and bookings after installation.
 
@@ -16,7 +16,7 @@ DOMAIN,sensors.umetrip.com.cn,REJECT
 DOMAIN,analytics.umetrip.com,REJECT
 
 [Script]
-Umetrip-Response = type=http-response,pattern=(?i)^https?:\/\/(bkclient|umerp|home|umehome|sns|appmsg)\.umetrip\.com(\.cn)?\/gateway\/api\/umetrip\/native(?:\?.*)?$,requires-body=true,binary-body-mode=true,timeout=30,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/d2f3664a6840520273a61ae0271b3d754bac469f/Modules/Scripts/Umetrip.js
+Umetrip-Response = type=http-response,pattern=(?i)^https?:\/\/(bkclient|umerp|home|umehome|sns|appmsg)\.umetrip\.com(\.cn)?\/gateway\/api\/umetrip\/native(?:\?.*)?$,requires-body=true,binary-body-mode=true,timeout=30,script-path=https://raw.githubusercontent.com/jingchen21/Surge-iOS/1ed691dbab70b589faee000a07e8600570de4af0/Modules/Scripts/Umetrip.js
 
 [URL Rewrite]
 ^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
