@@ -4,6 +4,7 @@
 import hashlib
 import json
 import re
+import subprocess
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -45,13 +46,27 @@ for file in paths:
         if parsed.hostname != "raw.githubusercontent.com":
             errors.append(f"{file.name}: runtime script must have a reviewed, self-hosted URL")
             continue
-        if not url.startswith(RAW):
-            errors.append(f"{file.name}: unpinned upstream script URL {parsed.hostname}")
+        own_root = RAW.removesuffix("main/")
+        if not url.startswith(own_root):
+            errors.append(f"{file.name}: unreviewed external script URL {parsed.hostname}")
             continue
-        rel = unquote(url[len(RAW):])
+        ref_and_path = url[len(own_root):]
+        revision, separator, encoded_path = ref_and_path.partition("/")
+        if not separator or not re.fullmatch(r"(?:main|[0-9a-f]{40})", revision):
+            errors.append(f"{file.name}: script reference must be main or a full commit SHA")
+            continue
+        rel = unquote(encoded_path)
         target = (ROOT / rel).resolve()
         if not target.is_relative_to(ROOT) or not target.is_file():
             errors.append(f"{file.name}: missing runtime {rel}")
+            continue
+        if revision != "main":
+            result = subprocess.run(
+                ["git", "cat-file", "-e", f"{revision}:{rel}"],
+                cwd=ROOT, capture_output=True, check=False
+            )
+            if result.returncode != 0:
+                errors.append(f"{file.name}: pinned script missing at {revision}:{rel}")
     # Sanity-check that every non-comment script declaration has a pattern and path.
     for line in content.splitlines():
         line = line.strip()
