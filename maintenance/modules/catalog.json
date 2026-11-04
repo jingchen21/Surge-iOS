@@ -265,6 +265,15 @@
       "aliases": "番茄小说"
     },
     {
+      "file": "Umetrip-AdFilter.sgmodule",
+      "name": "Umetrip",
+      "category": "Ad Remove",
+      "description": "Selected splash, homepage and My-tab promotions using a pinned self-hosted Protobuf filter.",
+      "icon": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/da/75/f6/da75f662-e6f4-20db-777b-a047ca7dd497/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg",
+      "aliases": "航旅纵横 飞机 航班 行程",
+      "experimental": true
+    },
+    {
       "file": "Weibo.sgmodule",
       "name": "Weibo",
       "category": "Ad Remove",
