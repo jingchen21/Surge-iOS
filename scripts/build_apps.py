@@ -239,12 +239,16 @@ def planned_outputs():
         didi += f'http-response-jq {route["pattern"]} \'{guarded}\'\n'
     didi += '\n[Map Local]\n'
     didi += '\n'.join(r['pattern'] + ' data-type=text data="{}" status-code=200 header="Content-Type:application/json"' for r in dict_routes)
-    didi += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
+    # Only actual DNS hostnames belong in MITM; IP-based blocking stays in [Rule].
+    didi_mitm_hosts = [host for host in hosts if not re.match(r'^\d+\.', host)]
+    didi += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(didi_mitm_hosts) + '\n'
     outputs['Modules/Didi.sgmodule'] = didi
     metadata, rules, routes, hosts = parse(texts['MeituanMiniProgram.snippet'])
     mini_scripts = [r for r in routes if r['action'] == 'script-response-body']
-    mini_mock = [r for r in routes if r['action'] == 'reject-dict']
-    if rules or len(mini_scripts) != 2 or len(mini_mock) != 6 or len(routes) != 8:
+    # Wallet/payment metadata is not an ad API; leave it outside interception.
+    mini_mock = [r for r in routes if r['action'] == 'reject-dict'
+                 and 'npay' not in r['pattern']]
+    if rules or len(mini_scripts) != 2 or len(mini_mock) != 5 or len(routes) != 8:
         raise ValueError('Meituan mini-program rules changed; review the scoped extraction')
     if any(not (r['argument'] or '').endswith('/MeiTuanNoAd.js') for r in mini_scripts):
         raise ValueError('Unexpected Meituan mini-program script dependency')
@@ -257,7 +261,8 @@ def planned_outputs():
     mini += '\n\n[Map Local]\n' + '\n'.join(
         r['pattern'] + ' data-type=text data="{}" status-code=200 header="Content-Type:application/json"'
         for r in mini_mock)
-    mini += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
+    mini_mitm_hosts = [host for host in hosts if host != 'npay.meituan.com']
+    mini += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(mini_mitm_hosts) + '\n'
     outputs['Modules/MeituanMiniProgram.sgmodule'] = mini
     outputs['JS/MeituanMiniProgram.surge.js'] = ('// Original logic: '+QX_SOURCE+'MeiTuanNoAd.js\n'
                                                '// Only used by the two scoped Meituan mini-program response routes.\n'+texts['MeiTuanNoAd.js'])

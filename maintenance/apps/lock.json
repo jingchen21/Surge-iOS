@@ -64,7 +64,7 @@
     },
     {
       "destination_path": "Modules/Didi.sgmodule",
-      "destination_sha256": "74efbb71589f6f29ae05737808a3ee3616b6c682e0c8073967e01dedea4b42b4"
+      "destination_sha256": "ab508899d52055a593ab967fe6a4f27c0abea8df452065b1ac159c2de03d873b"
     },
     {
       "destination_path": "Modules/Meituan.sgmodule",
@@ -72,7 +72,7 @@
     },
     {
       "destination_path": "Modules/MeituanMiniProgram.sgmodule",
-      "destination_sha256": "0a9f73f3b716ddb15ae26707ca24a2a5a44f7aa4efcca3af3dfbcee4f0509867"
+      "destination_sha256": "e6e24581e420047d0c935bd0b08e0428b9bd87225716ee44ac0f20decfbc34df"
     },
     {
       "destination_path": "Modules/SPDB.sgmodule",
