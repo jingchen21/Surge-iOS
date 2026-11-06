@@ -85,7 +85,7 @@ Targeted splash and advertising endpoints
 
 Keeps the membership card; cleans selected profile, recommendation and wallet sections.
 
-<sub>Code updated 2026-11-04 · Device checked 2026-11-04</sub>
+<sub>Code updated 2026-11-06 · Device checked 2026-11-04</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FDidi.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Didi.sgmodule)
 
