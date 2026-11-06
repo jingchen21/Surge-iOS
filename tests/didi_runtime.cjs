@@ -14,7 +14,7 @@ assert.equal((moduleText.match(/^(?:DOMAIN|IP-CIDR),/gm)||[]).length,16);
 assert.doesNotMatch(moduleText,/\[Script\]|script-path=/);
 const didiMitm=(moduleText.match(/^hostname = %APPEND% ([^\n]+)/m)||[])[1];
 assert.ok(didiMitm && didiMitm.includes('common.diditaxi.com.cn'));
-assert.doesNotMatch(didiMitm,/(?:^|,\s*)\d{1,3}\./); // IP blocking belongs in [Rule], not MITM.
+assert.equal(didiMitm,"117.51.168.*, 113.46.225.*, common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, 162.14.157.*, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn, api.udache.com, 123.207.209.*, 112.53.55.225, 120.241.142.*, 120.241.143.*, 116.85.*, 139.199.240.84, mapi.xiaojukeji.com, manhattan.webapp.xiaojukeji.com, ddpay.xiaojukeji.com"); // Restored to the 2026-11-04 membership-card-preserving version.
 let cases=0;
 function jq(filter,input){return JSON.parse(execFileSync('jq',['-c',filter],{input:JSON.stringify(input),encoding:'utf8'}));}
 function apply(index,url,input){

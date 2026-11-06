@@ -240,8 +240,7 @@ def planned_outputs():
     didi += '\n[Map Local]\n'
     didi += '\n'.join(r['pattern'] + ' data-type=text data="{}" status-code=200 header="Content-Type:application/json"' for r in dict_routes)
     # Only actual DNS hostnames belong in MITM; IP-based blocking stays in [Rule].
-    didi_mitm_hosts = [host for host in hosts if not re.match(r'^\d+\.', host)]
-    didi += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(didi_mitm_hosts) + '\n'
+    didi += '\n\n[MITM]\nhostname = %APPEND% ' + ', '.join(hosts) + '\n'
     outputs['Modules/Didi.sgmodule'] = didi
     metadata, rules, routes, hosts = parse(texts['MeituanMiniProgram.snippet'])
     mini_scripts = [r for r in routes if r['action'] == 'script-response-body']
