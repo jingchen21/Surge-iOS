@@ -1,6 +1,6 @@
 # Surge iOS Modules
 
-**35 modules** · **32 Ad Remove** · **2 Hack VIP** · **1 Utilities**
+**34 modules** · **32 Ad Remove** · **1 Hack VIP** · **1 Utilities**
 
 [📱 Open mobile installer](https://jingchen21.github.io/Surge-iOS/) · [📁 Source files](https://github.com/jingchen21/Surge-iOS/tree/main/Modules)
 
@@ -92,7 +92,7 @@ Keeps the membership card; cleans selected profile, recommendation and wallet se
 </details>
 
 <details>
-<summary><strong>E–M</strong> · 13 modules</summary>
+<summary><strong>E–M</strong> · 12 modules</summary>
 
 ### <img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/TaobaoTravel.png" width="26" height="26" alt=""> Fliggy
 
@@ -101,14 +101,6 @@ Home and travel-detail advertising placements.
 <sub>Code updated 2026-10-31 · Device verification pending</sub>
 
 [**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FFliggy.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Fliggy.sgmodule)
-
-### <img src="undefined" width="26" height="26" alt=""> Flightradar24
-
-Replaces mobile user-session response with Gold subscription payload for testing.
-
-<sub>Code updated 2026-11-14 · Experimental · not device-verified</sub>
-
-[**📲 Install in Surge**](https://link.lxya.de/surge/install-module?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjingchen21%2FSurge-iOS%2Fmain%2FModules%2FFlightradar24.sgmodule) · [Source](https://github.com/jingchen21/Surge-iOS/blob/main/Modules/Flightradar24.sgmodule)
 
 ### <img src="https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/Goofish.png" width="26" height="26" alt=""> Goofish
 
