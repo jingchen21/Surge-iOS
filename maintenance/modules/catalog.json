@@ -86,6 +86,14 @@
       "deviceVerifiedAt": "2026-11-04"
     },
     {
+      "file": "Flightradar24.sgmodule",
+      "name": "Flightradar24",
+      "category": "Hack VIP",
+      "description": "Replaces mobile user-session response with Gold subscription payload for testing.",
+      "aliases": "飞机 航班 追踪 Flightradar",
+      "experimental": true
+    },
+    {
       "file": "Fliggy.sgmodule",
       "name": "Fliggy",
       "category": "Ad Remove",
@@ -116,7 +124,7 @@
       "category": "Ad Remove",
       "description": "Selected splash and promotional content",
       "icon": "https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/EasyBike-01.png",
-      "aliases": "哈啰单车 哈啰出行"
+      "aliases": "哈哀单车 哈哀出行"
     },
     {
       "file": "Hema.sgmodule",
