@@ -18,6 +18,7 @@ This directory contains JavaScript used by selected modules.
 | [ChinaMobile-request.surge.js](ChinaMobile-request.surge.js) | China Mobile | Companion request-stage script |
 | [easybike.surge.js](easybike.surge.js) | HelloBike | API and UI handling |
 | [pdxb.surge.js](pdxb.surge.js) | SPDB app | Splash image filter |
+| [Flightradar24.surge.js](Flightradar24.surge.js) | Flightradar24 | Replaces user-session response with Gold payload for testing |
 
 ## 🛠️ Editing and building
 
