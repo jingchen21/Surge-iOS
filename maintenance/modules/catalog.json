@@ -86,14 +86,6 @@
       "deviceVerifiedAt": "2026-11-04"
     },
     {
-      "file": "Flightradar24.sgmodule",
-      "name": "Flightradar24",
-      "category": "Hack VIP",
-      "description": "Replaces mobile user-session response with Gold subscription payload for testing.",
-      "aliases": "飞机 航班 追踪 Flightradar",
-      "experimental": true
-    },
-    {
       "file": "Fliggy.sgmodule",
       "name": "Fliggy",
       "category": "Ad Remove",
