@@ -64,7 +64,7 @@
     },
     {
       "destination_path": "Modules/Didi.sgmodule",
-      "destination_sha256": "74efbb71589f6f29ae05737808a3ee3616b6c682e0c8073967e01dedea4b42b4"
+      "destination_sha256": "9a297cfd50c07911e25254eb652bb9c507126c4db0a6dce57ed0016d2e42f3b3"
     },
     {
       "destination_path": "Modules/Meituan.sgmodule",

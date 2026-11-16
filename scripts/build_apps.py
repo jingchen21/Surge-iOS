@@ -219,6 +219,9 @@ def planned_outputs():
     didi += '# Requires Surge iOS 5.14.0+ / Mac 5.9.0+ for native jq.\n'
     didi += '\n[Rule]\n' + '\n'.join(rules) + '\n\n[Body Rewrite]\n'
     for route in jq_routes:
+        # Leave in-trip components intact so the app can render current trip information.
+        if route['pattern'] == r'^https://api\.udache\.com/gulfstream/passenger-center/v2/other/pInTripLayout':
+            continue
         argument = route['argument'] or ''
         if len(argument) < 2 or not (argument.startswith("'") and argument.endswith("'")):
             raise ValueError('Unexpected DiDi jq quoting')
