@@ -1,0 +1,14 @@
+#!name=Roam Control Compatibility
+#!desc=替代 LocalDevVPN，实现 Roam Control 与 Surge 共存（待实机验证）
+#!category=开发者工具
+
+# Requires Surge iOS 5.23.0 or later.
+# Reference: https://manual.nssurge.com/features/ip-rewrite.html
+# Disables IPv6 on the virtual interface while enabled.
+
+[General]
+ipv6-vif = disabled
+tun-included-routes = %INSERT% 10.7.0.1/32
+
+[IP Rewrite]
+10.7.0.1 = reflect
